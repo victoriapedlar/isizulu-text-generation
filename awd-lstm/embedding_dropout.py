@@ -1,5 +1,4 @@
 import torch
-import torch.nn as nn
 
 
 def embedded_dropout(embed, words, dropout=0.1):
