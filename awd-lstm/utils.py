@@ -55,7 +55,14 @@ def model_save(file_name):
         torch.save([model, criterion, optimizer], f)
 
 
-def model_load(fn):
+def model_load(file_name):
+    """
+    Loads the model and associated optimizer and criterion
+    - Fixed the issue where cuda check is not performed causing crashes
+    """
     global model, criterion, optimizer
-    with open(fn, "rb") as f:
-        model, criterion, optimizer = torch.load(f)
+    with open(file_name, "rb") as f:
+        if torch.cuda.is_available():
+            model, criterion, optimizer = torch.load(f)
+        else:
+            model, criterion, optimizer = torch.load(f, map_location="cpu")
