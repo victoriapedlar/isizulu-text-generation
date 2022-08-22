@@ -335,18 +335,15 @@ except KeyboardInterrupt:
     print("-" * 89)
     print("Exiting from training early")
 
-# Open the best saved model run it on the test data
-model_load(args.save)
+# # Open the best saved model run it on the test data
+# model_load(args.save)
 
-if args.log_hparams_only:
-    stored_loss = evaluate(val_data, eval_batch_size)
-
-# Run on test data
-test_loss = evaluate(test_data)
-print("=" * 89)
-print(
-    "| End of training | test loss {:5.2f} | test ppl {:8.2f}".format(
-        test_loss, math.exp(test_loss)
-    )
-)
-print("=" * 89)
+# # Run on test data
+# test_loss = evaluate(test_data)
+# print("=" * 89)
+# print(
+#     "| End of training | test loss {:5.2f} | test ppl {:8.2f}".format(
+#         test_loss, math.exp(test_loss)
+#     )
+# )
+# print("=" * 89)

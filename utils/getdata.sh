@@ -27,5 +27,14 @@ echo
 echo "- Partitioning datasets"
 python3 utils/partition_datasets.py
 
+echo
+
+echo "- Concatenating datasets"
+mkdir -p data/combined
+mkdir -p data/combined/isizulu
+cat data/isolezwe/isizulu/train.txt data/autshumato/isizulu/train.txt data/nchlt/isizulu/train.txt > data/combined/isizulu/train.txt
+cat data/isolezwe/isizulu/valid.txt data/autshumato/isizulu/valid.txt data/nchlt/isizulu/valid.txt > data/combined/isizulu/valid.txt
+cat data/isolezwe/isizulu/test.txt data/autshumato/isizulu/test.txt data/nchlt/isizulu/test.txt > data/combined/isizulu/test.txt
+
 echo "---"
 echo "Happy language modeling :)"

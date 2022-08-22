@@ -47,7 +47,7 @@ class Corpus(object):
                 tokenizer.train(
                     [
                         os.path.join(path, "train.txt"),
-                        # os.path.join(path, 'valid.txt'),
+                        # os.path.join(path, "valid.txt"),
                         # os.path.join(path, 'test.txt')
                     ],
                     vocab_size=vocab_size,
