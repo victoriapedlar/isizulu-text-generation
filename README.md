@@ -23,3 +23,50 @@ The project was carried out by [Gustav Madslund](https://github.com/gustavmadslu
 7.   **[x]  - Weight tying** to reduce parameters and prevent model from having to learn one-to-one correspondance between input and output
 8.   **[x] - Embed size** independent from hidden size, to reduce parameters.
 9.   **[ ] - AR and TAR** - $L_2$-regularization by applying AR and TAR loss on the final RNN layer - can screw stuff up
+
+### Getting started
+
+Ensure that all scripts are run from the root directory.
+
+Install requirements:
+`pip3 install -r awd_lstm_requirements.txt`
+
+Fetch training data:
+`./utils/getdata.sh`
+
+Minimum arguments to run the model:
+`python3 awd_lstm/main.py --data data/nchlt/isizulu/ --save "/content/drive/My Drive/Colab Notebooks/AWD_LSTM_Test.pt" --descriptive_name "ExampleAWDLSTM" --save_history "/content/drive/My Drive/Colab Notebooks/log_history.txt"`
+
+### Experiments
+The following provide the needed parameters to recreate the top performing model on the isiZulu dataset. To run on alternate datasets the --data argument should be changed. Each of the models takes at least 3-4 hours to reach adequate performance and up to 10-12 to reach the best performance. Models were trained using a mix of Nvidia K80, P100 and V100 GPUs.
+
+`python3 -u awd_lstm/main.py \
+    --save "AWD_LSTM_Test.pt" \
+    --descriptive_name "ExampleAWDLSTM" \
+    --data data/nchlt/isizulu/ \
+    --save_history "/content/drive/My Drive/Colab Notebooks/log_history.txt" \
+    --model "LSTM" \
+    --emsize 800 \
+    --nhid 1150 \
+    --nlayers 3 \
+    --lr 30.0 \
+    --clip 0.25 \
+    --epochs 750 \
+    --batch_size 80 \
+    --bptt 70 \
+    --dropout 0.4 \
+    --dropouth 0.2 \
+    --dropouti 0.65 \
+    --dropoute 0.1 \
+    --wdrop 0.5 \
+    --seed 1882 \
+    --nonmono 8 \
+`
+
+### Acknowledgements
+
+Merity, S., Keskar, N.S. and Socher, R., 2017. Regularizing and optimizing LSTM language models. [arXiv preprint arXiv:1708.02182](https://arxiv.org/pdf/1708.02182.pdf).
+
+Merity, S., Keskar, N.S. and Socher, R., 2018. An analysis of neural language modeling at multiple scales. [arXiv preprint arXiv:1803.08240](https://arxiv.org/pdf/1803.08240.pdf).
+
+Mesham, S., Hayward, L., Shapiro, J. and Buys, J., 2021. Low-Resource Language Modelling of South African Languages. arXiv preprint [arXiv:2104.00772](https://arxiv.org/pdf/2104.00772.pdf).

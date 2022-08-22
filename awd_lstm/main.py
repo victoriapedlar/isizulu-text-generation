@@ -7,6 +7,7 @@ import torch.nn as nn
 import os
 import hashlib
 import data
+import sys
 from datetime import datetime
 from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, model_save, model_load
@@ -15,6 +16,9 @@ parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
     "--data", type=str, default="data/penn/", help="location of the data corpus"
 )
+parser.add_argument(
+    "--model", type=str, default="LSTM", help="type of recurrent net (LSTM, QRNN, GRU)"
+)
 parser.add_argument("--emsize", type=int, default=400, help="size of word embeddings")
 parser.add_argument(
     "--nhid", type=int, default=1150, help="number of hidden units per layer"
@@ -22,9 +26,9 @@ parser.add_argument(
 parser.add_argument("--nlayers", type=int, default=3, help="number of layers")
 parser.add_argument("--lr", type=float, default=30, help="initial learning rate")
 parser.add_argument("--clip", type=float, default=0.25, help="gradient clipping")
-parser.add_argument("--epochs", type=int, default=750, help="upper epoch limit")
+parser.add_argument("--epochs", type=int, default=8000, help="upper epoch limit")
 parser.add_argument(
-    "--batch_size", type=int, default=20, metavar="N", help="batch size"
+    "--batch_size", type=int, default=80, metavar="N", help="batch size"
 )
 parser.add_argument("--bptt", type=int, default=70, help="sequence length")
 parser.add_argument(
@@ -36,13 +40,13 @@ parser.add_argument(
 parser.add_argument(
     "--dropouth",
     type=float,
-    default=0.25,
+    default=0.3,
     help="dropout for rnn layers (0 = no dropout)",
 )
 parser.add_argument(
     "--dropouti",
     type=float,
-    default=0.4,
+    default=0.65,
     help="dropout for input embedding layers (0 = no dropout)",
 )
 parser.add_argument(
@@ -59,7 +63,7 @@ parser.add_argument(
 )
 parser.add_argument("--seed", type=int, default=1111, help="random seed")
 parser.add_argument("--nonmono", type=int, default=5, help="random seed")
-parser.add_argument("--cuda", action="store_true", default=False, help="use CUDA")
+parser.add_argument("--cuda", action="store_false", help="use CUDA")
 parser.add_argument(
     "--log-interval", type=int, default=200, metavar="N", help="report interval"
 )
@@ -93,6 +97,15 @@ parser.add_argument(
     default=[-1],
     help="When (which epochs) to divide the learning rate by 10 - accepts multiple",
 )
+# ----------Written by Victoria Pedlar---------- #
+parser.add_argument(
+    "--save_history",
+    type=str,
+    default=randomhash + ".txt",
+    help="path to save the log history",
+)
+# ----------------------------------------------- #
+# ----------Written by Luc Hayward---------- #
 parser.add_argument(
     "--vocab_size", default=5000, help="size of vocab ONLY IF using bpe", type=int
 )
@@ -137,9 +150,14 @@ run_name = (
     + args.descriptive_name
 )
 drive_name = "/content/drive/My Drive/Colab Notebooks/"
+# writer = SummaryWriter((drive_name if not args.chpc else '') + 'runs/' + run_name)
 sargs = ""
 for arg in vars(args):
     sargs += "{:<16}: {}  \n".format(str(arg), str(getattr(args, arg)))
+# if not args.log_hparams_only: writer.add_text('args', sargs)
+print(sargs)
+# ----------------------------------------------- #
+# Set the random seed manually for reproducibility.
 np.random.seed(args.seed)
 torch.manual_seed(args.seed)
 if torch.cuda.is_available():
@@ -246,78 +264,76 @@ def train():
 
 
 # Do the actual training
+# Directing print output to a .txt file
+sys.stdout = open(args.save_history, "wt")
 
 # Loop over epochs
 lr = args.lr
-best_val_loss = 100000000
-stored_losses = []
+best_val_loss = []
+stored_losses = 100000000
 
-# Allows for training to be skipped (ie when model is pretrained) and only a single validation and test set to be evaluated
-if not args.log_hparams_only:
-    # At any point you can hit Ctrl + C to break out of training early
-    try:
-        optimizer = torch.optim.SGD(model.parameters(), lr=lr)
-        for epoch in range(1, args.epochs + 1):
-            epoch_start_time = time.time()
-            train()
-            if "t0" in optimizer.param_groups[0]:
-                tmp = {}
-                for prm in model.parameters():
-                    tmp[prm] = prm.data.clone()
-                    prm.data = optimizer.state[prm]["ax"].clone()
+# At any point you can hit Ctrl + C to break out of training early
+try:
+    optimizer = torch.optim.SGD(model.parameters(), lr=lr)
+    for epoch in range(1, args.epochs + 1):
+        epoch_start_time = time.time()
+        train()
+        if "t0" in optimizer.param_groups[0]:
+            tmp = {}
+            for prm in model.parameters():
+                tmp[prm] = prm.data.clone()
+                prm.data = optimizer.state[prm]["ax"].clone()
 
-                val_loss2 = evaluate(val_data)
-                print("-" * 89)
-                print(
-                    "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
-                    "valid ppl {:8.2f} | valid bpc {:8.3f}".format(
-                        epoch,
-                        (time.time() - epoch_start_time),
-                        val_loss2,
-                        math.exp(val_loss2),
-                        val_loss2 / math.log(2),
-                    )
+            val_loss2 = evaluate(val_data)
+            print("-" * 89)
+            print(
+                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
+                "valid ppl {:8.2f} | valid bpc {:8.3f}".format(
+                    epoch,
+                    (time.time() - epoch_start_time),
+                    val_loss2,
+                    math.exp(val_loss2),
+                    val_loss2 / math.log(2),
                 )
-                print("-" * 89)
+            )
+            print("-" * 89)
 
-                if val_loss2 < best_val_loss:
-                    model_save(args.save)
-                    best_val_loss = val_loss
+            if val_loss2 < best_val_loss:
+                model_save(args.save)
+                best_val_loss = val_loss
 
-                for prm in model.parameters():
-                    prm.data = tmp[prm].clone()
+            for prm in model.parameters():
+                prm.data = tmp[prm].clone()
 
-            else:
-                val_loss = evaluate(val_data)
-                print("-" * 89)
-                print(
-                    "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
-                    "valid ppl {:8.2f}".format(
-                        epoch,
-                        (time.time() - epoch_start_time),
-                        val_loss,
-                        math.exp(val_loss),
-                    )
+        else:
+            val_loss = evaluate(val_data)
+            print("-" * 89)
+            print(
+                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
+                "valid ppl {:8.2f}".format(
+                    epoch,
+                    (time.time() - epoch_start_time),
+                    val_loss,
+                    math.exp(val_loss),
                 )
-                print("-" * 89)
-                # Save the model if the validation loss is the best we've seen so far.
-                if val_loss < best_val_loss:
-                    model_save(args.save)
-                    best_val_loss = val_loss
+            )
+            print("-" * 89)
+            # Save the model if the validation loss is the best we've seen so far
+            if val_loss < best_val_loss:
+                model_save(args.save)
+                best_val_loss = val_loss
 
-                elif len(stored_losses) > args.nonmono and val_loss > min(
-                    stored_losses[: -args.nonmono]
-                ):
-                    print("Switching to ASGD")
-                    optimizer = torch.optim.ASGD(
-                        model.parameters(), lr=lr, t0=0, lambd=0.0
-                    )
+            elif len(stored_losses) > args.nonmono and val_loss > min(
+                stored_losses[: -args.nonmono]
+            ):
+                print("Switching to ASGD")
+                optimizer = torch.optim.ASGD(model.parameters(), lr=lr, t0=0, lambd=0.0)
 
-                stored_losses.append(val_loss)
+            stored_losses.append(val_loss)
 
-    except KeyboardInterrupt:
-        print("-" * 89)
-        print("Exiting from training early")
+except KeyboardInterrupt:
+    print("-" * 89)
+    print("Exiting from training early")
 
 # Open the best saved model run it on the test data
 model_load(args.save)
