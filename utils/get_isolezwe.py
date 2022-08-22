@@ -22,6 +22,8 @@ repo_urls = [
     "https://codeload.github.com/newstools/2018-iol-isolezwe/zip/master",
     "https://codeload.github.com/newstools/2019-iol-isolezwe/zip/master",
     "https://codeload.github.com/newstools/2020-iol-isolezwe/zip/master",
+    "https://codeload.github.com/newstools/2021-iol-isolezwe/zip/main",
+    "https://codeload.github.com/newstools/2022-iol-isolezwe/zip/main",
 ]
 
 sentence_count = 0
