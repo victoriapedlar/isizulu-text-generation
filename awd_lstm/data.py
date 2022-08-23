@@ -1,5 +1,6 @@
 import os
 import torch
+
 from collections import Counter
 from tokenizers import ByteLevelBPETokenizer
 
@@ -10,6 +11,7 @@ class Dictionary(object):
         self.idx2word = []
         self.counter = Counter()
         self.total = 0
+        self.avg_characters_per_token = {"train": -1, "valid": -1, "test": -1}
 
     def add_word(self, word):
         if word not in self.word2idx:
@@ -31,6 +33,8 @@ class Corpus(object):
         if use_bpe:
             assert os.path.exists(path), "Path does not exist: " + path
 
+            print("-------------------------------------------------------------")
+
             tokenizer = ByteLevelBPETokenizer()
             if len(tokenizer_data) != 0:
                 print(
@@ -46,13 +50,14 @@ class Corpus(object):
                 print("Training tokenizer on: " + os.path.join(path, "train.txt"))
                 tokenizer.train(
                     [
-                        os.path.join(path, "train.txt"),
-                        # os.path.join(path, "valid.txt"),
+                        os.path.join(path, "train.txt")
+                        # os.path.join(path, 'valid.txt'),
                         # os.path.join(path, 'test.txt')
                     ],
                     vocab_size=vocab_size,
                     show_progress=False,
                 )
+            print("-------------------------------------------------------------")
 
             print("Encoding dataset at: " + path)
             with open(os.path.join(path, "train.txt"), "r", encoding="utf-8") as f:
@@ -93,6 +98,7 @@ class Corpus(object):
                 self.dictionary.avg_characters_per_token["test"] = len(text) / len(
                     enc.ids
                 )
+            print("-------------------------------------------------------------")
 
             self.dictionary.word2idx = tokenizer.get_vocab()
             self.dictionary.idx2word = [
@@ -107,9 +113,9 @@ class Corpus(object):
 
     def tokenize(self, path):
         """Tokenizes a text file."""
-        assert os.path.exists(path)
+        assert os.path.exists(path), "Path does not exist: " + path
         # Add words to the dictionary
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             tokens = 0
             for line in f:
                 words = line.split() + ["<eos>"]
@@ -118,7 +124,7 @@ class Corpus(object):
                     self.dictionary.add_word(word)
 
         # Tokenize file content
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             ids = torch.LongTensor(tokens)
             token = 0
             for line in f:
