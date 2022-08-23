@@ -229,7 +229,7 @@ def train():
     ntokens = len(corpus.dictionary)
     hidden = model.init_hidden(args.batch_size)
     for batch, i in enumerate(range(0, train_data.size(0) - 1, args.bptt)):
-        data, targets = get_batch(train_data, i)
+        data, targets = get_batch(train_data, i, args)
         # Starting each batch, we detach the hidden state from how it was previously produced
         # If we didn't, the model would try backpropagating all the way to start of the dataset
         hidden = repackage_hidden(hidden)
