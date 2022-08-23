@@ -6,7 +6,7 @@
 
 + The code in this notebook is available on [google colab](https://colab.research.google.com/drive/1yyUGJfyYKdvPi6J7ZlsxPg9E_ppZG1xU) and on [github](https://github.com/mikkelbrusen/awd-inspired-lstm).
 
-The project was carried out by [Gustav Madslund](https://github.com/gustavmadslund) and [Mikkel Møller Brusen](https://github.com/mikkelbrusen).
+This version of AWD-LSTM was created by [Gustav Madslund](https://github.com/gustavmadslund) and [Mikkel Møller Brusen](https://github.com/mikkelbrusen).
 
 
 ### Core components

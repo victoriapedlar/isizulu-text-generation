@@ -22,14 +22,16 @@ def repackage_hidden(h):
 # batch processing.
 
 
-def batchify(data, bsz):
-    # Work out how cleanly we can divide the dataset into bsz parts.
+def batchify(data, bsz, args):
+    # Work out how cleanly we can divide the dataset into bsz(default=80/10/1) parts.
     nbatch = data.size(0) // bsz
     # Trim off any extra elements that wouldn't cleanly fit (remainders).
     data = data.narrow(0, 0, nbatch * bsz)
     # Evenly divide the data across the bsz batches.
     data = data.view(bsz, -1).t().contiguous()
-    return data.to(device)
+    if args.cuda:
+        data = data.cuda()
+    return data
 
 
 # get_batch subdivides the source data into chunks of length args.bptt.
@@ -43,8 +45,8 @@ def batchify(data, bsz):
 # to the seq_len dimension in the LSTM.
 
 
-def get_batch(source, i):
-    seq_len = min(args_bptt, len(source) - 1 - i)
+def get_batch(source, i, args):
+    seq_len = min(args.bptt, len(source) - 1 - i)
     data = source[i : i + seq_len]
     target = source[i + 1 : i + 1 + seq_len].view(-1)
     return data, target
