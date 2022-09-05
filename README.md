@@ -10,7 +10,6 @@ This version of AWD-LSTM was created by [Gustav Madslund](https://github.com/gus
 
 
 ### Core components
-
 1.   **[x]  - Multi Layer** - We will need to controll what happens in between the layers, therefore, instead of using the multi layer cuDNN lstm implementation, we will create multiple single layer cuDNN lstms.
 2.   **[x] - Weight drop** using DropConnect on hidden-hidden weights $[U^i, U^f, U^o, U^c]$ before forward and backward pass - makes it possible to use cuDNN LSTM
 3.   **[x] - Optimization** using SGD and ASGD while training
@@ -25,7 +24,6 @@ This version of AWD-LSTM was created by [Gustav Madslund](https://github.com/gus
 9.   **[ ] - AR and TAR** - $L_2$-regularization by applying AR and TAR loss on the final RNN layer - can screw stuff up
 
 ### Getting started
-
 Ensure that all scripts are run from the root directory.
 
 Install requirements:
@@ -63,8 +61,29 @@ The following provide the needed parameters to recreate the top performing model
     --nonmono 8 \
 `
 
-### Acknowledgements
+# Transformers
 
+An implementation of a multilingual GPT-2 and utilities for downloading and preprocessing training data.
+
+### Getting started
+Ensure that all scripts are run from the root directory.
+
+Install requirements:
+`pip3 install -r transformer_requirements.txt`
+
+Add scripts directory to PYTHONPATH:
+`export PYTHONPATH=$PYTHONPATH:`pwd`/scripts`
+
+Fetch training data:
+./utils/getdata.sh
+
+Train GPT-2 model:
+`python3 scripts/train_example.py`
+
+Generate results CSV from `logs/experiment_logs.txt`:
+`python3 scripts/create_csv.py`
+
+# Acknowledgements
 Merity, S., Keskar, N.S. and Socher, R., 2017. Regularizing and optimizing LSTM language models. [arXiv preprint arXiv:1708.02182](https://arxiv.org/pdf/1708.02182.pdf).
 
 Merity, S., Keskar, N.S. and Socher, R., 2018. An analysis of neural language modeling at multiple scales. [arXiv preprint arXiv:1803.08240](https://arxiv.org/pdf/1803.08240.pdf).
