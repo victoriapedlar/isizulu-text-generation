@@ -75,7 +75,7 @@ Add scripts directory to PYTHONPATH:
 `export PYTHONPATH=$PYTHONPATH:`pwd`/scripts`
 
 Fetch training data:
-./utils/getdata.sh
+`./utils/getdata.sh`
 
 Train GPT-2 model:
 `python3 scripts/train_example.py`
