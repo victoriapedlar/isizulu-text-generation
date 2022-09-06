@@ -14,7 +14,7 @@ git clone https://github.com/victoriapedlar/isizulu-text-generation.git
 
 cd isizulu-text-generation
 
-# pip install -qr requirements.txt
+# pip install -qr awd_lstm_requirements.txt
 module load python/anaconda-python-3.7 
 
 ./utils/getdata.sh
@@ -22,7 +22,7 @@ module load python/anaconda-python-3.7
 python3 -u awd_lstm/main.py \
     --save "AWD_LSTM_5_Sept.pt" \
     --descriptive_name "AWDLSTM_Luc_Hayward" \
-    --data data/autshumato/isizulu/ \
+    --data data/test/isizulu/ \
     --save_history "log_history.txt" \
     --emsize 800 \
     --nhid 1150 \
