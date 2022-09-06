@@ -10,7 +10,7 @@ import data
 import sys
 from datetime import datetime
 from model import LSTMModel
-from utils import batchify, get_batch, repackage_hidden, model_save, model_load
+from utils import batchify, get_batch, repackage_hidden
 
 parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
@@ -163,6 +163,25 @@ if torch.cuda.is_available():
         print("WARNING: You have a CUDA device, so you should probably run with --cuda")
     else:
         torch.cuda.manual_seed(args.seed)
+
+
+def model_save(file_name):
+    with open(file_name, "wb") as f:
+        torch.save([model, criterion, optimizer], f)
+
+
+def model_load(file_name):
+    """
+    Loads the model and associated optimizer and criterion
+    - Fixed the issue where cuda check is not performed causing crashes
+    """
+    global model, criterion, optimizer
+    with open(file_name, "rb") as f:
+        if torch.cuda.is_available():
+            model, criterion, optimizer = torch.load(f)
+        else:
+            model, criterion, optimizer = torch.load(f, map_location="cpu")
+
 
 # Load the dataset and make train, validation and test sets
 
