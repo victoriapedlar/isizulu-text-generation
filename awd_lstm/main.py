@@ -268,8 +268,8 @@ sys.stdout = open(args.save_history, "wt")
 
 # Loop over epochs
 lr = args.lr
-best_val_loss = []
-stored_losses = 100000000
+best_val_loss = 100000000
+stored_losses = []
 
 # At any point you can hit Ctrl + C to break out of training early
 try:
