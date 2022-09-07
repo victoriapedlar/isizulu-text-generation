@@ -4,7 +4,7 @@
 #SBATCH --partition=a100
 #SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-4g-20gb:1
 #SBATCH --time=48:00:00
-#SBATCH --job-name="AWDLSTM_Vanilla"
+#SBATCH --job-name="AWDLSTMTest"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
 #SBATCH --mail-type=ALL
 
@@ -20,9 +20,9 @@ source activate awd-lstm
 ./utils/getdata.sh
 
 python3 -u awd_lstm/main.py \
-    --save "AWD_LSTM_5_Sept.pt" \
+    --save "AWD_LSTM_Test.pt" \
     --descriptive_name "AWDLSTM_Luc_Hayward" \
-    --data data/autshumato/isizulu/ \
+    --data data/test \
     --save_history "log_history.txt" \
     --emsize 800 \
     --nhid 1150 \
