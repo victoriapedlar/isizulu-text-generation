@@ -71,11 +71,11 @@ Ensure that all scripts are run from the root directory.
 Install requirements:
 `pip3 install -r transformer_requirements.txt`
 
-Add scripts directory to PYTHONPATH:
-`export PYTHONPATH=$PYTHONPATH:`pwd`/scripts`
-
 Fetch training data:
 `./utils/getdata.sh`
+
+Add scripts directory to PYTHONPATH:
+`export PYTHONPATH=$PYTHONPATH:`pwd`/scripts`
 
 Train GPT-2 model:
 `python3 scripts/train_example.py`

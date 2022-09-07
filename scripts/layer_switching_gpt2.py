@@ -7,7 +7,11 @@ from torch import nn
 from torch.nn import CrossEntropyLoss, init
 from torch.nn.parameter import Parameter
 from transformers import PretrainedConfig, Conv1D
-from transformers.modeling_gpt2 import Attention, MLP, GPT2PreTrainedModel
+from transformers.modeling_gpt2 import (
+    Attention,
+    MLP,
+    GPT2PreTrainedModel,
+)
 from transformers.modeling_outputs import (
     BaseModelOutputWithPast,
     CausalLMOutputWithPast,

@@ -543,16 +543,16 @@ def run_experiment(
     )
 
     # ----------Modified by Victoria Pedlar---------- #
-    best_run = trainer.hyperparameter_search(
-        direction="maximize", backend="ray", hp_space=hp_space
-    )
-    for n, v in best_run.hyperparameters.items():
-        setattr(trainer.hparams, n, v)
-
-    trainer.train(model_path=resume_checkpoint_dir)
-    # ----------------------------------------------- #
+    # best_run = trainer.hyperparameter_search(
+    #     direction="maximize", backend="ray", hp_space=hp_space
+    # )
+    # for n, v in best_run.hyperparameters.items():
+    #     setattr(trainer.hparams, n, v)
 
     # trainer.train(model_path=resume_checkpoint_dir)
+    # ----------------------------------------------- #
+
+    trainer.train(model_path=resume_checkpoint_dir)
     val_metrics = evaluate_bpcs(
         trainer.tokenizers,
         trainer.model,
@@ -564,21 +564,21 @@ def run_experiment(
     logger.info(repr(val_metrics))
 
     # ----------Modified by Victoria Pedlar---------- #
-    best_run = trainer.hyperparameter_search(n_trials=10, direction="maximize")
-    for n, v in best_run.hyperparameters.items():
-        setattr(trainer.args, n, v)
+    # best_run = trainer.hyperparameter_search(n_trials=10, direction="maximize")
+    # for n, v in best_run.hyperparameters.items():
+    #     setattr(trainer.args, n, v)
 
-    trainer.train()
+    # trainer.train()
     # ------------------------------------------------#
-    # test_metrics = evaluate_bpcs(
-    #     trainer.tokenizers,
-    #     trainer.model,
-    #     hparams["test_data"],
-    #     input_block_size=hparams["train_block_size"],
-    #     stride=eval_stride,
-    #     disable_tqdm=disable_prediction_tqdm,
-    # )
-    # logger.info(repr(test_metrics))
+    test_metrics = evaluate_bpcs(
+        trainer.tokenizers,
+        trainer.model,
+        hparams["test_data"],
+        input_block_size=hparams["train_block_size"],
+        stride=eval_stride,
+        disable_tqdm=disable_prediction_tqdm,
+    )
+    logger.info(repr(test_metrics))
 
     log_data = {
         "id": experiment_id,
@@ -587,7 +587,7 @@ def run_experiment(
         "hparams": hparams,
         "tparams": tparams,
         "val_metrics": val_metrics,
-        # "test_metrics": test_metrics,
+        "test_metrics": test_metrics,
     }
 
     with open(os.path.join(LOG_DIR, log_file), "a") as logfile:

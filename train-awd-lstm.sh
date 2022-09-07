@@ -4,7 +4,7 @@
 #SBATCH --partition=a100
 #SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-4g-20gb:1
 #SBATCH --time=48:00:00
-#SBATCH --job-name="AWD_LSTM_5_Sept"
+#SBATCH --job-name="AWDLSTM_Vanilla"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
 #SBATCH --mail-type=ALL
 
@@ -14,15 +14,15 @@ git clone https://github.com/victoriapedlar/isizulu-text-generation.git
 
 cd isizulu-text-generation
 
-# pip install -qr awd_lstm_requirements.txt
-module load python/anaconda-python-3.7 
+module load python/anaconda-python-3.7
+source activate RelevantName
 
 ./utils/getdata.sh
 
 python3 -u awd_lstm/main.py \
     --save "AWD_LSTM_5_Sept.pt" \
     --descriptive_name "AWDLSTM_Luc_Hayward" \
-    --data data/test/isizulu/ \
+    --data data/autshumato/isizulu/ \
     --save_history "log_history.txt" \
     --emsize 800 \
     --nhid 1150 \
