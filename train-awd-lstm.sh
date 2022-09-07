@@ -39,4 +39,4 @@ python3 -u awd_lstm/main.py \
     --wdrop 0.5 \
     --seed 1882 \
     --nonmono 8 \
-    --cuda True \
+    --cuda \
