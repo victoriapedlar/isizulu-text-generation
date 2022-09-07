@@ -10,14 +10,8 @@
 
 CUDA_VISIBLE_DEVICES=$(ncvd)
 
-git clone https://github.com/victoriapedlar/isizulu-text-generation.git
-
-cd isizulu-text-generation
-
 module load python/anaconda-python-3.7
 source activate awd-lstm
-
-./utils/getdata.sh
 
 python3 -u awd_lstm/main.py \
     --save "AWD_LSTM_Test.pt" \
