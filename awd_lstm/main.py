@@ -218,6 +218,10 @@ model = LSTMModel(
 )
 criterion = nn.CrossEntropyLoss()
 
+if args.cuda:
+    model = model.cuda()
+    criterion = criterion.cuda()
+
 # Train the model
 # First define training and evaluation
 

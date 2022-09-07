@@ -15,7 +15,7 @@ git clone https://github.com/victoriapedlar/isizulu-text-generation.git
 cd isizulu-text-generation
 
 module load python/anaconda-python-3.7
-source activate RelevantName
+source activate awd-lstm
 
 ./utils/getdata.sh
 
@@ -39,3 +39,4 @@ python3 -u awd_lstm/main.py \
     --wdrop 0.5 \
     --seed 1882 \
     --nonmono 8 \
+    --cuda True \
