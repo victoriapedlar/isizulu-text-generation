@@ -10,6 +10,7 @@
 
 CUDA_VISIBLE_DEVICES=$(ncvd)
 
+module load software/TensorFlow-A100-GPU
 module load python/anaconda-python-3.7
 source activate awd-lstm
 
