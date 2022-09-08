@@ -14,16 +14,7 @@ git clone https://github.com/victoriapedlar/isizulu-text-generation.git
 
 cd isizulu-text-generation
 
-cd src/transformers/
-
-pip install .
-
-cd ..
-
-cd ..
-
 module load python/anaconda-python-3.7
-
 source activate transformer
 
 ./utils/getdata.sh
