@@ -514,7 +514,6 @@ def run_experiment(
     experiment_id=None,
     resume_checkpoint_dir=None,
     log_file="experiment_logs.txt",
-    hp_space=dict,
 ):
     """
     Trains evaluates and logs the evaluation results of a model with the specified hyper-parameters
@@ -527,7 +526,6 @@ def run_experiment(
     :param experiment_id: Experiemnt ID used for logging. If None, a random one will be assigned.
     :param resume_checkpoint_dir: the checkpoint directory of an experiment to resume
     :param log_file: the file to save model evaluation results for the experiment
-    :param hp_space: the hyper-parameter tuning space
     """
     if experiment_id is None:
         experiment_id = uuid4().hex  # create a random experiment ID
@@ -541,17 +539,6 @@ def run_experiment(
         log_to_console,
         resume_checkpoint_dir,
     )
-
-    # ----------Modified by Victoria Pedlar---------- #
-    # best_run = trainer.hyperparameter_search(
-    #     direction="maximize", backend="ray", hp_space=hp_space
-    # )
-    # for n, v in best_run.hyperparameters.items():
-    #     setattr(trainer.hparams, n, v)
-
-    # trainer.train(model_path=resume_checkpoint_dir)
-    # ----------------------------------------------- #
-
     trainer.train(model_path=resume_checkpoint_dir)
     val_metrics = evaluate_bpcs(
         trainer.tokenizers,
@@ -563,13 +550,6 @@ def run_experiment(
     )
     logger.info(repr(val_metrics))
 
-    # ----------Modified by Victoria Pedlar---------- #
-    # best_run = trainer.hyperparameter_search(n_trials=10, direction="maximize")
-    # for n, v in best_run.hyperparameters.items():
-    #     setattr(trainer.args, n, v)
-
-    # trainer.train()
-    # ------------------------------------------------#
     test_metrics = evaluate_bpcs(
         trainer.tokenizers,
         trainer.model,
