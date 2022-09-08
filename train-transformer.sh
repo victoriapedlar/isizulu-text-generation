@@ -14,6 +14,7 @@ git clone https://github.com/victoriapedlar/isizulu-text-generation.git
 
 cd isizulu-text-generation
 
+module load software/TensorFlow-A100-GPU
 module load python/anaconda-python-3.7
 source activate transformer
 
