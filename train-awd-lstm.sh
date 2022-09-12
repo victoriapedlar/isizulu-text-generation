@@ -35,3 +35,5 @@ python3 -u awd_lstm/main.py \
     --seed 1882 \
     --nonmono 8 \
     --cuda \
+
+conda deactivate
