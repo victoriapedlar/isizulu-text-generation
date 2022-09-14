@@ -2,19 +2,19 @@
 
 #SBATCH --account=nlpgroup
 #SBATCH --partition=a100
-#SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-2g-10gb:1
+#SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-3g-20gb:1
 #SBATCH --time=48:00:00
-#SBATCH --job-name="AWDLSTMTest"
+#SBATCH --job-name="awdlstm"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
 #SBATCH --mail-type=ALL
-
 CUDA_VISIBLE_DEVICES=$(ncvd)
 
-module load software/TensorFlow-A100-GPU
 module load python/anaconda-python-3.7
+module load software/TensorFlow-A100-GPU
 # source activate awd-lstm
 
-pip install -r awd_lstm_requirements.txt
+start=`date +%s`
+echo "Starting script..."
 
 python3 -u awd_lstm/main.py \
     --save "AWD_LSTMTest.pt" \
@@ -38,4 +38,7 @@ python3 -u awd_lstm/main.py \
     --nonmono 8 \
     --cuda \
 
-conda deactivate
+# conda deactivate
+end=`date +%s`
+runtime=$(((end-start)/60))
+echo "Runtime with unspecified cores was $runtime minutes."
