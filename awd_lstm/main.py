@@ -300,11 +300,14 @@ try:
     for epoch in range(1, args.epochs + 1):
         epoch_start_time = time.time()
         train()
-        if "t0" in optimizer.param_groups[0]:
+        if "t0" in optimizer.param_groups[0]:  # if ASGD
             tmp = {}
             for prm in model.parameters():
                 tmp[prm] = prm.data.clone()
-                prm.data = optimizer.state[prm]["ax"].clone()
+                if (
+                    "ax" in optimizer.state[prm]
+                ):  # added this line because of error: File "main.py", line 268, in <module> prm.data = optimizer.state[prm]['ax'].clone() KeyError: 'ax'
+                    prm.data = optimizer.state[prm]["ax"].clone()
 
             val_loss2 = evaluate(val_data)
             print("-" * 89)
@@ -324,8 +327,18 @@ try:
                 model_save(args.save)
                 best_val_loss = val_loss
 
+            nparams = 0
+            nparams_in_temp_keys = 0
             for prm in model.parameters():
-                prm.data = tmp[prm].clone()
+                nparams += 1
+                if prm in tmp.keys():
+                    nparams_in_temp_keys += 1
+                    prm.data = tmp[prm].clone()
+            print(
+                "params {}, params in tmp keys: {}".format(
+                    nparams, nparams_in_temp_keys
+                )
+            )
 
         else:
             val_loss = evaluate(val_data)
