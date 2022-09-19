@@ -159,9 +159,6 @@ print(sargs)
 print("torch:", torch.__version__)
 if torch.__version__ != "0.1.12_2":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print("Cuda:", torch.backends.cudnn.cuda)
-    print("CuDNN:", torch.backends.cudnn.version())
-    print("device: {}".format(device))
 ###############################################################################
 # Set the random seed manually for reproducibility.
 np.random.seed(args.seed)
