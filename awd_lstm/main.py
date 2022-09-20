@@ -97,6 +97,13 @@ parser.add_argument(
     default=[-1],
     help="When (which epochs) to divide the learning rate by 10 - accepts multiple",
 )
+parser.add_argument(
+    "-asgd",
+    "--asgd",
+    required=False,
+    default="True",
+    help="server on which this experiment runs",
+)
 # ----------Written by Victoria Pedlar---------- #
 parser.add_argument(
     "--save_history",
@@ -521,8 +528,12 @@ try:
                     # if 't0' not in optimizer.param_groups[0]:
                     print("Switching to ASGD")
                     # optimizer = ASGD(trainable_parameters, lr=args.lr, t0=0, lambd=0., weight_decay=args.wdecay)
-                    optimizer = torch.optim.ASG(
-                        params, lr=args.lr, t0=0, lambd=0.0, weight_decay=args.wdecay
+                    optimizer = torch.optim.ASGD(
+                        trainable_parameters,
+                        lr=args.lr,
+                        t0=0,
+                        lambd=0.0,
+                        weight_decay=args.wdecay,
                     )
 
             if epoch in args.when:
