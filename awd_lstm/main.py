@@ -483,7 +483,7 @@ try:
                     len([prm for prm in model.parameters()])
                 )
             )
-            val_loss = evaluate(val_data, eval_batch_size)
+            val_loss = evaluate(val_data)
             print(
                 "{} model params (SGD after eval)".format(
                     len([prm for prm in model.parameters()])
