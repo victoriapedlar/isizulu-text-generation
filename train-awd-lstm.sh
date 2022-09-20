@@ -17,7 +17,7 @@ start=`date +%s`
 echo "Starting script..."
 
 python3 -u awd_lstm/main.py \
-    --save "AWD_LSTMTest.pt" \
+    --save "awd-lstm-small.pt" \
     --descriptive_name "AWDLSTM_Initial_Parameters" \
     --data data/test \
     --save_history "log_history.txt" \
