@@ -160,10 +160,10 @@ sargs = ""
 for arg in vars(args):
     sargs += "{:<16}: {}  \n".format(str(arg), str(getattr(args, arg)))
 # if not args.log_hparams_only: writer.add_text('args', sargs)
-print(sargs)
+# print(sargs)
 # ----------------------------------------------- #
 ###############################################################################
-print("torch:", torch.__version__)
+# print("torch:", torch.__version__)
 if torch.__version__ != "0.1.12_2":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ###############################################################################
@@ -244,8 +244,8 @@ total_params = sum(
     for x in params
     if x.size()
 )
-print("Args:", args)
-print("Model total parameters:", total_params)
+# print("Args:", args)
+# print("Model total parameters:", total_params)
 
 
 def evaluate(data_source):
@@ -413,19 +413,19 @@ try:
         epoch_start_time = time.time()
         ####################################
         # memory debug
-        print("Memory before train")
-        if args.cuda:
-            print(torch.cuda.get_device_properties(device).total_memory)
-            print(torch.cuda.memory_cached(device))
-            print(torch.cuda.memory_allocated(device))
+        # print("Memory before train")
+        # if args.cuda:
+        #     print(torch.cuda.get_device_properties(device).total_memory)
+        #     print(torch.cuda.memory_cached(device))
+        #     print(torch.cuda.memory_allocated(device))
         ####################################
         train()
         ####################################
-        print("Memory after train")
-        if args.cuda:
-            print(torch.cuda.get_device_properties(device).total_memory)
-            print(torch.cuda.memory_cached(device))
-            print(torch.cuda.memory_allocated(device))
+        # print("Memory after train")
+        # if args.cuda:
+        #     print(torch.cuda.get_device_properties(device).total_memory)
+        #     print(torch.cuda.memory_cached(device))
+        #     print(torch.cuda.memory_allocated(device))
         ####################################
         if args.cuda:
             try:

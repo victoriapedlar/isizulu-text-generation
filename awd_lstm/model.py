@@ -80,6 +80,9 @@ class LSTMModel(nn.Module):
         new_hidden = []
         outputs = []
         output = emb
+        ## Remove RNN module weights not part of single contiguous chunk warning
+        self.rnn.flatten_parameters()
+        ##
         for i, lstm in enumerate(self.lstms):
             output, new_hid = lstm(output, hidden[i])
 
