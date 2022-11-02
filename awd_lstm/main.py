@@ -478,8 +478,8 @@ try:
                 # prm.data.copy_(optimizer.state[prm]['ax'])
         if epoch % args.eval_every == (args.eval_every - 1):
             val_loss = evaluate(val_data)
-            best_loss, stop_step, stop = early_stopping(
-                val_loss, best_loss, stop_step, args.patience
+            stored_loss, stop_step, stop = early_stopping(
+                val_loss, stored_loss, stop_step, args.patience
             )
             if isinstance(scheduler, ReduceLROnPlateau):
                 scheduler.step(val_loss)
