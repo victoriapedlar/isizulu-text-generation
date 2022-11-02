@@ -35,7 +35,10 @@ python3 -u awd_lstm/main.py \
     --wdrop 0.5 \
     --seed 1882 \
     --nonmono 8 \
-    --cuda \
+    --cuda 
+    --lr_scheduler reducelronplateau 
+    --lr_patience 2 
+    --patience 4 \
 
 end=`date +%s`
 runtime=$(((end-start)/60))

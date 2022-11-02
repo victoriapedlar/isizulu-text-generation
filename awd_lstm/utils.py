@@ -50,3 +50,18 @@ def get_batch(source, i, args, seq_len=None, evaluation=False):
     data = source[i : i + seq_len]
     target = source[i + 1 : i + 1 + seq_len].view(-1)
     return data, target
+
+
+def early_stopping(curr_value, best_value, stop_step, patience):
+    if curr_value <= best_value:
+        stop_step, best_value = 0, curr_value
+    else:
+        stop_step += 1
+    if stop_step >= patience:
+        print(
+            "Early stopping triggered. patience: {} log:{}".format(patience, best_value)
+        )
+        stop = True
+    else:
+        stop = False
+    return best_value, stop_step, stop
