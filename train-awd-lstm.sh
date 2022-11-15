@@ -36,9 +36,7 @@ python3 -u awd_lstm/main.py \
     --seed 1882 \
     --nonmono 8 \
     --cuda \
-    --lr_scheduler reducelronplateau \
-    --lr_patience 2 \
-    --patience 4 \
+    --when 25 35 \
 
 end=`date +%s`
 runtime=$(((end-start)/60))
