@@ -514,13 +514,13 @@ try:
             # nparams_in_temp_keys = 0
             for prm in model.parameters():
                 # nparams += 1
-                if prm in tmp.keys():
-                    # nparams_in_temp_keys += 1
-                    # prm.data = tmp[prm].clone()
-                    prm.data = tmp[prm].detach()
-                    prm.requires_grad = True
+                # if prm in tmp.keys():
+                # nparams_in_temp_keys += 1
+                prm.data = tmp[prm].clone()
+                # prm.data = tmp[prm].detach()
+                # prm.requires_grad = True
             # print('params {}, params in tmp keys: {}'.format(nparams, nparams_in_temp_keys))
-            del tmp
+            # del tmp
         else:
             print(
                 "{} model params (SGD before eval)".format(
