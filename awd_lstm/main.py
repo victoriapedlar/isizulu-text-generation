@@ -4,14 +4,13 @@ import math
 import numpy as np
 import torch
 import torch.nn as nn
-from torch.optim.lr_scheduler import CyclicLR, ReduceLROnPlateau
 import os
 import hashlib
 import data
 import sys
 from datetime import datetime
 from model import LSTMModel
-from utils import batchify, get_batch, repackage_hidden, early_stopping
+from utils import batchify, get_batch, repackage_hidden
 
 parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
@@ -111,22 +110,6 @@ parser.add_argument(
     type=str,
     default=randomhash + ".txt",
     help="path to save the log history",
-)
-parser.add_argument(
-    "--lr_scheduler",
-    type=str,
-    default="no",
-    help="Specify the lr_scheduler {multifactorscheduler, reducelronplateau, cycliclr, no (nothing)}",
-)
-parser.add_argument("--eval_every", type=int, default=1, help="Evaluate every N epochs")
-parser.add_argument(
-    "--patience", type=int, default=2, help="Patience for early stopping"
-)
-parser.add_argument(
-    "--lr_patience",
-    type=int,
-    default=1,
-    help="Patience for ReduceLROnPlateau lr_scheduler before decreasing lr",
 )
 # ----------------------------------------------- #
 # ----------Written by Luc Hayward---------- #
@@ -412,7 +395,6 @@ sys.stdout = open(args.save_history, "wt")
 lr = args.lr
 best_val_loss = []
 stored_loss = 100000000
-stop_step = 0
 
 print("Starting training......")
 # At any point you can hit Ctrl + C to break out of training early.
@@ -425,13 +407,6 @@ try:
         )  # params not trainable params... (?)
     if args.optimizer == "adam":
         optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.wdecay)
-    if args.lr_scheduler.lower() == "reducelronplateau":
-        # Since this scheduler runs within evaluation, and we evaluate every
-        # eval_every epochs. Therefore the n_epochs before decreasing the lr
-        # is lr_patience*eval_every (it we don't trigger early stop before)
-        scheduler = ReduceLROnPlateau(optimizer, patience=args.lr_patience, factor=0.4)
-    else:
-        scheduler = None
 
     for epoch in range(1, args.epochs + 1):
         print("Starting epoch {}".format(epoch))
@@ -476,18 +451,6 @@ try:
                 # prm.data = optimizer.state[prm]['ax'].clone()
                 # prm.data = optimizer.state[prm]['ax'].detach()
                 # prm.data.copy_(optimizer.state[prm]['ax'])
-        if epoch % args.eval_every == (args.eval_every - 1):
-            val_loss = evaluate(val_data)
-            stored_loss, stop_step, stop = early_stopping(
-                val_loss, stored_loss, stop_step, args.patience
-            )
-            if isinstance(scheduler, ReduceLROnPlateau):
-                scheduler.step(val_loss)
-        if stop:
-            break
-        if stop_step == 0:
-            best_epoch = epoch
-            model_save(args.save)
 
             val_loss2 = evaluate(val_data)
             print("-" * 89)
