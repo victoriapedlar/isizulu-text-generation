@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 dicts = []
 
-# change from fred mode to append mode
+# change from read mode to append mode
 with open(args.log_file, "a+") as f:
     for line in f:
         dicts.append(eval(line))
