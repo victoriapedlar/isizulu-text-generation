@@ -10,9 +10,11 @@
 
 CUDA_VISIBLE_DEVICES=$(ncvd)
 
-module load software/TensorFlow-A100-GPU
 module load python/anaconda-python-3.7
-source activate transformer
+module load software/TensorFlow-A100-GPU
+
+start=`date +%s`
+echo "Starting script..."
 
 export PYTHONPATH=$PYTHONPATH:`pwd`/scripts
 
@@ -20,4 +22,6 @@ python3 scripts/train_example.py
 
 python3 scripts/create_csv.py
 
-conda deactivate
+end=`date +%s`
+runtime=$(((end-start)/60))
+echo "Runtime with unspecified cores was $runtime minutes."
