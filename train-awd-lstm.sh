@@ -16,16 +16,16 @@ start=`date +%s`
 echo "Starting script..."
 
 python3 -u awd_lstm/main.py \
-    --descriptive_name "awd_lstm_initial_parameters" \
+    --descriptive_name "awd_lstm_bsz_32" \
     --data data/combined/isizulu \
-    --save_history "awd_lstm_log_history.txt" \
+    --save_history "awd_lstm_log_history_bsz_32.txt" \
     --emsize 800 \
     --nhid 1150 \
     --nlayers 3 \
     --lr 30.0 \
     --clip 0.25 \
     --epochs 750 \
-    --batch_size 80 \
+    --batch_size 32 \
     --bptt 70 \
     --dropout 0.4 \
     --dropouth 0.2 \
