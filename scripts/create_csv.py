@@ -18,10 +18,7 @@ args = parser.parse_args()
 
 dicts = []
 
-mydir = "/logs"
-myfile = args.log_file
-logs_path = os.path.join(mydir, myfile)
-with open(logs_path, "r") as f:
+with open(args.log_file, "wt") as f:
     for line in f:
         dicts.append(eval(line))
 
