@@ -10,7 +10,7 @@ import data
 import sys
 from datetime import datetime
 from model import LSTMModel
-from utils import batchify, get_batch, repackage_hidden
+from utils import batchify, get_batch, repackage_hidden, early_stopping
 
 parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
@@ -110,6 +110,10 @@ parser.add_argument(
     type=str,
     default=randomhash + ".txt",
     help="path to save the log history",
+)
+parser.add_argument("--eval_every", type=int, default=1, help="Evaluate every N epochs")
+parser.add_argument(
+    "--patience", type=int, default=2, help="Patience for early stopping"
 )
 # ----------------------------------------------- #
 # ----------Written by Luc Hayward---------- #
@@ -395,6 +399,8 @@ sys.stdout = open(args.save_history, "wt")
 lr = args.lr
 best_val_loss = []
 stored_loss = 100000000
+# early stopping parameter
+stop_step = 0
 
 print("Starting training......")
 # At any point you can hit Ctrl + C to break out of training early.
@@ -484,6 +490,19 @@ try:
                     prm.requires_grad = True
             # print('params {}, params in tmp keys: {}'.format(nparams, nparams_in_temp_keys))
             del tmp
+
+            # begin early stopping
+            if epoch % args.eval_every == (args.eval_every - 1):
+                val_loss2, _ = evaluate(val_data)
+                best_loss, stop_step, stop = early_stopping(
+                    val_loss2, best_val_loss, stop_step, args.patience
+                )
+            if stop:
+                break
+            if stop_step == 0:
+                best_epoch = epoch
+                model_save(args.save)
+
         else:
             print(
                 "{} model params (SGD before eval)".format(
