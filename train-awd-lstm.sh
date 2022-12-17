@@ -16,7 +16,6 @@ start=`date +%s`
 echo "Starting script..."
 
 python3 -u awd_lstm/main.py \
-    --save "awd_lstm_combined.pt" \
     --descriptive_name "awd_lstm_initial_parameters" \
     --data data/combined/isizulu \
     --save_history "awd_lstm_log_history.txt" \

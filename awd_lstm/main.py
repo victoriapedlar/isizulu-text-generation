@@ -180,10 +180,48 @@ if torch.cuda.is_available():
     else:
         torch.cuda.manual_seed(args.seed)
 
+model_name = (
+    "awd_lstm"
+    + "_emsize_"
+    + str(args.emsize)
+    + "_nhid_"
+    + str(args.nhid)
+    + "_nlayers_"
+    + str(args.nlayers)
+    + "_lr_"
+    + str(args.lr)
+    + "_wdc_"
+    + str(args.wdecay)
+    + "_clip_"
+    + str(args.clip)
+    + "_epochs_"
+    + str(args.epochs)
+    + "_bsz_"
+    + str(args.batch_size)
+    + "_bptt_"
+    + str(args.bptt)
+    + "_dropout_"
+    + str(args.dropout)
+    + "_dropouth_"
+    + str(args.dropouth)
+    + "_dropouti_"
+    + str(args.dropouti)
+    + "_dropoute_"
+    + str(args.dropoute)
+    + "_wdrop_"
+    + str(args.wdrop)
+    + "_seed_"
+    + str(args.seed)
+    + ".pt"
+)
 
-def model_save(file_name):
-    with open(file_name, "wb") as f:
-        torch.save([model, criterion, optimizer], f)
+# def model_save(file_name):
+#     with open(file_name, "wb") as f:
+#         torch.save([model, criterion, optimizer], f)
+# alternative saving of model
+def model_save(model_name):
+    with open(model_name, "wb") as m:
+        torch.save([model, criterion, optimizer], m)
 
 
 def model_load(file_name):
@@ -475,7 +513,8 @@ try:
             if val_loss2 < stored_loss:
                 # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
                 #            vocabulary, val_loss2, math.exp(val_loss2), vars(args), epoch)
-                model_save(args.save)
+                # model_save(args.save)
+                model_save(model_name)
                 print("Saving Averaged!")
                 stored_loss = val_loss2
 
@@ -501,7 +540,8 @@ try:
                 break
             if stop_step == 0:
                 best_epoch = epoch
-                model_save(args.save)
+                # model_save(args.save)
+                model_save(model_name)
 
         else:
             print(
@@ -531,7 +571,8 @@ try:
             if val_loss < stored_loss:
                 # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
                 #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch)
-                model_save(args.save)
+                # model_save(args.save)
+                model_save(model_name)
                 print("Saving model (new best validation)")
                 stored_loss = val_loss
 
@@ -559,7 +600,8 @@ try:
                 print("Saving model before learning rate decreased")
                 # model_save('{}.e{}'.format(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
                 #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch))
-                model_save(args.save)
+                # model_save(args.save)
+                model_save(model_name)
                 print("Dividing learning rate by 10")
                 optimizer.param_groups[0]["lr"] /= 10.0
 
