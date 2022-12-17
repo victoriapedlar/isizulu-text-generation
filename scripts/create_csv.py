@@ -1,12 +1,13 @@
 import pandas as pd
 import argparse
+import os
 
 parser = argparse.ArgumentParser(
     description="Creates a CSV of the results from the training experiment log file"
 )
 parser.add_argument(
     "--log_file",
-    default="logs/experiment_logs.txt",
+    default="experiment_logs.txt",
     help="Input log file to convert to CSV.",
 )
 parser.add_argument(
@@ -17,8 +18,10 @@ args = parser.parse_args()
 
 dicts = []
 
-# change from read mode to append mode
-with open(args.log_file, "wt") as f:
+mydir = "/logs"
+myfile = args.log_file
+logs_path = os.path.join(mydir, myfile)
+with open(logs_path, "r") as f:
     for line in f:
         dicts.append(eval(line))
 
