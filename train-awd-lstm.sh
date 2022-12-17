@@ -34,6 +34,7 @@ python3 -u awd_lstm/main.py \
     --dropoute 0.1 \
     --wdrop 0.5 \
     --seed 1882 \
+    --patience 4 \
     --nonmono 8 \
     --cuda \
     --when 25 35 \
