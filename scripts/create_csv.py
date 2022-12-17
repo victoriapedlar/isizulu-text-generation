@@ -11,14 +11,14 @@ parser.add_argument(
     help="Input log file to convert to CSV.",
 )
 parser.add_argument(
-    "--output_file", default="logs/results.csv", help="Path to output CSV file."
+    "--output_file", default="results.csv", help="Path to output CSV file."
 )
 
 args = parser.parse_args()
 
 dicts = []
 
-with open(args.log_file, "wt") as f:
+with open(args.log_file, "r") as f:
     for line in f:
         dicts.append(eval(line))
 
