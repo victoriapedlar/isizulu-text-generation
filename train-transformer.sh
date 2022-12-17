@@ -4,7 +4,7 @@
 #SBATCH --partition=a100
 #SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-2g-10gb:1
 #SBATCH --time=48:00:00
-#SBATCH --job-name="Transformer_Vanilla"
+#SBATCH --job-name="transformer"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
 #SBATCH --mail-type=ALL
 
