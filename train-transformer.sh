@@ -20,7 +20,5 @@ export PYTHONPATH=$PYTHONPATH:`pwd`/scripts
 
 python3 scripts/train_example.py
 
-python3 scripts/create_csv.py
-
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"
