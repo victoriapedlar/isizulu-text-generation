@@ -181,7 +181,7 @@ if torch.cuda.is_available():
         torch.cuda.manual_seed(args.seed)
 
 model_name = (
-    "awd_lstm"
+    "models/awd_lstm/"
     + "_emsize_"
     + str(args.emsize)
     + "_nhid_"
@@ -220,6 +220,7 @@ model_name = (
 #         torch.save([model, criterion, optimizer], f)
 # alternative saving of model
 def model_save(model_name):
+    os.makedirs(os.path.dirname(model_name), exist_ok=True)
     with open(model_name, "wb") as m:
         torch.save([model, criterion, optimizer], m)
 
@@ -431,6 +432,7 @@ def train():
 
 # Do the actual training
 # Directing print output to a .txt file
+os.makedirs(os.path.dirname(args.save_history), exist_ok=True)
 sys.stdout = open(args.save_history, "wt")
 
 # Loop over epochs.
@@ -440,7 +442,11 @@ stored_loss = 100000000
 # early stopping parameter
 stop_step = 0
 
-print("Starting training......")
+print("Starting training...")
+print(model_name)
+for name, param in model.state_dict().items():
+    print(name, param.size())
+
 # At any point you can hit Ctrl + C to break out of training early.
 try:
     optimizer = None
