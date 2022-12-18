@@ -18,14 +18,14 @@ echo "Starting script..."
 python3 -u awd_lstm/main.py \
     --descriptive_name "awd_lstm_combined" \
     --data data/combined/isizulu \
-    --save_history "logs/awd_lstm/$(date +"%Y_%m_%d_%I_%M_%p").txt" \
+    --save_history "logs/awd_lstm/$(date "+%Y-%m-%d_%H-%M-%S").txt" \
     --emsize 800 \
     --nhid 1150 \
     --nlayers 3 \
     --lr 30.0 \
     --clip 0.25 \
-    --epochs 750 \
-    --batch_size 80 \
+    --epochs 500 \
+    --batch_size 32 \
     --bptt 70 \
     --dropout 0.4 \
     --dropouth 0.2 \
