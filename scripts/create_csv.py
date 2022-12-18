@@ -7,17 +7,18 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument(
     "--log_file",
-    default="experiment_logs.txt",
+    default="logs/experiment_logs.txt",
     help="Input log file to convert to CSV.",
 )
 parser.add_argument(
-    "--output_file", default="results.csv", help="Path to output CSV file."
+    "--output_file", default="logs/results.csv", help="Path to output CSV file."
 )
 
 args = parser.parse_args()
 
 dicts = []
 
+os.makedirs(os.path.dirname(args.log_file), exist_ok=True)
 with open(args.log_file, "r") as f:
     for line in f:
         dicts.append(eval(line))
@@ -36,5 +37,6 @@ def flatten_dict(d):
 
 dicts = [flatten_dict(d) for d in dicts]
 
+os.makedirs(os.path.dirname(args.output_file), exist_ok=True)
 df = pd.DataFrame(dicts)
 df.to_csv(args.output_file, index=False)

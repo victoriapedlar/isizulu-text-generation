@@ -61,4 +61,4 @@ tparams = {
     "save_steps": 2,
 }
 
-run_experiment(hparams, tparams, eval_stride=64, experiment_id="small_isizulu_example")
+run_experiment(hparams, tparams, eval_stride=64, experiment_id="isizulu_transformer")
