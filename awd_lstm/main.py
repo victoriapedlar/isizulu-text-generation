@@ -11,6 +11,7 @@ import sys
 from datetime import datetime
 from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, early_stopping
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 
 parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
@@ -115,6 +116,18 @@ parser.add_argument("--eval_every", type=int, default=1, help="Evaluate every N 
 parser.add_argument(
     "--patience", type=int, default=2, help="Patience for early stopping"
 )
+parser.add_argument(
+    "--lr_scheduler",
+    type=str,
+    default="no",
+    help="Specify the lr_scheduler {multifactorscheduler, reducelronplateau, cycliclr, no (nothing)}",
+)
+parser.add_argument(
+    "--lr_patience",
+    type=int,
+    default=1,
+    help="Patience for ReduceLROnPlateau lr_scheduler before decreasing lr",
+)
 # ----------------------------------------------- #
 # ----------Written by Luc Hayward---------- #
 parser.add_argument(
@@ -212,6 +225,18 @@ model_name = (
     + str(args.wdrop)
     + "_seed_"
     + str(args.seed)
+    + "_patience_"
+    + str(args.patience)
+    + "_when_"
+    + str(args.when)
+    + "_sch_"
+    + str(args.lr_scheduler).lower()
+    + "_lrp_"
+    + (
+        str(args.lr_patience)
+        if args.lr_scheduler.lower() == "reducelronplateau"
+        else "no"
+    )
     + ".pt"
 )
 
@@ -458,6 +483,14 @@ try:
     if args.optimizer == "adam":
         optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.wdecay)
 
+    if args.lr_scheduler.lower() == "reducelronplateau":
+        # Since this scheduler runs within evaluation, and we evaluate every
+        # eval_every epochs. Therefore the n_epochs before decreasing the lr
+        # is lr_patience*eval_every (it we don't trigger early stop before)
+        scheduler = ReduceLROnPlateau(optimizer, patience=args.lr_patience, factor=0.4)
+    else:
+        scheduler = None
+
     for epoch in range(1, args.epochs + 1):
         print("Starting epoch {}".format(epoch))
         epoch_start_time = time.time()
@@ -536,18 +569,20 @@ try:
             # print('params {}, params in tmp keys: {}'.format(nparams, nparams_in_temp_keys))
             del tmp
 
-            # begin early stopping
-            if epoch % args.eval_every == (args.eval_every - 1):
-                val_loss2, _ = evaluate(val_data)
-                best_loss, stop_step, stop = early_stopping(
-                    val_loss2, best_val_loss, stop_step, args.patience
-                )
-            if stop:
-                break
-            if stop_step == 0:
-                best_epoch = epoch
-                # model_save(args.save)
-                model_save(model_name)
+            # # begin early stopping
+            # if epoch % args.eval_every == (args.eval_every - 1):
+            #     val_loss2, _ = evaluate(val_data)
+            #     best_loss, stop_step, stop = early_stopping(
+            #         val_loss2, best_val_loss, stop_step, args.patience
+            #     )
+            #     if isinstance(scheduler, ReduceLROnPlateau):
+            #         scheduler.step(val_loss2)
+            # if stop:
+            #     break
+            # if stop_step == 0:
+            #     best_epoch = epoch
+            #     # model_save(args.save)
+            #     model_save(model_name)
 
         else:
             print(
@@ -611,7 +646,23 @@ try:
                 print("Dividing learning rate by 10")
                 optimizer.param_groups[0]["lr"] /= 10.0
 
-            best_val_loss.append(val_loss)
+        # begin early stopping
+        if epoch % args.eval_every == (args.eval_every - 1):
+            val_loss2, _ = evaluate(val_data)
+            best_loss, stop_step, stop = early_stopping(
+                val_loss2, best_val_loss, stop_step, args.patience
+            )
+            if isinstance(scheduler, ReduceLROnPlateau):
+                scheduler.step(val_loss2)
+        if stop:
+            break
+        if stop_step == 0:
+            best_epoch = epoch
+            print("Saving best epoch {:3d}".format(best_epoch))
+            # model_save(args.save)
+            model_save(model_name)
+
+        best_val_loss.append(val_loss)
 
 
 except KeyboardInterrupt:

@@ -25,7 +25,7 @@ python3 -u awd_lstm/main.py \
     --lr 30.0 \
     --clip 0.25 \
     --epochs 500 \
-    --batch_size 128 \
+    --batch_size 32 \
     --bptt 70 \
     --dropout 0.4 \
     --dropouth 0.2 \
@@ -33,10 +33,11 @@ python3 -u awd_lstm/main.py \
     --dropoute 0.1 \
     --wdrop 0.5 \
     --seed 1882 \
+    --lr_scheduler reducelronplateau \
+    --lr_patience 2
     --patience 4 \
     --nonmono 8 \
     --cuda \
-    --when 25 35 \
 
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"
