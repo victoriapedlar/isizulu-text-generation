@@ -34,7 +34,7 @@ python3 -u awd_lstm/main.py \
     --wdrop 0.5 \
     --seed 1882 \
     --lr_scheduler reducelronplateau \
-    --lr_patience 2
+    --lr_patience 2 \
     --patience 4 \
     --nonmono 8 \
     --cuda \

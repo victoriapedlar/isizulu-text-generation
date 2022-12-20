@@ -569,20 +569,21 @@ try:
             # print('params {}, params in tmp keys: {}'.format(nparams, nparams_in_temp_keys))
             del tmp
 
-            # # begin early stopping
-            # if epoch % args.eval_every == (args.eval_every - 1):
-            #     val_loss2, _ = evaluate(val_data)
-            #     best_loss, stop_step, stop = early_stopping(
-            #         val_loss2, best_val_loss, stop_step, args.patience
-            #     )
-            #     if isinstance(scheduler, ReduceLROnPlateau):
-            #         scheduler.step(val_loss2)
-            # if stop:
-            #     break
-            # if stop_step == 0:
-            #     best_epoch = epoch
-            #     # model_save(args.save)
-            #     model_save(model_name)
+            # begin early stopping
+            if epoch % args.eval_every == (args.eval_every - 1):
+                val_loss2, _ = evaluate(val_data)
+                best_loss, stop_step, stop = early_stopping(
+                    val_loss2, best_val_loss, stop_step, args.patience
+                )
+                if isinstance(scheduler, ReduceLROnPlateau):
+                    scheduler.step(val_loss2)
+            if stop:
+                break
+            if stop_step == 0:
+                best_epoch = epoch
+                print("Saving best epoch {:3d}".format(best_epoch))
+                # model_save(args.save)
+                model_save(model_name)
 
         else:
             print(
@@ -645,22 +646,6 @@ try:
                 model_save(model_name)
                 print("Dividing learning rate by 10")
                 optimizer.param_groups[0]["lr"] /= 10.0
-
-        # begin early stopping
-        if epoch % args.eval_every == (args.eval_every - 1):
-            val_loss2, _ = evaluate(val_data)
-            best_loss, stop_step, stop = early_stopping(
-                val_loss2, best_val_loss, stop_step, args.patience
-            )
-            if isinstance(scheduler, ReduceLROnPlateau):
-                scheduler.step(val_loss2)
-        if stop:
-            break
-        if stop_step == 0:
-            best_epoch = epoch
-            print("Saving best epoch {:3d}".format(best_epoch))
-            # model_save(args.save)
-            model_save(model_name)
 
         best_val_loss.append(val_loss)
 
