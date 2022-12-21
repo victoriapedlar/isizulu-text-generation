@@ -95,12 +95,18 @@ Mesham, S., Hayward, L., Shapiro, J. and Buys, J., 2021. Low-Resource Language M
 
 This is the repository for our paper [Sparse Text Generation](https://arxiv.org/abs/2004.02644).
 
-# Installation
-Before running the code, you need to install the dependencies by running the following lines.
+### Getting Started
+
+Fetch training data:
+`./utils/getdata.sh`
+
+Before running the code, you need to install the dependencies by running the following lines:
 ```
 cd language_modeling
 pip3 install .
 ```
+Install further requirements:
+`pip3 install -r sparse_requirements.txt`
 
 # Fine-tune GPT2 for Language Modeling
 
@@ -168,7 +174,7 @@ python3 eval.py
 ```
 
 # Acknowledgment 
-A large portion of the code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library.
+A large portion of the code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library and the [DeepSPIN] (https://github.com/deep-spin/sparse_text_generation) research project coordinated by Andre Martins.
 
 # Citation
 
