@@ -108,7 +108,7 @@ pip3 install .
 Install further requirements:
 `pip3 install -r sparse_requirements.txt`
 
-# Fine-tune GPT2 for Language Modeling
+### Fine-tune GPT2 for Language Modeling
 
 ### Training
 To fine-tune GPT2 for language modelling you just need to run the following command, modifying the parameters as you wish.
@@ -145,7 +145,7 @@ python3 examples/run_lm_finetuning.py \
         --top_p=0
 ```
 
-# Fine-tune GPT2 for Dialogue Generation
+### Fine-tune GPT2 for Dialogue Generation
 
 ### Training
 To fine-tune GPT2 for dialogue generation you just need to run the following command, modifying the parameters as you wish.
@@ -172,9 +172,14 @@ python3 eval.py
         --top_p=0 \
         --top_k=0
 ```
+# Acknowledgements
+Merity, S., Keskar, N.S. and Socher, R., 2017. Regularizing and optimizing LSTM language models. [arXiv preprint arXiv:1708.02182](https://arxiv.org/pdf/1708.02182.pdf).
 
-# Acknowledgment 
-A large portion of the code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library and the [DeepSPIN] (https://github.com/deep-spin/sparse_text_generation) research project coordinated by Andre Martins.
+Merity, S., Keskar, N.S. and Socher, R., 2018. An analysis of neural language modeling at multiple scales. [arXiv preprint arXiv:1803.08240](https://arxiv.org/pdf/1803.08240.pdf).
+
+Mesham, S., Hayward, L., Shapiro, J. and Buys, J., 2021. Low-Resource Language Modelling of South African Languages. arXiv preprint [arXiv:2104.00772](https://arxiv.org/pdf/2104.00772.pdf).
+
+A large portion of the Sparse Text Generation code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library and the [DeepSPIN] (https://github.com/deep-spin/sparse_text_generation) research project coordinated by Andre Martins.
 
 # Citation
 
