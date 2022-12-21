@@ -169,7 +169,7 @@ python3 eval.py
         --top_p=0 \
         --top_k=0
 ```
-A large portion of the Sparse Text Generation code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library and the [DeepSPIN] (https://github.com/deep-spin/sparse_text_generation) research project coordinated by Andre Martins.
+A large portion of the Sparse Text Generation code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library and the [DeepSPIN](https://github.com/deep-spin/sparse_text_generation) research project coordinated by Andre Martins.
 
 # Acknowledgements
 Merity, S., Keskar, N.S. and Socher, R., 2017. Regularizing and optimizing LSTM language models. [arXiv preprint arXiv:1708.02182](https://arxiv.org/pdf/1708.02182.pdf).
