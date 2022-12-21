@@ -33,11 +33,10 @@ python3 -u awd_lstm/main.py \
     --dropoute 0.1 \
     --wdrop 0.5 \
     --seed 1882 \
-    --lr_scheduler reducelronplateau \
-    --lr_patience 2 \
-    --patience 4 \
+    --patience 2 \
     --nonmono 8 \
     --cuda \
+    --when 30 60 90 \
 
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"

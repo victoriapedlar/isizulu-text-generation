@@ -571,17 +571,14 @@ try:
 
             # begin early stopping
             if epoch % args.eval_every == (args.eval_every - 1):
-                val_loss2 = evaluate(val_data)
+                val_loss2, _ = evaluate(val_data)
                 best_loss, stop_step, stop = early_stopping(
                     val_loss2, best_val_loss, stop_step, args.patience
                 )
-                if isinstance(scheduler, ReduceLROnPlateau):
-                    scheduler.step(val_loss2)
             if stop:
                 break
             if stop_step == 0:
                 best_epoch = epoch
-                print("Saving best epoch {:3d}".format(best_epoch))
                 # model_save(args.save)
                 model_save(model_name)
 
