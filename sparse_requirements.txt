@@ -1,4 +1,4 @@
-boto3==1.26.33
+boto3==1.23.10
 botocore==1.29.33
 certifi==2022.12.7
 charset-normalizer==2.1.1
