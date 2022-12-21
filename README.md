@@ -83,17 +83,7 @@ Train GPT-2 model:
 Generate results CSV from `logs/experiment_logs.txt`:
 `python3 scripts/create_csv.py`
 
-# Acknowledgements
-Merity, S., Keskar, N.S. and Socher, R., 2017. Regularizing and optimizing LSTM language models. [arXiv preprint arXiv:1708.02182](https://arxiv.org/pdf/1708.02182.pdf).
-
-Merity, S., Keskar, N.S. and Socher, R., 2018. An analysis of neural language modeling at multiple scales. [arXiv preprint arXiv:1803.08240](https://arxiv.org/pdf/1803.08240.pdf).
-
-Mesham, S., Hayward, L., Shapiro, J. and Buys, J., 2021. Low-Resource Language Modelling of South African Languages. arXiv preprint [arXiv:2104.00772](https://arxiv.org/pdf/2104.00772.pdf).
-
-
 # Sparse Text Generation
-
-This is the repository for our paper [Sparse Text Generation](https://arxiv.org/abs/2004.02644).
 
 ### Getting Started
 
@@ -172,6 +162,8 @@ python3 eval.py
         --top_p=0 \
         --top_k=0
 ```
+A large portion of the Sparse Text Generation code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library and the [DeepSPIN] (https://github.com/deep-spin/sparse_text_generation) research project coordinated by Andre Martins.
+
 # Acknowledgements
 Merity, S., Keskar, N.S. and Socher, R., 2017. Regularizing and optimizing LSTM language models. [arXiv preprint arXiv:1708.02182](https://arxiv.org/pdf/1708.02182.pdf).
 
@@ -179,13 +171,4 @@ Merity, S., Keskar, N.S. and Socher, R., 2018. An analysis of neural language mo
 
 Mesham, S., Hayward, L., Shapiro, J. and Buys, J., 2021. Low-Resource Language Modelling of South African Languages. arXiv preprint [arXiv:2104.00772](https://arxiv.org/pdf/2104.00772.pdf).
 
-A large portion of the Sparse Text Generation code comes from the awesome Huggingface [Transformers](https://github.com/huggingface/transformers) library and the [DeepSPIN] (https://github.com/deep-spin/sparse_text_generation) research project coordinated by Andre Martins.
-
-# Citation
-
-    @inproceedings{martins20sparse,
-      author    = {Martins, Pedro Henrique and Marinho, Zita and  Martins, Andr{\'e} FT},
-      title     = {Sparse Text Generation},
-      booktitle = {Proc. EMNLP},
-      year      = {2020}
-    }
+Martins, P.H., Marinho, Z., Martins, A.F.T., 2020. Sparse Text Generation. arXiv preprint [arXiv:2004.02644](https://arxiv.org/abs/2004.02644).
