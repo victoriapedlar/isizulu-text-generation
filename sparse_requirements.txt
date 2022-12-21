@@ -9,7 +9,7 @@ idna==3.4
 jmespath==1.0.1
 joblib==1.2.0
 nltk==3.8
-numpy==1.24.0
+numpy==1.21.6
 protobuf==3.20.1
 python-dateutil==2.8.2
 pytorch-transformers==1.2.0
