@@ -1,6 +1,3 @@
-LICENSE
-MANIFEST.in
-README.md
 setup.py
 pytorch_transformers/__init__.py
 pytorch_transformers/__main__.py
