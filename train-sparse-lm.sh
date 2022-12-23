@@ -10,7 +10,6 @@
 CUDA_VISIBLE_DEVICES=$(ncvd)
 
 module load python/anaconda-python-3.7
-module load software/TensorFlow-A100-GPU
 
 start=$(date +%s)
 
