@@ -18,7 +18,7 @@ echo "Changing to /language_modeling directory..."
 cd sparse_text_generation/language_modeling/
 
 echo "Starting script..."
-python3 examples/run_lm_finetuning.py \
+python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --train_data_file = ~/isizulu-text-generation/data/test/train.txt \
         --eval_data_file = ~/isizulu-text-generation/data/test/valid.txt \
         --output_dir = ~/isizulu-text-generation/models/sparse_lm/ \
