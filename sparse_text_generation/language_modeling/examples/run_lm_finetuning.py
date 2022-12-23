@@ -46,7 +46,7 @@ from entmax import (
     entmax_bisect,
 )
 
-from pytorch_transformers import (
+from ..pytorch_transformers import (
     WEIGHTS_NAME,
     AdamW,
     WarmupLinearSchedule,
