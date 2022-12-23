@@ -20,7 +20,7 @@ python3 -u awd_lstm/main.py \
     --data data/combined/isizulu/ \
     --save_history "logs/awd_lstm/$(date "+%Y-%m-%d_%H-%M-%S").txt" \
     --emsize 800 \
-    --nhid 1150 \
+    --nhid 1200 \
     --nlayers 3 \
     --lr 30.0 \
     --clip 0.25 \
