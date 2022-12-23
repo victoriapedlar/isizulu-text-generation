@@ -543,8 +543,8 @@ try:
             # begin early stopping
             if epoch % args.eval_every == (args.eval_every - 1):
                 val_loss2 = evaluate(val_data)
-                best_loss, stop_step, stop = early_stopping(
-                    val_loss2, best_val_loss, stop_step, args.patience
+                stored_loss, stop_step, stop = early_stopping(
+                    val_loss2, stored_loss, stop_step, args.patience
                 )
             if stop:
                 break
