@@ -212,6 +212,10 @@ model_name = (
     + str(args.wdrop)
     + "_seed_"
     + str(args.seed)
+    + "_patience_"
+    + str(args.patience)
+    + "_when_"
+    + str(args.when)
     + ".pt"
 )
 
