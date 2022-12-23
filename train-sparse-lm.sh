@@ -18,18 +18,18 @@ start=$(date +%s)
 echo "Starting script..."
 
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
-        --train_data_file = ~/isizulu-text-generation/data/test/train.txt \
-        --eval_data_file = ~/isizulu-text-generation/data/test/valid.txt \
-        --output_dir = ~/isizulu-text-generation/models/sparse_lm/ \
-        --model_type = gpt2 \
-        --model_name_or_path = gpt2-medium \
-        --block_size = 512 \
+        --train_data_file ~/isizulu-text-generation/data/test/train.txt \
+        --eval_data_file ~/isizulu-text-generation/data/test/valid.txt \
+        --output_dir ~/isizulu-text-generation/models/sparse_lm/ \
+        --model_type gpt2 \
+        --model_name_or_path gpt2-medium \
+        --block_size 512 \
         --do_train \
         --evaluate_during_training \
-        --loss = entmax \
-        --entmax_alpha = 1.2 \
-        --top_k = 0 \
-        --top_p = 0
+        --loss entmax \
+        --entmax_alpha 1.2 \
+        --top_k 0 \
+        --top_p 0 \
 
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"
