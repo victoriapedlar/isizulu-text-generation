@@ -13,11 +13,8 @@ module load python/anaconda-python-3.7
 module load software/TensorFlow-A100-GPU
 
 start=$(date +%s)
-
-echo "Changing to /language_modeling directory..."
-cd sparse_text_generation/language_modeling/
-
 echo "Starting script..."
+
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --train_data_file = ~/isizulu-text-generation/data/test/train.txt \
         --eval_data_file = ~/isizulu-text-generation/data/test/valid.txt \
