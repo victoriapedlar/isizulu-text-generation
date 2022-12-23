@@ -31,7 +31,7 @@ python3 -u awd_lstm/main.py \
     --dropouth 0.2 \
     --dropouti 0.65 \
     --dropoute 0.1 \
-    --wdrop 0.5 \
+    --wdrop 0.2 \
     --seed 1882 \
     --patience 2 \
     --nonmono 8 \
