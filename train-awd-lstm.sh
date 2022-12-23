@@ -17,7 +17,7 @@ echo "Starting script..."
 
 python3 -u awd_lstm/main.py \
     --descriptive_name "awd_lstm_combined" \
-    --data data/test/ \
+    --data data/combined/isizulu/ \
     --save_history "logs/awd_lstm/$(date "+%Y-%m-%d_%H-%M-%S").txt" \
     --emsize 800 \
     --nhid 1150 \

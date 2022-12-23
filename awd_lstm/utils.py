@@ -59,7 +59,9 @@ def early_stopping(curr_value, best_value, stop_step, patience):
         stop_step += 1
     if stop_step >= patience:
         print(
-            "Early stopping triggered. patience: {} log:{}".format(patience, best_value)
+            "Early stopping triggered. patience: {} log: {}".format(
+                patience, best_value
+            )
         )
         stop = True
     else:
