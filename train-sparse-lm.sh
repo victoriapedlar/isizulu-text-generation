@@ -2,7 +2,7 @@
 
 #SBATCH --account=nlpgroup
 #SBATCH --partition=a100
-#SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-1g-10gb:1
+#SBATCH --nodes=1 --ntasks=2 --gres=gpu:3g40gb:1
 #SBATCH --time=48:00:00
 #SBATCH --job-name="sparse_lm"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
