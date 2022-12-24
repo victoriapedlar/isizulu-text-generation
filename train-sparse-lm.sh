@@ -30,6 +30,7 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --entmax_alpha 1.2 \
         --top_k 0 \
         --top_p 0 \
+        ----overwrite_output_dir \
 
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"
