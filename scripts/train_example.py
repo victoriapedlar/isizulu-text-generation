@@ -55,10 +55,10 @@ hparams = {
 
 tparams = {
     "max_steps": 10,
-    # "patience": 0,  # 4
+    "patience": 4,
     "log_steps": 1,
     "eval_steps": 5,
     "save_steps": 2,
 }
 
-run_experiment(hparams, tparams, eval_stride=64, experiment_id="isizulu_transformer")
+run_experiment(hparams, tparams, eval_stride=64, experiment_id="small_isizulu_example")
