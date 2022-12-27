@@ -20,7 +20,7 @@ python3 -u awd_lstm/main.py \
     --data data/combined/isizulu/ \
     --save_history "logs/awd_lstm/$(date "+%Y-%m-%d_%H-%M-%S").txt" \
     --emsize 800 \
-    --nhid 2500 \
+    --nhid 1150 \
     --nlayers 3 \
     --lr 30.0 \
     --clip 0.25 \
@@ -33,10 +33,10 @@ python3 -u awd_lstm/main.py \
     --dropoute 0.1 \
     --wdrop 0.2 \
     --seed 1882 \
-    --patience 2 \
+    --patience 3 \
     --nonmono 8 \
     --cuda \
-    --when 30 60 90 \
+    --when 30 60 90 120 \
 
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"
