@@ -375,7 +375,7 @@ def get_gpt2_trainer(
     assert "tie_word_embeddings" in hparams
 
     assert "max_steps" in tparams
-    assert "patience" in tparams
+    # assert "patience" in tparams
     assert "log_steps" in tparams
     assert "eval_steps" in tparams
     assert "save_steps" in tparams
@@ -482,7 +482,7 @@ def get_gpt2_trainer(
         weight_decay=hparams["weight_decay"],
         logging_steps=tparams["log_steps"],
         eval_steps=tparams["eval_steps"],
-        patience=tparams["patience"],
+        # patience=tparams["patience"],
         prediction_loss_only=True,
         evaluate_during_training=True,
         disable_train_tqdm=disable_tqdm,
