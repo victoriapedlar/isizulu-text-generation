@@ -12,16 +12,16 @@ logger.addHandler(streamHandler)
 logger.setLevel(logging.INFO)
 
 tokenizer_train_data_zulu = [
-    "data/test/train.txt",
+    "data/combined/isizulu/train.txt",
 ]
 
 tokenizer_train_data_all = tokenizer_train_data_zulu
 val_data = [
-    (0, ["data/test/valid.txt"]),
+    (0, ["data/combined/isizulu/valid.txt"]),
 ]
 
 test_data = [
-    (0, ["data/test/test.txt"]),
+    (0, ["data/combined/isizulu/test.txt"]),
 ]
 
 hparams = {
@@ -61,4 +61,4 @@ tparams = {
     "save_steps": 2,
 }
 
-run_experiment(hparams, tparams, eval_stride=64, experiment_id="small_isizulu_example")
+run_experiment(hparams, tparams, eval_stride=64, experiment_id="combined_isizulu")
