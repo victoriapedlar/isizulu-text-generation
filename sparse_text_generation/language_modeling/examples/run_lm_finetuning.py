@@ -97,14 +97,14 @@ tokenizer.train(
 )
 
 # Save files to disk
-tokenizer.save_pretrained("./models/BPETokenizer/")
+tokenizer.save_model("./models/BPETokenizer/")
 
 # Load the tokenizer which is trained on the new texts
 tokenizer = ByteLevelBPETokenizer(
     "./models/BPETokenizer/vocab.json",
     "./models/BPETokenizer/merges.txt",
 )
-# ------------------------------START CUSTOM CODE----------------------------------
+# ------------------------------END CUSTOM CODE----------------------------------
 
 
 def compute_jsd(p, q, base=np.e):
