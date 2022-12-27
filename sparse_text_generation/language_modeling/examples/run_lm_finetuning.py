@@ -104,8 +104,8 @@ tokenizer.save_model(directory="./tokenizers/ByteLevelBPETokenizer/", name="isiz
 
 # Load the tokenizer which is trained on the new texts
 tokenizer = ByteLevelBPETokenizer(
-    "./models/BPETokenizer/vocab.json",
-    "./models/BPETokenizer/merges.txt",
+    "./tokenizers/ByteLevelBPETokenizer/isizulu-vocab.json",
+    "./tokenizers/ByteLevelBPETokenizer/isizulu-merges.txt",
 )
 # ------------------------------END CUSTOM CODE----------------------------------
 
