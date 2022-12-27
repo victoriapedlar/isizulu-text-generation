@@ -96,8 +96,11 @@ tokenizer.train(
     show_progress=False,
 )
 
+# Creating a new directory called ./tokenizers/ByteLevelBPETokenizer/
+Path("./tokenizers/ByteLevelBPETokenizer/").mkdir(parents=True, exist_ok=True)
+
 # Save files to disk
-tokenizer.save_model("./models/BPETokenizer/")
+tokenizer.save_model(directory="./tokenizers/ByteLevelBPETokenizer/", name="isizulu")
 
 # Load the tokenizer which is trained on the new texts
 tokenizer = ByteLevelBPETokenizer(
@@ -1129,7 +1132,7 @@ def main():
     else:
         config = config_class()
     # ------------------START CUSTOM CODE------------------#
-    tokenizer = GPT2TokenizerFast.from_pretrained("./models/BPETokenizer/")
+    tokenizer = GPT2TokenizerFast.from_pretrained("./tokenizers/ByteLevelBPETokenizer/")
     # ------------------END CUSTOM CODE--------------------#
     # tokenizer = tokenizer_class.from_pretrained(
     #     args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
