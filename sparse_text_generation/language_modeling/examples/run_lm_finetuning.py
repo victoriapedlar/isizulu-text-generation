@@ -97,12 +97,12 @@ tokenizer.train(
 )
 
 # Save files to disk
-tokenizer.save_model(".", "bpe_tokenizer_isizulu")
+tokenizer.save_pretrained("./models/BPETokenizer/")
 
 # Load the tokenizer which is trained on the new texts
 tokenizer = ByteLevelBPETokenizer(
-    "./bpe_tokenizer_isizulu/vocab.json",
-    "./bpe_tokenizer_isizulu/merges.txt",
+    "./models/BPETokenizer/vocab.json",
+    "./models/BPETokenizer/merges.txt",
 )
 # ------------------------------START CUSTOM CODE----------------------------------
 
@@ -1129,7 +1129,7 @@ def main():
     else:
         config = config_class()
     # ------------------START CUSTOM CODE------------------#
-    tokenizer = GPT2TokenizerFast.from_pretrained("./bpe_tokenizer_isizulu/")
+    tokenizer = GPT2TokenizerFast.from_pretrained("./models/BPETokenizer/")
     # ------------------END CUSTOM CODE--------------------#
     # tokenizer = tokenizer_class.from_pretrained(
     #     args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
