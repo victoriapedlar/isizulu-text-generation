@@ -90,6 +90,9 @@ Train GPT-2 model:
 Generate results CSV from `logs/experiment_logs.txt`:
 `python3 scripts/create_csv.py`
 
+View tensorboard logs:
+`python3 -m tensorboard.main --logdir=logs/runs`
+
 # Sparse Text Generation
 
 ### Getting Started
