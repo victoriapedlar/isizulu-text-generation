@@ -56,6 +56,7 @@ from ..pytorch_transformers import (
     GPT2Config,
     GPT2LMHeadModel,
     GPT2Tokenizer,
+    GPT2TokenizerFast,
     OpenAIGPTConfig,
     OpenAIGPTLMHeadModel,
     OpenAIGPTTokenizer,
@@ -74,6 +75,36 @@ from nltk.util import ngrams
 import re
 
 RETOK = re.compile(r"\w+|[^\w\s]|\n", re.UNICODE)
+
+# ------------------------------START CUSTOM CODE----------------------------------
+#! pip install tokenizers
+
+from pathlib import Path
+
+from tokenizers import ByteLevelBPETokenizer
+
+paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
+
+# Initialize a tokenizer
+tokenizer = ByteLevelBPETokenizer()
+
+# Customize training
+tokenizer.train(
+    files=paths,
+    vocab_size=8000,
+    special_tokens=["<|endoftext|>"],
+    show_progress=False,
+)
+
+# Save files to disk
+tokenizer.save_model(".", "bpe_tokenizer_isizulu")
+
+# Load the tokenizer which is trained on the new texts
+tokenizer = ByteLevelBPETokenizer(
+    "./bpe_tokenizer_isizulu/vocab.json",
+    "./bpe_tokenizer_isizulu/merges.txt",
+)
+# ------------------------------START CUSTOM CODE----------------------------------
 
 
 def compute_jsd(p, q, base=np.e):
@@ -1097,11 +1128,13 @@ def main():
         )
     else:
         config = config_class()
-
-    tokenizer = tokenizer_class.from_pretrained(
-        args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
-        do_lower_case=args.do_lower_case,
-    )
+    # ------------------START CUSTOM CODE------------------#
+    tokenizer = GPT2TokenizerFast.from_pretrained("./bpe_tokenizer_isizulu/")
+    # ------------------END CUSTOM CODE--------------------#
+    # tokenizer = tokenizer_class.from_pretrained(
+    #     args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
+    #     do_lower_case=args.do_lower_case,
+    # )
     if args.block_size <= 0:
         args.block_size = (
             tokenizer.max_len
