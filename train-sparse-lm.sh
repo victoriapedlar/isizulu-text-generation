@@ -2,11 +2,12 @@
 
 #SBATCH --account=nlpgroup
 #SBATCH --partition=a100
-#SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-3g-40gb:1
+#SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-4g-20gb:1
 #SBATCH --time=48:00:00
 #SBATCH --job-name="sparse_lm"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
 #SBATCH --mail-type=ALL
+
 CUDA_VISIBLE_DEVICES=$(ncvd)
 
 module load python/anaconda-python-3.7
