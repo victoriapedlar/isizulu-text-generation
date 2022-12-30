@@ -2,7 +2,7 @@
 
 #SBATCH --account=nlpgroup
 #SBATCH --partition=a100
-#SBATCH --nodes=1 --ntasks=2 --gres=gpu:a100-4g-20gb:1
+#SBATCH --nodes=1 --ntasks=4 --gres=gpu:a100-4g-20gb:1
 #SBATCH --time=48:00:00
 #SBATCH --job-name="awdlstm"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
@@ -26,18 +26,18 @@ python3 -u awd_lstm/main.py \
     --lr 30.0 \
     --clip 0.25 \
     --epochs 500 \
-    --batch_size 80 \
+    --batch_size 32 \
     --bptt 70 \
     --dropout 0.4 \
     --dropouth 0.2 \
-    --dropouti 0.65 \
+    --dropouti 0.1 \
     --dropoute 0.1 \
     --wdrop 0.2 \
     --seed 1882 \
     --patience 3 \
     --nonmono 8 \
     --cuda \
-    --when 30 60 90 120 \
+    --when 40 80 120 \
 
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"
