@@ -83,7 +83,12 @@ from pathlib import Path
 
 from tokenizers import ByteLevelBPETokenizer
 
-paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
+# paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
+paths = [
+    "data/combined/isizulu/test.txt",
+    "data/combined/isizulu/train.txt",
+    "data/combined/isizulu/valid.txt",
+]
 
 # Initialize a tokenizer
 tokenizer = ByteLevelBPETokenizer()
