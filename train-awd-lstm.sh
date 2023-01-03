@@ -30,7 +30,7 @@ python3 -u awd_lstm/main.py \
     --bptt 70 \
     --dropout 0.4 \
     --dropouth 0.2 \
-    --dropouti 0.1 \
+    --dropouti 0.2 \
     --dropoute 0.1 \
     --wdrop 0.2 \
     --seed 1882 \
