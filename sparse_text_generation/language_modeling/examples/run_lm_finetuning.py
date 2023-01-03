@@ -519,6 +519,7 @@ def train(
     set_seed(args)  # Added here for reproducibility (even between python 2 and 3)
     best_jsd = 100000
     best_ppl = 100000
+    best_bpc = 100000  # Added best_bpc
     best_sp = 0
     for _ in train_iterator:
         epoch_iterator = tqdm(
@@ -600,7 +601,7 @@ def train(
                     if (
                         args.local_rank == -1 and args.evaluate_during_training
                     ):  # Only evaluate when single GPU otherwise metrics may not average well
-                        results, jsd, ppl, sp = evaluate(
+                        results, jsd, ppl, sp, bpc = evaluate(
                             args,
                             model,
                             tokenizer,
@@ -653,6 +654,21 @@ def train(
                         model_to_save.save_pretrained(output_dir)
                         torch.save(args, os.path.join(output_dir, "training_args.bin"))
                         logger.info("Saving model checkpoint to %s", output_dir)
+                    # ------------------------------START CUSTOM CODE--------------------------------
+                    if bpc < best_bpc:
+                        best_bpc = bpc
+                        output_dir = os.path.join(
+                            args.output_dir + "/best_bpc", "checkpoint"
+                        )
+                        if not os.path.exists(output_dir):
+                            os.makedirs(output_dir)
+                        model_to_save = (
+                            model.module if hasattr(model, "module") else model
+                        )  # Take care of distributed/parallel training
+                        model_to_save.save_pretrained(output_dir)
+                        torch.save(args, os.path.join(output_dir, "training_args.bin"))
+                        logger.info("Saving model checkpoint to %s", output_dir)
+                    # ------------------------------END CUSTOM CODE----------------------------------
                     if sp > best_sp:
                         best_sp = sp
                         output_dir = os.path.join(
@@ -814,15 +830,29 @@ def evaluate(
 
     a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
+    # ------------------------------START CUSTOM CODE----------------------------------
+    import math
+
+    bpc = loss_train / math.log(2)
+    # ------------------------------END CUSTOM CODE------------------------------------
 
     jsd = jsd / len(eval_dataloader)
     sp = sp / len(eval_dataloader)
 
-    result = {"sp": sp, "JSD": jsd, "perplexity": perplexity, "Loss": loss_train}
+    result = {
+        "sp": sp,
+        "JSD": jsd,
+        "perplexity": perplexity,
+        "Loss": loss_train,
+        "BPC": bpc,
+    }  # Added bpc to result
 
     print("perplexity:", perplexity)
     print("js:", jsd)
     print("sp;", sp)
+    # ------------------------------START CUSTOM CODE----------------------------------
+    print("sp;", bpc)
+    # ------------------------------END CUSTOM CODE------------------------------------
     print("repeat_16:", np.array(repeat_16).mean())
     print("wrong_repeat_16:", np.array(wrong_repeat_16).mean())
     print("repeat_32:", np.array(repeat_32).mean())
@@ -838,7 +868,7 @@ def evaluate(
             logger.info("  %s = %s", key, str(result[key]))
             writer.write("%s = %s\n" % (key, str(result[key])))
 
-    return result, jsd, perplexity, sp
+    return result, jsd, perplexity, sp, bpc
 
 
 def main():
@@ -1266,7 +1296,7 @@ def main():
                 checkpoint, loss=loss_func, gen_func=gen_func
             )
             model.to(args.device)
-            result, jsd, ppl, sp = evaluate(
+            result, jsd, ppl, sp, bpc = evaluate(
                 args,
                 model,
                 tokenizer,
