@@ -851,7 +851,7 @@ def evaluate(
     print("js:", jsd)
     print("sp;", sp)
     # ------------------------------START CUSTOM CODE----------------------------------
-    print("sp;", bpc)
+    print("bpc;", bpc)
     # ------------------------------END CUSTOM CODE------------------------------------
     print("repeat_16:", np.array(repeat_16).mean())
     print("wrong_repeat_16:", np.array(wrong_repeat_16).mean())

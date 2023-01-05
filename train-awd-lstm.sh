@@ -28,7 +28,7 @@ python3 -u awd_lstm/main.py \
     --epochs 500 \
     --batch_size 32 \
     --bptt 70 \
-    --dropout 0.4 \
+    --dropout 0.2 \
     --dropouth 0.2 \
     --dropouti 0.2 \
     --dropoute 0.1 \
