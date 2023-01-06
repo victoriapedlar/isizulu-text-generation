@@ -831,9 +831,15 @@ def evaluate(
     a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
     # ------------------------------START CUSTOM CODE----------------------------------
-    import math
 
-    bpc = loss_train / math.log(2)
+    # Calculate the total number of sequences in the dataset
+    num_sequences = len(eval_dataset)
+
+    # Calculate the average sequence length
+    avg_sequence_length = num_sequences / len(eval_dataloader)
+
+    # Calculate the bpc score
+    bpc = perplexity ** (1 / avg_sequence_length)
     # ------------------------------END CUSTOM CODE------------------------------------
 
     jsd = jsd / len(eval_dataloader)
