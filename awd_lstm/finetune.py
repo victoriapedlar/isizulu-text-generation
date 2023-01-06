@@ -12,12 +12,17 @@ from datetime import datetime
 from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, early_stopping
 
-parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
+parser = argparse.ArgumentParser(
+    description="PyTorch PennTreeBank RNN/LSTM Language Model"
+)
 parser.add_argument(
     "--data", type=str, default="data/penn/", help="location of the data corpus"
 )
 parser.add_argument(
-    "--model", type=str, default="LSTM", help="type of recurrent net (LSTM, QRNN, GRU)"
+    "--model",
+    type=str,
+    default="LSTM",
+    help="type of recurrent net (RNN_TANH, RNN_RELU, LSTM, GRU)",
 )
 parser.add_argument("--emsize", type=int, default=400, help="size of word embeddings")
 parser.add_argument(
@@ -61,9 +66,12 @@ parser.add_argument(
     default=0.5,
     help="amount of weight dropout to apply to the RNN hidden to hidden matrix",
 )
+parser.add_argument(
+    "--tied", action="store_false", help="tie the word embedding and softmax weights"
+)
 parser.add_argument("--seed", type=int, default=1111, help="random seed")
 parser.add_argument("--nonmono", type=int, default=5, help="random seed")
-parser.add_argument("--cuda", action="store_true", help="use CUDA")
+parser.add_argument("--cuda", action="store_false", help="use CUDA")
 parser.add_argument(
     "--log-interval", type=int, default=200, metavar="N", help="report interval"
 )
@@ -85,24 +93,6 @@ parser.add_argument(
 )
 parser.add_argument(
     "--wdecay", type=float, default=1.2e-6, help="weight decay applied to all weights"
-)
-parser.add_argument("--resume", type=str, default="", help="path of model to resume")
-parser.add_argument(
-    "--optimizer", type=str, default="sgd", help="optimizer to use (sgd, adam)"
-)
-parser.add_argument(
-    "--when",
-    nargs="+",
-    type=int,
-    default=[-1],
-    help="When (which epochs) to divide the learning rate by 10 - accepts multiple",
-)
-parser.add_argument(
-    "-asgd",
-    "--asgd",
-    required=False,
-    default="True",
-    help="server on which this experiment runs",
 )
 # ----------Written by Victoria Pedlar---------- #
 parser.add_argument(
@@ -166,13 +156,8 @@ for arg in vars(args):
 # if not args.log_hparams_only: writer.add_text('args', sargs)
 # print(sargs)
 # ----------------------------------------------- #
-###############################################################################
-# print("torch:", torch.__version__)
-if torch.__version__ != "0.1.12_2":
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-###############################################################################
+
 # Set the random seed manually for reproducibility.
-np.random.seed(args.seed)
 torch.manual_seed(args.seed)
 if torch.cuda.is_available():
     if not args.cuda:
@@ -181,7 +166,7 @@ if torch.cuda.is_available():
         torch.cuda.manual_seed(args.seed)
 
 model_name = (
-    "models/awd_lstm/"
+    "models/awd_lstm_finetune/"
     + "_emsize_"
     + str(args.emsize)
     + "_nhid_"
@@ -219,71 +204,47 @@ model_name = (
     + ".pt"
 )
 
-# def model_save(file_name):
-#     with open(file_name, "wb") as f:
-#         torch.save([model, criterion, optimizer], f)
-# alternative saving of model
-def model_save(model_name):
-    os.makedirs(os.path.dirname(model_name), exist_ok=True)
-    with open(model_name, "wb") as m:
-        torch.save([model, criterion, optimizer], m)
+###############################################################################
+# Load data
+###############################################################################
 
-
-def model_load(file_name):
-    """
-    Loads the model and associated optimizer and criterion
-    - Fixed the issue where cuda check is not performed causing crashes
-    """
-    global model, criterion, optimizer
-    with open(file_name, "rb") as f:
-        if torch.cuda.is_available():
-            model, criterion, optimizer = torch.load(f)
-        else:
-            model, criterion, optimizer = torch.load(f, map_location="cpu")
-
-
-# Load the dataset and make train, validation and test sets
-
-fn = "corpus.{}.data".format(hashlib.md5(args.data.encode()).hexdigest())
-if os.path.exists(fn) and len(args.tokenizer_data) == 0:
-    print("Loading cached dataset...")
-    corpus = torch.load(fn)
-else:
-    print("Producing dataset...")
-    corpus = data.Corpus(args.data, args.vocab_size, args.use_bpe, args.tokenizer_data)
-    torch.save(corpus, fn)
+corpus = data.Corpus(args.data)
 
 eval_batch_size = 10
-test_batch_size = 10
+test_batch_size = 1
 train_data = batchify(corpus.train, args.batch_size, args)
 val_data = batchify(corpus.valid, eval_batch_size, args)
 test_data = batchify(corpus.test, test_batch_size, args)
 
-# Build the model and specify the loss function
+###############################################################################
+# Build the model
+###############################################################################
 
 ntokens = len(corpus.dictionary)
-model = LSTMModel(
-    num_tokens=ntokens,
-    embed_size=args.emsize,
-    output_size=ntokens,
-    hidden_size=args.nhid,
-    n_layers=args.nlayers,
-    dropout=args.dropout,
-    dropouth=args.dropouth,
-    dropouti=args.dropouti,
-    dropoute=args.dropoute,
-    wdrop=args.wdrop,
-    tie_weights=args.tied,
+model = model.LSTMModel(
+    args.model,
+    ntokens,
+    args.emsize,
+    args.nhid,
+    args.nlayers,
+    args.dropout,
+    args.dropouth,
+    args.dropouti,
+    args.dropoute,
+    args.wdrop,
+    args.tied,
 )
 criterion = nn.CrossEntropyLoss()
-
 if args.cuda:
-    model = model.cuda()
+    model.cuda()
     criterion = criterion.cuda()
+total_params = sum(
+    x.size()[0] * x.size()[1] if len(x.size()) > 1 else x.size()[0]
+    for x in model.parameters()
+)
 
 # Train the model
 # First define training and evaluation
-###
 params = list(model.parameters()) + list(criterion.parameters())
 trainable_parameters = [p for p in model.parameters() if p.requires_grad]
 total_params = sum(
@@ -291,8 +252,11 @@ total_params = sum(
     for x in params
     if x.size()
 )
-# print("Args:", args)
-# print("Model total parameters:", total_params)
+
+
+###############################################################################
+# Training code
+###############################################################################
 
 
 def evaluate(data_source):
@@ -309,49 +273,6 @@ def evaluate(data_source):
             total_loss += len(data) * criterion(output_flat, targets).item()
             hidden = repackage_hidden(hidden)
     return total_loss / (len(data_source) - 1)
-
-
-# def train():
-#     # Turn on training mode which enables dropout
-#     model.train()
-#     total_loss = 0.0
-#     start_time = time.time()
-#     ntokens = len(corpus.dictionary)
-#     hidden = model.init_hidden(args.batch_size)
-#     for batch, i in enumerate(range(0, train_data.size(0) - 1, args.bptt)):
-#         data, targets = get_batch(train_data, i, args)
-#         # Starting each batch, we detach the hidden state from how it was previously produced
-#         # If we didn't, the model would try backpropagating all the way to start of the dataset
-#         hidden = repackage_hidden(hidden)
-#         optimizer.zero_grad()
-#         output, hidden = model(data, hidden)
-
-#         loss = criterion(output.view(-1, ntokens), targets)
-#         loss.backward()
-
-#         # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs
-#         torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
-#         optimizer.step()
-
-#         total_loss += loss.item()
-
-#         if batch % args.log_interval == 0 and batch > 0:
-#             cur_loss = total_loss / args.log_interval
-#             elapsed = time.time() - start_time
-#             print(
-#                 "| epoch {:3d} | {:5d}/{:5d} batches | lr {:02.2f} | ms/batch {:5.2f} | "
-#                 "loss {:5.2f} | ppl {:8.2f}".format(
-#                     epoch,
-#                     batch,
-#                     len(train_data) // args.bptt,
-#                     lr,
-#                     elapsed * 1000 / args.log_interval,
-#                     cur_loss,
-#                     math.exp(cur_loss),
-#                 )
-#             )
-#             total_loss = 0
-#             start_time = time.time()
 
 
 def train():
@@ -424,15 +345,17 @@ def train():
         batch += 1
         i += seq_len
 
-        ####################################
         if args.cuda:
             try:
                 torch.cuda.empty_cache()
                 # print('torch cuda empty cache')
             except:
                 pass
-        ####################################
 
+
+# Load the best saved model.
+with open(args.save, "rb") as f:
+    model = torch.load(f)
 
 # Do the actual training
 # Directing print output to a .txt file
@@ -441,8 +364,8 @@ sys.stdout = open(args.save_history, "wt")
 
 # Loop over epochs.
 lr = args.lr
+stored_loss = evaluate(val_data)
 best_val_loss = []
-stored_loss = 100000000
 # early stopping parameter
 stop_step = 0
 
@@ -483,26 +406,21 @@ try:
             print("-" * 89)
             print(
                 "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
-                "valid ppl {:8.2f} | valid bpc {:8.3f}".format(
+                "valid ppl {:8.2f}".format(
                     epoch,
                     (time.time() - epoch_start_time),
                     val_loss2,
                     math.exp(val_loss2),
-                    val_loss2 / math.log(2),
                 )
             )
             print("-" * 89)
 
             if val_loss2 < stored_loss:
-                # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
-                #            vocabulary, val_loss2, math.exp(val_loss2), vars(args), epoch)
-                # model_save(args.save)
-                model_save(model_name)
+                with open(args.save, "wb") as f:
+                    torch.save(model, f)
                 print("Saving Averaged!")
                 stored_loss = val_loss2
 
-            # nparams = 0
-            # nparams_in_temp_keys = 0
             for prm in model.parameters():
                 # nparams += 1
                 if prm in tmp.keys():
@@ -524,7 +442,8 @@ try:
             if stop_step == 0:
                 best_epoch = epoch
                 # model_save(args.save)
-                model_save(model_name)
+                with open(args.save, "wb") as f:
+                    torch.save(model, f)
 
         else:
             print(
@@ -555,7 +474,8 @@ try:
                 # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
                 #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch)
                 # model_save(args.save)
-                model_save(model_name)
+                with open(args.save, "wb") as f:
+                    torch.save(model, f)
                 print("Saving model (new best validation)")
                 stored_loss = val_loss
 
@@ -584,22 +504,23 @@ try:
                 # model_save('{}.e{}'.format(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
                 #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch))
                 # model_save(args.save)
-                model_save(model_name)
+                with open(args.save, "wb") as f:
+                    torch.save(model, f)
                 print("Dividing learning rate by 10")
                 optimizer.param_groups[0]["lr"] /= 10.0
 
-            best_val_loss.append(val_loss)
-
+        best_val_loss.append(val_loss2)
 
 except KeyboardInterrupt:
     print("-" * 89)
     print("Exiting from training early")
 
-# # Open the best saved model run it on the test data
-# model_load(args.save)
+# # Load the best saved model.
+# with open(args.save, "rb") as f:
+#     model = torch.load(f)
 
-# # Run on test data
-# test_loss = evaluate(test_data)
+# # Run on test data.
+# test_loss = evaluate(test_data, test_batch_size)
 # print("=" * 89)
 # print(
 #     "| End of training | test loss {:5.2f} | test ppl {:8.2f}".format(

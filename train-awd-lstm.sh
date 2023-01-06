@@ -28,16 +28,17 @@ python3 -u awd_lstm/main.py \
     --epochs 500 \
     --batch_size 32 \
     --bptt 70 \
-    --dropout 0.2 \
+    --dropout 0.7 \
     --dropouth 0.2 \
-    --dropouti 0.2 \
+    --dropouti 0.1 \
     --dropoute 0.1 \
     --wdrop 0.2 \
     --seed 1882 \
     --patience 3 \
     --nonmono 8 \
     --cuda \
-    --when 40 80 120 \
+    --when 40 80 120 160 \
+
 
 end=$(date +%s)
 echo "Elapsed Time: $(($end-$start)) seconds"
