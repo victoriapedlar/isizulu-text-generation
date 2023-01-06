@@ -28,7 +28,7 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --block_size 512 \
         --do_train \
         --evaluate_during_training \
-        --num_train_epochs 20 \
+        --num_train_epochs 10 \
         --loss entmax \
         --entmax_alpha 1.2 \
         --top_k 0 \
