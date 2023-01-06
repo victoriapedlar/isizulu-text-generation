@@ -68,6 +68,33 @@ python3 -u awd_lstm/main.py \
     --nonmono 8 \
 ```
 
+```
+python3 -u awd_lstm/finetune.py \
+    --load model.tar \
+    --data data/nchlt/isizulu/ \
+    --layer_num 3 \
+    --embed_size 400 \
+    --hidden_size 1150 \
+    --lstm_type pytorch \
+    --w_drop 0.5 \
+    --dropout_i 0.4 \
+    --dropout_l 0.3 \
+    --dropout_o 0.4 \
+    --dropout_e 0.1 \
+    --winit 0.1 \
+    --batch_size 40 \
+    --bptt 70 \
+    --ar 2 \
+    --tar 1 \
+    --weight_decay 1.2e-6 \
+    --lr 30 \
+    --max_grad_norm 0.25 \
+    --non_mono 5 \
+    --device gpu \
+    --log 100
+```
+Note that `finetune.py` overwrites the model it loads. If you wish to keep the original model, copy it elsewhere before starting the finetuning.
+
 # Transformers
 
 An implementation of a multilingual GPT-2 and utilities for downloading and preprocessing training data.
