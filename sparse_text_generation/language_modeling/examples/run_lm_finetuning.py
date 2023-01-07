@@ -831,7 +831,6 @@ def evaluate(
     a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
     # ------------------------------START CUSTOM CODE----------------------------------
-
     # Calculate the total number of sequences in the dataset
     num_sequences = len(eval_dataset)
 

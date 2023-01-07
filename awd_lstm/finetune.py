@@ -141,6 +141,11 @@ parser.add_argument(
 )
 args = parser.parse_args()
 args.tied = True
+
+print("finetune load path: {}/model.pt. ".format(args.save))
+print("log save path: {}/finetune_log.txt".format(args.save))
+print("model save path: {}/finetune_model.pt".format(args.save))
+
 run_name = (
     str(args.data).replace("/", "-")
     + "/"
