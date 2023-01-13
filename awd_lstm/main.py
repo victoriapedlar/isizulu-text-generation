@@ -294,6 +294,24 @@ total_params = sum(
 # print("Args:", args)
 # print("Model total parameters:", total_params)
 
+# ---------- ADJUSTED CODE --------------
+from scipy.stats import entropy
+
+
+def compute_jsd(p, q, base=np.e):
+    p, q = np.asarray(p.cpu()), np.asarray(q.cpu())
+    p, q = p / p.sum(), q / q.sum()
+    m = 1.0 / 2 * (p + q)
+    ent = entropy(p, m, base=base) / 2.0 + entropy(q, m, base=base) / 2.0
+    if ent == float("Inf"):
+        ent = torch.log(torch.FloatTensor([2]))
+    return ent
+
+
+def compute_sp(p, target):
+    p = np.asarray(p.cpu())
+    return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
+
 
 def evaluate(data_source):
     # Turn on evaluation mode which disables dropout
@@ -301,6 +319,9 @@ def evaluate(data_source):
     total_loss = 0.0
     ntokens = len(corpus.dictionary)
     hidden = model.init_hidden(test_batch_size)
+    perplexity = 0.0
+    jsd = 0
+    sp = 0
     with torch.no_grad():
         for i in range(0, data_source.size(0) - 1, args.bptt):
             data, targets = get_batch(data_source, i, args)
@@ -308,7 +329,43 @@ def evaluate(data_source):
             output_flat = output.view(-1, ntokens)
             total_loss += len(data) * criterion(output_flat, targets).item()
             hidden = repackage_hidden(hidden)
-    return total_loss / (len(data_source) - 1)
+
+            # Add epsilon smoothing
+            probs = torch.softmax(output_flat, dim=-1)
+            if len(probs[0].nonzero()) != len(probs[0]):
+                probs = probs + args.epsilon
+                sums = probs.sum(dim=-1)
+                probs = probs / sums.unsqueeze(-1)
+
+            # Compute perplexity
+            p = probs[torch.arange(targets.size(0)), targets]
+            perplexity += torch.log(p + 1e-9).mean().item()
+
+            # Compute JSD
+            jsd_batch = []
+            labels = torch.zeros(len(targets), ntokens)
+            labels[torch.arange(len(targets)), targets] = 1
+            jsd_batch = compute_jsd(probs, labels)
+            jsd += jsd_batch
+
+            # Compute sparsemax score
+            sp_batch = []
+            for i in range(len(targets)):
+                sp_batch.append(compute_sp(probs[i], targets[i]))
+            sp_batch = torch.tensor(sp_batch).mean()
+            sp += sp_batch
+
+    # Compute average perplexity, JSD, SP and loss
+    avg_perplexity = torch.exp(torch.tensor(perplexity / (len(data_source) - 1)))
+    avg_jsd = jsd / (len(data_source) - 1)
+    avg_sp = sp / (len(data_source) - 1)
+    avg_loss = total_loss / (len(data_source) - 1)
+
+    # Return the results
+    return avg_loss, avg_perplexity, avg_jsd, avg_sp, avg_loss / math.log(2)
+
+
+# ------------- END ADJUSTED CODE
 
 
 # def train():
@@ -479,16 +536,18 @@ try:
                     tmp[prm] = prm.data.detach()
                     prm.data = optimizer.state[prm]["ax"].detach()
 
-            val_loss2 = evaluate(val_data)
+            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
             print("-" * 89)
             print(
                 "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
-                "valid ppl {:8.2f} | valid bpc {:8.3f}".format(
+                "valid perplexity {:8.2f} | valid JSD {:8.3f} | valid sp {:8.3f} | valid bpc {:8.3f}".format(
                     epoch,
                     (time.time() - epoch_start_time),
                     val_loss2,
-                    math.exp(val_loss2),
-                    val_loss2 / math.log(2),
+                    avg_perplexity,
+                    avg_jsd,
+                    avg_sp,
+                    bpc,
                 )
             )
             print("-" * 89)
@@ -515,7 +574,7 @@ try:
 
             # begin early stopping
             if epoch % args.eval_every == (args.eval_every - 1):
-                val_loss2 = evaluate(val_data)
+                val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
                 stored_loss, stop_step, stop = early_stopping(
                     val_loss2, stored_loss, stop_step, args.patience
                 )
@@ -532,7 +591,7 @@ try:
                     len([prm for prm in model.parameters()])
                 )
             )
-            val_loss = evaluate(val_data)
+            val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
             print(
                 "{} model params (SGD after eval)".format(
                     len([prm for prm in model.parameters()])
@@ -541,12 +600,14 @@ try:
             print("-" * 89)
             print(
                 "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
-                "valid ppl {:8.2f} | valid bpc {:8.3f}".format(
+                "valid perplexity {:8.2f} | valid JSD {:8.3f} | valid sp {:8.3f} | valid bpc {:8.3f}".format(
                     epoch,
                     (time.time() - epoch_start_time),
-                    val_loss,
-                    math.exp(val_loss),
-                    val_loss / math.log(2),
+                    val_loss2,
+                    avg_perplexity,
+                    avg_jsd,
+                    avg_sp,
+                    bpc,
                 )
             )
             print("-" * 89)
@@ -599,7 +660,7 @@ except KeyboardInterrupt:
 # model_load(args.save)
 
 # # Run on test data
-# test_loss = evaluate(test_data)
+# test_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(test_data)
 # print("=" * 89)
 # print(
 #     "| End of training | test loss {:5.2f} | test ppl {:8.2f}".format(
