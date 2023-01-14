@@ -271,24 +271,45 @@ def get_tokenizer(train_data, vocab_size):
     return tokenizer
 
 
+# ---------- MODIFIED CODE ----------
+import numpy as np
+from torch.nn import CrossEntropyLoss
+from scipy.stats import entropy
+
+
+def compute_jsd(p, q, base=np.e):
+    p, q = np.asarray(p.cpu()), np.asarray(q.cpu())
+    p, q = p / p.sum(), q / q.sum()
+    m = 1.0 / 2 * (p + q)
+    ent = entropy(p, m, base=base) / 2.0 + entropy(q, m, base=base) / 2.0
+    if ent == float("Inf"):
+        ent = torch.log(torch.FloatTensor([2]))
+    return ent
+
+
+def compute_sp(p, target):
+    p = np.asarray(p.cpu())
+    return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
+
+
 def evaluate_bpcs(
-    tokenizers, model, eval_data, input_block_size, stride, disable_tqdm=False
+    tokenizers,
+    model,
+    eval_data,
+    input_block_size,
+    stride,
+    disable_tqdm=False,
+    smoothing=0.1,
+    epsilon=1e-8,
 ):
-    """
-    Evaluate the BPC performance of a model on a test dataset.
-    :param tokenizers: list of tokenizers, one for each language
-    :param model: the model to be evaluated
-    :param eval_data: list of evaluation datasets to test the model's performance on
-    :param input_block_size: size of the input block used for prediction
-    :param stride: number of tokens to advance the input block per forward pass of the model
-    :param disable_tqdm: disable evaluation progress bar
-    :return: metrics dictionary containing BPCs for each evaluation datasets
-    """
-    assert stride <= input_block_size
     metrics = {}
+    criterion = CrossEntropyLoss(label_smoothing=smoothing)
     for language_id, file_paths in eval_data:
         lls = []
         total_characters = 0
+        jsd_scores = []
+        sp_scores = []
+        perplexities = []
         if len(file_paths) > 1:
             logger.warning(
                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
@@ -298,7 +319,6 @@ def evaluate_bpcs(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
             range(1, encodings.input_ids.size(1), stride),
             desc="Evaluating BPC",
@@ -308,25 +328,51 @@ def evaluate_bpcs(
             end_loc = i + stride
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
-            target_ids[:, :-stride] = -100
 
             with torch.no_grad():
-                outputs = model(
-                    input_ids,
-                    labels=target_ids,
+                outputs = model(input_ids)
+                log_likelihood = criterion(outputs, target_ids) * stride
+                lls.append(log_likelihood)
+
+                # Compute JSD
+            for i in range(len(outputs)):
+                labels = torch.zeros(len(outputs[i]), outputs[i].size(-1))
+                for j in range(len(outputs[i])):
+                    labels[j, target_ids[i][j]] = 1
+                    jsd_ = compute_jsd(torch.softmax(outputs[i][j], dim=-1), labels[j])
+                    jsd_scores.append(jsd_)
+
+                # Compute sparsemax
+            for i in range(len(outputs)):
+                sp_scores.append(
+                    compute_sp(torch.softmax(outputs[i], dim=-1), target_ids[i])
                 )
-                # stride = number of tokens in the batch
-                # outputs[0] = nats/token (https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
-                # outputs[0] * stride = nats
-                log_likelihood = outputs[0].item() * stride
 
-            lls.append(log_likelihood)
+                # Compute perplexity
+                probs = torch.softmax(outputs, dim=-1)
+                if len(probs[0].nonzero()) != len(probs[0]):
+                    probs = probs[:, :] + epsilon
+                    sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                    probs = [probs[i] / sums[i] for i in range(len(sums))]
 
-        # total nats / log(2) = total bits
-        # total bits / total characters = bits/character
+                    probs = torch.stack(probs)
+
+                p = [probs[i, target_ids[i].item()] for i in range(len(target_ids))]
+                p = torch.stack(p)
+                perplexities.append(torch.log(p**-1).mean().item())
+
+        perp = sum(lls)
+        perplexity = torch.exp(torch.tensor(perp / total_characters))
+
         metrics["bpc/" + file_paths[0]] = (sum(lls) / log(2)) / total_characters
+        metrics["jsd/" + file_paths[0]] = sum(jsd_scores) / total_characters
+        metrics["sp/" + file_paths[0]] = sum(sp_scores) / total_characters
+        metrics["perplexity/" + file_paths[0]] = perplexity
 
     return metrics
+
+
+# -------------- END MODIFIED CODE --------------
 
 
 def get_gpt2_trainer(
@@ -539,6 +585,7 @@ def run_experiment(
         log_to_console,
         resume_checkpoint_dir,
     )
+    # ------------------- MODIFIED CODE -------------------
     trainer.train(model_path=resume_checkpoint_dir)
     val_metrics = evaluate_bpcs(
         trainer.tokenizers,
@@ -547,6 +594,8 @@ def run_experiment(
         input_block_size=hparams["train_block_size"],
         stride=eval_stride,
         disable_tqdm=disable_prediction_tqdm,
+        smoothing=0.1,
+        epsilon=1e-8,
     )
     logger.info(repr(val_metrics))
 
@@ -557,8 +606,11 @@ def run_experiment(
         input_block_size=hparams["train_block_size"],
         stride=eval_stride,
         disable_tqdm=disable_prediction_tqdm,
+        smoothing=0.1,
+        epsilon=1e-8,
     )
     logger.info(repr(test_metrics))
+    # ------------------- END MODIFIED CODE ------------------
 
     log_data = {
         "id": experiment_id,
