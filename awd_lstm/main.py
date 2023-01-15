@@ -282,14 +282,14 @@ def model_load(file_name):
 
 # Load the dataset and make train, validation and test sets
 
-fn = "corpus.{}.data".format(hashlib.md5(config.data.encode()).hexdigest())
+fn = "corpus.{}.data".format(hashlib.md5(args.data.encode()).hexdigest())
 if os.path.exists(fn) and len(config.tokenizer_data) == 0:
     print("Loading cached dataset...")
     corpus = torch.load(fn)
 else:
     print("Producing dataset...")
     corpus = data.Corpus(
-        config.data, config.vocab_size, config.use_bpe, config.tokenizer_data
+        args.data, config.vocab_size, config.use_bpe, config.tokenizer_data
     )
     torch.save(corpus, fn)
 
