@@ -221,39 +221,7 @@ model_name = (
     + ".pt"
 )
 # ----------Written by Victoria Pedlar---------- #
-# sweep_config = {"method": "random"}
-# metric = {"name": "loss", "goal": "minimize"}
-# sweep_config["metric"] = metric
-# config = {}
-# for key, value in vars(args).items():
-#     config[key] = {"value": value}
-
-# sweep_config["parameters"] = parameters_dict
-
-# parameters_dict.update(
-#     {
-#         "dropout": {"values": [0.2, 0.5, 0.7]},
-#         "patience": {"values": [2, 3, 4]},
-#         "wdrop": {"values": [0.2, 0.5]},
-#         "dropouti": {"values": [0.2, 0.5, 0.7]},
-#     }
-# )
-# parameters_dict.update({"epochs": {"value": 500}})
-# parameters_dict.update({"lr": {"value": 30}})
-# parameters_dict.update(
-#     {
-#         "batch_size": {
-#             # integers between 32 and 256
-#             # with evenly-distributed logarithms
-#             "distribution": "q_log_uniform_values",
-#             "q": 8,
-#             "min": 32,
-#             "max": 256,
-#         },
-#     }
-# )
-wandb.init(project="awd-lstm-test", config={"lr": 30})
-# sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
+wandb.init(project="awd-lstm-combined", config={"lr": 30})
 wandb.config.update(args)
 config = wandb.config
 # ----------------------------------------------- #
