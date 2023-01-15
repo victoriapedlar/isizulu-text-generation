@@ -578,6 +578,7 @@ try:
                 print("valid sp:", avg_sp)
                 print("valid bpc:", bpc)
                 print("-" * 89)
+                wandb.log({"loss": val_loss2, "epoch": epoch})
 
                 if val_loss2 < stored_loss:
                     # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
@@ -637,6 +638,7 @@ try:
                 print("valid sp:", avg_sp)
                 print("valid bpc:", bpc)
                 print("-" * 89)
+                wandb.log({"loss": val_loss, "epoch": epoch})
 
                 if val_loss < stored_loss:
                     # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
@@ -676,8 +678,6 @@ try:
                     optimizer.param_groups[0]["lr"] /= 10.0
 
                 best_val_loss.append(val_loss)
-
-            wandb.log({"loss": best_val_loss, "epoch": epoch})
 
 except KeyboardInterrupt:
     print("-" * 89)
