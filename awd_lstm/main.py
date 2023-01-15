@@ -561,6 +561,7 @@ try:
             print("valid sp:", avg_sp)
             print("valid bpc:", bpc)
             print("-" * 89)
+            wandb.init(config=sweep_config)
             wandb.log({"loss": val_loss2, "epoch": epoch})
 
             if val_loss2 < stored_loss:
@@ -621,6 +622,7 @@ try:
             print("valid sp:", avg_sp)
             print("valid bpc:", bpc)
             print("-" * 89)
+            wandb.init(config=sweep_config)
             wandb.log({"loss": val_loss, "epoch": epoch})
 
             if val_loss < stored_loss:
