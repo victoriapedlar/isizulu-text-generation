@@ -76,6 +76,8 @@ import re
 
 RETOK = re.compile(r"\w+|[^\w\s]|\n", re.UNICODE)
 
+import wandb  # Add Weights & Bias logging
+
 # ------------------------------START CUSTOM CODE----------------------------------
 #! pip install tokenizers
 
@@ -638,6 +640,7 @@ def train(
                             model.module if hasattr(model, "module") else model
                         )  # Take care of distributed/parallel training
                         model_to_save.save_pretrained(output_dir)
+                        wandb.save(output_dir)
                         torch.save(args, os.path.join(output_dir, "training_args.bin"))
                         logger.info("Saving model checkpoint to %s", output_dir)
                     if ppl < best_ppl:
@@ -652,6 +655,7 @@ def train(
                         )  # Take care of distributed/parallel training
                         model_to_save.save_pretrained(output_dir)
                         torch.save(args, os.path.join(output_dir, "training_args.bin"))
+                        wandb.save(output_dir)
                         logger.info("Saving model checkpoint to %s", output_dir)
 
                     if sp > best_sp:
@@ -665,6 +669,7 @@ def train(
                             model.module if hasattr(model, "module") else model
                         )  # Take care of distributed/parallel training
                         model_to_save.save_pretrained(output_dir)
+                        wandb.save(output_dir)
                         torch.save(args, os.path.join(output_dir, "training_args.bin"))
                         logger.info("Saving model checkpoint to %s", output_dir)
 
@@ -824,7 +829,7 @@ def evaluate(
         "JSD": jsd,
         "perplexity": perplexity,
         "Loss": loss_train,
-    } 
+    }
 
     print("perplexity:", perplexity)
     print("js:", jsd)
@@ -1066,6 +1071,12 @@ def main():
     parser.add_argument("--unlikelihood_seq", action="store_true")
     args = parser.parse_args()
 
+    # ----------Written by Victoria Pedlar---------- #
+    wandb.init(project="sparse-model-combined", config={"learning_rate": 6.25e-5})
+    wandb.config.update(args)
+    config = wandb.config
+    # ----------------------------------------------- #
+
     if args.model_type in ["bert", "roberta"] and not args.mlm:
         raise ValueError(
             "BERT and RoBERTa do not have LM heads but masked LM heads. They must be run using the --mlm "
@@ -1283,6 +1294,9 @@ def main():
             )
             result = dict((k + "_{}".format(global_step), v) for k, v in result.items())
             results.update(result)
+            wandb.log(result)
+
+    wandb.finish()
 
     return results
 
