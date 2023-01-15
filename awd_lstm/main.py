@@ -673,7 +673,7 @@ try:
 
             best_val_loss.append(val_loss)
 
-            wandb.log({"loss": best_val_loss, "epoch": epoch})
+        wandb.log({"loss": best_val_loss, "epoch": epoch})
 
 except KeyboardInterrupt:
     print("-" * 89)
