@@ -596,6 +596,17 @@ try:
                     prm.data = optimizer.state[prm]["ax"].detach()
 
             val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
+            # check if a variable is a numpy ndarray using the isinstance() function, convert it to a scalar if it is
+            if isinstance(val_loss2, np.ndarray):
+                val_loss2 = val_loss2.item()
+            if isinstance(avg_perplexity, np.ndarray):
+                avg_perplexity = avg_perplexity.item()
+            if isinstance(avg_jsd, np.ndarray):
+                avg_jsd = avg_jsd.item()
+            if isinstance(avg_sp, np.ndarray):
+                avg_sp = avg_sp.item()
+            if isinstance(bpc, np.ndarray):
+                bpc = bpc.item()
             print("-" * 89)
             print(
                 "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
@@ -656,6 +667,17 @@ try:
                     len([prm for prm in model.parameters()])
                 )
             )
+            # check if a variable is a numpy ndarray using the isinstance() function, convert it to a scalar if it is
+            if isinstance(val_loss, np.ndarray):
+                val_loss = val_loss.item()
+            if isinstance(avg_perplexity, np.ndarray):
+                avg_perplexity = avg_perplexity.item()
+            if isinstance(avg_jsd, np.ndarray):
+                avg_jsd = avg_jsd.item()
+            if isinstance(avg_sp, np.ndarray):
+                avg_sp = avg_sp.item()
+            if isinstance(bpc, np.ndarray):
+                bpc = bpc.item()
             print("-" * 89)
             print(
                 "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
