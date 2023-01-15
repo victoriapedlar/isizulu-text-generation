@@ -221,39 +221,40 @@ model_name = (
     + ".pt"
 )
 # ----------Written by Victoria Pedlar---------- #
-sweep_config = {"method": "random"}
-metric = {"name": "loss", "goal": "minimize"}
-sweep_config["metric"] = metric
-parameters_dict = {}
-for key, value in vars(args).items():
-    parameters_dict[key] = {"value": value}
+# sweep_config = {"method": "random"}
+# metric = {"name": "loss", "goal": "minimize"}
+# sweep_config["metric"] = metric
+# config = {}
+# for key, value in vars(args).items():
+#     config[key] = {"value": value}
 
-sweep_config["parameters"] = parameters_dict
+# sweep_config["parameters"] = parameters_dict
 
-parameters_dict.update(
-    {
-        "dropout": {"values": [0.2, 0.5, 0.7]},
-        "patience": {"values": [2, 3, 4]},
-        "wdrop": {"values": [0.2, 0.5]},
-        "dropouti": {"values": [0.2, 0.5, 0.7]},
-    }
-)
-parameters_dict.update({"epochs": {"value": 500}})
-parameters_dict.update({"lr": {"value": 30}})
-parameters_dict.update(
-    {
-        "batch_size": {
-            # integers between 32 and 256
-            # with evenly-distributed logarithms
-            "distribution": "q_log_uniform_values",
-            "q": 8,
-            "min": 32,
-            "max": 256,
-        },
-    }
-)
-sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
-wandb.init(config=sweep_config)
+# parameters_dict.update(
+#     {
+#         "dropout": {"values": [0.2, 0.5, 0.7]},
+#         "patience": {"values": [2, 3, 4]},
+#         "wdrop": {"values": [0.2, 0.5]},
+#         "dropouti": {"values": [0.2, 0.5, 0.7]},
+#     }
+# )
+# parameters_dict.update({"epochs": {"value": 500}})
+# parameters_dict.update({"lr": {"value": 30}})
+# parameters_dict.update(
+#     {
+#         "batch_size": {
+#             # integers between 32 and 256
+#             # with evenly-distributed logarithms
+#             "distribution": "q_log_uniform_values",
+#             "q": 8,
+#             "min": 32,
+#             "max": 256,
+#         },
+#     }
+# )
+wandb.init(project="awd-lstm-test", config={"lr": 30})
+# sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
+wandb.config.update(args)
 config = wandb.config
 # ----------------------------------------------- #
 
@@ -288,14 +289,12 @@ if os.path.exists(fn) and len(args.tokenizer_data) == 0:
     corpus = torch.load(fn)
 else:
     print("Producing dataset...")
-    corpus = data.Corpus(
-        args.data, config.vocab_size, config.use_bpe, args.tokenizer_data
-    )
+    corpus = data.Corpus(args.data, args.vocab_size, args.use_bpe, args.tokenizer_data)
     torch.save(corpus, fn)
 
 eval_batch_size = 10
 test_batch_size = 10
-train_data = batchify(corpus.train, config.batch_size, args)
+train_data = batchify(corpus.train, args.batch_size, args)
 val_data = batchify(corpus.valid, eval_batch_size, args)
 test_data = batchify(corpus.test, test_batch_size, args)
 
@@ -304,21 +303,21 @@ test_data = batchify(corpus.test, test_batch_size, args)
 ntokens = len(corpus.dictionary)
 model = LSTMModel(
     num_tokens=ntokens,
-    embed_size=config.emsize,
+    embed_size=args.emsize,
     output_size=ntokens,
-    hidden_size=config.nhid,
-    n_layers=config.nlayers,
-    dropout=config.dropout,
-    dropouth=config.dropouth,
-    dropouti=config.dropouti,
-    dropoute=config.dropoute,
-    wdrop=config.wdrop,
-    tie_weights=config.tied,
+    hidden_size=args.nhid,
+    n_layers=args.nlayers,
+    dropout=args.dropout,
+    dropouth=args.dropouth,
+    dropouti=args.dropouti,
+    dropoute=args.dropoute,
+    wdrop=args.wdrop,
+    tie_weights=args.tied,
 )
 
 criterion = nn.CrossEntropyLoss()
 
-if config.cuda:
+if args.cuda:
     model = model.cuda()
     criterion = criterion.cuda()
 
@@ -364,7 +363,7 @@ def evaluate(data_source):
     jsd = 0
     sp = 0
     with torch.no_grad():
-        for i in range(0, data_source.size(0) - 1, config.bptt):
+        for i in range(0, data_source.size(0) - 1, args.bptt):
             data, targets = get_batch(data_source, i, args)
             output, hidden = model(data, hidden)
             output_flat = output.view(-1, ntokens)
@@ -374,7 +373,7 @@ def evaluate(data_source):
             # Add epsilon smoothing
             probs = torch.softmax(output_flat, dim=-1)
             if len(probs[0].nonzero()) != len(probs[0]):
-                probs = probs + config.epsilon
+                probs = probs + args.epsilon
                 sums = probs.sum(dim=-1)
                 probs = probs / sums.unsqueeze(-1)
 
@@ -418,99 +417,93 @@ def evaluate(data_source):
 
 
 def train(config=None):
-    # Initialize a new wandb run
-    with wandb.init(config=config):
-        # If called by wandb.agent, as below,
-        # this config will be set by Sweep Controller
-        config = wandb.config
+    # Turn on training mode which enables dropout.
+    total_loss = 0
+    start_time = time.time()
+    ntokens = len(corpus.dictionary)
+    hidden = model.init_hidden(args.batch_size)
+    # hidden = model.init_hidden(args.batch_size)
+    batch, i = 0, 0
+    while i < train_data.size(0) - 1 - 1:
+        bptt = args.bptt if np.random.random() < 0.95 else args.bptt / 2.0
+        # Prevent excessively small or negative sequence lengths
+        seq_len = max(5, int(np.random.normal(bptt, 5)))
+        # There's a very small chance that it could select a very long sequence length resulting in OOM
+        # seq_len = min(seq_len, args.bptt + 10)
 
-        # Turn on training mode which enables dropout.
-        total_loss = 0
-        start_time = time.time()
-        ntokens = len(corpus.dictionary)
-        hidden = model.init_hidden(config.batch_size)
-        # hidden = model.init_hidden(args.batch_size)
-        batch, i = 0, 0
-        while i < train_data.size(0) - 1 - 1:
-            bptt = config.bptt if np.random.random() < 0.95 else config.bptt / 2.0
-            # Prevent excessively small or negative sequence lengths
-            seq_len = max(5, int(np.random.normal(bptt, 5)))
-            # There's a very small chance that it could select a very long sequence length resulting in OOM
-            # seq_len = min(seq_len, args.bptt + 10)
+        lr2 = optimizer.param_groups[0]["lr"]
+        optimizer.param_groups[0]["lr"] = lr2 * seq_len / args.bptt
+        model.train()
+        data, targets = get_batch(train_data, i, args, seq_len=seq_len)
 
-            lr2 = optimizer.param_groups[0]["lr"]
-            optimizer.param_groups[0]["lr"] = lr2 * seq_len / config.bptt
-            model.train()
-            data, targets = get_batch(train_data, i, args, seq_len=seq_len)
+        # Starting each batch, we detach the hidden state from how it was previously produced.
+        # If we didn't, the model would try backpropagating all the way to start of the dataset.
+        hidden = repackage_hidden(hidden)
+        optimizer.zero_grad()
 
-            # Starting each batch, we detach the hidden state from how it was previously produced.
-            # If we didn't, the model would try backpropagating all the way to start of the dataset.
-            hidden = repackage_hidden(hidden)
-            optimizer.zero_grad()
+        output, hidden = model(data, hidden)
+        raw_loss = criterion(output.view(-1, ntokens), targets)
 
-            output, hidden = model(data, hidden)
-            raw_loss = criterion(output.view(-1, ntokens), targets)
+        loss = raw_loss
+        # Activation Regularization
+        # if args.alpha:
+        #     loss = loss + sum(
+        #         args.alpha * dropped_rnn_h.pow(2).mean()
+        #         for dropped_rnn_h in dropped_rnn_hs[-1:]
+        #     )
+        # # Temporal Activation Regularization (slowness)
+        # if args.beta:
+        #     loss = loss + sum(
+        #         args.beta * (rnn_h[1:] - rnn_h[:-1]).pow(2).mean()
+        #         for rnn_h in rnn_hs[-1:]
+        #     )
+        loss.backward()
 
-            loss = raw_loss
-            # Activation Regularization
-            # if args.alpha:
-            #     loss = loss + sum(
-            #         args.alpha * dropped_rnn_h.pow(2).mean()
-            #         for dropped_rnn_h in dropped_rnn_hs[-1:]
-            #     )
-            # # Temporal Activation Regularization (slowness)
-            # if args.beta:
-            #     loss = loss + sum(
-            #         args.beta * (rnn_h[1:] - rnn_h[:-1]).pow(2).mean()
-            #         for rnn_h in rnn_hs[-1:]
-            #     )
-            loss.backward()
+        # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
+        if args.clip:
+            torch.nn.utils.clip_grad_norm_(params, args.clip)
+        optimizer.step()
 
-            # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
-            if config.clip:
-                torch.nn.utils.clip_grad_norm_(params, config.clip)
-            optimizer.step()
-
-            total_loss += raw_loss.data
-            optimizer.param_groups[0]["lr"] = lr2
-            if batch % config.log_interval == 0 and batch > 0:
-                cur_loss = total_loss / config.log_interval
-                elapsed = time.time() - start_time
-                print(
-                    "| epoch {:3d} | {:5d}/{:5d} batches | lr {:05.5f} | ms/batch {:5.2f} | "
-                    "loss {:5.2f} | ppl {:8.2f} | bpc {:8.3f}".format(
-                        epoch,
-                        batch,
-                        len(train_data) // config.bptt,
-                        optimizer.param_groups[0]["lr"],
-                        elapsed * 1000 / config.log_interval,
-                        cur_loss,
-                        math.exp(cur_loss),
-                        cur_loss / math.log(2),
-                    )
+        total_loss += raw_loss.data
+        optimizer.param_groups[0]["lr"] = lr2
+        if batch % args.log_interval == 0 and batch > 0:
+            cur_loss = total_loss / args.log_interval
+            elapsed = time.time() - start_time
+            print(
+                "| epoch {:3d} | {:5d}/{:5d} batches | lr {:05.5f} | ms/batch {:5.2f} | "
+                "loss {:5.2f} | ppl {:8.2f} | bpc {:8.3f}".format(
+                    epoch,
+                    batch,
+                    len(train_data) // args.bptt,
+                    optimizer.param_groups[0]["lr"],
+                    elapsed * 1000 / args.log_interval,
+                    cur_loss,
+                    math.exp(cur_loss),
+                    cur_loss / math.log(2),
                 )
-                total_loss = 0
-                start_time = time.time()
-            batch += 1
-            i += seq_len
+            )
+            total_loss = 0
+            start_time = time.time()
+        batch += 1
+        i += seq_len
 
-            ####################################
-            if config.cuda:
-                try:
-                    torch.cuda.empty_cache()
-                    # print('torch cuda empty cache')
-                except:
-                    pass
-            ####################################
+        ####################################
+        if args.cuda:
+            try:
+                torch.cuda.empty_cache()
+                # print('torch cuda empty cache')
+            except:
+                pass
+        ####################################
 
 
 # Directing print output to a .txt file
-os.makedirs(os.path.dirname(config.save_history), exist_ok=True)
-sys.stdout = open(config.save_history, "wt")
+os.makedirs(os.path.dirname(args.save_history), exist_ok=True)
+sys.stdout = open(args.save_history, "wt")
 
 # Loop over epochs.
 # lr = config.lr
-lr = config.lr
+lr = args.lr
 best_val_loss = []
 stored_loss = 100000000
 # early stopping parameter
@@ -525,18 +518,18 @@ for name, param in model.state_dict().items():
 try:
     optimizer = None
     # Ensure the optimizer is optimizing params, which includes both the model's weights as well as the criterion's weight (i.e. Adaptive Softmax)
-    if config.optimizer == "sgd":
+    if args.optimizer == "sgd":
         optimizer = torch.optim.SGD(
-            params, lr=config.lr, weight_decay=config.wdecay
+            params, lr=args.lr, weight_decay=args.wdecay
         )  # params not trainable params... (?)
-    if config.optimizer == "adam":
-        optimizer = torch.optim.Adam(params, lr=config.lr, weight_decay=config.wdecay)
+    if args.optimizer == "adam":
+        optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.wdecay)
 
-    for epoch in range(1, config.epochs + 1):
+    for epoch in range(1, args.epochs + 1):
         print("Starting epoch {}".format(epoch))
         epoch_start_time = time.time()
         train()
-        if config.cuda:
+        if args.cuda:
             try:
                 torch.cuda.empty_cache()
                 # print('torch cuda empty cache')
@@ -551,6 +544,17 @@ try:
 
             metrics = evaluate(val_data)
             val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+            # 🐝 Log train metrics to wandb
+            wandb.log(
+                {
+                    "loss": val_loss2,
+                    "epoch": epoch,
+                    "perplexity": avg_perplexity,
+                    "JSD": avg_jsd,
+                    "sp": avg_sp,
+                    "bpc": bpc,
+                }
+            )
 
             print("-" * 89)
             print(
@@ -563,8 +567,6 @@ try:
             print("valid sp:", avg_sp)
             print("valid bpc:", bpc)
             print("-" * 89)
-            wandb.init(config=sweep_config)
-            wandb.log({"loss": val_loss2, "epoch": epoch})
 
             if val_loss2 < stored_loss:
                 # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
@@ -587,11 +589,11 @@ try:
             del tmp
 
             # begin early stopping
-            if epoch % config.eval_every == (config.eval_every - 1):
+            if epoch % args.eval_every == (args.eval_every - 1):
                 metrics = evaluate(val_data)
                 val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
                 stored_loss, stop_step, stop = early_stopping(
-                    val_loss2, stored_loss, stop_step, config.patience
+                    val_loss2, stored_loss, stop_step, args.patience
                 )
             if stop:
                 break
@@ -608,6 +610,18 @@ try:
             )
             metrics = evaluate(val_data)
             val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+            # 🐝 Log train metrics to wandb
+            wandb.log(
+                {
+                    "loss": val_loss,
+                    "epoch": epoch,
+                    "perplexity": avg_perplexity,
+                    "JSD": avg_jsd,
+                    "sp": avg_sp,
+                    "bpc": bpc,
+                }
+            )
+
             print(
                 "{} model params (SGD after eval)".format(
                     len([prm for prm in model.parameters()])
@@ -624,8 +638,6 @@ try:
             print("valid sp:", avg_sp)
             print("valid bpc:", bpc)
             print("-" * 89)
-            wandb.init(config=sweep_config)
-            wandb.log({"loss": val_loss, "epoch": epoch})
 
             if val_loss < stored_loss:
                 # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
@@ -635,13 +647,13 @@ try:
                 print("Saving model (new best validation)")
                 stored_loss = val_loss
 
-            if config.asgd:
+            if args.asgd:
                 if (
-                    config.optimizer == "sgd"
+                    args.optimizer == "sgd"
                     and "t0" not in optimizer.param_groups[0]
                     and (
-                        len(best_val_loss) > config.nonmono
-                        and val_loss > min(best_val_loss[: -config.nonmono])
+                        len(best_val_loss) > args.nonmono
+                        and val_loss > min(best_val_loss[: -args.nonmono])
                     )
                 ):
                     # if 't0' not in optimizer.param_groups[0]:
@@ -649,13 +661,13 @@ try:
                     # optimizer = ASGD(trainable_parameters, lr=config.lr, t0=0, lambd=0., weight_decay=args.wdecay)
                     optimizer = torch.optim.ASGD(
                         trainable_parameters,
-                        lr=config.lr,
+                        lr=args.lr,
                         t0=0,
                         lambd=0.0,
-                        weight_decay=config.wdecay,
+                        weight_decay=args.wdecay,
                     )
 
-            if epoch in config.when:
+            if epoch in args.when:
                 print("Saving model before learning rate decreased")
                 # model_save('{}.e{}'.format(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
                 #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch))
@@ -682,7 +694,5 @@ except KeyboardInterrupt:
 #     )
 # )
 # print("=" * 89)
-
-# ------------------ Written by Victoria ------------------
-wandb.agent(sweep_id, train, count=5)
-# --------------------------------------------------------
+# 🐝 Close your wandb run
+wandb.finish()
