@@ -662,7 +662,7 @@ try:
                 "valid perplexity {:8.2f} | valid JSD {:8.3f} | valid sp {:8.3f} | valid bpc {:8.3f}".format(
                     epoch,
                     (time.time() - epoch_start_time),
-                    val_loss2,
+                    val_loss,
                     avg_perplexity,
                     avg_jsd,
                     avg_sp,
