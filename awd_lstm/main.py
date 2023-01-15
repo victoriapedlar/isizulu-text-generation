@@ -223,14 +223,12 @@ model_name = (
 # ----------Written by Victoria Pedlar---------- #
 sweep_config = {"method": "random"}
 metric = {"name": "loss", "goal": "minimize"}
-
 sweep_config["metric"] = metric
-
 parameters_dict = {}
 for key, value in vars(args).items():
     parameters_dict[key] = {"value": value}
 
-sweep_config["parameters"] = parameters_dict
+sweep_config = parameters_dict
 
 parameters_dict.update(
     {
@@ -284,13 +282,15 @@ def model_load(file_name):
 
 # Load the dataset and make train, validation and test sets
 
-fn = "corpus.{}.data".format(hashlib.md5(args.data.encode()).hexdigest())
-if os.path.exists(fn) and len(args.tokenizer_data) == 0:
+fn = "corpus.{}.data".format(hashlib.md5(config.data.encode()).hexdigest())
+if os.path.exists(fn) and len(config.tokenizer_data) == 0:
     print("Loading cached dataset...")
     corpus = torch.load(fn)
 else:
     print("Producing dataset...")
-    corpus = data.Corpus(args.data, args.vocab_size, args.use_bpe, args.tokenizer_data)
+    corpus = data.Corpus(
+        config.data, config.vocab_size, config.use_bpe, config.tokenizer_data
+    )
     torch.save(corpus, fn)
 
 eval_batch_size = 10
