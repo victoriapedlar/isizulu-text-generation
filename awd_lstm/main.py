@@ -579,7 +579,7 @@ try:
     if config.optimizer == "adam":
         optimizer = torch.optim.Adam(params, lr=config.lr, weight_decay=config.wdecay)
 
-    for epoch in range(1, config.epoch + 1):
+    for epoch in range(1, config.epochs + 1):
         print("Starting epoch {}".format(epoch))
         epoch_start_time = time.time()
         train()
