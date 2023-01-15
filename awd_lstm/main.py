@@ -228,7 +228,7 @@ parameters_dict = {}
 for key, value in vars(args).items():
     parameters_dict[key] = {"value": value}
 
-sweep_config = parameters_dict
+sweep_config["parameters"] = parameters_dict
 
 parameters_dict.update(
     {
