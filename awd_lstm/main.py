@@ -260,11 +260,12 @@ parameters_dict.update(
         },
     }
 )
-wandb.config.update(args)  # adds all of the arguments as config variables
+
 wandb.init()
 # If called by wandb.agent, as below,
 # this config will be set by Sweep Controller
 config = wandb.config
+wandb.config.update(args)  # adds all of the arguments as config variables
 # ----------------------------------------------- #
 
 # def model_save(file_name):
