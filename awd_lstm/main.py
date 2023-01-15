@@ -355,7 +355,8 @@ def compute_jsd(p, q, base=np.e):
     p, q = p / p.sum(), q / q.sum()
     m = 1.0 / 2 * (p + q)
     ent = entropy(p, m, base=base) / 2.0 + entropy(q, m, base=base) / 2.0
-    ent[np.isinf(ent)] = torch.log(torch.FloatTensor([2]))
+    if ent == float("Inf"):
+        ent = torch.log(torch.FloatTensor([2]))
     return ent
 
 
@@ -394,10 +395,12 @@ def evaluate(data_source):
 
             # Compute JSD
             jsd_batch = []
-            labels = torch.zeros(len(targets), ntokens)
-            labels[torch.arange(len(targets)), targets] = 1
-            jsd_batch = compute_jsd(probs, labels)
-            jsd += jsd_batch
+            for j in range(len(targets)):
+                label = torch.zeros(ntokens)
+                label[targets[j]] = 1
+                jsd_ = compute_jsd(probs[j], label)
+                jsd_batch.append(jsd_)
+            jsd += torch.tensor(jsd_batch).mean()
 
             # Compute sparsemax score
             sp_batch = []
