@@ -221,6 +221,7 @@ model_name = (
     + ".pt"
 )
 # ----------Written by Victoria Pedlar---------- #
+log_every = 15
 wandb.init(project="awd-lstm-combined", config={"lr": 30})
 wandb.config.update(args)
 config = wandb.config
@@ -513,16 +514,17 @@ try:
             metrics = evaluate(val_data)
             val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
             # 🐝 Log train metrics to wandb
-            wandb.log(
-                {
-                    "loss": val_loss2,
-                    "epoch": epoch,
-                    "perplexity": avg_perplexity,
-                    "JSD": avg_jsd,
-                    "sp": avg_sp,
-                    "bpc": bpc,
-                }
-            )
+            if (epoch + 1) % log_every == 0:  # subsampling
+                wandb.log(
+                    {
+                        "loss": val_loss2,
+                        "epoch": epoch,
+                        "perplexity": avg_perplexity,
+                        "JSD": avg_jsd,
+                        "sp": avg_sp,
+                        "bpc": bpc,
+                    }
+                )
 
             print("-" * 89)
             print(
@@ -579,16 +581,17 @@ try:
             metrics = evaluate(val_data)
             val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
             # 🐝 Log train metrics to wandb
-            wandb.log(
-                {
-                    "loss": val_loss,
-                    "epoch": epoch,
-                    "perplexity": avg_perplexity,
-                    "JSD": avg_jsd,
-                    "sp": avg_sp,
-                    "bpc": bpc,
-                }
-            )
+            if (epoch + 1) % log_every == 0:  # subsampling
+                wandb.log(
+                    {
+                        "loss": val_loss2,
+                        "epoch": epoch,
+                        "perplexity": avg_perplexity,
+                        "JSD": avg_jsd,
+                        "sp": avg_sp,
+                        "bpc": bpc,
+                    }
+                )
 
             print(
                 "{} model params (SGD after eval)".format(
