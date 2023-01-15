@@ -513,6 +513,8 @@ def train(config=None):
 
 
 # Do the actual training
+wandb.init(project="pytorch-sweeps-test")
+
 # Directing print output to a .txt file
 os.makedirs(os.path.dirname(config.save_history), exist_ok=True)
 sys.stdout = open(config.save_history, "wt")
