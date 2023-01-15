@@ -13,8 +13,6 @@ from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, early_stopping
 import wandb  # Add Weights & Bias logging
 
-wandb.init(project="awd-lstm-test", entity="isizulu-text-generation")
-
 parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
     "--data", type=str, default="data/penn/", help="location of the data corpus"
@@ -262,7 +260,9 @@ parameters_dict.update(
         },
     }
 )
+sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
 
+wandb.init(config=sweep_config)
 # If called by wandb.agent, as below,
 # this config will be set by Sweep Controller
 config = wandb.config
@@ -535,153 +535,146 @@ for name, param in model.state_dict().items():
 
 # At any point you can hit Ctrl + C to break out of training early.
 try:
-    with wandb.init(config=config):
-        # If called by wandb.agent, as below,
-        # this config will be set by Sweep Controller
-        config = wandb.config
+    optimizer = None
+    # Ensure the optimizer is optimizing params, which includes both the model's weights as well as the criterion's weight (i.e. Adaptive Softmax)
+    if config.optimizer == "sgd":
+        optimizer = torch.optim.SGD(
+            params, lr=config.lr, weight_decay=config.wdecay
+        )  # params not trainable params... (?)
+    if config.optimizer == "adam":
+        optimizer = torch.optim.Adam(params, lr=config.lr, weight_decay=config.wdecay)
 
-        optimizer = None
-        # Ensure the optimizer is optimizing params, which includes both the model's weights as well as the criterion's weight (i.e. Adaptive Softmax)
-        if config.optimizer == "sgd":
-            optimizer = torch.optim.SGD(
-                params, lr=config.lr, weight_decay=config.wdecay
-            )  # params not trainable params... (?)
-        if config.optimizer == "adam":
-            optimizer = torch.optim.Adam(
-                params, lr=config.lr, weight_decay=config.wdecay
+    for epoch in range(1, config.epochs + 1):
+        print("Starting epoch {}".format(epoch))
+        epoch_start_time = time.time()
+        train()
+        if config.cuda:
+            try:
+                torch.cuda.empty_cache()
+                # print('torch cuda empty cache')
+            except:
+                pass
+        if "t0" in optimizer.param_groups[0]:  # if ASGD
+            tmp = {}
+            for prm in model.parameters():
+                if prm in optimizer.state.keys():
+                    tmp[prm] = prm.data.detach()
+                    prm.data = optimizer.state[prm]["ax"].detach()
+
+            metrics = evaluate(val_data)
+            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+
+            print("-" * 89)
+            print(
+                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | ".format(
+                    epoch, (time.time() - epoch_start_time), val_loss2
+                )
             )
+            print("valid perplexity:", avg_perplexity)
+            print("valid JSD:", avg_jsd)
+            print("valid sp:", avg_sp)
+            print("valid bpc:", bpc)
+            print("-" * 89)
+            wandb.log({"loss": val_loss2, "epoch": epoch})
 
-        for epoch in range(1, config.epochs + 1):
-            print("Starting epoch {}".format(epoch))
-            epoch_start_time = time.time()
-            train()
-            if config.cuda:
-                try:
-                    torch.cuda.empty_cache()
-                    # print('torch cuda empty cache')
-                except:
-                    pass
-            if "t0" in optimizer.param_groups[0]:  # if ASGD
-                tmp = {}
-                for prm in model.parameters():
-                    if prm in optimizer.state.keys():
-                        tmp[prm] = prm.data.detach()
-                        prm.data = optimizer.state[prm]["ax"].detach()
+            if val_loss2 < stored_loss:
+                # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
+                #            vocabulary, val_loss2, math.exp(val_loss2), vars(args), epoch)
+                # model_save(args.save)
+                model_save(model_name)
+                print("Saving Averaged!")
+                stored_loss = val_loss2
 
+            # nparams = 0
+            # nparams_in_temp_keys = 0
+            for prm in model.parameters():
+                # nparams += 1
+                if prm in tmp.keys():
+                    # nparams_in_temp_keys += 1
+                    # prm.data = tmp[prm].clone()
+                    prm.data = tmp[prm].detach()
+                    prm.requires_grad = True
+            # print('params {}, params in tmp keys: {}'.format(nparams, nparams_in_temp_keys))
+            del tmp
+
+            # begin early stopping
+            if epoch % config.eval_every == (config.eval_every - 1):
                 metrics = evaluate(val_data)
                 val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
-
-                print("-" * 89)
-                print(
-                    "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | ".format(
-                        epoch, (time.time() - epoch_start_time), val_loss2
-                    )
+                stored_loss, stop_step, stop = early_stopping(
+                    val_loss2, stored_loss, stop_step, config.patience
                 )
-                print("valid perplexity:", avg_perplexity)
-                print("valid JSD:", avg_jsd)
-                print("valid sp:", avg_sp)
-                print("valid bpc:", bpc)
-                print("-" * 89)
-                wandb.log({"loss": val_loss2, "epoch": epoch})
+            if stop:
+                break
+            if stop_step == 0:
+                best_epoch = epoch
+                # model_save(args.save)
+                model_save(model_name)
 
-                if val_loss2 < stored_loss:
-                    # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
-                    #            vocabulary, val_loss2, math.exp(val_loss2), vars(args), epoch)
-                    # model_save(args.save)
-                    model_save(model_name)
-                    print("Saving Averaged!")
-                    stored_loss = val_loss2
-
-                # nparams = 0
-                # nparams_in_temp_keys = 0
-                for prm in model.parameters():
-                    # nparams += 1
-                    if prm in tmp.keys():
-                        # nparams_in_temp_keys += 1
-                        # prm.data = tmp[prm].clone()
-                        prm.data = tmp[prm].detach()
-                        prm.requires_grad = True
-                # print('params {}, params in tmp keys: {}'.format(nparams, nparams_in_temp_keys))
-                del tmp
-
-                # begin early stopping
-                if epoch % config.eval_every == (config.eval_every - 1):
-                    metrics = evaluate(val_data)
-                    val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
-                    stored_loss, stop_step, stop = early_stopping(
-                        val_loss2, stored_loss, stop_step, config.patience
-                    )
-                if stop:
-                    break
-                if stop_step == 0:
-                    best_epoch = epoch
-                    # model_save(args.save)
-                    model_save(model_name)
-
-            else:
-                print(
-                    "{} model params (SGD before eval)".format(
-                        len([prm for prm in model.parameters()])
-                    )
+        else:
+            print(
+                "{} model params (SGD before eval)".format(
+                    len([prm for prm in model.parameters()])
                 )
-                metrics = evaluate(val_data)
-                val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
-                print(
-                    "{} model params (SGD after eval)".format(
-                        len([prm for prm in model.parameters()])
-                    )
+            )
+            metrics = evaluate(val_data)
+            val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+            print(
+                "{} model params (SGD after eval)".format(
+                    len([prm for prm in model.parameters()])
                 )
-                print("-" * 89)
-                print(
-                    "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | ".format(
-                        epoch, (time.time() - epoch_start_time), val_loss
-                    )
+            )
+            print("-" * 89)
+            print(
+                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | ".format(
+                    epoch, (time.time() - epoch_start_time), val_loss
                 )
-                print("valid perplexity:", avg_perplexity)
-                print("valid JSD:", avg_jsd)
-                print("valid sp:", avg_sp)
-                print("valid bpc:", bpc)
-                print("-" * 89)
-                wandb.log({"loss": val_loss, "epoch": epoch})
+            )
+            print("valid perplexity:", avg_perplexity)
+            print("valid JSD:", avg_jsd)
+            print("valid sp:", avg_sp)
+            print("valid bpc:", bpc)
+            print("-" * 89)
+            wandb.log({"loss": val_loss, "epoch": epoch})
 
-                if val_loss < stored_loss:
-                    # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
-                    #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch)
-                    # model_save(args.save)
-                    model_save(model_name)
-                    print("Saving model (new best validation)")
-                    stored_loss = val_loss
+            if val_loss < stored_loss:
+                # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
+                #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch)
+                # model_save(args.save)
+                model_save(model_name)
+                print("Saving model (new best validation)")
+                stored_loss = val_loss
 
-                if config.asgd:
-                    if (
-                        config.optimizer == "sgd"
-                        and "t0" not in optimizer.param_groups[0]
-                        and (
-                            len(best_val_loss) > config.nonmono
-                            and val_loss > min(best_val_loss[: -config.nonmono])
-                        )
-                    ):
-                        # if 't0' not in optimizer.param_groups[0]:
-                        print("Switching to ASGD")
-                        # optimizer = ASGD(trainable_parameters, lr=config.lr, t0=0, lambd=0., weight_decay=args.wdecay)
-                        optimizer = torch.optim.ASGD(
-                            trainable_parameters,
-                            lr=config.lr,
-                            t0=0,
-                            lambd=0.0,
-                            weight_decay=config.wdecay,
-                        )
+            if config.asgd:
+                if (
+                    config.optimizer == "sgd"
+                    and "t0" not in optimizer.param_groups[0]
+                    and (
+                        len(best_val_loss) > config.nonmono
+                        and val_loss > min(best_val_loss[: -config.nonmono])
+                    )
+                ):
+                    # if 't0' not in optimizer.param_groups[0]:
+                    print("Switching to ASGD")
+                    # optimizer = ASGD(trainable_parameters, lr=config.lr, t0=0, lambd=0., weight_decay=args.wdecay)
+                    optimizer = torch.optim.ASGD(
+                        trainable_parameters,
+                        lr=config.lr,
+                        t0=0,
+                        lambd=0.0,
+                        weight_decay=config.wdecay,
+                    )
 
-                if epoch in config.when:
-                    print("Saving model before learning rate decreased")
-                    # model_save('{}.e{}'.format(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
-                    #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch))
-                    # model_save(args.save)
-                    model_save(model_name)
-                    print("Dividing learning rate by 10")
-                    optimizer.param_groups[0]["lr"] /= 10.0
+            if epoch in config.when:
+                print("Saving model before learning rate decreased")
+                # model_save('{}.e{}'.format(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
+                #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch))
+                # model_save(args.save)
+                model_save(model_name)
+                print("Dividing learning rate by 10")
+                optimizer.param_groups[0]["lr"] /= 10.0
 
-                best_val_loss.append(val_loss)
+            best_val_loss.append(val_loss)
 
 except KeyboardInterrupt:
     print("-" * 89)
@@ -701,6 +694,5 @@ except KeyboardInterrupt:
 # print("=" * 89)
 
 # ------------------ Written by Victoria ------------------
-sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
 wandb.agent(sweep_id, train, count=5)
 # --------------------------------------------------------
