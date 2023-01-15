@@ -563,17 +563,14 @@ try:
 
             print("-" * 89)
             print(
-                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
-                "valid perplexity {:8.2f} | valid JSD {:8.3f} | valid sp {:8.3f} | valid bpc {:8.3f}".format(
-                    epoch,
-                    (time.time() - epoch_start_time),
-                    val_loss2,
-                    avg_perplexity,
-                    avg_jsd,
-                    avg_sp,
-                    bpc,
+                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | ".format(
+                    epoch, (time.time() - epoch_start_time), val_loss2
                 )
             )
+            print("valid perplexity:", avg_perplexity)
+            print("valid JSD:", avg_jsd)
+            print("valid sp:", avg_sp)
+            print("valid bpc:", bpc)
             print("-" * 89)
 
             if val_loss2 < stored_loss:
@@ -625,17 +622,14 @@ try:
             )
             print("-" * 89)
             print(
-                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
-                "valid perplexity {:8.2f} | valid JSD {:8.3f} | valid sp {:8.3f} | valid bpc {:8.3f}".format(
-                    epoch,
-                    (time.time() - epoch_start_time),
-                    val_loss,
-                    avg_perplexity,
-                    avg_jsd,
-                    avg_sp,
-                    bpc,
+                "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | ".format(
+                    epoch, (time.time() - epoch_start_time), val_loss
                 )
             )
+            print("valid perplexity:", avg_perplexity)
+            print("valid JSD:", avg_jsd)
+            print("valid sp:", avg_sp)
+            print("valid bpc:", bpc)
             print("-" * 89)
 
             if val_loss < stored_loss:
