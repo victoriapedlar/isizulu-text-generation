@@ -28,7 +28,6 @@ python3 -u awd_lstm/main.py \
     --epochs 500 \
     --bptt 70 \
     --dropouth 0.2 \
-    --dropouti 0.2 \
     --dropoute 0.1 \
     --seed 1882 \
     --nonmono 8 \

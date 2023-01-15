@@ -228,6 +228,8 @@ sweep_config["metric"] = metric
 parameters_dict = {
     "dropout": {"values": [0.2, 0.5, 0.7]},
     "patience": {"values": [2, 3, 4]},
+    "wdrop": {"values": [0.2, 0.5]},
+    "dropouti": {"values": [0.2, 0.5, 0.7]},
 }
 sweep_config["parameters"] = parameters_dict
 parameters_dict.update({"epochs": {"value": 1}})
@@ -241,14 +243,6 @@ parameters_dict.update(
             "q": 8,
             "min": 32,
             "max": 256,
-        },
-        "wdrop": {
-            # integers between 0 and 0.5
-            # with evenly-distributed logarithms
-            "distribution": "q_log_uniform_values",
-            "q": 0.1,
-            "min": 0,
-            "max": 0.5,
         },
     }
 )
