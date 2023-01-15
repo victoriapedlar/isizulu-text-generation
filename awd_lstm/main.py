@@ -11,6 +11,7 @@ import sys
 from datetime import datetime
 from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, early_stopping
+import wandb  # Add Weights & Bias logging
 
 parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
@@ -163,6 +164,7 @@ run_name = (
 sargs = ""
 for arg in vars(args):
     sargs += "{:<16}: {}  \n".format(str(arg), str(getattr(args, arg)))
+
 # if not args.log_hparams_only: writer.add_text('args', sargs)
 # print(sargs)
 # ----------------------------------------------- #
@@ -213,11 +215,57 @@ model_name = (
     + "_seed_"
     + str(args.seed)
     + "_patience_"
-    + str(args.patience)
+    + str(config.patience)
     + "_when_"
     + str(args.when)
     + ".pt"
 )
+# ----------Written by Victoria Pedlar---------- #
+sweep_config = {"method": "random"}
+metric = {"name": "loss", "goal": "minimize"}
+
+sweep_config["metric"] = metric
+parameters_dict = {
+    "dropout": {"values": [0.2, 0.5, 0.7]},
+    "patience": {"values": [2, 3, 4]},
+}
+sweep_config["parameters"] = parameters_dict
+parameters_dict.update({"epochs": {"value": 1}})
+parameters_dict.update({"lr": {"value": 30}})
+parameters_dict.update(
+    {
+        "batch_size": {
+            # integers between 32 and 256
+            # with evenly-distributed logarithms
+            "distribution": "q_log_uniform_values",
+            "q": 8,
+            "min": 32,
+            "max": 256,
+        },
+        "wdrop": {
+            # integers between 0 and 0.5
+            # with evenly-distributed logarithms
+            "distribution": "q_log_uniform_values",
+            "q": 0.1,
+            "min": 0,
+            "max": 0.5,
+        },
+        "dropouti": {
+            # integers between 0 and 0.5
+            # with evenly-distributed logarithms
+            "distribution": "q_log_uniform_values",
+            "q": 0.1,
+            "min": 0,
+            "max": 0.5,
+        },
+    }
+)
+wandb.config.update(args)  # adds all of the arguments as config variables
+wandb.init()
+# If called by wandb.agent, as below,
+# this config will be set by Sweep Controller
+config = wandb.config
+# ----------------------------------------------- #
 
 # def model_save(file_name):
 #     with open(file_name, "wb") as f:
@@ -244,18 +292,20 @@ def model_load(file_name):
 
 # Load the dataset and make train, validation and test sets
 
-fn = "corpus.{}.data".format(hashlib.md5(args.data.encode()).hexdigest())
-if os.path.exists(fn) and len(args.tokenizer_data) == 0:
+fn = "corpus.{}.data".format(hashlib.md5(config.data.encode()).hexdigest())
+if os.path.exists(fn) and len(config.tokenizer_data) == 0:
     print("Loading cached dataset...")
     corpus = torch.load(fn)
 else:
     print("Producing dataset...")
-    corpus = data.Corpus(args.data, args.vocab_size, args.use_bpe, args.tokenizer_data)
+    corpus = data.Corpus(
+        config.data, config.vocab_size, config.use_bpe, config.tokenizer_data
+    )
     torch.save(corpus, fn)
 
 eval_batch_size = 10
 test_batch_size = 10
-train_data = batchify(corpus.train, args.batch_size, args)
+train_data = batchify(corpus.train, config.batch_size, args)
 val_data = batchify(corpus.valid, eval_batch_size, args)
 test_data = batchify(corpus.test, test_batch_size, args)
 
@@ -264,20 +314,21 @@ test_data = batchify(corpus.test, test_batch_size, args)
 ntokens = len(corpus.dictionary)
 model = LSTMModel(
     num_tokens=ntokens,
-    embed_size=args.emsize,
+    embed_size=config.emsize,
     output_size=ntokens,
-    hidden_size=args.nhid,
-    n_layers=args.nlayers,
-    dropout=args.dropout,
-    dropouth=args.dropouth,
-    dropouti=args.dropouti,
-    dropoute=args.dropoute,
-    wdrop=args.wdrop,
-    tie_weights=args.tied,
+    hidden_size=config.nhid,
+    n_layers=config.nlayers,
+    dropout=config.dropout,
+    dropouth=config.dropouth,
+    dropouti=config.dropouti,
+    dropoute=config.dropoute,
+    wdrop=config.wdrop,
+    tie_weights=config.tied,
 )
+
 criterion = nn.CrossEntropyLoss()
 
-if args.cuda:
+if config.cuda:
     model = model.cuda()
     criterion = criterion.cuda()
 
@@ -323,7 +374,7 @@ def evaluate(data_source):
     jsd = 0
     sp = 0
     with torch.no_grad():
-        for i in range(0, data_source.size(0) - 1, args.bptt):
+        for i in range(0, data_source.size(0) - 1, config.bptt):
             data, targets = get_batch(data_source, i, args)
             output, hidden = model(data, hidden)
             output_flat = output.view(-1, ntokens)
@@ -333,7 +384,7 @@ def evaluate(data_source):
             # Add epsilon smoothing
             probs = torch.softmax(output_flat, dim=-1)
             if len(probs[0].nonzero()) != len(probs[0]):
-                probs = probs + args.epsilon
+                probs = probs + config.epsilon
                 sums = probs.sum(dim=-1)
                 probs = probs / sums.unsqueeze(-1)
 
@@ -365,7 +416,7 @@ def evaluate(data_source):
     return avg_loss, avg_perplexity, avg_jsd, avg_sp, avg_loss / math.log(2)
 
 
-# ------------- END ADJUSTED CODE
+# ------------- END ADJUSTED CODE --------------
 
 
 # def train():
@@ -411,93 +462,101 @@ def evaluate(data_source):
 #             start_time = time.time()
 
 
-def train():
-    # Turn on training mode which enables dropout.
-    total_loss = 0
-    start_time = time.time()
-    ntokens = len(corpus.dictionary)
-    hidden = model.init_hidden(args.batch_size)
-    batch, i = 0, 0
-    while i < train_data.size(0) - 1 - 1:
-        bptt = args.bptt if np.random.random() < 0.95 else args.bptt / 2.0
-        # Prevent excessively small or negative sequence lengths
-        seq_len = max(5, int(np.random.normal(bptt, 5)))
-        # There's a very small chance that it could select a very long sequence length resulting in OOM
-        # seq_len = min(seq_len, args.bptt + 10)
+def train(config=None):
+    # Initialize a new wandb run
+    with wandb.init(config=config):
+        # If called by wandb.agent, as below,
+        # this config will be set by Sweep Controller
+        config = wandb.config
 
-        lr2 = optimizer.param_groups[0]["lr"]
-        optimizer.param_groups[0]["lr"] = lr2 * seq_len / args.bptt
-        model.train()
-        data, targets = get_batch(train_data, i, args, seq_len=seq_len)
+        # Turn on training mode which enables dropout.
+        total_loss = 0
+        start_time = time.time()
+        ntokens = len(corpus.dictionary)
+        hidden = model.init_hidden(config.batch_size)
+        # hidden = model.init_hidden(args.batch_size)
+        batch, i = 0, 0
+        while i < train_data.size(0) - 1 - 1:
+            bptt = config.bptt if np.random.random() < 0.95 else config.bptt / 2.0
+            # Prevent excessively small or negative sequence lengths
+            seq_len = max(5, int(np.random.normal(bptt, 5)))
+            # There's a very small chance that it could select a very long sequence length resulting in OOM
+            # seq_len = min(seq_len, args.bptt + 10)
 
-        # Starting each batch, we detach the hidden state from how it was previously produced.
-        # If we didn't, the model would try backpropagating all the way to start of the dataset.
-        hidden = repackage_hidden(hidden)
-        optimizer.zero_grad()
+            lr2 = optimizer.param_groups[0]["lr"]
+            optimizer.param_groups[0]["lr"] = lr2 * seq_len / config.bptt
+            model.train()
+            data, targets = get_batch(train_data, i, args, seq_len=seq_len)
 
-        output, hidden = model(data, hidden)
-        raw_loss = criterion(output.view(-1, ntokens), targets)
+            # Starting each batch, we detach the hidden state from how it was previously produced.
+            # If we didn't, the model would try backpropagating all the way to start of the dataset.
+            hidden = repackage_hidden(hidden)
+            optimizer.zero_grad()
 
-        loss = raw_loss
-        # Activation Regularization
-        # if args.alpha:
-        #     loss = loss + sum(
-        #         args.alpha * dropped_rnn_h.pow(2).mean()
-        #         for dropped_rnn_h in dropped_rnn_hs[-1:]
-        #     )
-        # # Temporal Activation Regularization (slowness)
-        # if args.beta:
-        #     loss = loss + sum(
-        #         args.beta * (rnn_h[1:] - rnn_h[:-1]).pow(2).mean()
-        #         for rnn_h in rnn_hs[-1:]
-        #     )
-        loss.backward()
+            output, hidden = model(data, hidden)
+            raw_loss = criterion(output.view(-1, ntokens), targets)
 
-        # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
-        if args.clip:
-            torch.nn.utils.clip_grad_norm_(params, args.clip)
-        optimizer.step()
+            loss = raw_loss
+            # Activation Regularization
+            # if args.alpha:
+            #     loss = loss + sum(
+            #         args.alpha * dropped_rnn_h.pow(2).mean()
+            #         for dropped_rnn_h in dropped_rnn_hs[-1:]
+            #     )
+            # # Temporal Activation Regularization (slowness)
+            # if args.beta:
+            #     loss = loss + sum(
+            #         args.beta * (rnn_h[1:] - rnn_h[:-1]).pow(2).mean()
+            #         for rnn_h in rnn_hs[-1:]
+            #     )
+            loss.backward()
 
-        total_loss += raw_loss.data
-        optimizer.param_groups[0]["lr"] = lr2
-        if batch % args.log_interval == 0 and batch > 0:
-            cur_loss = total_loss / args.log_interval
-            elapsed = time.time() - start_time
-            print(
-                "| epoch {:3d} | {:5d}/{:5d} batches | lr {:05.5f} | ms/batch {:5.2f} | "
-                "loss {:5.2f} | ppl {:8.2f} | bpc {:8.3f}".format(
-                    epoch,
-                    batch,
-                    len(train_data) // args.bptt,
-                    optimizer.param_groups[0]["lr"],
-                    elapsed * 1000 / args.log_interval,
-                    cur_loss,
-                    math.exp(cur_loss),
-                    cur_loss / math.log(2),
+            # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
+            if config.clip:
+                torch.nn.utils.clip_grad_norm_(params, config.clip)
+            optimizer.step()
+
+            total_loss += raw_loss.data
+            optimizer.param_groups[0]["lr"] = lr2
+            if batch % config.log_interval == 0 and batch > 0:
+                cur_loss = total_loss / config.log_interval
+                elapsed = time.time() - start_time
+                print(
+                    "| epoch {:3d} | {:5d}/{:5d} batches | lr {:05.5f} | ms/batch {:5.2f} | "
+                    "loss {:5.2f} | ppl {:8.2f} | bpc {:8.3f}".format(
+                        epoch,
+                        batch,
+                        len(train_data) // config.bptt,
+                        optimizer.param_groups[0]["lr"],
+                        elapsed * 1000 / config.log_interval,
+                        cur_loss,
+                        math.exp(cur_loss),
+                        cur_loss / math.log(2),
+                    )
                 )
-            )
-            total_loss = 0
-            start_time = time.time()
-        batch += 1
-        i += seq_len
+                total_loss = 0
+                start_time = time.time()
+            batch += 1
+            i += seq_len
 
-        ####################################
-        if args.cuda:
-            try:
-                torch.cuda.empty_cache()
-                # print('torch cuda empty cache')
-            except:
-                pass
-        ####################################
+            ####################################
+            if config.cuda:
+                try:
+                    torch.cuda.empty_cache()
+                    # print('torch cuda empty cache')
+                except:
+                    pass
+            ####################################
 
 
 # Do the actual training
 # Directing print output to a .txt file
-os.makedirs(os.path.dirname(args.save_history), exist_ok=True)
-sys.stdout = open(args.save_history, "wt")
+os.makedirs(os.path.dirname(config.save_history), exist_ok=True)
+sys.stdout = open(config.save_history, "wt")
 
 # Loop over epochs.
-lr = args.lr
+# lr = config.lr
+lr = config.lr
 best_val_loss = []
 stored_loss = 100000000
 # early stopping parameter
@@ -512,18 +571,18 @@ for name, param in model.state_dict().items():
 try:
     optimizer = None
     # Ensure the optimizer is optimizing params, which includes both the model's weights as well as the criterion's weight (i.e. Adaptive Softmax)
-    if args.optimizer == "sgd":
+    if config.optimizer == "sgd":
         optimizer = torch.optim.SGD(
-            params, lr=args.lr, weight_decay=args.wdecay
+            params, lr=config.lr, weight_decay=config.wdecay
         )  # params not trainable params... (?)
-    if args.optimizer == "adam":
-        optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.wdecay)
+    if config.optimizer == "adam":
+        optimizer = torch.optim.Adam(params, lr=config.lr, weight_decay=config.wdecay)
 
-    for epoch in range(1, args.epochs + 1):
+    for epoch in range(1, config.epoch + 1):
         print("Starting epoch {}".format(epoch))
         epoch_start_time = time.time()
         train()
-        if args.cuda:
+        if config.cuda:
             try:
                 torch.cuda.empty_cache()
                 # print('torch cuda empty cache')
@@ -573,10 +632,10 @@ try:
             del tmp
 
             # begin early stopping
-            if epoch % args.eval_every == (args.eval_every - 1):
+            if epoch % config.eval_every == (config.eval_every - 1):
                 val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
                 stored_loss, stop_step, stop = early_stopping(
-                    val_loss2, stored_loss, stop_step, args.patience
+                    val_loss2, stored_loss, stop_step, config.patience
                 )
             if stop:
                 break
@@ -620,27 +679,27 @@ try:
                 print("Saving model (new best validation)")
                 stored_loss = val_loss
 
-            if args.asgd:
+            if config.asgd:
                 if (
-                    args.optimizer == "sgd"
+                    config.optimizer == "sgd"
                     and "t0" not in optimizer.param_groups[0]
                     and (
-                        len(best_val_loss) > args.nonmono
-                        and val_loss > min(best_val_loss[: -args.nonmono])
+                        len(best_val_loss) > config.nonmono
+                        and val_loss > min(best_val_loss[: -config.nonmono])
                     )
                 ):
                     # if 't0' not in optimizer.param_groups[0]:
                     print("Switching to ASGD")
-                    # optimizer = ASGD(trainable_parameters, lr=args.lr, t0=0, lambd=0., weight_decay=args.wdecay)
+                    # optimizer = ASGD(trainable_parameters, lr=config.lr, t0=0, lambd=0., weight_decay=args.wdecay)
                     optimizer = torch.optim.ASGD(
                         trainable_parameters,
-                        lr=args.lr,
+                        lr=config.lr,
                         t0=0,
                         lambd=0.0,
-                        weight_decay=args.wdecay,
+                        weight_decay=config.wdecay,
                     )
 
-            if epoch in args.when:
+            if epoch in config.when:
                 print("Saving model before learning rate decreased")
                 # model_save('{}.e{}'.format(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
                 #            vocabulary, val_loss, math.exp(val_loss), vars(args), epoch))
@@ -651,13 +710,14 @@ try:
 
             best_val_loss.append(val_loss)
 
+            wandb.log({"loss": best_val_loss, "epoch": epoch})
 
 except KeyboardInterrupt:
     print("-" * 89)
     print("Exiting from training early")
 
 # # Open the best saved model run it on the test data
-# model_load(args.save)
+# model_load(config.save)
 
 # # Run on test data
 # test_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(test_data)
@@ -668,3 +728,8 @@ except KeyboardInterrupt:
 #     )
 # )
 # print("=" * 89)
+
+# ------------------ Written by Victoria ------------------
+sweep_id = wandb.sweep(sweep_config, project="pytorch-sweeps-test")
+wandb.agent(sweep_id, train, count=5)
+# --------------------------------------------------------
