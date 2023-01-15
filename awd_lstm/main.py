@@ -250,14 +250,6 @@ parameters_dict.update(
             "min": 0,
             "max": 0.5,
         },
-        "dropouti": {
-            # integers between 0 and 0.5
-            # with evenly-distributed logarithms
-            "distribution": "q_log_uniform_values",
-            "q": 0.1,
-            "min": 0,
-            "max": 0.5,
-        },
     }
 )
 sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
