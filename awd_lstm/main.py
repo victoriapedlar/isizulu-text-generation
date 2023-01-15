@@ -13,6 +13,8 @@ from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, early_stopping
 import wandb  # Add Weights & Bias logging
 
+wandb.init(project="awd-lstm-test", entity="isizulu-text-generation")
+
 parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
     "--data", type=str, default="data/penn/", help="location of the data corpus"
@@ -534,6 +536,7 @@ for name, param in model.state_dict().items():
 
 # At any point you can hit Ctrl + C to break out of training early.
 try:
+    wandb.init(config=config)
     with wandb.init(config=config):
         # If called by wandb.agent, as below,
         # this config will be set by Sweep Controller
@@ -700,6 +703,6 @@ except KeyboardInterrupt:
 # print("=" * 89)
 
 # ------------------ Written by Victoria ------------------
-sweep_id = wandb.sweep(sweep_config, project="pytorch-sweeps-test")
+sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
 wandb.agent(sweep_id, train, count=5)
 # --------------------------------------------------------
