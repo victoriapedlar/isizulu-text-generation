@@ -355,8 +355,7 @@ def compute_jsd(p, q, base=np.e):
     p, q = p / p.sum(), q / q.sum()
     m = 1.0 / 2 * (p + q)
     ent = entropy(p, m, base=base) / 2.0 + entropy(q, m, base=base) / 2.0
-    if ent == float("Inf"):
-        ent = torch.log(torch.FloatTensor([2]))
+    ent[np.isinf(ent)] = torch.log(torch.FloatTensor([2]))
     return ent
 
 
