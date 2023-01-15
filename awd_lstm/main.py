@@ -225,6 +225,8 @@ sweep_config = {"method": "random"}
 metric = {"name": "loss", "goal": "minimize"}
 
 sweep_config["metric"] = metric
+
+sweep_config["parameters"] = args
 parameters_dict = {
     "dropout": {"values": [0.2, 0.5, 0.7]},
     "patience": {"values": [2, 3, 4]},
@@ -232,7 +234,7 @@ parameters_dict = {
     "dropouti": {"values": [0.2, 0.5, 0.7]},
 }
 sweep_config["parameters"] = parameters_dict
-parameters_dict.update({"epochs": {"value": 1}})
+parameters_dict.update({"epochs": {"value": 500}})
 parameters_dict.update({"lr": {"value": 30}})
 parameters_dict.update(
     {
@@ -247,12 +249,10 @@ parameters_dict.update(
     }
 )
 sweep_id = wandb.sweep(sweep_config, project="awd-lstm-test")
-
 wandb.init(config=sweep_config)
 # If called by wandb.agent, as below,
 # this config will be set by Sweep Controller
 config = wandb.config
-wandb.config.update(args)  # adds all of the arguments as config variables
 # ----------------------------------------------- #
 
 # def model_save(file_name):
