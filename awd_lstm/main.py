@@ -263,7 +263,6 @@ parameters_dict.update(
     }
 )
 
-wandb.init()
 # If called by wandb.agent, as below,
 # this config will be set by Sweep Controller
 config = wandb.config
@@ -536,7 +535,6 @@ for name, param in model.state_dict().items():
 
 # At any point you can hit Ctrl + C to break out of training early.
 try:
-    wandb.init(config=config)
     with wandb.init(config=config):
         # If called by wandb.agent, as below,
         # this config will be set by Sweep Controller
