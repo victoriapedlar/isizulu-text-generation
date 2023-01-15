@@ -413,7 +413,13 @@ def evaluate(data_source):
     avg_loss = total_loss / (len(data_source) - 1)
 
     # Return the results
-    return avg_loss, avg_perplexity, avg_jsd, avg_sp, avg_loss / math.log(2)
+    return {
+        "loss": avg_loss,
+        "perplexity": avg_perplexity,
+        "jsd": avg_jsd,
+        "sp": avg_sp,
+        "bpc": avg_loss / math.log(2),
+    }
 
 
 # ------------- END ADJUSTED CODE --------------
@@ -595,18 +601,9 @@ try:
                     tmp[prm] = prm.data.detach()
                     prm.data = optimizer.state[prm]["ax"].detach()
 
-            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
-            # check if a variable is a numpy ndarray using the isinstance() function, convert it to a scalar if it is
-            if isinstance(val_loss2, np.ndarray):
-                val_loss2 = val_loss2.item()
-            if isinstance(avg_perplexity, np.ndarray):
-                avg_perplexity = avg_perplexity.item()
-            if isinstance(avg_jsd, np.ndarray):
-                avg_jsd = avg_jsd.item()
-            if isinstance(avg_sp, np.ndarray):
-                avg_sp = avg_sp.item()
-            if isinstance(bpc, np.ndarray):
-                bpc = bpc.item()
+            metrics = evaluate(val_data)
+            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+
             print("-" * 89)
             print(
                 "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
@@ -644,7 +641,8 @@ try:
 
             # begin early stopping
             if epoch % config.eval_every == (config.eval_every - 1):
-                val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
+                metrics = evaluate(val_data)
+                val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
                 stored_loss, stop_step, stop = early_stopping(
                     val_loss2, stored_loss, stop_step, config.patience
                 )
@@ -661,7 +659,8 @@ try:
                     len([prm for prm in model.parameters()])
                 )
             )
-            val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
+            metrics = evaluate(val_data)
+            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
             print(
                 "{} model params (SGD after eval)".format(
                     len([prm for prm in model.parameters()])
