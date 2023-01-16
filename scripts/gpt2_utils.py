@@ -522,7 +522,6 @@ def get_gpt2_trainer(
     )
 
     training_args = TrainingArguments(
-        report_to="wandb",  # Enable logging to W&B
         output_dir=os.path.join(MODEL_DIR, experiment_id),
         logging_dir=os.path.join(TB_DIR, experiment_id),
         save_steps=tparams["save_steps"],
