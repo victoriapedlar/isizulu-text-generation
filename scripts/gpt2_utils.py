@@ -345,21 +345,19 @@ def evaluate(
                 lls.append(log_likelihood)
 
                 # Compute JSD
-                for i in range(len(outputs)):
-                    labels = torch.zeros(len(outputs[i]), outputs[i].size(-1))
-                    for j in range(len(outputs[i])):
+                for output in outputs:
+                    labels = torch.zeros(len(output), output.size(-1))
+                    for j in range(len(output)):
                         labels[j, target_ids[i][j]] = 1
-                        jsd_ = compute_jsd(
-                            torch.softmax(outputs[i][j], dim=-1), labels[j]
-                        )
+                        jsd_ = compute_jsd(torch.softmax(output[j], dim=-1), labels[j])
                         jsd_scores.append(jsd_)
                     jsd_scores = torch.tensor(jsd_scores).mean()
                     jsd += jsd_scores
 
                 # Compute sparsemax
-                for i in range(len(outputs)):
+                for output in outputs:
                     sp_scores.append(
-                        compute_sp(torch.softmax(outputs[i], dim=-1), target_ids[i])
+                        compute_sp(torch.softmax(output, dim=-1), target_ids[i])
                     )
                 sp_scores = torch.tensor(sp_scores).mean()
                 sp += sp_scores
