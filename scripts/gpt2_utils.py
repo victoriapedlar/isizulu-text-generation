@@ -306,7 +306,6 @@ def evaluate(
 ):
     metrics = {}
     assert stride <= input_block_size
-    metrics = {}
     for language_id, file_paths in eval_data:
         lls = []
         total_characters = 0
@@ -343,38 +342,39 @@ def evaluate(
                 # outputs[0] = nats/token (https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
                 # outputs[0] * stride = nats
                 log_likelihood = outputs[0].item() * stride
+                lls.append(log_likelihood)
 
-            lls.append(log_likelihood)
+                # Compute JSD
+                for i in range(len(outputs)):
+                    labels = torch.zeros(len(outputs[i]), outputs[i].size(-1))
+                    for j in range(len(outputs[i])):
+                        labels[j, target_ids[i][j]] = 1
+                        jsd_ = compute_jsd(
+                            torch.softmax(outputs[i][j], dim=-1), labels[j]
+                        )
+                        jsd_scores.append(jsd_)
+                    jsd_scores = torch.tensor(jsd_scores).mean()
+                    jsd += jsd_scores
 
-            # Compute JSD
-            for i in range(len(outputs)):
-                labels = torch.zeros(len(outputs[i]), outputs[i].size(-1))
-                for j in range(len(outputs[i])):
-                    labels[j, target_ids[i][j]] = 1
-                    jsd_ = compute_jsd(torch.softmax(outputs[i][j], dim=-1), labels[j])
-                    jsd_scores.append(jsd_)
-                jsd_scores = torch.tensor(jsd_scores).mean()
-                jsd += jsd_scores
+                # Compute sparsemax
+                for i in range(len(outputs)):
+                    sp_scores.append(
+                        compute_sp(torch.softmax(outputs[i], dim=-1), target_ids[i])
+                    )
+                sp_scores = torch.tensor(sp_scores).mean()
+                sp += sp_scores
 
-            # Compute sparsemax
-            for i in range(len(outputs)):
-                sp_scores.append(
-                    compute_sp(torch.softmax(outputs[i], dim=-1), target_ids[i])
-                )
-            sp_scores = torch.tensor(sp_scores).mean()
-            sp += sp_scores
+                # Compute perplexity
+                probs = torch.softmax(outputs, dim=-1)
+                if len(probs[0].nonzero()) != len(probs[0]):
+                    probs = probs[:, :] + epsilon
+                    sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                    probs = [probs[i] / sums[i] for i in range(len(sums))]
+                    probs = torch.stack(probs)
 
-            # Compute perplexity
-            probs = torch.softmax(outputs, dim=-1)
-            if len(probs[0].nonzero()) != len(probs[0]):
-                probs = probs[:, :] + epsilon
-                sums = [probs[i].sum().item() for i in range(probs.size(0))]
-                probs = [probs[i] / sums[i] for i in range(len(sums))]
-                probs = torch.stack(probs)
-
-            p = [probs[i, target_ids[i].item()] for i in range(len(target_ids))]
-            p = torch.stack(p)
-            perp += torch.log(p**-1).mean().item()
+                p = [probs[i, target_ids[i].item()] for i in range(len(target_ids))]
+                p = torch.stack(p)
+                perp += torch.log(p**-1).mean().item()
 
         bpc = (sum(lls) / log(2)) / total_characters
         jsd = sum(jsd_scores) / total_characters
