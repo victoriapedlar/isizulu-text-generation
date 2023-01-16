@@ -26,6 +26,7 @@ from transformers import (
 
 from layer_switching_gpt2 import LayerSwitchingGPT2Config, GPT2LayerSwitchingLMHeadModel
 
+# Add Weights & Biases logging
 import wandb
 
 if is_torch_tpu_available():
@@ -379,8 +380,8 @@ def evaluate_bpcs(
 
 def get_gpt2_trainer(
     experiment_id,
+    hparams: dict,
     tparams: dict,
-    config=None,
     disable_tqdm=False,
     disable_prediction_tqdm=True,
     log_to_console=False,
@@ -397,136 +398,165 @@ def get_gpt2_trainer(
     :param resume_checkpoint_dir:
     :return: A Trainer object with the requested properties.
     """
+
+    assert "vocab_size" in hparams
+    assert "train_data" in hparams
+    assert "val_data" in hparams
+    assert "test_data" in hparams
+    assert "model_max_input_size" in hparams
+    assert "pdrop" in hparams
+    assert "d_model" in hparams
+    assert "n_layers" in hparams
+    assert "n_heads" in hparams
+    assert "train_block_size" in hparams
+    assert "train_stride" in hparams
+    assert "val_block_size" in hparams
+    assert "val_stride" in hparams
+    assert "learning_rate" in hparams
+    assert "batch_size" in hparams
+    assert "n_language_specific_attention_layers" in hparams
+    assert "n_languages" in hparams
+    assert "language_specific_input_embeds" in hparams
+    assert "language_specific_prediction_heads" in hparams
+    assert "semantic_concepts" in hparams
+    assert "language_specific_transformation" in hparams
+    assert "inverse_language_specific_transformation" in hparams
+    assert "tie_word_embeddings" in hparams
+
     assert "max_steps" in tparams
     assert "patience" in tparams
     assert "log_steps" in tparams
     assert "eval_steps" in tparams
     assert "save_steps" in tparams
 
-    with wandb.init(config=config):
-        # set sweep configuration
-        config = wandb.config
-
-        if resume_checkpoint_dir is not None:
-            model = GPT2LayerSwitchingLMHeadModel.from_pretrained(resume_checkpoint_dir)
-        else:
-            config = LayerSwitchingGPT2Config(
-                vocab_size=config.vocab_size,
-                n_positions=config.model_max_input_size,
-                n_ctx=config.model_max_input_size,
-                n_embd=config.d_model,
-                n_layer=config.n_layers,
-                n_head=config.n_heads,
-                n_language_specific_attention_layers=config.n_language_specific_attention_layers,
-                n_languages=config.n_languages,
-                language_specific_input_embeds=config.language_specific_input_embeds,
-                language_specific_prediction_heads=config.language_specific_prediction_heads,
-                semantic_concepts=config.semantic_concepts,
-                language_specific_transformation=config.language_specific_transformation,
-                inverse_language_specific_transformation=config.inverse_language_specific_transformation,
-                attn_pdrop=config.pdrop,
-                embd_pdrop=config.pdrop,
-                resid_pdrop=config.pdrop,
-                summary_first_dropout=config.pdrop,
-                bos_token_id=0,
-                eos_token_id=0,
-                pad_token_id=0,
-                tie_word_embeddings=config.tie_word_embeddings,
-            )
-
-            model = GPT2LayerSwitchingLMHeadModel(config=config)
-
-        config.total_trainable_parameters = model.num_parameters(only_trainable=True)
-
-        if "tokenizer_language_datasets" in config and "tokenizer_dataset" in config:
-            raise ValueError(
-                "You cannot specify both tokenizer_language_datasets and tokenizer_dataset."
-            )
-        elif "tokenizer_language_datasets" in config:
-            assert (
-                config.language_specific_input_embeds
-                and config.language_specific_prediction_heads
-            )
-            assert len(config.tokenizer_language_datasets) == len(config.train_data)
-            tokenizers = {
-                language_id: get_tokenizer(train_files, config.vocab_size)
-                for language_id, train_files in config.tokenizer_language_datasets
-            }
-        elif "tokenizer_dataset" in config:
-            # all languages use the same tokenizer
-            tokenizer = get_tokenizer(config.tokenizer_dataset, config.vocab_size)
-            tokenizers = {
-                language_id: tokenizer for language_id, _ in config.train_data
-            }
-        else:
-            raise ValueError(
-                "You must specify either tokenizer_language_datasets or tokenizer_dataset."
-            )
-
-        train_dataset = MultilingualCachedTextDataset(
-            [
-                (language_id, tokenizers[language_id], dataset_files)
-                for language_id, dataset_files in config.train_data
+    if resume_checkpoint_dir is not None:
+        model = GPT2LayerSwitchingLMHeadModel.from_pretrained(resume_checkpoint_dir)
+    else:
+        config = LayerSwitchingGPT2Config(
+            vocab_size=hparams["vocab_size"],
+            n_positions=hparams["model_max_input_size"],
+            n_ctx=hparams["model_max_input_size"],
+            n_embd=hparams["d_model"],
+            n_layer=hparams["n_layers"],
+            n_head=hparams["n_heads"],
+            n_language_specific_attention_layers=hparams[
+                "n_language_specific_attention_layers"
             ],
-            block_size=config.train_block_size,
-            stride=config.train_stride,
-            batch_size=config.batch_size,
-            shuffle=True,
-        )
-
-        validation_dataset = MultilingualCachedTextDataset(
-            [
-                (language_id, tokenizers[language_id], dataset_files)
-                for language_id, dataset_files in config.val_data
+            n_languages=hparams["n_languages"],
+            language_specific_input_embeds=hparams["language_specific_input_embeds"],
+            language_specific_prediction_heads=hparams[
+                "language_specific_prediction_heads"
             ],
-            block_size=config.val_block_size,
-            stride=config.val_stride,
-            batch_size=config.batch_size,
-            shuffle=False,
+            semantic_concepts=hparams["semantic_concepts"],
+            language_specific_transformation=hparams[
+                "language_specific_transformation"
+            ],
+            inverse_language_specific_transformation=hparams[
+                "inverse_language_specific_transformation"
+            ],
+            attn_pdrop=hparams["pdrop"],
+            embd_pdrop=hparams["pdrop"],
+            resid_pdrop=hparams["pdrop"],
+            summary_first_dropout=hparams["pdrop"],
+            bos_token_id=0,
+            eos_token_id=0,
+            pad_token_id=0,
+            tie_word_embeddings=hparams["tie_word_embeddings"],
         )
 
-        data_collator = MultilingualDataCollatorForLanguageModeling(
-            list(tokenizers.values())[
-                0
-            ].pad_token_id  # the same pad_token_id is used for all tokenizers
+        model = GPT2LayerSwitchingLMHeadModel(config=config)
+
+    hparams["total_trainable_parameters"] = model.num_parameters(only_trainable=True)
+
+    if "tokenizer_language_datasets" in hparams and "tokenizer_dataset" in hparams:
+        raise ValueError(
+            "You cannot specify both tokenizer_language_datasets and tokenizer_dataset."
+        )
+    elif "tokenizer_language_datasets" in hparams:
+        assert (
+            hparams["language_specific_input_embeds"]
+            and hparams["language_specific_prediction_heads"]
+        )
+        assert len(hparams["tokenizer_language_datasets"]) == len(hparams["train_data"])
+        tokenizers = {
+            language_id: get_tokenizer(train_files, hparams["vocab_size"])
+            for language_id, train_files in hparams["tokenizer_language_datasets"]
+        }
+    elif "tokenizer_dataset" in hparams:
+        # all languages use the same tokenizer
+        tokenizer = get_tokenizer(hparams["tokenizer_dataset"], hparams["vocab_size"])
+        tokenizers = {
+            language_id: tokenizer for language_id, _ in hparams["train_data"]
+        }
+    else:
+        raise ValueError(
+            "You must specify either tokenizer_language_datasets or tokenizer_dataset."
         )
 
-        training_args = TrainingArguments(
-            output_dir=os.path.join(MODEL_DIR, experiment_id),
-            logging_dir=os.path.join(TB_DIR, experiment_id),
-            report_to="wandb",
-            save_steps=tparams["save_steps"],
-            max_steps=tparams["max_steps"],
-            per_device_train_batch_size=1,
-            learning_rate=config.learning_rate,
-            weight_decay=config.weight_decay,
-            logging_steps=tparams["log_steps"],
-            eval_steps=tparams["eval_steps"],
-            patience=tparams["patience"],
-            prediction_loss_only=True,
-            evaluate_during_training=True,
-            disable_train_tqdm=disable_tqdm,
-            disable_prediction_tqdm=disable_prediction_tqdm,
-            config=config,
-            is_dataset_pre_batched=True,
-        )
+    train_dataset = MultilingualCachedTextDataset(
+        [
+            (language_id, tokenizers[language_id], dataset_files)
+            for language_id, dataset_files in hparams["train_data"]
+        ],
+        block_size=hparams["train_block_size"],
+        stride=hparams["train_stride"],
+        batch_size=hparams["batch_size"],
+        shuffle=True,
+    )
 
-        trainer = Trainer(
-            tokenizers=tokenizers,
-            model=model,
-            args=training_args,
-            data_collator=data_collator,
-            train_dataset=train_dataset,
-            eval_dataset=validation_dataset,
-            log_to_console=log_to_console,
-        )
+    validation_dataset = MultilingualCachedTextDataset(
+        [
+            (language_id, tokenizers[language_id], dataset_files)
+            for language_id, dataset_files in hparams["val_data"]
+        ],
+        block_size=hparams["val_block_size"],
+        stride=hparams["val_stride"],
+        batch_size=hparams["batch_size"],
+        shuffle=False,
+    )
+
+    data_collator = MultilingualDataCollatorForLanguageModeling(
+        list(tokenizers.values())[
+            0
+        ].pad_token_id  # the same pad_token_id is used for all tokenizers
+    )
+
+    training_args = TrainingArguments(
+        report_to="wandb",  # Enable logging to W&B
+        output_dir=os.path.join(MODEL_DIR, experiment_id),
+        logging_dir=os.path.join(TB_DIR, experiment_id),
+        save_steps=tparams["save_steps"],
+        max_steps=tparams["max_steps"],
+        per_device_train_batch_size=1,
+        learning_rate=hparams["learning_rate"],
+        weight_decay=hparams["weight_decay"],
+        logging_steps=tparams["log_steps"],
+        eval_steps=tparams["eval_steps"],
+        patience=tparams["patience"],
+        prediction_loss_only=True,
+        evaluate_during_training=True,
+        disable_train_tqdm=disable_tqdm,
+        disable_prediction_tqdm=disable_prediction_tqdm,
+        hparams=hparams,
+        is_dataset_pre_batched=True,
+    )
+
+    trainer = Trainer(
+        tokenizers=tokenizers,
+        model=model,
+        args=training_args,
+        data_collator=data_collator,
+        train_dataset=train_dataset,
+        eval_dataset=validation_dataset,
+        log_to_console=log_to_console,
+    )
 
     return trainer
 
 
 def run_experiment(
+    hparams: dict,
     tparams: dict,
-    config=None,
     eval_stride=64,
     disable_tqdm=True,
     disable_prediction_tqdm=False,
@@ -547,57 +577,50 @@ def run_experiment(
     :param resume_checkpoint_dir: the checkpoint directory of an experiment to resume
     :param log_file: the file to save model evaluation results for the experiment
     """
-    with wandb.init(config=config):
-        # set sweep configuration
-        config = wandb.config
-        if experiment_id is None:
-            experiment_id = uuid4().hex  # create a random experiment ID
+    if experiment_id is None:
+        experiment_id = uuid4().hex  # create a random experiment ID
 
-        trainer = get_gpt2_trainer(
-            experiment_id,
-            config,
-            tparams,
-            disable_tqdm,
-            disable_prediction_tqdm,
-            log_to_console,
-            resume_checkpoint_dir,
-        )
-        # ------------------- MODIFIED CODE -------------------
-        trainer.train(model_path=resume_checkpoint_dir)
-        val_metrics = evaluate_bpcs(
-            trainer.tokenizers,
-            trainer.model,
-            config.val_data,
-            input_block_size=config.train_block_size,
-            stride=eval_stride,
-            disable_tqdm=disable_prediction_tqdm,
-            smoothing=0.1,
-            epsilon=1e-8,
-        )
-        logger.info(repr(val_metrics))
+    trainer = get_gpt2_trainer(
+        experiment_id,
+        hparams,
+        tparams,
+        disable_tqdm,
+        disable_prediction_tqdm,
+        log_to_console,
+        resume_checkpoint_dir,
+    )
+    trainer.train(model_path=resume_checkpoint_dir)
+    val_metrics = evaluate_bpcs(
+        trainer.tokenizers,
+        trainer.model,
+        hparams["val_data"],
+        input_block_size=hparams["train_block_size"],
+        stride=eval_stride,
+        disable_tqdm=disable_prediction_tqdm,
+    )
+    logger.info(repr(val_metrics))
 
-        test_metrics = evaluate_bpcs(
-            trainer.tokenizers,
-            trainer.model,
-            config.test_data,
-            input_block_size=config.train_block_size,
-            stride=eval_stride,
-            disable_tqdm=disable_prediction_tqdm,
-            smoothing=0.1,
-            epsilon=1e-8,
-        )
-        logger.info(repr(test_metrics))
-        # ------------------- END MODIFIED CODE ------------------
+    test_metrics = evaluate_bpcs(
+        trainer.tokenizers,
+        trainer.model,
+        hparams["test_data"],
+        input_block_size=hparams["train_block_size"],
+        stride=eval_stride,
+        disable_tqdm=disable_prediction_tqdm,
+    )
+    logger.info(repr(test_metrics))
 
-        log_data = {
-            "id": experiment_id,
-            "completion_time": datetime.now().strftime("%x %X"),
-            "steps": trainer.global_step,
-            "hparams": config,
-            "tparams": tparams,
-            "val_metrics": val_metrics,
-            "test_metrics": test_metrics,
-        }
+    log_data = {
+        "id": experiment_id,
+        "completion_time": datetime.now().strftime("%x %X"),
+        "steps": trainer.global_step,
+        "hparams": hparams,
+        "tparams": tparams,
+        "val_metrics": val_metrics,
+        "test_metrics": test_metrics,
+    }
 
-        with open(os.path.join(LOG_DIR, log_file), "a") as logfile:
-            logfile.write(repr(log_data) + "\n")
+    with open(os.path.join(LOG_DIR, log_file), "a") as logfile:
+        logfile.write(repr(log_data) + "\n")
+
+    wandb.finish()

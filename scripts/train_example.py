@@ -4,6 +4,12 @@ import sys
 import logging
 from gpt2_utils import run_experiment
 
+# Add Weights & Biases logging
+import wandb
+import os
+
+os.environ["WANDB_LOG_MODEL"] = "true"
+
 # print logs to console
 streamHandler = logging.StreamHandler(sys.stdout)
 streamHandler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s"))
@@ -23,46 +29,6 @@ val_data = [
 test_data = [
     (0, ["data/combined/isizulu/test.txt"]),
 ]
-
-# ---------- CUSTOM CODE ----------
-import wandb
-
-# method
-sweep_config = {"method": "random"}
-
-# hyperparameters
-parameters_dict = {
-    "tokenizer_dataset": {"value": tokenizer_train_data_zulu},
-    "vocab_size": {"value": 8000},
-    "train_data": {"value": [(0, tokenizer_train_data_zulu)]},
-    "val_data": {"value": val_data},
-    "test_data": {"value": test_data},
-    "model_max_input_size": {"value": 1024},
-    "pdrop": {"value": 0.1},
-    "d_model": {"value": 32},
-    "n_layers": {"value": 8},
-    "n_heads": {"value": 8},
-    "train_block_size": {"value": 128},
-    "train_stride": {"value": 16},
-    "val_block_size": {"value": 128},
-    "val_stride": {"value": 128},
-    "learning_rate": {"distribution": "log_uniform_values", "min": 1e-5, "max": 1e-3},
-    "batch_size": {"values": [8, 16, 32, 64]},
-    "weight_decay": {"values": [0.0, 0.1, 0.2]},
-    "scheduler": {"value": "linear_with_warmup"},
-    "n_language_specific_attention_layers": {"value": 0},
-    "n_languages": {"value": 1},  # number of sets of language/family specific layers
-    "language_specific_input_embeds": {"value": False},
-    "language_specific_prediction_heads": {"value": False},
-    "language_specific_transformation": {"value": False},
-    "inverse_language_specific_transformation": {"value": False},
-    "semantic_concepts": {"value": None},
-    "tie_word_embeddings": {"value": True},
-}
-
-sweep_config["parameters"] = parameters_dict
-sweep_id = wandb.sweep(sweep_config, project="transformer-combined")
-# ---------- END CUSTOM CODE ----------
 
 hparams = {
     "tokenizer_dataset": tokenizer_train_data_zulu,
@@ -100,6 +66,5 @@ tparams = {
     "eval_steps": 5,
     "save_steps": 2,
 }
-
-run_experiment(wandb.config, tparams, eval_stride=64, experiment_id="combined_isizulu")
-wandb.agent(sweep_id, run_experiment, count=20)
+wandb.init(project="transformer-combined")
+run_experiment(hparams, tparams, eval_stride=64, experiment_id="combined_isizulu")
