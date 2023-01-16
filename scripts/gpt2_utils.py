@@ -657,7 +657,15 @@ def run_experiment(
         "hparams": hparams,
         "tparams": tparams,
         "val_metrics": val_metrics,
+        "bpc": val_bpc,
+        "jsd": val_jsd,
+        "sp": val_sp,
+        "ppl": val_perplexity,
         "test_metrics": test_metrics,
+        "bpc": test_bpc,
+        "jsd": test_jsd,
+        "sp": test_sp,
+        "ppl": test_perplexity,
     }
 
     with open(os.path.join(LOG_DIR, log_file), "a") as logfile:
