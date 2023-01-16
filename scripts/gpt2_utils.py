@@ -577,6 +577,10 @@ def run_experiment(
     :param resume_checkpoint_dir: the checkpoint directory of an experiment to resume
     :param log_file: the file to save model evaluation results for the experiment
     """
+    wandb.init(project="transformer-combined", config={"max_steps": 750})
+    wandb.config.update(hparams)
+    wandb.config.update(tparams)
+
     if experiment_id is None:
         experiment_id = uuid4().hex  # create a random experiment ID
 
@@ -599,6 +603,8 @@ def run_experiment(
         disable_tqdm=disable_prediction_tqdm,
     )
     logger.info(repr(val_metrics))
+    # 🐝 Log train metrics to wandb
+    wandb.log({"val_metrics": val_metrics})
 
     test_metrics = evaluate_bpcs(
         trainer.tokenizers,
@@ -609,6 +615,8 @@ def run_experiment(
         disable_tqdm=disable_prediction_tqdm,
     )
     logger.info(repr(test_metrics))
+    # 🐝 Log train metrics to wandb
+    wandb.log({"test_metrics": test_metrics})
 
     log_data = {
         "id": experiment_id,

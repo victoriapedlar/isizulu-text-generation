@@ -4,12 +4,6 @@ import sys
 import logging
 from gpt2_utils import run_experiment
 
-# Add Weights & Biases logging
-import wandb
-import os
-
-os.environ["WANDB_LOG_MODEL"] = "true"
-
 # print logs to console
 streamHandler = logging.StreamHandler(sys.stdout)
 streamHandler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s"))
@@ -66,5 +60,5 @@ tparams = {
     "eval_steps": 5,
     "save_steps": 2,
 }
-wandb.init(project="transformer-combined")
+
 run_experiment(hparams, tparams, eval_stride=64, experiment_id="combined_isizulu")
