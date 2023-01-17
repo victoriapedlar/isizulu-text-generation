@@ -342,7 +342,7 @@ def evaluate(
 
             shift_logits = outputs[1][..., :-1, :].contiguous()
             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-            shift_labels = i[..., 1:].contiguous().squeeze(0)
+            shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
 
             probs = torch.softmax(shift_logits, dim=1)
             lprobs = probs
