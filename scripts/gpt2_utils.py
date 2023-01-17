@@ -322,14 +322,14 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-    for batch in tqdm(
+    for i in tqdm(
         range(1, encodings.input_ids.size(1), stride),
         desc="Evaluating",
         disable=disable_tqdm,
     ):
 
-        begin_loc = max(batch + stride - input_block_size, 0)
-        end_loc = batch + stride
+        begin_loc = max(i + stride - input_block_size, 0)
+        end_loc = i + stride
         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
         target_ids = input_ids.clone()
         target_ids[:, :-stride] = -100
@@ -342,7 +342,7 @@ def evaluate(
 
             shift_logits = outputs[1][..., :-1, :].contiguous()
             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-            shift_labels = batch[..., 1:].contiguous().squeeze(0)
+            shift_labels = i[..., 1:].contiguous().squeeze(0)
 
             probs = torch.softmax(shift_logits, dim=1)
             lprobs = probs
@@ -664,12 +664,10 @@ def run_experiment(
         "hparams": hparams,
         "tparams": tparams,
         "val_metrics": val_metrics,
-        "bpc": val_bpc,
         "jsd": val_jsd,
         "sp": val_sp,
         "ppl": val_perplexity,
         "test_metrics": test_metrics,
-        "bpc": test_bpc,
         "jsd": test_jsd,
         "sp": test_sp,
         "ppl": test_perplexity,
