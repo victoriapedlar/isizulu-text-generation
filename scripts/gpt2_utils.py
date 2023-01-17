@@ -304,13 +304,14 @@ def evaluate(
     disable_tqdm=False,
     epsilon=0.000001,
 ):
-    metrics = {}
+    perp = 0.0
+    model.eval()
+    jsd = 0
+    sp = 0
+
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
-        lls = []
         total_characters = 0
-        jsd_scores = []
-        sp_scores = []
         perp = []
         if len(file_paths) > 1:
             logger.warning(
@@ -321,71 +322,81 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        # adapted from https://huggingface.co/transformers/perplexity.html
-        for i in tqdm(
-            range(1, encodings.input_ids.size(1), stride),
-            desc="Evaluating BPC",
-            disable=disable_tqdm,
-        ):
-            begin_loc = max(i + stride - input_block_size, 0)
-            end_loc = i + stride
-            input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
-            target_ids = input_ids.clone()
-            target_ids[:, :-stride] = -100
+    for batch in tqdm(
+        range(1, encodings.input_ids.size(1), stride),
+        desc="Evaluating",
+        disable=disable_tqdm,
+    ):
 
-            with torch.no_grad():
-                outputs = model(
-                    input_ids,
-                    labels=target_ids,
+        begin_loc = max(batch + stride - input_block_size, 0)
+        end_loc = batch + stride
+        input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+        target_ids = input_ids.clone()
+        target_ids[:, :-stride] = -100
+
+        with torch.no_grad():
+            outputs = model(
+                input_ids,
+                labels=target_ids,
+            )
+
+            shift_logits = outputs[1][..., :-1, :].contiguous()
+            shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+            shift_labels = batch[..., 1:].contiguous().squeeze(0)
+
+            probs = torch.softmax(shift_logits, dim=1)
+            lprobs = probs
+
+            if len(probs[0].nonzero()) != len(probs[0]):
+                probs = probs[:, :] + epsilon
+                sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                probs = [probs[i] / sums[i] for i in range(len(sums))]
+
+                probs = torch.stack(probs)
+
+            p = [
+                probs[i, shift_labels.squeeze(0)[i].item()]
+                for i in range(len(shift_labels.squeeze(0)))
+            ]
+            p = torch.stack(p)
+            perp += torch.log(p**-1).mean().item()
+
+            jsd_batch = []
+            labels = torch.zeros(len(shift_labels), shift_logits.size(-1))
+            for i in range(len(shift_labels)):
+                labels[i, shift_labels[i]] = 1
+                jsd_ = compute_jsd(lprobs[i], labels[i])
+                jsd_batch.append(jsd_)
+
+            jsd_batch = torch.tensor(jsd_batch).mean()
+            jsd += jsd_batch
+
+            sp_batch = []
+            for i in range(len(shift_labels)):
+                sp_batch.append(
+                    compute_sp(lprobs.squeeze(0)[i], shift_labels[i]).item()
                 )
-                # stride = number of tokens in the batch
-                # outputs[0] = nats/token (https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
-                # outputs[0] * stride = nats
-                log_likelihood = outputs[0].item() * stride
-                lls.append(log_likelihood)
 
-                # Compute JSD
-                for output in outputs:
-                    labels = torch.zeros(len(output), output.size(-1))
-                    for j in range(len(output)):
-                        labels[j, target_ids[i][j]] = 1
-                        jsd_ = compute_jsd(torch.softmax(output[j], dim=-1), labels[j])
-                        jsd_scores.append(jsd_)
-                    jsd_scores = torch.tensor(jsd_scores).mean()
-                    jsd += jsd_scores
+            sp_batch = torch.tensor(sp_batch).mean()
+            sp += sp_batch
 
-                # Compute sparsemax
-                for output in outputs:
-                    sp_scores.append(
-                        compute_sp(torch.softmax(output, dim=-1), target_ids[i])
-                    )
-                sp_scores = torch.tensor(sp_scores).mean()
-                sp += sp_scores
+    a = perp / len(total_characters)
+    perplexity = torch.exp(torch.tensor(a))
 
-                # Compute perplexity
-                probs = torch.softmax(outputs, dim=-1)
-                if len(probs[0].nonzero()) != len(probs[0]):
-                    probs = probs[:, :] + epsilon
-                    sums = [probs[i].sum().item() for i in range(probs.size(0))]
-                    probs = [probs[i] / sums[i] for i in range(len(sums))]
-                    probs = torch.stack(probs)
+    jsd = jsd / len(total_characters)
+    sp = sp / len(total_characters)
 
-                p = [probs[i, target_ids[i].item()] for i in range(len(target_ids))]
-                p = torch.stack(p)
-                perp += torch.log(p**-1).mean().item()
+    result = {
+        "sp": sp,
+        "JSD": jsd,
+        "perplexity": perplexity,
+    }
 
-        bpc = (sum(lls) / log(2)) / total_characters
-        jsd = sum(jsd_scores) / total_characters
-        sp = sum(sp_scores) / total_characters
-        a = sum(lls) / total_characters
-        perplexity = torch.exp(torch.tensor(a))
+    print("perplexity:", perplexity)
+    print("js:", jsd)
+    print("sp;", sp)
 
-        metrics["bpc/" + file_paths[0]] = bpc
-        metrics["jsd/" + file_paths[0]] = jsd
-        metrics["sp/" + file_paths[0]] = sp
-        metrics["perplexity/" + file_paths[0]] = perplexity
-
-    return metrics, bpc, jsd, sp, perplexity
+    return result, jsd, perplexity, sp
 
 
 # -------------- END MODIFIED CODE --------------
@@ -606,7 +617,7 @@ def run_experiment(
         resume_checkpoint_dir,
     )
     trainer.train(model_path=resume_checkpoint_dir)
-    val_metrics, val_bpc, val_jsd, val_sp, val_perplexity = evaluate(
+    val_metrics, val_jsd, val_perplexity, val_sp = evaluate(
         trainer.tokenizers,
         trainer.model,
         hparams["val_data"],
@@ -620,14 +631,13 @@ def run_experiment(
         {
             "step": trainer.global_step,
             "val_metrics": val_metrics,
-            "bpc": val_bpc,
             "jsd": val_jsd,
             "sp": val_sp,
             "ppl": val_perplexity,
         }
     )
 
-    test_metrics, test_bpc, test_jsd, test_sp, test_perplexity = evaluate(
+    test_metrics, test_jsd, test_perplexity, test_sp = evaluate(
         trainer.tokenizers,
         trainer.model,
         hparams["test_data"],
@@ -641,7 +651,6 @@ def run_experiment(
         {
             "step": trainer.global_step,
             "test_metrics": test_metrics,
-            "bpc": test_bpc,
             "jsd": test_jsd,
             "sp": test_sp,
             "ppl": test_perplexity,
