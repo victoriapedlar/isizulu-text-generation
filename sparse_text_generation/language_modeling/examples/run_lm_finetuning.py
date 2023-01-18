@@ -622,6 +622,16 @@ def train(
                         global_step,
                     )
                     logging_loss = tr_loss
+                    wandb.log(
+                        {
+                            "train/step": global_step,
+                            "train/loss": tr_loss,
+                            "lr": scheduler.get_lr()[0],
+                            "jsd": jsd,
+                            "ppl": ppl,
+                            "sp": sp,
+                        }
+                    )
 
                 if (
                     args.local_rank in [-1, 0]
@@ -631,6 +641,7 @@ def train(
                     # Save model checkpoint
                     if jsd < best_jsd:
                         best_jsd = jsd
+                        wandb.run.summary["best_jsd"] = jsd
                         output_dir = os.path.join(
                             args.output_dir + "/best_jsd", "checkpoint"
                         )
@@ -645,6 +656,7 @@ def train(
                         logger.info("Saving model checkpoint to %s", output_dir)
                     if ppl < best_ppl:
                         best_ppl = ppl
+                        wandb.run.summary["best_ppl"] = ppl
                         output_dir = os.path.join(
                             args.output_dir + "/best_ppl", "checkpoint"
                         )
@@ -660,6 +672,7 @@ def train(
 
                     if sp > best_sp:
                         best_sp = sp
+                        wandb.run.summary["best_sp"] = sp
                         output_dir = os.path.join(
                             args.output_dir + "/best_sp", "checkpoint"
                         )
@@ -1072,8 +1085,7 @@ def main():
     args = parser.parse_args()
 
     # ----------Written by Victoria Pedlar---------- #
-    wandb.init(project="sparse-model-combined", config={"learning_rate": 6.25e-5})
-    wandb.config.update(args)
+    wandb.init(project="sparse-model-combined", config=args)
     config = wandb.config
     # ----------------------------------------------- #
 
