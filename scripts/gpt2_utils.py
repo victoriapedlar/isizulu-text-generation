@@ -322,14 +322,14 @@ def evaluate(
 
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
-        total_characters = 0
+        total_tokens = 0
         if len(file_paths) > 1:
             logger.warning(
                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
             )
         with open(file_paths[0], "r") as f:
             test_set = f.read()
-        total_characters += len(test_set)
+        total_tokens += len(tokenizers[language_id].tokenize(test_set))
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
     for i in tqdm(
@@ -390,11 +390,11 @@ def evaluate(
             sp_batch = torch.tensor(sp_batch).mean()
             sp += sp_batch
 
-    a = perp / total_characters
+    a = perp / total_tokens
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / total_characters
-    sp = sp / total_characters
+    jsd = jsd / total_tokens
+    sp = sp / total_tokens
 
     result = {
         "sp": sp,
@@ -647,25 +647,25 @@ def run_experiment(
         }
     )
 
-    test_metrics, test_jsd, test_perplexity, test_sp = evaluate(
-        trainer.tokenizers,
-        trainer.model,
-        hparams["test_data"],
-        input_block_size=hparams["train_block_size"],
-        stride=eval_stride,
-        disable_tqdm=disable_prediction_tqdm,
-    )
-    logger.info(repr(test_metrics))
-    # 🐝 Log train metrics to wandb
-    wandb.log(
-        {
-            "step": trainer.global_step,
-            "test_metrics": test_metrics,
-            "jsd": test_jsd,
-            "sp": test_sp,
-            "ppl": test_perplexity,
-        }
-    )
+    # test_metrics, test_jsd, test_perplexity, test_sp = evaluate(
+    #     trainer.tokenizers,
+    #     trainer.model,
+    #     hparams["test_data"],
+    #     input_block_size=hparams["train_block_size"],
+    #     stride=eval_stride,
+    #     disable_tqdm=disable_prediction_tqdm,
+    # )
+    # logger.info(repr(test_metrics))
+    # # 🐝 Log train metrics to wandb
+    # wandb.log(
+    #     {
+    #         "step": trainer.global_step,
+    #         "test_metrics": test_metrics,
+    #         "jsd": test_jsd,
+    #         "sp": test_sp,
+    #         "ppl": test_perplexity,
+    #     }
+    # )
 
     log_data = {
         "id": experiment_id,
@@ -677,10 +677,10 @@ def run_experiment(
         "jsd": val_jsd,
         "sp": val_sp,
         "ppl": val_perplexity,
-        "test_metrics": test_metrics,
-        "jsd": test_jsd,
-        "sp": test_sp,
-        "ppl": test_perplexity,
+        # "test_metrics": test_metrics,
+        # "jsd": test_jsd,
+        # "sp": test_sp,
+        # "ppl": test_perplexity,
     }
 
     with open(os.path.join(LOG_DIR, log_file), "a") as logfile:
