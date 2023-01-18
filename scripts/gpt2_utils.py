@@ -304,6 +304,17 @@ def evaluate(
     disable_tqdm=False,
     epsilon=0.000001,
 ):
+    """
+    :param tokenizers: dict of tokenizers
+    :param model: model to evaluate
+    :param eval_data: list of tuples (language_id, file_paths)
+    :param input_block_size: size of the input block
+    :param stride: stride for the sliding window
+    :param disable_tqdm: disable tqdm progress bar
+    :param epsilon: epsilon for numerical stability
+    :return: perplexity, jsd, sp
+    """
+
     perp = 0.0
     model.eval()
     jsd = 0
@@ -379,11 +390,11 @@ def evaluate(
             sp_batch = torch.tensor(sp_batch).mean()
             sp += sp_batch
 
-    a = perp / len(total_characters)
+    a = perp / total_characters
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / len(total_characters)
-    sp = sp / len(total_characters)
+    jsd = jsd / total_characters
+    sp = sp / total_characters
 
     result = {
         "sp": sp,
