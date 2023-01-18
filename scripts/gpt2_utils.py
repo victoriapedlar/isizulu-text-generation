@@ -312,7 +312,6 @@ def evaluate(
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         total_characters = 0
-        perp = []
         if len(file_paths) > 1:
             logger.warning(
                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
