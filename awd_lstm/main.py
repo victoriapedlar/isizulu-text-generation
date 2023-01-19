@@ -342,7 +342,7 @@ def evaluate(data_source):
             # Add epsilon smoothing
             probs = torch.softmax(output_flat, dim=-1)
             if len(probs[0].nonzero()) != len(probs[0]):
-                probs = probs + args.epsilon
+                probs = probs + 0.000001
                 sums = probs.sum(dim=-1)
                 probs = probs / sums.unsqueeze(-1)
 
@@ -366,11 +366,13 @@ def evaluate(data_source):
             sp_batch = torch.tensor(sp_batch).mean()
             sp += sp_batch
 
+    num_tokens = sum(len(seq) for seq in data_source)
+
     # Compute average perplexity, JSD, SP and loss
-    avg_perplexity = torch.exp(torch.tensor(perplexity / (len(data_source) - 1)))
-    avg_jsd = jsd / (len(data_source) - 1)
-    avg_sp = sp / (len(data_source) - 1)
-    avg_loss = total_loss / (len(data_source) - 1)
+    avg_perplexity = torch.exp(torch.tensor(perplexity / num_tokens))
+    avg_jsd = jsd / num_tokens
+    avg_sp = sp / num_tokens
+    avg_loss = total_loss / num_tokens
 
     # Return the results
     return {
