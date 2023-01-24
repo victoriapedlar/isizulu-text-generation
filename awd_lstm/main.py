@@ -375,13 +375,7 @@ def evaluate(data_source):
     avg_loss = total_loss / num_tokens
 
     # Return the results
-    return {
-        "loss": avg_loss,
-        "perplexity": avg_perplexity,
-        "jsd": avg_jsd,
-        "sp": avg_sp,
-        "bpc": avg_loss / math.log(2),
-    }
+    return avg_loss, avg_perplexity, avg_jsd, avg_sp, avg_loss / math.log(2)
 
 
 # ------------- END ADJUSTED CODE --------------
@@ -513,8 +507,7 @@ try:
                     tmp[prm] = prm.data.detach()
                     prm.data = optimizer.state[prm]["ax"].detach()
 
-            metrics = evaluate(val_data)
-            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
             # 🐝 Log train metrics to wandb
             if (epoch + 1) % log_every == 0:  # subsampling
                 wandb.log(
@@ -562,8 +555,7 @@ try:
 
             # begin early stopping
             if epoch % args.eval_every == (args.eval_every - 1):
-                metrics = evaluate(val_data)
-                val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+                val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
                 stored_loss, stop_step, stop = early_stopping(
                     val_loss2, stored_loss, stop_step, args.patience
                 )
@@ -580,8 +572,7 @@ try:
                     len([prm for prm in model.parameters()])
                 )
             )
-            metrics = evaluate(val_data)
-            val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = metrics.values()
+            val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
             # 🐝 Log train metrics to wandb
             if (epoch + 1) % log_every == 0:  # subsampling
                 wandb.log(
