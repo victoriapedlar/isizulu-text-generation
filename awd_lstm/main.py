@@ -572,12 +572,12 @@ try:
                     len([prm for prm in model.parameters()])
                 )
             )
-            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
+            val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
             # 🐝 Log train metrics to wandb
             if (epoch + 1) % log_every == 0:  # subsampling
                 wandb.log(
                     {
-                        "loss": val_loss2,
+                        "loss": val_loss,
                         "epoch": epoch,
                         "perplexity": avg_perplexity,
                         "JSD": avg_jsd,
