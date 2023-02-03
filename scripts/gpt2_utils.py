@@ -15,7 +15,7 @@ from uuid import uuid4
 import torch
 from filelock import FileLock
 from tokenizers import ByteLevelBPETokenizer
-from torch.utils.data.dataset import Dataset
+from torch.utils.data.dataset import Dataset, DataLoader, SequentialSampler
 from tqdm.auto import tqdm
 from transformers import (
     GPT2TokenizerFast,
@@ -295,64 +295,47 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
+def load_and_cache_examples(eval_data_file, input_block_size, tokenizer):
+    file_path = eval_data_file
+    dataset = CachedTextDataset(
+        tokenizer, file_path=file_path, block_size=input_block_size
+    )
+    return dataset
+
+
 def evaluate(
-    tokenizers,
+    tokenizer,
     model,
     eval_data,
-    input_block_size,
-    stride,
+    eval_batch_size,
     disable_tqdm=False,
     epsilon=0.000001,
 ):
-    """
-    :param tokenizers: dict of tokenizers
-    :param model: model to evaluate
-    :param eval_data: list of tuples (language_id, file_paths)
-    :param input_block_size: size of the input block
-    :param stride: stride for the sliding window
-    :param disable_tqdm: disable tqdm progress bar
-    :param epsilon: epsilon for numerical stability
-    :return: perplexity, jsd, sp
-    """
 
+    for language_id, file_paths in eval_data:
+        with open(file_paths[0], "r") as f:
+            test_set = f.read()
+
+    eval_sampler = SequentialSampler(test_set)
+    eval_dataloader = DataLoader(
+        test_set, sampler=eval_sampler, batch_size=eval_batch_size
+    )
+
+    # Eval!
     perp = 0.0
     model.eval()
+
     jsd = 0
     sp = 0
 
-    assert stride <= input_block_size
-    for language_id, file_paths in eval_data:
-        total_tokens = 0
-        if len(file_paths) > 1:
-            logger.warning(
-                f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
-            )
-        with open(file_paths[0], "r") as f:
-            test_set = f.read()
-        total_tokens += len(tokenizers[language_id].tokenize(test_set))
-        encodings = tokenizers[language_id](test_set, return_tensors="pt")
-
-    for i in tqdm(
-        range(1, encodings.input_ids.size(1), stride),
-        desc="Evaluating",
-        disable=disable_tqdm,
-    ):
-
-        begin_loc = max(i + stride - input_block_size, 0)
-        end_loc = i + stride
-        input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
-        target_ids = input_ids.clone()
-        target_ids[:, :-stride] = -100
+    for batch in tqdm(eval_data, desc="Evaluating"):
 
         with torch.no_grad():
-            outputs = model(
-                input_ids,
-                labels=target_ids,
-            )
+            outputs = model(batch, masked_lm_labels=batch)
 
             shift_logits = outputs[1][..., :-1, :].contiguous()
             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-            shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
+            shift_labels = batch[..., 1:].contiguous().squeeze(0)
 
             probs = torch.softmax(shift_logits, dim=1)
             lprobs = probs
@@ -390,11 +373,13 @@ def evaluate(
             sp_batch = torch.tensor(sp_batch).mean()
             sp += sp_batch
 
-    a = perp / total_tokens
+            pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
+
+    a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / total_tokens
-    sp = sp / total_tokens
+    jsd = jsd / len(eval_dataloader)
+    sp = sp / len(eval_dataloader)
 
     result = {
         "sp": sp,
@@ -407,6 +392,120 @@ def evaluate(
     print("sp;", sp)
 
     return result, jsd, perplexity, sp
+
+
+# def evaluate(
+#     tokenizers,
+#     model,
+#     eval_data,
+#     input_block_size,
+#     stride,
+#     disable_tqdm=False,
+#     epsilon=0.000001,
+# ):
+#     """
+#     :param tokenizers: dict of tokenizers
+#     :param model: model to evaluate
+#     :param eval_data: list of tuples (language_id, file_paths)
+#     :param input_block_size: size of the input block
+#     :param stride: stride for the sliding window
+#     :param disable_tqdm: disable tqdm progress bar
+#     :param epsilon: epsilon for numerical stability
+#     :return: perplexity, jsd, sp
+#     """
+
+#     perp = 0.0
+#     model.eval()
+#     jsd = 0
+#     sp = 0
+
+#     assert stride <= input_block_size
+#     for language_id, file_paths in eval_data:
+#         total_tokens = 0
+#         if len(file_paths) > 1:
+#             logger.warning(
+#                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
+#             )
+#         with open(file_paths[0], "r") as f:
+#             test_set = f.read()
+#         total_tokens += len(tokenizers[language_id].tokenize(test_set))
+#         encodings = tokenizers[language_id](test_set, return_tensors="pt")
+
+#     for i in tqdm(
+#         range(1, encodings.input_ids.size(1), stride),
+#         desc="Evaluating",
+#         disable=disable_tqdm,
+#     ):
+
+#         begin_loc = max(i + stride - input_block_size, 0)
+#         end_loc = i + stride
+#         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+#         target_ids = input_ids.clone()
+#         target_ids[:, :-stride] = -100
+
+#         with torch.no_grad():
+#             outputs = model(
+#                 input_ids,
+#                 labels=target_ids,
+#             )
+
+#             shift_logits = outputs[1][..., :-1, :].contiguous()
+#             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+#             shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
+
+#             probs = torch.softmax(shift_logits, dim=1)
+#             lprobs = probs
+
+#             if len(probs[0].nonzero()) != len(probs[0]):
+#                 probs = probs[:, :] + epsilon
+#                 sums = [probs[i].sum().item() for i in range(probs.size(0))]
+#                 probs = [probs[i] / sums[i] for i in range(len(sums))]
+
+#                 probs = torch.stack(probs)
+
+#             p = [
+#                 probs[i, shift_labels.squeeze(0)[i].item()]
+#                 for i in range(len(shift_labels.squeeze(0)))
+#             ]
+#             p = torch.stack(p)
+#             perp += torch.log(p**-1).mean().item()
+
+#             jsd_batch = []
+#             labels = torch.zeros(len(shift_labels), shift_logits.size(-1))
+#             for i in range(len(shift_labels)):
+#                 labels[i, shift_labels[i]] = 1
+#                 jsd_ = compute_jsd(lprobs[i], labels[i])
+#                 jsd_batch.append(jsd_)
+
+#             jsd_batch = torch.tensor(jsd_batch).mean()
+#             jsd += jsd_batch
+
+#             sp_batch = []
+#             for i in range(len(shift_labels)):
+#                 sp_batch.append(
+#                     compute_sp(lprobs.squeeze(0)[i], shift_labels[i]).item()
+#                 )
+
+#             sp_batch = torch.tensor(sp_batch).mean()
+#             sp += sp_batch
+
+#     a = perp / total_tokens
+#     perplexity = torch.exp(torch.tensor(a))
+
+#     jsd = jsd / total_tokens
+#     sp = sp / total_tokens
+
+#     result = {
+#         "sp": sp,
+#         "JSD": jsd,
+#         "perplexity": perplexity,
+#     }
+
+#     print("perplexity:", perplexity)
+#     print("js:", jsd)
+#     print("sp;", sp)
+
+#     return result, jsd, perplexity, sp
 
 
 # -------------- END MODIFIED CODE --------------
@@ -628,12 +727,12 @@ def run_experiment(
     )
     trainer.train(model_path=resume_checkpoint_dir)
     val_metrics, val_jsd, val_perplexity, val_sp = evaluate(
-        trainer.tokenizers,
-        trainer.model,
-        hparams["val_data"],
-        input_block_size=hparams["train_block_size"],
-        stride=eval_stride,
-        disable_tqdm=disable_prediction_tqdm,
+        tokenizer=trainer.tokenizers,
+        model=trainer.model,
+        eval_data=hparams["val_data"],
+        eval_batch_size=hparams["batch_size"],
+        disable_tqdm=False,
+        epsilon=0.000001,
     )
     logger.info(repr(val_metrics))
     # 🐝 Log train metrics to wandb
