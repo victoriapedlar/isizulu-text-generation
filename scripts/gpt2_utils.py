@@ -323,7 +323,7 @@ def evaluate(
     jsd = 0
     sp = 0
 
-    for batch in tqdm(eval_data, desc="Evaluating"):
+    for batch in tqdm(range(1, encodings.input_ids.size(1), stride), desc="Evaluating"):
         begin_loc = max(batch + stride - input_block_size, 0)
         end_loc = batch + stride
         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
