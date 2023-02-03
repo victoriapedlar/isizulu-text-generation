@@ -296,20 +296,10 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
-def load_and_cache_examples(eval_data_file, input_block_size, tokenizer):
-    file_path = eval_data_file
-    dataset = CachedTextDataset(
-        tokenizer, file_path=file_path, block_size=input_block_size
-    )
-    return dataset
-
-
 def evaluate(
-    tokenizer,
     model,
     eval_data,
     eval_batch_size,
-    disable_tqdm=False,
     epsilon=0.000001,
 ):
 
@@ -728,11 +718,9 @@ def run_experiment(
     )
     trainer.train(model_path=resume_checkpoint_dir)
     val_metrics, val_jsd, val_perplexity, val_sp = evaluate(
-        tokenizer=trainer.tokenizers,
         model=trainer.model,
         eval_data=hparams["val_data"],
         eval_batch_size=hparams["batch_size"],
-        disable_tqdm=False,
         epsilon=0.000001,
     )
     logger.info(repr(val_metrics))
