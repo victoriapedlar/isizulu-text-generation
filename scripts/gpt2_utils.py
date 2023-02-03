@@ -15,7 +15,8 @@ from uuid import uuid4
 import torch
 from filelock import FileLock
 from tokenizers import ByteLevelBPETokenizer
-from torch.utils.data.dataset import Dataset, DataLoader, SequentialSampler
+from torch.utils.data.dataset import Dataset
+from torch.utils.data import SequentialSampler, DataLoader
 from tqdm.auto import tqdm
 from transformers import (
     GPT2TokenizerFast,
