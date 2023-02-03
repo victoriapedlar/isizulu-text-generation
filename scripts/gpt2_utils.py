@@ -305,23 +305,28 @@ def evaluate(
     eval_batch_size,
     epsilon=0.000001,
 ):
+    perp = 0.0
+    model.eval()
+
+    jsd = 0
+    sp = 0
+
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
+        total_tokens = 0
+        if len(file_paths) > 1:
+            logger.warning(
+                f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
+            )
         with open(file_paths[0], "r") as f:
             test_set = f.read()
+        total_tokens += len(tokenizers[language_id].tokenize(test_set))
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
     eval_sampler = SequentialSampler(test_set)
     eval_dataloader = DataLoader(
         test_set, sampler=eval_sampler, batch_size=eval_batch_size
     )
-
-    # Eval!
-    perp = 0.0
-    model.eval()
-
-    jsd = 0
-    sp = 0
 
     for batch in tqdm(range(1, encodings.input_ids.size(1), stride), desc="Evaluating"):
         begin_loc = max(batch + stride - input_block_size, 0)
@@ -331,7 +336,10 @@ def evaluate(
         target_ids[:, :-stride] = -100
 
         with torch.no_grad():
-            outputs = model(batch, labels=target_ids)
+            outputs = model(
+                input_ids,
+                labels=target_ids,
+            )
 
             shift_logits = outputs[1][..., :-1, :].contiguous()
             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
