@@ -383,11 +383,11 @@ def evaluate(
 
             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
 
-    a = perp
+    a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd
-    sp = sp
+    jsd = jsd / len(eval_dataloader)
+    sp = sp / len(eval_dataloader)
 
     result = {
         "sp": sp,
