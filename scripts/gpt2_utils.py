@@ -328,6 +328,11 @@ def evaluate(
         test_set, sampler=eval_sampler, batch_size=eval_batch_size
     )
 
+    num_tokens = 0
+    for data in eval_dataloader:
+        for sequence in data:
+            num_tokens += len(sequence)
+
     for batch in tqdm(range(1, encodings.input_ids.size(1), stride), desc="Evaluating"):
         begin_loc = max(batch + stride - input_block_size, 0)
         end_loc = batch + stride
@@ -383,11 +388,11 @@ def evaluate(
 
             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
 
-    a = perp / len(eval_dataloader)
+    a = perp / num_tokens
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / len(eval_dataloader)
-    sp = sp / len(eval_dataloader)
+    jsd = jsd / num_tokens
+    sp = sp / num_tokens
 
     result = {
         "sp": sp,
