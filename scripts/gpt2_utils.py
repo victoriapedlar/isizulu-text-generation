@@ -297,15 +297,19 @@ def compute_sp(p, target):
 
 
 def evaluate(
+    tokenizers,
     model,
     eval_data,
+    input_block_size,
+    stride,
     eval_batch_size,
     epsilon=0.000001,
 ):
-
+    assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         with open(file_paths[0], "r") as f:
             test_set = f.read()
+        encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
     eval_sampler = SequentialSampler(test_set)
     eval_dataloader = DataLoader(
@@ -320,9 +324,14 @@ def evaluate(
     sp = 0
 
     for batch in tqdm(eval_data, desc="Evaluating"):
+        begin_loc = max(i + stride - input_block_size, 0)
+        end_loc = i + stride
+        input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+        target_ids = input_ids.clone()
+        target_ids[:, :-stride] = -100
 
         with torch.no_grad():
-            outputs = model(batch, masked_lm_labels=batch)
+            outputs = model(batch, labels=target_ids)
 
             shift_logits = outputs[1][..., :-1, :].contiguous()
             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
@@ -718,8 +727,11 @@ def run_experiment(
     )
     trainer.train(model_path=resume_checkpoint_dir)
     val_metrics, val_jsd, val_perplexity, val_sp = evaluate(
+        tokenizers=trainer.tokenizers,
         model=trainer.model,
         eval_data=hparams["val_data"],
+        input_block_size=hparams["train_block_size"],
+        stride=eval_stride,
         eval_batch_size=hparams["batch_size"],
         epsilon=0.000001,
     )
