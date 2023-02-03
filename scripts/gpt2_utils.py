@@ -311,8 +311,6 @@ def evaluate(
     jsd = 0
     sp = 0
 
-    total_num_tokens = 0
-
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         total_tokens = 0
@@ -336,8 +334,6 @@ def evaluate(
         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
         target_ids = input_ids.clone()
         target_ids[:, :-stride] = -100
-
-        total_num_tokens += input_ids.shape[1]
 
         with torch.no_grad():
             outputs = model(
@@ -387,11 +383,11 @@ def evaluate(
 
             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
 
-    a = perp / total_num_tokens
+    a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / total_num_tokens
-    sp = sp / total_num_tokens
+    jsd = jsd / len(eval_dataloader)
+    sp = sp / len(eval_dataloader)
 
     result = {
         "sp": sp,
