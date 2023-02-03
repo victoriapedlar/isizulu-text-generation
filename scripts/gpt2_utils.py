@@ -311,6 +311,8 @@ def evaluate(
     jsd = 0
     sp = 0
 
+    total_num_tokens = 0
+
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         total_tokens = 0
