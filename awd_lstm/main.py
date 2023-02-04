@@ -323,7 +323,7 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
-def evaluate(data_source, epsilon=0.000001, batch_size=args.batch_size):
+def evaluate(data_source, epsilon=0.000001, batch_size=20):
     perp = 0.0
     model.eval()
     total_loss = 0.0
