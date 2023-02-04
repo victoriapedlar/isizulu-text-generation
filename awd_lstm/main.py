@@ -360,7 +360,7 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
             perp += torch.log(p**-1).mean().item()
 
             jsd_batch = []
-            labels = torch.zeros(len(targets), targets.size(-1))
+            labels = torch.zeros(len(targets), ntokens)
             for i in range(len(targets)):
                 labels[i, targets[i]] = 1
                 jsd_ = compute_jsd(lprobs[i], labels[i])
