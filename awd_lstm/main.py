@@ -323,14 +323,16 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
-def evaluate(data_source, epsilon=0.000001):
-    eval_dataloader = DataLoader(data_source, batch_size=eval_batch_size)
+def evaluate(data_source, epsilon=0.000001, batch_size=10):
     perp = 0.0
     model.eval()
     total_loss = 0.0
     jsd = 0
     sp = 0
+
     ntokens = len(corpus.dictionary)
+    hidden = model.init_hidden(batch_size)
+    eval_dataloader = DataLoader(data_source, batch_size=batch_size)
 
     with torch.no_grad():
         for i in range(0, data_source.size(0) - 1, args.bptt):
