@@ -383,7 +383,7 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
 
     jsd = jsd / len(eval_dataloader)
     sp = sp / len(eval_dataloader)
-    avg_loss = total_loss.item() / len(data_source)
+    avg_loss = total_loss / len(data_source)
 
     print("perplexity:", perplexity)
     print("js:", jsd)
