@@ -343,15 +343,6 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
             hidden = repackage_hidden(hidden)
 
             probs = torch.softmax(output_flat, dim=1)
-
-            # Get the count of the number of subwords for each word in the target
-            target_subword_counts = [
-                corpus.dictionary.subword_counts[targets.squeeze(0)[i].item()]
-                for i in range(len(targets.squeeze(0)))
-            ]
-            # Modify probs to reflect the probability distribution for each subword
-            probs = probs.repeat_interleave(target_subword_counts, dim=0)
-
             lprobs = probs
 
             if len(probs[0].nonzero()) != len(probs[0]):
@@ -387,12 +378,11 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
 
             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
 
-    # Add this code to take into account the subword level tokens:
-    a = perp / len(targets.squeeze(0)) * len(corpus.dictionary)
+    a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / len(targets.squeeze(0)) * len(corpus.dictionary)
-    sp = sp / len(targets.squeeze(0)) * len(corpus.dictionary)
+    jsd = jsd / len(eval_dataloader)
+    sp = sp / len(eval_dataloader)
     avg_loss = total_loss / len(data_source)
 
     print("perplexity:", perplexity)
