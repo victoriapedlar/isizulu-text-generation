@@ -378,11 +378,11 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
 
             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
 
-    a = perp / len(eval_dataloader)
+    a = perp / ntokens
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / len(eval_dataloader)
-    sp = sp / len(eval_dataloader)
+    jsd = jsd / ntokens
+    sp = sp / ntokens
     avg_loss = total_loss / len(data_source)
 
     print("perplexity:", perplexity)
