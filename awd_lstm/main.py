@@ -324,7 +324,7 @@ def compute_sp(p, target):
 
 
 def evaluate(data_source, epsilon=0.000001):
-    eval_dataloader = DataLoader(data_source, batch_size=args.eval_batch_size)
+    eval_dataloader = DataLoader(data_source, batch_size=eval_batch_size)
     perp = 0.0
     model.eval()
     total_loss = 0.0
