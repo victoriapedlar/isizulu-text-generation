@@ -21,7 +21,7 @@ echo "Starting script..."
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --train_data_file ~/isizulu-text-generation/data/combined/isizulu/train.txt \
         --eval_data_file ~/isizulu-text-generation/data/combined/isizulu/valid.txt \
-        --output_dir ~/isizulu-text-generation/models/sparse_lm/ \
+        --output_dir ~/isizulu-text-generation/models/sparse_lm/lr_2e-5 \
         --model_type gpt2 \
         --model_name_or_path gpt2-medium \
         --mode from_scratch \
@@ -29,8 +29,8 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --do_train \
         --evaluate_during_training \
         --num_train_epochs 10 \
+        --learning_rate 2e-5 \
         --loss entmax \
-        --per_gpu_eval_batch_size 16 \
         --entmax_alpha 1.2 \
         --top_k 0 \
         --top_p 0 \
