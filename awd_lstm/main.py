@@ -408,8 +408,10 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
     for i in range(0, data_source.size(0) - 1, args.bptt):
         data, targets = get_batch(data_source, i, args, evaluation=True)
         output, hidden = model(data, hidden)
-        loss = criterion(model.decoder.weight, model.decoder.bias, output, targets)
-        total_loss += len(data) * loss.data
+        total_loss += (
+            len(data)
+            * criterion(model.decoder.weight, model.decoder.bias, output, targets).data
+        )
         for b in range(data.size(0)):
             target_probs = (
                 torch.nn.functional.softmax(output[b], dim=0).detach().cpu().numpy()
