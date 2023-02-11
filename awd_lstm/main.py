@@ -406,11 +406,11 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
     sps = []
     e_perplexities = []
     for i in range(0, data_source.size(0) - 1, args.bptt):
-            data, targets = get_batch(data_source, i, args)
-            output, hidden = model(data, hidden)
-            output_flat = output.view(-1, ntokens)
-            total_loss += len(data) * criterion(output_flat, targets).item()
-            hidden = repackage_hidden(hidden)
+        data, targets = get_batch(data_source, i, args)
+        output, hidden = model(data, hidden)
+        output_flat = output.view(-1, ntokens)
+        total_loss += len(data) * criterion(output_flat, targets).item()
+        hidden = repackage_hidden(hidden)
         for b in range(data.size(0)):
             target_probs = (
                 torch.nn.functional.softmax(output[b], dim=0).detach().cpu().numpy()
