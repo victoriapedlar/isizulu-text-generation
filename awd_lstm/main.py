@@ -411,22 +411,17 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
         output_flat = output.view(-1, ntokens)
         total_loss += len(data) * criterion(output_flat, targets).item()
         hidden = repackage_hidden(hidden)
-        for b in range(data.size(0)):
-            target_probs = (
-                torch.nn.functional.softmax(output[b], dim=0).detach().cpu().numpy()
-            )
-            target_indices = targets[b].detach().cpu().numpy()
-            jsd = compute_jsd(target_probs, np.eye(len(target_probs))[target_indices])
-            sp = compute_sp(target_probs, target_indices)
-            e_perplexity = np.exp(
-                -1 / len(target_probs) * np.log(target_probs[target_indices] + eps)
-            )
-            jsds.append(jsd)
-            sps.append(sp)
-            e_perplexities.append(e_perplexity)
-
+        probs = torch.softmax(output_flat, dim=1)
+        lprobs = probs
+        labels = torch.zeros(len(targets), ntokens).to(device)
+        for j in range(len(targets)):
+            labels[j, targets[j]] = 1
+            jsd_ = compute_jsd(lprobs[j], labels[j])
+            sp_ = compute_sp(lprobs[j], targets[j])
+            jsds.append(jsd_)
+            sps.append(sp_)
+            e_perplexities.append(torch.exp(total_loss))
     avg_loss = total_loss.item() / len(data_source)
-
     return (
         avg_loss,
         np.mean(e_perplexities),
