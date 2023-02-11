@@ -830,10 +830,7 @@ def evaluate(
             )
             repeat_512.append(repeat)
             wrong_repeat_512.append(wrong_repeat)
-    print("perp:", perp)
-    print("jsd:", jsd)
-    print("sp:", sp)
-    print("len(eval_dataloader):", len(eval_dataloader))
+
     a = perp / len(eval_dataloader)
     perplexity = torch.exp(torch.tensor(a))
 
@@ -847,6 +844,7 @@ def evaluate(
         "Loss": loss_train,
     }
 
+    print("len(eval_dataloader):", len(eval_dataloader))
     print("perplexity:", perplexity)
     print("js:", jsd)
     print("sp;", sp)
