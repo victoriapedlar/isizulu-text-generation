@@ -413,7 +413,7 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
         hidden = repackage_hidden(hidden)
         probs = torch.softmax(output_flat, dim=1)
         lprobs = probs
-        labels = torch.zeros(len(targets), ntokens).to(device)
+        labels = torch.zeros(len(targets), ntokens)
         for j in range(len(targets)):
             labels[j, targets[j]] = 1
             jsd_ = compute_jsd(lprobs[j], labels[j])
