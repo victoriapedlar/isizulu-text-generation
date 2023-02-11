@@ -406,9 +406,15 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
     sps = []
     e_perplexities = []
     for i in range(0, data_source.size(0) - 1, args.bptt):
-        data, targets = get_batch(data_source, i, args, evaluation=True)
+        data, targets = get_batch(
+            data_source, i, args, evaluation=True
+        )  # Gets the data and the target data to be produced
         output, hidden = model(data, hidden)
-        total_loss += len(data) * criterion(output, targets).data
+        total_loss += (
+            len(data)
+            * criterion(model.decoder.weight, model.decoder.bias, output, targets).data
+        )
+        hidden = repackage_hidden(hidden)
         for b in range(data.size(0)):
             target_probs = (
                 torch.nn.functional.softmax(output[b], dim=0).detach().cpu().numpy()
@@ -422,7 +428,6 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
             jsds.append(jsd)
             sps.append(sp)
             e_perplexities.append(e_perplexity)
-        hidden = repackage_hidden(hidden)
 
     avg_loss = total_loss.item() / len(data_source)
 
