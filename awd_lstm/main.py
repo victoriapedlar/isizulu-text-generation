@@ -421,7 +421,7 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
             jsds.append(jsd_)
             sps.append(sp_)
             e_perplexities.append(torch.exp(torch.tensor(total_loss)))
-    avg_loss = total_loss.item() / len(data_source)
+    avg_loss = total_loss / len(data_source)
     return (
         avg_loss,
         np.mean(e_perplexities),
