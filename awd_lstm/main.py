@@ -416,8 +416,8 @@ def evaluate(data_source, batch_size=10, eps=1e-6):
         labels = torch.zeros(len(targets), ntokens)
         for j in range(len(targets)):
             labels[j, targets[j]] = 1
-            jsd_ = compute_jsd(lprobs[j], labels[j])
-            sp_ = compute_sp(lprobs[j], targets[j])
+            jsd_ = compute_jsd(lprobs[j].detach(), labels[j].detach())
+            sp_ = compute_sp(lprobs[j].detach(), targets[j].detach().item())
             jsds.append(jsd_)
             sps.append(sp_)
             e_perplexities.append(torch.exp(total_loss))
