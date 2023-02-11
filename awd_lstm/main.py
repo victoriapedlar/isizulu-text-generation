@@ -358,7 +358,7 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
                 for i in range(len(targets.squeeze(0)))
             ]
             p = torch.stack(p)
-            perp += torch.log(p**-1).mean().item()
+            perp += torch.log(p**-1).item()
 
             jsd_batch = []
             labels = torch.zeros(len(targets), ntokens)
@@ -367,23 +367,26 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
                 jsd_ = compute_jsd(lprobs[i], labels[i])
                 jsd_batch.append(jsd_)
 
-            jsd_batch = torch.tensor(jsd_batch).mean()
+            jsd_batch = torch.tensor(jsd_batch)
             jsd += jsd_batch
 
             sp_batch = []
             for i in range(len(targets)):
                 sp_batch.append(compute_sp(lprobs.squeeze(0)[i], targets[i]).item())
 
-            sp_batch = torch.tensor(sp_batch).mean()
+            sp_batch = torch.tensor(sp_batch)
             sp += sp_batch
 
             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
 
-    a = perp / len(eval_dataloader)
+    a = perp / len(data_source)
+    print("perp:", perp)
+    print("jsd:", jsd)
+    print("sp:", sp)
     perplexity = torch.exp(torch.tensor(a))
 
-    jsd = jsd / len(eval_dataloader)
-    sp = sp / len(eval_dataloader)
+    jsd = jsd / len(data_source)
+    sp = sp / len(data_source)
     avg_loss = total_loss / len(data_source)
     print("len(datasource):", len(data_source))
 
