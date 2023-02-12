@@ -87,9 +87,9 @@ from tokenizers import ByteLevelBPETokenizer
 
 # paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
 paths = [
-    "data/combined/isizulu/test.txt",
-    "data/combined/isizulu/train.txt",
-    "data/combined/isizulu/valid.txt",
+    "data/test/test.txt",
+    "data/test/train.txt",
+    "data/test/valid.txt",
 ]
 
 # Initialize a tokenizer
