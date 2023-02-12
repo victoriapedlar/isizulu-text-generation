@@ -82,7 +82,6 @@ import wandb  # Add Weights & Bias logging
 #! pip install tokenizers
 
 from pathlib import Path
-
 from tokenizers import ByteLevelBPETokenizer
 
 # paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
@@ -107,13 +106,24 @@ tokenizer.train(
 Path("./tokenizers/ByteLevelBPETokenizer/").mkdir(parents=True, exist_ok=True)
 
 # Save files to disk
-tokenizer.save_model(directory="./tokenizers/ByteLevelBPETokenizer/")
+print("Saving tokenizer model to disk...")
+try:
+    tokenizer.save_model(directory="./tokenizers/ByteLevelBPETokenizer/")
+except Exception as e:
+    print("An error occurred while saving the tokenizer:", e)
 
 # Load the tokenizer which is trained on the new texts
-tokenizer = ByteLevelBPETokenizer(
-    "./tokenizers/ByteLevelBPETokenizer/vocab.json",
-    "./tokenizers/ByteLevelBPETokenizer/merges.txt",
-)
+print("Loading trained tokenizer...")
+try:
+    tokenizer = ByteLevelBPETokenizer(
+        "./tokenizers/ByteLevelBPETokenizer/vocab.json",
+        "./tokenizers/ByteLevelBPETokenizer/merges.txt",
+    )
+except Exception as e:
+    print("An error occurred while loading the tokenizer:", e)
+
+print("Tokenizer initialized and loaded successfully.")
+
 # ------------------------------END CUSTOM CODE----------------------------------
 
 
