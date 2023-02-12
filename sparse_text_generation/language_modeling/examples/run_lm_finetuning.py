@@ -82,13 +82,14 @@ import wandb  # Add Weights & Bias logging
 #! pip install tokenizers
 
 from pathlib import Path
+
 from tokenizers import ByteLevelBPETokenizer
 
 # paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
 paths = [
-    "data/test/test.txt",
-    "data/test/train.txt",
-    "data/test/valid.txt",
+    "data/combined/isizulu/test.txt",
+    "data/combined/isizulu/train.txt",
+    "data/combined/isizulu/valid.txt",
 ]
 
 # Initialize a tokenizer
@@ -106,24 +107,13 @@ tokenizer.train(
 Path("./tokenizers/ByteLevelBPETokenizer/").mkdir(parents=True, exist_ok=True)
 
 # Save files to disk
-print("Saving tokenizer model to disk...")
-try:
-    tokenizer.save_model(directory="./tokenizers/ByteLevelBPETokenizer/")
-except Exception as e:
-    print("An error occurred while saving the tokenizer:", e)
+tokenizer.save_model(directory="./tokenizers/ByteLevelBPETokenizer/")
 
 # Load the tokenizer which is trained on the new texts
-print("Loading trained tokenizer...")
-try:
-    tokenizer = ByteLevelBPETokenizer(
-        "./tokenizers/ByteLevelBPETokenizer/vocab.json",
-        "./tokenizers/ByteLevelBPETokenizer/merges.txt",
-    )
-except Exception as e:
-    print("An error occurred while loading the tokenizer:", e)
-
-print("Tokenizer initialized and loaded successfully.")
-
+tokenizer = ByteLevelBPETokenizer(
+    "./tokenizers/ByteLevelBPETokenizer/vocab.json",
+    "./tokenizers/ByteLevelBPETokenizer/merges.txt",
+)
 # ------------------------------END CUSTOM CODE----------------------------------
 
 
@@ -857,7 +847,6 @@ def evaluate(
     print("perplexity:", perplexity)
     print("js:", jsd)
     print("sp;", sp)
-    print("len(eval_dataloader):", len(eval_dataloader))
     print("repeat_16:", np.array(repeat_16).mean())
     print("wrong_repeat_16:", np.array(wrong_repeat_16).mean())
     print("repeat_32:", np.array(repeat_32).mean())
@@ -1271,9 +1260,7 @@ def main():
             model.module if hasattr(model, "module") else model
         )  # Take care of distributed/parallel training
         model_to_save.save_pretrained(args.output_dir)
-        # ------------------START CUSTOM CODE------------------#
-        # tokenizer.save_pretrained(args.output_dir)
-        # ------------------END CUSTOM CODE--------------------#
+        tokenizer.save_pretrained(args.output_dir)
 
         # Good practice: save your training arguments together with the trained model
         torch.save(args, os.path.join(args.output_dir, "training_args.bin"))
@@ -1282,11 +1269,9 @@ def main():
         model = model_class.from_pretrained(
             args.output_dir, loss=loss_func, gen_func=gen_func
         )
-        # ------------------START CUSTOM CODE------------------#
-        # tokenizer = tokenizer_class.from_pretrained(
-        #     args.output_dir, do_lower_case=args.do_lower_case
-        # )
-        # ------------------END CUSTOM CODE--------------------#
+        tokenizer = tokenizer_class.from_pretrained(
+            args.output_dir, do_lower_case=args.do_lower_case
+        )
         model.to(args.device)
 
     # Evaluation
