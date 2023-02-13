@@ -847,6 +847,7 @@ def evaluate(
     print("perplexity:", perplexity)
     print("js:", jsd)
     print("sp;", sp)
+    print("len(eval_dataloader):", len(eval_dataloader))
     print("repeat_16:", np.array(repeat_16).mean())
     print("wrong_repeat_16:", np.array(wrong_repeat_16).mean())
     print("repeat_32:", np.array(repeat_32).mean())
