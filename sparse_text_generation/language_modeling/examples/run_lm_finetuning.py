@@ -87,9 +87,9 @@ from tokenizers import ByteLevelBPETokenizer
 
 # paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
 paths = [
-    "data/combined/isizulu/test.txt",
-    "data/combined/isizulu/train.txt",
-    "data/combined/isizulu/valid.txt",
+    "~/isizulu-text-generation/data/test/test.txt",
+    "~/isizulu-text-generation/data/test/train.txt",
+    "~/isizulu-text-generation/data/test/valid.txt",
 ]
 
 # Initialize a tokenizer
@@ -1270,7 +1270,7 @@ def main():
         model = model_class.from_pretrained(
             args.output_dir, loss=loss_func, gen_func=gen_func
         )
-        tokenizer = tokenizer_class.from_pretrained(
+        tokenizer = GPT2TokenizerFast.from_pretrained(  # adjustments to code
             args.output_dir, do_lower_case=args.do_lower_case
         )
         model.to(args.device)
