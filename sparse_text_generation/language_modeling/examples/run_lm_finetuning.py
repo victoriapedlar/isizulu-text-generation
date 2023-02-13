@@ -144,7 +144,7 @@ logger = logging.getLogger(__name__)
 
 
 MODEL_CLASSES = {
-    "gpt2": (GPT2Config, GPT2LMHeadModel, GPT2Tokenizer),
+    "gpt2": (GPT2Config, GPT2LMHeadModel, GPT2TokenizerFast),  # GPT2Tokenizer),
     "openai-gpt": (OpenAIGPTConfig, OpenAIGPTLMHeadModel, OpenAIGPTTokenizer),
     "bert": (BertConfig, BertForMaskedLM, BertTokenizer),
     "roberta": (RobertaConfig, RobertaForMaskedLM, RobertaTokenizer),
