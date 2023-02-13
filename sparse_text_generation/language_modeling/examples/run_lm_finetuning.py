@@ -1168,7 +1168,7 @@ def main():
     # ------------------START CUSTOM CODE------------------#
     tokenizer = GPT2TokenizerFast.from_pretrained("./tokenizers/ByteLevelBPETokenizer/")
     # Convert the tokenizer to a GPT2TokenizerFast object
-    tokenizer = GPT2TokenizerFast(
+    tokenizer = ByteLevelBPETokenizer(
         "./tokenizers/ByteLevelBPETokenizer/vocab.json",
         "./tokenizers/ByteLevelBPETokenizer/merges.txt",
     )
