@@ -1167,6 +1167,8 @@ def main():
         config = config_class()
     # ------------------START CUSTOM CODE------------------#
     tokenizer = GPT2TokenizerFast.from_pretrained("./tokenizers/ByteLevelBPETokenizer/")
+    # Convert the tokenizer to a GPT2TokenizerFast object
+    tokenizer = GPT2TokenizerFast(tokenizer=tokenizer)
     # ------------------END CUSTOM CODE--------------------#
     # tokenizer = tokenizer_class.from_pretrained(
     #     args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
