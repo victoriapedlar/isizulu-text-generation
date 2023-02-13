@@ -87,9 +87,9 @@ from tokenizers import ByteLevelBPETokenizer
 
 # paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
 paths = [
-    "data/test/test.txt",
-    "data/test/train.txt",
-    "data/test/valid.txt",
+    "data/combined/isizulu/test.txt",
+    "data/combined/isizulu/train.txt",
+    "data/combined/isizulu/valid.txt",
 ]
 
 # Initialize a tokenizer
@@ -144,7 +144,7 @@ logger = logging.getLogger(__name__)
 
 
 MODEL_CLASSES = {
-    "gpt2": (GPT2Config, GPT2LMHeadModel, GPT2TokenizerFast),  # GPT2Tokenizer),
+    "gpt2": (GPT2Config, GPT2LMHeadModel, GPT2Tokenizer),
     "openai-gpt": (OpenAIGPTConfig, OpenAIGPTLMHeadModel, OpenAIGPTTokenizer),
     "bert": (BertConfig, BertForMaskedLM, BertTokenizer),
     "roberta": (RobertaConfig, RobertaForMaskedLM, RobertaTokenizer),
@@ -1167,11 +1167,6 @@ def main():
         config = config_class()
     # ------------------START CUSTOM CODE------------------#
     tokenizer = GPT2TokenizerFast.from_pretrained("./tokenizers/ByteLevelBPETokenizer/")
-    # Convert the tokenizer to a GPT2TokenizerFast object
-    tokenizer = ByteLevelBPETokenizer(
-        "./tokenizers/ByteLevelBPETokenizer/vocab.json",
-        "./tokenizers/ByteLevelBPETokenizer/merges.txt",
-    )
     # ------------------END CUSTOM CODE--------------------#
     # tokenizer = tokenizer_class.from_pretrained(
     #     args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
@@ -1265,8 +1260,7 @@ def main():
             model.module if hasattr(model, "module") else model
         )  # Take care of distributed/parallel training
         model_to_save.save_pretrained(args.output_dir)
-        # tokenizer.save_pretrained(args.output_dir)
-        tokenizer.save_model(args.output_dir)
+        tokenizer.save_pretrained(args.output_dir)
 
         # Good practice: save your training arguments together with the trained model
         torch.save(args, os.path.join(args.output_dir, "training_args.bin"))
