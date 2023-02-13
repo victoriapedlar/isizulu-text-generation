@@ -3,7 +3,7 @@
 #SBATCH --account=nlpgroup
 #SBATCH --partition=a100
 #SBATCH --nodes=1 --ntasks=6 --gres=gpu:a100-3g-20gb:1
-#SBATCH --time=72:00:00
+#SBATCH --time=48:00:00
 #SBATCH --job-name="sparse_lm"
 #SBATCH --mail-user=PDLVIC001@myuct.ac.za
 #SBATCH --mail-type=ALL
@@ -21,7 +21,7 @@ echo "Starting script..."
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --train_data_file ~/isizulu-text-generation/data/combined/isizulu/train.txt \
         --eval_data_file ~/isizulu-text-generation/data/combined/isizulu/valid.txt \
-        --output_dir ~/isizulu-text-generation/models/sparse_lm/25Jan \
+        --output_dir ~/isizulu-text-generation/models/sparse_lm/ \
         --model_type gpt2 \
         --model_name_or_path gpt2-medium \
         --mode from_scratch \
