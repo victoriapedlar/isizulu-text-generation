@@ -382,12 +382,7 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
     print("jsd:", avg_jsd)
     print("sp:", avg_sp)
 
-    return (
-        avg_loss,
-        perplexity,
-        avg_jsd,
-        avg_sp,
-    )
+    return (avg_loss, perplexity, avg_jsd, avg_sp, avg_loss / math.log(2))
 
 
 # ------------- END ADJUSTED CODE --------------
