@@ -331,34 +331,32 @@ def compute_sp(p, target):
 #     sp = 0
 
 #     ntokens = len(corpus.dictionary)
-#     print("ntokens:", ntokens)
 #     hidden = model.init_hidden(batch_size)
 #     eval_dataloader = DataLoader(data_source, batch_size=batch_size)
-#     print("len(eval_dataloader):", len(eval_dataloader))
 #     with torch.no_grad():
 #         for i in range(0, data_source.size(0) - 1, args.bptt):
 #             data, targets = get_batch(data_source, i, args)
 #             output, hidden = model(data, hidden)
-# output_flat = output.view(-1, ntokens)
-# total_loss += len(data) * criterion(output_flat, targets).item()
+#             output_flat = output.view(-1, ntokens)
+#             total_loss += len(data) * criterion(output_flat, targets).item()
 #             hidden = repackage_hidden(hidden)
 
 #             probs = torch.softmax(output_flat, dim=1)
 #             lprobs = probs
 
-# if len(probs[0].nonzero()) != len(probs[0]):
-#     probs = probs[:, :] + epsilon
-#     sums = [probs[i].sum().item() for i in range(probs.size(0))]
-#     probs = [probs[i] / sums[i] for i in range(len(sums))]
+#         if len(probs[0].nonzero()) != len(probs[0]):
+#             probs = probs[:, :] + epsilon
+#             sums = [probs[i].sum().item() for i in range(probs.size(0))]
+#             probs = [probs[i] / sums[i] for i in range(len(sums))]
 
-#     probs = torch.stack(probs)
+#             probs = torch.stack(probs)
 
-# p = [
-#     probs[i, targets.squeeze(0)[i].item()]
-#     for i in range(len(targets.squeeze(0)))
-# ]
-# p = torch.stack(p)
-# perp += torch.log(p**-1).mean().item()
+#             p = [
+#                 probs[i, targets.squeeze(0)[i].item()]
+#                 for i in range(len(targets.squeeze(0)))
+#             ]
+#             p = torch.stack(p)
+#             perp += torch.log(p**-1).item()
 
 #             jsd_batch = []
 #             labels = torch.zeros(len(targets), ntokens)
@@ -367,14 +365,14 @@ def compute_sp(p, target):
 #                 jsd_ = compute_jsd(lprobs[i], labels[i])
 #                 jsd_batch.append(jsd_)
 
-#             jsd_batch = torch.tensor(jsd_batch).mean()
+#             jsd_batch = torch.tensor(jsd_batch).sum()
 #             jsd += jsd_batch
 
 #             sp_batch = []
 #             for i in range(len(targets)):
 #                 sp_batch.append(compute_sp(lprobs.squeeze(0)[i], targets[i]).item())
 
-#             sp_batch = torch.tensor(sp_batch).mean()
+#             sp_batch = torch.tensor(sp_batch).sum()
 #             sp += sp_batch
 
 #             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
@@ -395,61 +393,70 @@ def compute_sp(p, target):
 #     print("sp;", sp)
 #     return avg_loss, perplexity, jsd, sp, avg_loss / math.log(2)
 
-import torch.nn.functional as F
 
-
-def evaluate(data_source, batch_size=10, eps=1e-9):
+def evaluate(data_source, epsilon=0.000001, batch_size=10):
+    perp = 0.0
     model.eval()
-    if args.model == "QRNN":
-        model.reset()
-    total_loss = 0
-    total_eps = 0
-    total_sp = 0
-    total_jsd = 0
+    total_loss = 0.0
+    jsd = 0
+    sp = 0
+
     ntokens = len(corpus.dictionary)
     hidden = model.init_hidden(batch_size)
-    for i in range(0, data_source.size(0) - 1, args.bptt):
-        data, targets = get_batch(data_source, i, args, evaluation=True)
-        output, hidden = model(data, hidden)
-        output_flat = output.view(-1, ntokens)
-        total_loss += len(data) * criterion(output_flat, targets).data
+    eval_dataloader = DataLoader(data_source, batch_size=batch_size)
 
-        # Epsilon calculation
-        probs = F.softmax(output_flat, dim=1)
-        if len(probs[0].nonzero()) != len(probs[0]):
-            probs = probs[:, :] + eps
-            sums = [probs[i].sum().item() for i in range(probs.size(0))]
-            probs = [probs[i] / sums[i] for i in range(len(sums))]
+    jsd_batch = []
+    sp_batch = []
 
-        # Perplexity calculation
-        p = [
-            probs[i, targets.squeeze(0)[i].item()]
-            for i in range(len(targets.squeeze(0)))
-        ]
-        p = torch.stack(p)
-        total_eps += torch.log(p**-1).mean().item()
+    with torch.no_grad():
+        for i in range(0, data_source.size(0) - 1, args.bptt):
+            data, targets = get_batch(data_source, i, args)
+            output, hidden = model(data, hidden)
+            output_flat = output.view(-1, ntokens)
+            total_loss += len(data) * criterion(output_flat, targets).item()
+            hidden = repackage_hidden(hidden)
 
-        # Sparsemax Score calculation
-        sp = compute_sp(
-            probs.detach().cpu().numpy(), targets.squeeze(0).detach().cpu().numpy()
-        )
-        total_sp += sp
+            probs = torch.softmax(output_flat, dim=1)
+            lprobs = probs
 
-        # Jensen-Shannon Divergence calculation
-        uniform_probs = torch.ones_like(probs) / ntokens
-        jsd = compute_jsd(probs, uniform_probs)
-        total_jsd += jsd
+            if len(probs[0].nonzero()) != len(probs[0]):
+                probs = probs[:, :] + epsilon
+                sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                probs = [probs[i] / sums[i] for i in range(len(sums))]
+                probs = torch.stack(probs)
+                p = [
+                    probs[i, targets.squeeze(0)[i].item()]
+                    for i in range(len(targets.squeeze(0)))
+                ]
+                p = torch.stack(p)
+                perp += torch.log(p**-1).item()
 
-        hidden = repackage_hidden(hidden)
+                labels = torch.zeros(len(targets), ntokens)
+                labels[i, targets[i]] = 1
+                jsd_ = compute_jsd(lprobs[i], labels[i])
+                jsd_batch.append(jsd_)
+                jsd_batch = torch.tensor(jsd_batch).sum()
+                jsd += jsd_batch
 
+                sp_batch.append(compute_sp(lprobs.squeeze(0)[i], targets[i]).item())
+                sp_batch = torch.tensor(sp_batch).sum()
+                sp += sp_batch
+
+    a = perp / len(data_source)
+    print("perp:", perp)
+    print("jsd:", jsd)
+    print("sp:", sp)
+    perplexity = torch.exp(torch.tensor(a))
+
+    jsd = jsd / len(data_source)
+    sp = sp / len(data_source)
     avg_loss = total_loss / len(data_source)
-    return (
-        avg_loss,
-        total_eps / len(data_source),
-        total_jsd / len(data_source),
-        total_sp / len(data_source),
-        avg_loss / math.log(2),
-    )
+    print("len(datasource):", len(data_source))
+
+    print("perplexity:", perplexity)
+    print("js:", jsd)
+    print("sp;", sp)
+    return avg_loss, perplexity, jsd, sp, avg_loss / math.log(2)
 
 
 # ------------- END ADJUSTED CODE --------------
