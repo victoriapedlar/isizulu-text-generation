@@ -346,19 +346,19 @@ def compute_sp(p, target):
 #             probs = torch.softmax(output_flat, dim=1)
 #             lprobs = probs
 
-#             if len(probs[0].nonzero()) != len(probs[0]):
-#                 probs = probs[:, :] + epsilon
-#                 sums = [probs[i].sum().item() for i in range(probs.size(0))]
-#                 probs = [probs[i] / sums[i] for i in range(len(sums))]
+# if len(probs[0].nonzero()) != len(probs[0]):
+#     probs = probs[:, :] + epsilon
+#     sums = [probs[i].sum().item() for i in range(probs.size(0))]
+#     probs = [probs[i] / sums[i] for i in range(len(sums))]
 
-#                 probs = torch.stack(probs)
+#     probs = torch.stack(probs)
 
-#             p = [
-#                 probs[i, targets.squeeze(0)[i].item()]
-#                 for i in range(len(targets.squeeze(0)))
-#             ]
-#             p = torch.stack(p)
-#             perp += torch.log(p**-1).mean().item()
+# p = [
+#     probs[i, targets.squeeze(0)[i].item()]
+#     for i in range(len(targets.squeeze(0)))
+# ]
+# p = torch.stack(p)
+# perp += torch.log(p**-1).mean().item()
 
 #             jsd_batch = []
 #             labels = torch.zeros(len(targets), ntokens)
@@ -398,38 +398,46 @@ def compute_sp(p, target):
 import torch.nn.functional as F
 
 
-def evaluate(data_source, batch_size=10):
-    # Turn on evaluation mode which disables dropout.
+def evaluate(data_source, batch_size=10, eps=1e-9):
     model.eval()
     if args.model == "QRNN":
         model.reset()
     total_loss = 0
     total_eps = 0
-    total_sp_score = 0
+    total_sp = 0
     total_jsd = 0
     ntokens = len(corpus.dictionary)
     hidden = model.init_hidden(batch_size)
-    for i in range(
-        0, data_source.size(0) - 1, args.bptt
-    ):  # Jump forwards in bptt (70) increments
-        data, targets = get_batch(
-            data_source, i, args, evaluation=True
-        )  # Gets the data and the target data to be produced
+    for i in range(0, data_source.size(0) - 1, args.bptt):
+        data, targets = get_batch(data_source, i, args, evaluation=True)
         output, hidden = model(data, hidden)
-        # Calculate loss and add to total loss
         output_flat = output.view(-1, ntokens)
-        total_loss += len(data) * criterion(output_flat, targets).item()
-        # total_loss += len(data) * criterion(model.decoder.weight, model.decoder.bias, output, targets).data
-        # Convert output to probability distribution and calculate perplexity
-        prob = F.softmax(output, dim=-1)
-        eps = torch.exp(-torch.log(prob.gather(1, targets.view(-1, 1))) / len(data))
-        total_eps += eps.item()
-        # Calculate sparsemax score
-        sp_score = compute_sp(prob[-1].detach().numpy(), targets[-1].item())
-        total_sp_score += sp_score
-        # Calculate Jensen-Shannon divergence
-        jsd = compute_jsd(prob[0].detach().numpy(), prob[-1].detach().numpy())
+        total_loss += len(data) * criterion(output_flat, targets).data
+
+        # Epsilon calculation
+        probs = F.softmax(output_flat, dim=1)
+        if len(probs[0].nonzero()) != len(probs[0]):
+            probs = probs[:, :] + eps
+            sums = [probs[i].sum().item() for i in range(probs.size(0))]
+            probs = [probs[i] / sums[i] for i in range(len(sums))]
+
+        # Perplexity calculation
+        p = [
+            probs[i, targets.squeeze(0)[i].item()]
+            for i in range(len(targets.squeeze(0)))
+        ]
+        p = torch.stack(p)
+        total_eps += torch.log(p**-1).item()
+
+        # Sparsemax Score calculation
+        sp = compute_sp(probs.detach().numpy(), targets.squeeze(0).detach().numpy())
+        total_sp += sp
+
+        # Jensen-Shannon Divergence calculation
+        uniform_probs = torch.ones_like(probs) / ntokens
+        jsd = compute_jsd(probs, uniform_probs)
         total_jsd += jsd
+
         hidden = repackage_hidden(hidden)
 
     avg_loss = total_loss / len(data_source)
@@ -437,7 +445,7 @@ def evaluate(data_source, batch_size=10):
         avg_loss,
         total_eps / len(data_source),
         total_jsd / len(data_source),
-        total_sp_score / len(data_source),
+        total_sp / len(data_source),
         avg_loss / math.log(2),
     )
 
