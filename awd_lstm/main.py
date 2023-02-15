@@ -430,7 +430,9 @@ def evaluate(data_source, batch_size=10, eps=1e-9):
         total_eps += torch.log(p**-1).mean().item()
 
         # Sparsemax Score calculation
-        sp = compute_sp(probs.detach().numpy(), targets.squeeze(0).detach().numpy())
+        sp = compute_sp(
+            probs.detach().cpu().numpy(), targets.squeeze(0).detach().cpu().numpy()
+        )
         total_sp += sp
 
         # Jensen-Shannon Divergence calculation
