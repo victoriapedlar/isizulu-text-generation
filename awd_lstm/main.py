@@ -350,8 +350,12 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
                 probs = [probs[i] / sums[i] for i in range(len(sums))]
                 probs = torch.stack(probs)
 
-            p = probs.gather(1, targets.unsqueeze(1)).squeeze()
-            perp = torch.exp(-p.log().sum() / len(data))
+            p = [
+                probs[i, targets.squeeze(0)[i].item()]
+                for i in range(len(targets.squeeze(0)))
+            ]
+            p = torch.stack(p)
+            perp = torch.log(p**-1) / len(data)
             total_perp += perp.item()
 
             jsd_batch = []
