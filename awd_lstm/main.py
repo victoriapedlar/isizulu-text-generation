@@ -427,7 +427,7 @@ def evaluate(data_source, batch_size=10, eps=1e-9):
             for i in range(len(targets.squeeze(0)))
         ]
         p = torch.stack(p)
-        total_eps += torch.log(p**-1).item()
+        total_eps += torch.log(p**-1).mean().item()
 
         # Sparsemax Score calculation
         sp = compute_sp(probs.detach().numpy(), targets.squeeze(0).detach().numpy())
