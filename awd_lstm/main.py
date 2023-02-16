@@ -337,8 +337,8 @@ def compute_sp(p, target):
 #         for i in range(0, data_source.size(0) - 1, args.bptt):
 #             data, targets = get_batch(data_source, i, args)
 #             output, hidden = model(data, hidden)
-#             output_flat = output.view(-1, ntokens)
-#             total_loss += len(data) * criterion(output_flat, targets).item()
+# output_flat = output.view(-1, ntokens)
+# total_loss += len(data) * criterion(output_flat, targets).item()
 #             hidden = repackage_hidden(hidden)
 
 #             probs = torch.softmax(output_flat, dim=1)
@@ -408,11 +408,8 @@ def evaluate(data_source, batch_size=10):
     for i in range(0, data_source.size(0) - 1, args.bptt):
         data, targets = get_batch(data_source, i, args, evaluation=True)
         output, hidden = model(data, hidden)
-
-        total_loss += (
-            len(data)
-            * criterion(model.decoder.weight, model.decoder.bias, output, targets).data
-        )
+        output_flat = output.view(-1, ntokens)
+        total_loss += len(data) * criterion(output_flat, targets).item()
 
         # compute 𝜖-perplexity
         lprobs = output.view(-1, ntokens)
