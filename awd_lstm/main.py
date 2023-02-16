@@ -355,8 +355,8 @@ def evaluate(data_source, epsilon=0.000001, batch_size=10):
                 for i in range(len(targets.squeeze(0)))
             ]
             p = torch.stack(p)
-            perp = torch.log(p**-1) / len(data)
-            total_perp += perp.item()
+            perp = torch.log(p**-1)
+            total_perp += perp.sum().item() / len(data)
 
             jsd_batch = []
             labels = torch.zeros(len(targets), ntokens)
