@@ -422,14 +422,13 @@ def evaluate(data_source, batch_size=10):
         for j in range(batch_size):
             p = torch.exp(log_probs[j]).detach().numpy()
             q = np.ones_like(p) / len(p)
-            jsd_batch += compute_jsd(p, q)
+            jsd_batch += compute_jsd(torch.from_numpy(p), torch.from_numpy(q))
         jsd += jsd_batch / batch_size
 
         # compute Sparsemax Score
         sp_batch = 0
-        for j in range(batch_size):
-            probs = output[j].softmax(dim=-1)
-            sp_batch += compute_sp(probs, targets[j])
+        for j in range(len(targets)):
+            sp_batch += compute_sp(lprobs[j], targets[j]).item()
         sp += sp_batch / batch_size
 
         nb_eval_steps += 1
