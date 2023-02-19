@@ -411,8 +411,7 @@ def evaluate(data_source, batch_size=10, eps=1e-8):
         total_loss += loss.item() * len(data)
         hidden = repackage_hidden(hidden)
     avg_loss = total_loss / len(data_source)
-    perplexity = torch.exp(avg_loss)
-    eps_perplexity = torch.exp(avg_loss / (1 - eps))
+    eps_perplexity = torch.exp(torch.tensor(avg_loss / (1 - eps)))
     avg_jsd = 0
     avg_sp = 0
     return avg_loss, eps_perplexity, avg_jsd, avg_sp, avg_loss / math.log(2)
