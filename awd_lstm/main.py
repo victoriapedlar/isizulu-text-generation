@@ -428,7 +428,7 @@ def evaluate(data_source, batch_size=10):
         # compute Sparsemax Score
         sp_batch = 0
         for j in range(len(targets)):
-            sp_batch += compute_sp(lprobs[j], targets[j]).item()
+            sp_batch += compute_sp(lprobs[j], targets[j]).detach().numpy().item()
         sp += sp_batch / batch_size
 
         nb_eval_steps += 1
