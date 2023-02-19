@@ -410,7 +410,7 @@ def evaluate(data_source, batch_size=10, eps=1e-8):
         loss = criterion(log_probs.view(-1, ntokens), targets.view(-1))
         total_loss += loss.item() * len(data)
         hidden = repackage_hidden(hidden)
-    avg_loss = total_loss.item() / len(data_source)
+    avg_loss = total_loss / len(data_source)
     perplexity = torch.exp(avg_loss)
     eps_perplexity = torch.exp(avg_loss / (1 - eps))
     avg_jsd = 0
