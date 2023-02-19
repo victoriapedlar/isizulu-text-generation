@@ -413,7 +413,9 @@ def evaluate(data_source, batch_size=10, eps=1e-8):
             total_loss += loss.item() * len(data)
             probs = torch.exp(log_probs)
             for j in range(probs.size(0)):
-                total_sp += compute_sp(probs[j].detach().numpy(), targets[j]).item()
+                total_sp += compute_sp(
+                    probs[j].cpu().detach().numpy(), targets[j]
+                ).item()
             hidden = repackage_hidden(hidden)
 
         avg_loss = total_loss / len(data_source)
