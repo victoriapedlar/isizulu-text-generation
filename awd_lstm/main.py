@@ -399,6 +399,7 @@ def evaluate(data_source, batch_size=10, eps=1e-8):
     total_loss = 0
     ntokens = len(corpus.dictionary)
     hidden = model.init_hidden(batch_size)
+    total_sp = 0
     for i in range(
         0, data_source.size(0) - 1, args.bptt
     ):  # Jump forwards in bptt (70) increments
@@ -409,12 +410,15 @@ def evaluate(data_source, batch_size=10, eps=1e-8):
         log_probs = F.log_softmax(output, dim=-1)
         loss = criterion(log_probs.view(-1, ntokens), targets.view(-1))
         total_loss += loss.item() * len(data)
+        probs = torch.exp(log_probs)
+        for j in range(probs.size(0)):
+            total_sp += compute_sp(probs[j], targets[j])
         hidden = repackage_hidden(hidden)
     avg_loss = total_loss / len(data_source)
     eps_perplexity = torch.exp(torch.tensor(avg_loss / (1 - eps)))
+    sp_score = total_sp / (len(data_source) - 1)
     avg_jsd = 0
-    avg_sp = 0
-    return avg_loss, eps_perplexity, avg_jsd, avg_sp, avg_loss / math.log(2)
+    return avg_loss, eps_perplexity, avg_jsd, sp_score, avg_loss / math.log(2)
 
 
 # ------------- END ADJUSTED CODE --------------
