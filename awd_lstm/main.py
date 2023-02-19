@@ -407,13 +407,8 @@ def evaluate(data_source, batch_size=10, eps=1e-8):
         )  # Gets the data and the target data to be produced
         output, hidden = model(data, hidden)
         log_probs = F.log_softmax(output, dim=-1)
-        smoothed_probs = (1 - eps) * torch.exp(log_probs) + eps / ntokens
-        total_loss += (
-            len(data)
-            * criterion(
-                model.decoder.weight, model.decoder.bias, log_probs, targets
-            ).data
-        )
+        loss = criterion(log_probs.view(-1, ntokens), targets.view(-1))
+        total_loss += loss.item() * len(data)
         hidden = repackage_hidden(hidden)
     avg_loss = total_loss.item() / len(data_source)
     perplexity = torch.exp(avg_loss)
