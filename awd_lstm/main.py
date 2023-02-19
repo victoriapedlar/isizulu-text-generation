@@ -389,69 +389,52 @@ def compute_sp(p, target):
 #     return (avg_loss, perplexity, avg_jsd, avg_sp, avg_loss / math.log(2))
 
 import math
+import torch.nn.functional as F
 
 
-def evaluate(data_source, batch_size=10):
-    # Turn on evaluation mode which disables dropout.
+def evaluate(data_source):
+    # set model to evaluation mode
     model.eval()
-    if args.model == "QRNN":
-        model.reset()
-    total_loss = 0
+    total_loss = 0.0
     ntokens = len(corpus.dictionary)
-    hidden = model.init_hidden(batch_size)
+    hidden = model.init_hidden(eval_batch_size)
+    sp_batch = 0.0
+    jsd_batch = 0.0
+    with torch.no_grad():
+        for i in range(0, data_source.size(0) - 1, args.bptt):
+            data, targets = get_batch(data_source, i, args.bptt)
+            output, hidden = model(data, hidden)
+            output_flat = output.view(-1, ntokens)
+            total_loss += len(data) * criterion(output_flat, targets).item()
+            lprobs = F.log_softmax(output_flat, dim=-1)
+            for j in range(lprobs.size(0)):
+                p, q = np.exp(lprobs[j - 1]), np.exp(lprobs[j])
+                jsd_batch += compute_jsd(p, q).item()
+                sp_batch += compute_sp(lprobs[j], targets[j]).detach().numpy().item()
 
-    perp = 0.0
-    jsd = 0
-    sp = 0
-    nb_eval_steps = 0
+            hidden = repackage_hidden(hidden)
 
-    for i in range(0, data_source.size(0) - 1, args.bptt):
-        data, targets = get_batch(data_source, i, args, evaluation=True)
-        output, hidden = model(data, hidden)
-        output_flat = output.view(-1, ntokens)
-        total_loss += len(data) * criterion(output_flat, targets).item()
-
-        # compute 𝜖-perplexity
-        lprobs = output.view(-1, ntokens)
-        log_probs = torch.log(lprobs)
-        perp += torch.exp(-log_probs.mean()).item()
-
-        # compute Jensen-Shannon Divergence
-        log_probs = log_probs.cpu()
-        jsd_batch = 0
-        for j in range(batch_size):
-            p = torch.exp(log_probs[j]).detach().numpy()
-            q = np.ones_like(p) / len(p)
-            jsd_batch += compute_jsd(torch.from_numpy(p), torch.from_numpy(q))
-        jsd += jsd_batch / batch_size
-
-        # compute Sparsemax Score
-        sp_batch = 0
-        for j in range(len(targets)):
-            sp_batch += compute_sp(lprobs[j], targets[j]).detach().numpy().item()
-        sp += sp_batch / batch_size
-
-        nb_eval_steps += 1
-
-    perplexity = math.exp(perp / nb_eval_steps)
-    jsd /= nb_eval_steps
-    sp /= nb_eval_steps
-
-    avg_loss = total_loss / nb_eval_steps
+    avg_loss = total_loss / (len(data_source) - 1)
 
     # print the metric values
-    print("perplexity:", perplexity)
-    print("Jensen-Shannon Divergence:", jsd)
-    print("Sparsemax Score:", sp)
+    print("perplexity:", np.exp(total_loss / (len(data_source) - 1)))
+    print("Jensen-Shannon Divergence:", jsd_batch / (len(data_source) - 1))
+    print("Sparsemax Score:", sp_batch / (len(data_source) - 1))
 
     result = {
-        "perplexity": perplexity,
-        "Jensen-Shannon Divergence": jsd,
-        "Sparsemax Score": jsd,
+        "perplexity": np.exp(total_loss / (len(data_source) - 1)),
+        "Jensen-Shannon Divergence": jsd_batch / (len(data_source) - 1),
+        "Sparsemax Score": sp_batch / (len(data_source) - 1),
         "loss": avg_loss,
     }
 
-    return avg_loss, perplexity, jsd, sp, avg_loss / math.log(2)
+    return (
+        avg_loss,
+        np.exp(total_loss / (len(data_source) - 1)),
+        jsd_batch / (len(data_source) - 1),
+        sp_batch / (len(data_source) - 1),
+        avg_loss / math.log(2),
+    )
 
 
 # ------------- END ADJUSTED CODE --------------
