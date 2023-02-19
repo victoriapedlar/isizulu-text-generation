@@ -388,6 +388,8 @@ def compute_sp(p, target):
 
 #     return (avg_loss, perplexity, avg_jsd, avg_sp, avg_loss / math.log(2))
 
+import torch.nn.functional as F
+
 
 def evaluate(data_source, batch_size=10, eps=1e-8):
     # Turn on evaluation mode which disables dropout.
