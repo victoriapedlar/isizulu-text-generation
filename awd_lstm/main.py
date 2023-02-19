@@ -412,9 +412,9 @@ def evaluate(data_source):
             total_loss += len(data) * criterion(output_flat, targets).item()
             lprobs = F.log_softmax(output_flat, dim=-1)
             for j in range(lprobs.size(0)):
-                p, q = np.exp(lprobs[j - 1]), np.exp(lprobs[j])
-                p = p.cpu().detach().numpy()
-                jsd_batch += compute_jsd(p, q).item()
+                p, q = np.exp(lprobs[j - 1].cpu()), np.exp(lprobs[j].cpu())
+                jsd_batch += compute_jsd(p.cpu(), q.cpu()).to(device)
+                p = np.asarray(p.cpu())
                 sp_batch += compute_sp(lprobs[j], targets[j]).detach().numpy().item()
 
             hidden = repackage_hidden(hidden)
