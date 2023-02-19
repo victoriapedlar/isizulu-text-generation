@@ -413,6 +413,7 @@ def evaluate(data_source):
             lprobs = F.log_softmax(output_flat, dim=-1)
             for j in range(lprobs.size(0)):
                 p, q = np.exp(lprobs[j - 1]), np.exp(lprobs[j])
+                p = p.cpu().detach().numpy()
                 jsd_batch += compute_jsd(p, q).item()
                 sp_batch += compute_sp(lprobs[j], targets[j]).detach().numpy().item()
 
