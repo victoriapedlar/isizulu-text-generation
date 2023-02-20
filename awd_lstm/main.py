@@ -415,7 +415,7 @@ def evaluate(data_source, batch_size=10, epsilon=1e-8):
             total_loss += len(data) * loss.item()
             hidden = repackage_hidden(hidden)
         loss = total_loss / len(data_source)
-        eppl = math.exp(-1 * val_loss / ((1 + epsilon / V) * V))
+        eppl = math.exp(-1 * loss / ((1 + epsilon / V) * V))
         sp_score = 0
         avg_jsd = 0
     return loss, eppl, avg_jsd, sp_score, loss / math.log(2)
