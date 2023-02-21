@@ -410,14 +410,19 @@ def evaluate(data_source, batch_size=10, epsilon=1e-8):
             # Flatten the output and targets tensors
             output = output.view(-1, ntokens)
             targets = targets.view(-1)
+            # Get probabilities using softmax
+            probs = torch.softmax(output, dim=-1)
             # Calculate cross-entropy loss
             loss = criterion(output, targets)
             total_loss += len(data) * loss.item()
             hidden = repackage_hidden(hidden)
         loss = total_loss / len(data_source)
-        eppl = math.exp(-1 * loss / ((1 + epsilon) * V))
+        smoothed_probs_sum = torch.sum(probs, dim=-1) + epsilon * ntokens
+        log_probs = torch.log(probs / smoothed_probs_sum.unsqueeze(1))
+        lp = torch.mean(log_probs)
+        eppl = math.exp(-lp)
         sp_score = 0
-        avg_jsd = math.exp(loss)
+        avg_jsd = 0
     return loss, eppl, avg_jsd, sp_score, loss / math.log(2)
 
 
