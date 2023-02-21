@@ -417,7 +417,7 @@ def evaluate(data_source, batch_size=10, epsilon=1e-8):
             total_loss += len(data) * loss.item()
             hidden = repackage_hidden(hidden)
         loss = total_loss / len(data_source)
-        smoothed_probs_sum = torch.sum(probs, dim=-1) + epsilon * ntokens
+        smoothed_probs_sum = torch.sum(probs, dim=-1) + epsilon * V
         log_probs = torch.log(probs / smoothed_probs_sum.unsqueeze(1))
         lp = torch.mean(log_probs)
         eppl = math.exp(-lp)
