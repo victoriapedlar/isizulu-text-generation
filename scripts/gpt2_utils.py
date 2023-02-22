@@ -296,7 +296,7 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
-def evaluate_bpcs(
+def evaluate(
     tokenizers,
     model,
     eval_data,
