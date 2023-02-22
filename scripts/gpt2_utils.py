@@ -318,18 +318,6 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-    # apply additive smoothing
-    smoothed_probs = model.get_output_embeddings()(
-        torch.arange(model.config.vocab_size).to(device)
-    )
-    smoothed_probs = smoothed_probs.exp() + epsilon
-    smoothed_probs /= smoothed_probs.sum()
-
-    # compute negative log-likelihood
-    nll = -torch.log(smoothed_probs[encodings.input_ids]).sum()
-
-    nlls.append(nll)
-
     for i in tqdm(range(1, encodings.input_ids.size(1), stride), disable=disable_tqdm):
         begin_loc = max(i + stride - input_block_size, 0)
         end_loc = i + stride
@@ -338,6 +326,12 @@ def evaluate(
         target_ids[:, :-stride] = -100
 
         with torch.no_grad():
+            outputs = model(input_ids, labels=target_ids)
+
+            # apply additive smoothing
+            logits = outputs.logits
+            smoothed_logits = logits + epsilon
+            smoothed_probs = torch.softmax(smoothed_logits, dim=-1)
 
             # calculate negative log-likelihood
             neg_log_likelihood = -torch.log(
@@ -349,7 +343,7 @@ def evaluate(
 
     # calculate epsilon-perplexity
     total_nll = torch.stack(nlls).sum()
-    avg_nll = total_nll / (end_loc + 1)
+    avg_nll = total_nll / end_loc
     eppl = torch.exp(avg_nll)
     sp = 0
     jsd = 0
