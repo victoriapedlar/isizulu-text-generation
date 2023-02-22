@@ -804,13 +804,12 @@ def run_experiment(
     )
     trainer.train(model_path=resume_checkpoint_dir)
     val_metrics, val_jsd, val_perplexity, val_sp = evaluate(
-        tokenizers=trainer.tokenizers,
-        model=trainer.model,
-        eval_data=hparams["val_data"],
+        trainer.tokenizers,
+        trainer.model,
+        hparams["val_data"],
         input_block_size=hparams["train_block_size"],
         stride=eval_stride,
-        eval_batch_size=hparams["batch_size"],
-        epsilon=0.000001,
+        disable_tqdm=disable_prediction_tqdm,
     )
     logger.info(repr(val_metrics))
     # 🐝 Log train metrics to wandb
