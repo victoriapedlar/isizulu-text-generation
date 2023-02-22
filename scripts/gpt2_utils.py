@@ -296,115 +296,179 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
-def evaluate(
+def evaluate_bpcs(
     tokenizers,
     model,
     eval_data,
     input_block_size,
     stride,
-    eval_batch_size,
-    epsilon=0.000001,
+    disable_tqdm=False,
+    epsilon=1e-9,
 ):
-    perp = 0.0
-    model.eval()
-
-    jsd = 0
-    sp = 0
-
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
-        total_tokens = 0
+        nlls = []
+        total_characters = 0
         if len(file_paths) > 1:
             logger.warning(
                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
             )
         with open(file_paths[0], "r") as f:
             test_set = f.read()
-        total_tokens += len(tokenizers[language_id].tokenize(test_set))
+        total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-    eval_sampler = SequentialSampler(test_set)
-    eval_dataloader = DataLoader(
-        test_set, sampler=eval_sampler, batch_size=eval_batch_size
-    )
-
-    for batch in tqdm(range(1, encodings.input_ids.size(1), stride), desc="Evaluating"):
-        begin_loc = max(batch + stride - input_block_size, 0)
-        end_loc = batch + stride
+    for i in tqdm(range(1, encodings.input_ids.size(1), stride), disable=disable_tqdm):
+        begin_loc = max(i + stride - input_block_size, 0)
+        end_loc = i + stride
         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
         target_ids = input_ids.clone()
         target_ids[:, :-stride] = -100
 
         with torch.no_grad():
-            outputs = model(
-                input_ids,
-                labels=target_ids,
+            outputs = model(input_ids, labels=target_ids)
+
+            # apply additive smoothing
+            smoothed_probs = outputs.logits.exp() + epsilon
+            smoothed_probs /= smoothed_probs.sum(-1, keepdim=True)
+
+            # calculate negative log-likelihood
+            neg_log_likelihood = -torch.log(
+                smoothed_probs.gather(-1, target_ids.unsqueeze(-1)).squeeze(-1)
             )
+            neg_log_likelihood *= stride
 
-            shift_logits = outputs[1][..., :-1, :].contiguous()
-            shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-            shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
+        nlls.append(neg_log_likelihood)
 
-            probs = torch.softmax(shift_logits, dim=1)
-            lprobs = probs
-
-            if len(probs[0].nonzero()) != len(probs[0]):
-                probs = probs[:, :] + epsilon
-                sums = [probs[i].sum().item() for i in range(probs.size(0))]
-                probs = [probs[i] / sums[i] for i in range(len(sums))]
-
-                probs = torch.stack(probs)
-
-            p = [
-                probs[i, shift_labels.squeeze(0)[i].item()]
-                for i in range(len(shift_labels.squeeze(0)))
-            ]
-            p = torch.stack(p)
-            perp += torch.log(p**-1).mean().item()
-
-            jsd_batch = []
-            labels = torch.zeros(len(shift_labels), shift_logits.size(-1))
-            for i in range(len(shift_labels)):
-                labels[i, shift_labels[i]] = 1
-                jsd_ = compute_jsd(lprobs[i], labels[i])
-                jsd_batch.append(jsd_)
-
-            jsd_batch = torch.tensor(jsd_batch).mean()
-            jsd += jsd_batch
-
-            sp_batch = []
-            for i in range(len(shift_labels)):
-                sp_batch.append(
-                    compute_sp(lprobs.squeeze(0)[i], shift_labels[i]).item()
-                )
-
-            sp_batch = torch.tensor(sp_batch).mean()
-            sp += sp_batch
-
-            pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
-
-    print("perp:", perp)
-    print("jsd:", jsd)
-    print("sp:", sp)
-    print("len(eval_dataloader):", len(eval_dataloader))
-
-    a = perp / len(eval_dataloader)
-    perplexity = torch.exp(torch.tensor(a))
-
-    jsd = jsd / len(eval_dataloader)
-    sp = sp / len(eval_dataloader)
+    # calculate epsilon-perplexity
+    total_nll = torch.stack(nlls).sum()
+    avg_nll = total_nll / end_loc
+    eppl = torch.exp(avg_nll)
+    sp = 0
+    jsd = 0
 
     result = {
         "sp": sp,
         "JSD": jsd,
-        "perplexity": perplexity,
+        "e-perplexity": eppl,
     }
 
-    print("perplexity:", perplexity)
+    print("e-perplexity:", eppl)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, perplexity, sp
+    return result, jsd, eppl, sp
+
+
+# def evaluate(
+#     tokenizers,
+#     model,
+#     eval_data,
+#     input_block_size,
+#     stride,
+#     eval_batch_size,
+#     epsilon=0.000001,
+# ):
+#     perp = 0.0
+#     model.eval()
+
+#     jsd = 0
+#     sp = 0
+
+#     assert stride <= input_block_size
+#     for language_id, file_paths in eval_data:
+#         total_tokens = 0
+#         if len(file_paths) > 1:
+#             logger.warning(
+#                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
+#             )
+#         with open(file_paths[0], "r") as f:
+#             test_set = f.read()
+#         total_tokens += len(tokenizers[language_id].tokenize(test_set))
+#         encodings = tokenizers[language_id](test_set, return_tensors="pt")
+
+#     eval_sampler = SequentialSampler(test_set)
+#     eval_dataloader = DataLoader(
+#         test_set, sampler=eval_sampler, batch_size=eval_batch_size
+#     )
+
+#     for batch in tqdm(range(1, encodings.input_ids.size(1), stride), desc="Evaluating"):
+#         begin_loc = max(batch + stride - input_block_size, 0)
+#         end_loc = batch + stride
+#         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+#         target_ids = input_ids.clone()
+#         target_ids[:, :-stride] = -100
+
+#         with torch.no_grad():
+#             outputs = model(
+#                 input_ids,
+#                 labels=target_ids,
+#             )
+
+#             shift_logits = outputs[1][..., :-1, :].contiguous()
+#             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+#             shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
+
+#             probs = torch.softmax(shift_logits, dim=1)
+#             lprobs = probs
+
+#             if len(probs[0].nonzero()) != len(probs[0]):
+#                 probs = probs[:, :] + epsilon
+#                 sums = [probs[i].sum().item() for i in range(probs.size(0))]
+#                 probs = [probs[i] / sums[i] for i in range(len(sums))]
+
+#                 probs = torch.stack(probs)
+
+#             p = [
+#                 probs[i, shift_labels.squeeze(0)[i].item()]
+#                 for i in range(len(shift_labels.squeeze(0)))
+#             ]
+#             p = torch.stack(p)
+#             perp += torch.log(p**-1).mean().item()
+
+#             jsd_batch = []
+#             labels = torch.zeros(len(shift_labels), shift_logits.size(-1))
+#             for i in range(len(shift_labels)):
+#                 labels[i, shift_labels[i]] = 1
+#                 jsd_ = compute_jsd(lprobs[i], labels[i])
+#                 jsd_batch.append(jsd_)
+
+#             jsd_batch = torch.tensor(jsd_batch).mean()
+#             jsd += jsd_batch
+
+#             sp_batch = []
+#             for i in range(len(shift_labels)):
+#                 sp_batch.append(
+#                     compute_sp(lprobs.squeeze(0)[i], shift_labels[i]).item()
+#                 )
+
+#             sp_batch = torch.tensor(sp_batch).mean()
+#             sp += sp_batch
+
+#             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
+
+#     print("perp:", perp)
+#     print("jsd:", jsd)
+#     print("sp:", sp)
+#     print("len(eval_dataloader):", len(eval_dataloader))
+
+#     a = perp / len(eval_dataloader)
+#     perplexity = torch.exp(torch.tensor(a))
+
+#     jsd = jsd / len(eval_dataloader)
+#     sp = sp / len(eval_dataloader)
+
+#     result = {
+#         "sp": sp,
+#         "JSD": jsd,
+#         "perplexity": perplexity,
+#     }
+
+#     print("perplexity:", perplexity)
+#     print("js:", jsd)
+#     print("sp;", sp)
+
+#     return result, jsd, perplexity, sp
 
 
 # def evaluate(
