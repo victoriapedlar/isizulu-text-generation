@@ -336,8 +336,9 @@ def evaluate(
 
             # calculate negative log-likelihood
             neg_log_likelihood = -torch.log(
-                smoothed_probs.gather(-1, target_ids.unsqueeze(-1)).squeeze(-1)
+                smoothed_probs.gather(-1, target_ids).squeeze(-1)
             )
+
             neg_log_likelihood *= stride
 
         nlls.append(neg_log_likelihood)
