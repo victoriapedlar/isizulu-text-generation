@@ -329,8 +329,9 @@ def evaluate(
             outputs = model(input_ids, labels=target_ids)
 
             # apply additive smoothing
-            logits = outputs.logits
-            smoothed_logits = logits + epsilon
+            shift_logits = outputs[1][..., :-1, :].contiguous()
+            shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+            smoothed_logits = shift_logits + epsilon
             smoothed_probs = torch.softmax(smoothed_logits, dim=-1)
 
             # calculate negative log-likelihood
