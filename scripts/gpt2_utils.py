@@ -345,13 +345,20 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-                # add epsilon to the logits and normalize them
-                logits = outputs[0] / outputs[0].sum(dim=-1, keepdim=True)
-                probs = (logits + epsilon) / (1 + epsilon * model.config.vocab_size)
+                shift_logits = outputs[1][..., :-1, :].contiguous()
+                shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+
+                probs = torch.softmax(shift_logits, dim=1)
+                if len(probs[0].nonzero()) != len(probs[0]):
+                    probs = probs[:, :] + epsilon
+                    sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                    probs = [probs[i] / sums[i] for i in range(len(sums))]
+
+                    probs = torch.stack(probs)
 
                 # calculate negative log-likelihood and add it to the list
                 neg_log_likelihood = -torch.log(
-                    probs.gather(dim=-1, index=target_ids[:, -stride:].unsqueeze(-1))
+                    probs.gather(dim=-1, index=target_ids[:, -trg_len:])
                 ).sum()
                 nlls.append(neg_log_likelihood)
 
