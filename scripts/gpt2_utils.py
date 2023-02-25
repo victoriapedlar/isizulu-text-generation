@@ -318,7 +318,6 @@ def evaluate(
     :return: metrics for each evaluation datasets
     """
     assert stride <= input_block_size
-
     for language_id, file_paths in eval_data:
         total_characters = 0
         if len(file_paths) > 1:
@@ -330,41 +329,38 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        ntokens = len(tokenizers[list(tokenizers.keys())[0]].get_vocab())
-
-        total_loss = 0
-
         # adapted from https://huggingface.co/transformers/perplexity.html
-        for i in tqdm(
-            range(1, encodings.input_ids.size(1), stride), disable=disable_tqdm
-        ):
-            begin_loc = max(i + stride - input_block_size, 0)
-            end_loc = i + stride
+        max_length = model.config.n_positions
+        seq_len = encodings.input_ids.size(1)
+
+        nlls = []
+        prev_end_loc = 0
+
+        for begin_loc in tqdm(range(0, seq_len, stride)):
+            end_loc = min(begin_loc + max_length, seq_len)
+            trg_len = (
+                end_loc - prev_end_loc
+            )  # may be different from stride on last loop
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
-            target_ids[:, :-stride] = -100
+            target_ids[:, :-trg_len] = -100
 
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-                shift_logits = outputs[1][..., :-1, :].contiguous()
-                logits = shift_logits.view(-1, shift_logits.size(-1))
+                # loss is calculated using CrossEntropyLoss which averages over input tokens.
+                # Multiply it with trg_len to get the summation instead of average.
+                # We will take average over all the tokens to get the true average
+                # in the last step of this example.
+                neg_log_likelihood = outputs.loss * trg_len
 
-                # Apply additive smoothing
-                logits += epsilon
+            nlls.append(neg_log_likelihood)
 
-                # Flatten the logits and labels tensors
-                logits_flat = logits.view(-1, ntokens)
-                labels_flat = input_ids.view(-1)
+            prev_end_loc = end_loc
+            if end_loc == seq_len:
+                break
 
-                # Calculate cross-entropy loss
-                loss = torch.nn.functional.cross_entropy(
-                    logits_flat, labels_flat, reduction="sum"
-                )
-                total_loss += loss.item()
-
-        # calculate the e-ppl value
-        e_ppl = torch.exp(total_loss / ((1 + epsilon) * model.config.vocab_size))
+        ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
 
         sp = 0
         jsd = 0
@@ -372,14 +368,14 @@ def evaluate(
     result = {
         "sp": sp,
         "jsd": jsd,
-        "e-perplexity": e_ppl,
+        "e-perplexity": ppl,
     }
 
-    print("e-perplexity:", e_ppl)
+    print("e-perplexity:", ppl)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, e_ppl, sp
+    return result, jsd, ppl, sp
 
 
 # def evaluate(
