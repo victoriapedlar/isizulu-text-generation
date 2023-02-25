@@ -314,11 +314,11 @@ def evaluate(
     :param eval_data: list of evaluation datasets to test the model's performance on
     :param input_block_size: size of the input block used for prediction
     :param stride: number of tokens to advance the input block per forward pass of the model
-    :param epsilon: small value added to all probabilities for smoothing
     :param disable_tqdm: disable evaluation progress bar
-    :return: metrics dictionary containing e-perplexities for each evaluation datasets
+    :return: metrics for each evaluation datasets
     """
     assert stride <= input_block_size
+
     for language_id, file_paths in eval_data:
         total_characters = 0
         if len(file_paths) > 1:
@@ -330,11 +330,11 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
+        nlls = []
+
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
-            range(1, encodings.input_ids.size(1), stride),
-            desc="Evaluating e-ppl",
-            disable=disable_tqdm,
+            range(1, encodings.input_ids.size(1), stride), disable=disable_tqdm
         ):
             begin_loc = max(i + stride - input_block_size, 0)
             end_loc = i + stride
@@ -343,42 +343,38 @@ def evaluate(
             target_ids[:, :-stride] = -100
 
             with torch.no_grad():
-                outputs = model(
-                    input_ids,
-                    labels=target_ids,
-                )
-                logits = outputs[0]
+                outputs = model(input_ids, labels=target_ids)
 
-                # Additive smoothing
-                log_probs = logits.add(epsilon).softmax(dim=-1)
+                # add epsilon to the logits and normalize them
+                logits = outputs.logits / outputs.logits.sum(dim=-1, keepdim=True)
+                probs = (logits + epsilon) / (1 + epsilon * model.config.vocab_size)
 
-                # Flatten the output and target tensors
-                log_probs = log_probs.view(-1, log_probs.size(-1))
-                target_ids = target_ids[:, 1:].contiguous().view(-1)
+                # calculate negative log-likelihood and add it to the list
+                neg_log_likelihood = -torch.log(
+                    probs.gather(dim=-1, index=target_ids[:, -stride:])
+                ).sum()
+                nlls.append(neg_log_likelihood)
 
-                # Calculate cross-entropy loss
-                criterion = nn.CrossEntropyLoss()
-                loss = criterion(log_probs, target_ids)
-                total_loss += loss.item()
-                total_tokens += len(input_ids)
+        # calculate the e-ppl value
+        T = len(nlls)
+        e_ppl = torch.exp(
+            (-1 / T) * sum(nlls) / (1 + epsilon * model.config.vocab_size)
+        )
 
-        # Compute e-perplexity
-        avg_loss = total_loss / total_tokens
-        eppl = math.exp(avg_loss * (1 + epsilon))
         sp = 0
         jsd = 0
 
     result = {
         "sp": sp,
         "jsd": jsd,
-        "e-perplexity": eppl,
+        "e-perplexity": e_ppl,
     }
 
-    print("e-perplexity:", eppl)
+    print("e-perplexity:", e_ppl)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, eppl, sp
+    return result, jsd, e_ppl, sp
 
 
 # def evaluate(
