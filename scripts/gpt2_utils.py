@@ -330,7 +330,8 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        nlls = []
+        ntokens = len(tokenizers.get_vocab())
+        total_loss = 0
 
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
@@ -346,32 +347,23 @@ def evaluate(
                 outputs = model(input_ids, labels=target_ids)
 
                 shift_logits = outputs[1][..., :-1, :].contiguous()
-                shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-                batch = i
-                shift_labels = batch[..., 1:].contiguous().squeeze(0)
+                logits = shift_logits.view(-1, shift_logits.size(-1))
 
-                probs = torch.softmax(shift_logits, dim=1)
-                if len(probs[0].nonzero()) != len(probs[0]):
-                    probs = probs[:, :] + epsilon
-                    sums = [probs[i].sum().item() for i in range(probs.size(0))]
-                    probs = [probs[i] / sums[i] for i in range(len(sums))]
+                # Apply additive smoothing
+                logits += epsilon
 
-                    probs = torch.stack(probs)
+                # Flatten the logits and labels tensors
+                logits_flat = logits.view(-1, ntokens)
+                labels_flat = input_ids.view(-1)
 
-                # calculate negative log-likelihood and add it to the list
-                p = [
-                    probs[i, shift_labels.squeeze(0)[i].item()]
-                    for i in range(len(shift_labels.squeeze(0)))
-                ]
-                p = torch.stack(p)
-                perp = torch.log(p**-1).mean().item()
-                nlls.append(perp)
+                # Calculate cross-entropy loss
+                loss = torch.nn.functional.cross_entropy(
+                    logits_flat, labels_flat, reduction="sum"
+                )
+                total_loss += loss.item()
 
         # calculate the e-ppl value
-        T = len(nlls)
-        e_ppl = torch.exp(
-            (-1 / T) * sum(nlls) / (1 + epsilon * model.config.vocab_size)
-        )
+        e_ppl = torch.exp(total_loss / ((1 + epsilon) * model.config.vocab_size))
 
         sp = 0
         jsd = 0
