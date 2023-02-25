@@ -347,7 +347,8 @@ def evaluate(
                     input_ids,
                     labels=target_ids,
                 )
-                log_probs = outputs.logits.softmax(dim=-1)
+                logits = outputs[0]
+                log_probs = logits.softmax(dim=-1)
                 # add epsilon for smoothing
                 smoothed_probs = (log_probs + epsilon).div(
                     log_probs.sum(dim=-1) + epsilon
