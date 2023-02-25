@@ -347,6 +347,8 @@ def evaluate(
 
                 shift_logits = outputs[1][..., :-1, :].contiguous()
                 shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+                batch = i
+                shift_labels = batch[..., 1:].contiguous().squeeze(0)
 
                 probs = torch.softmax(shift_logits, dim=1)
                 if len(probs[0].nonzero()) != len(probs[0]):
@@ -357,10 +359,13 @@ def evaluate(
                     probs = torch.stack(probs)
 
                 # calculate negative log-likelihood and add it to the list
-                neg_log_likelihood = -torch.log(
-                    probs.gather(dim=-1, index=target_ids[:, -stride:])
-                ).sum()
-                nlls.append(neg_log_likelihood)
+                p = [
+                    probs[i, shift_labels.squeeze(0)[i].item()]
+                    for i in range(len(shift_labels.squeeze(0)))
+                ]
+                p = torch.stack(p)
+                perp = torch.log(p**-1).mean().item()
+                nlls.append(perp)
 
         # calculate the e-ppl value
         T = len(nlls)
