@@ -307,7 +307,7 @@ def evaluate(
 ):
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
-        nlls = []
+        lls = []
         total_characters = 0
         if len(file_paths) > 1:
             logger.warning(
@@ -320,7 +320,7 @@ def evaluate(
     for i in tqdm(range(1, encodings.input_ids.size(1), stride), disable=disable_tqdm):
         begin_loc = max(i + stride - input_block_size, 0)
         end_loc = i + stride
-        input_ids = encodings.input_ids[:, begin_loc:end_loc]
+        input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
         target_ids = input_ids.clone()
         target_ids[:, :-stride] = -100
 
@@ -333,19 +333,15 @@ def evaluate(
             smoothed_logits = shift_logits + epsilon
             smoothed_probs = torch.softmax(smoothed_logits, dim=-1)
 
-            # calculate negative log-likelihood
-            neg_log_likelihood = -torch.log(
-                smoothed_probs.gather(-1, target_ids).squeeze(-1)
-            )
+            # calculate log-likelihood
+            log_likelihood = smoothed_probs * stride
 
-            neg_log_likelihood *= stride
-
-        nlls.append(neg_log_likelihood)
+        lls.append(log_likelihood)
 
     # calculate epsilon-perplexity
-    total_nll = torch.stack(nlls).sum()
-    avg_nll = total_nll / end_loc
-    eppl = torch.exp(avg_nll)
+    total_ll = torch.stack(lls).sum()
+    avg_ll = total_ll / end_loc
+    eppl = torch.exp(avg_ll)
     sp = 0
     jsd = 0
 
