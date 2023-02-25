@@ -317,12 +317,16 @@ def evaluate(
             test_set = f.read()
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
-
+    print("input_ids size:", encodings.input_ids.size())
     for i in tqdm(range(1, encodings.input_ids.size(1), stride), disable=disable_tqdm):
         begin_loc = max(i + stride - input_block_size, 0)
+        print("begin_loc:", begin_loc)
         end_loc = i + stride
+        print("end_loc:", end_loc)
         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+        print("input_ids size:", input_ids.size())
         target_ids = input_ids.clone()
+        print("target_ids size:", target_ids.size())
         target_ids[:, :-stride] = -100
 
         with torch.no_grad():
@@ -340,6 +344,8 @@ def evaluate(
             )
 
             neg_log_likelihood *= stride
+            print("neg_log_likelihood size:", neg_log_likelihood.size())
+            print("neg_log_likelihood:", neg_log_likelihood)
 
         nlls.append(neg_log_likelihood)
 
