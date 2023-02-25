@@ -314,8 +314,9 @@ def evaluate(
     :param eval_data: list of evaluation datasets to test the model's performance on
     :param input_block_size: size of the input block used for prediction
     :param stride: number of tokens to advance the input block per forward pass of the model
+    :param epsilon: a small value to add to all terms to smooth the perplexity
     :param disable_tqdm: disable evaluation progress bar
-    :return: metrics for each evaluation datasets
+    :return: metrics for each evaluation dataset
     """
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
@@ -360,7 +361,12 @@ def evaluate(
             if end_loc == seq_len:
                 break
 
-        ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
+        # ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
+        # calculate epsilon-perplexity
+        nlls_tensor = torch.stack(nlls)
+        numerator = (nlls_tensor + epsilon).sum()
+        denominator = seq_len + epsilon * model.config.vocab_size
+        e_ppl = torch.exp(-numerator / denominator)
 
         sp = 0
         jsd = 0
@@ -368,14 +374,14 @@ def evaluate(
     result = {
         "sp": sp,
         "jsd": jsd,
-        "e-perplexity": ppl,
+        "e-perplexity": e_ppl,
     }
 
-    print("e-perplexity:", ppl)
+    print("e-perplexity:", e_ppl)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, ppl, sp
+    return result, jsd, e_ppl, sp
 
 
 # def evaluate(
