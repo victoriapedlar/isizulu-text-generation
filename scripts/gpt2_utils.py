@@ -334,7 +334,7 @@ def evaluate(
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
-        nlls = []
+        log_probs = []
         prev_end_loc = 0
 
         for begin_loc in tqdm(range(0, seq_len, stride)):
@@ -355,7 +355,7 @@ def evaluate(
                 # in the last step of this example.
                 neg_log_likelihood = outputs[0] * trg_len
 
-            nlls.append(neg_log_likelihood)
+            log_probs.append(-1 * neg_log_likelihood)
 
             prev_end_loc = end_loc
             if end_loc == seq_len:
@@ -363,10 +363,9 @@ def evaluate(
 
         # ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
         # calculate epsilon-perplexity
-        nlls_tensor = torch.stack(nlls)
-        numerator = (nlls_tensor + epsilon).sum()
-        denominator = seq_len + epsilon * model.config.vocab_size
-        e_ppl = torch.exp(-numerator / denominator)
+        sum_log_probs = torch.cat(log_probs).sum()
+        epsilon_ppl = torch.exp(sum_log_probs / total_characters)
+        e_ppl = epsilon_ppl / (1 + epsilon * model.config.vocab_size)
 
         sp = 0
         jsd = 0
