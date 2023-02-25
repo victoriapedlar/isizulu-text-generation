@@ -29,6 +29,7 @@ from layer_switching_gpt2 import LayerSwitchingGPT2Config, GPT2LayerSwitchingLMH
 
 # Add Weights & Biases logging
 import wandb
+import math
 
 if is_torch_tpu_available():
     import torch_xla.core.xla_model as xm
@@ -302,12 +303,23 @@ def evaluate(
     eval_data,
     input_block_size,
     stride,
+    epsilon=1e-8,
     disable_tqdm=False,
-    epsilon=1e-9,
 ):
+    """
+    Evaluate the epsilon-perplexity performance of a model on a test dataset.
+    :param tokenizers: list of tokenizers, one for each language
+    :param model: the model to be evaluated
+    :param eval_data: list of evaluation datasets to test the model's performance on
+    :param input_block_size: size of the input block used for prediction
+    :param stride: number of tokens to advance the input block per forward pass of the model
+    :param epsilon: small value added to all probabilities for smoothing
+    :param disable_tqdm: disable evaluation progress bar
+    :return: metrics dictionary containing e-perplexities for each evaluation datasets
+    """
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
-        lls = []
+        total_log_prob = 0
         total_characters = 0
         if len(file_paths) > 1:
             logger.warning(
@@ -317,37 +329,45 @@ def evaluate(
             test_set = f.read()
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
-    for i in tqdm(range(1, encodings.input_ids.size(1), stride), disable=disable_tqdm):
-        begin_loc = max(i + stride - input_block_size, 0)
-        end_loc = i + stride
-        input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
-        target_ids = input_ids.clone()
-        target_ids[:, :-stride] = -100
 
-        with torch.no_grad():
-            outputs = model(input_ids, labels=target_ids)
+        # adapted from https://huggingface.co/transformers/perplexity.html
+        for i in tqdm(
+            range(1, encodings.input_ids.size(1), stride),
+            desc="Evaluating e-ppl",
+            disable=disable_tqdm,
+        ):
+            begin_loc = max(i + stride - input_block_size, 0)
+            end_loc = i + stride
+            input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+            target_ids = input_ids.clone()
+            target_ids[:, :-stride] = -100
 
-            # apply additive smoothing
-            shift_logits = outputs[1][..., :-1, :].contiguous()
-            shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-            smoothed_logits = shift_logits + epsilon
-            smoothed_probs = torch.softmax(smoothed_logits, dim=-1)
+            with torch.no_grad():
+                outputs = model(
+                    input_ids,
+                    labels=target_ids,
+                )
+                log_probs = outputs.logits.softmax(dim=-1)
+                # add epsilon for smoothing
+                smoothed_probs = (log_probs + epsilon).div(
+                    log_probs.sum(dim=-1) + epsilon
+                )
+                # stride = number of tokens in the batch
+                # perplexity = exp(-log(prob)) = 1 / prob
+                # e-perplexity = exp(-1/n * sum(log(prob + epsilon))) = (prod(prob + epsilon))^(1/n)
+                log_smoothed_probs = smoothed_probs.log()
+                total_log_prob += log_smoothed_probs.sum(dim=-1).sum().item()
 
-            # calculate log-likelihood
-            log_likelihood = smoothed_probs.mean() * stride
+        # compute e-perplexity
+        n = total_characters / stride
+        eppl = (math.exp(-1 / n * total_log_prob) + epsilon) ** (-1)
 
-        lls.append(log_likelihood)
-
-    # calculate epsilon-perplexity
-    total_ll = torch.stack(lls).sum()
-    avg_ll = total_ll / end_loc
-    eppl = torch.exp(avg_ll)
-    sp = 0
-    jsd = 0
+        sp = 0
+        jsd = 0
 
     result = {
         "sp": sp,
-        "JSD": jsd,
+        "jsd": jsd,
         "e-perplexity": eppl,
     }
 
