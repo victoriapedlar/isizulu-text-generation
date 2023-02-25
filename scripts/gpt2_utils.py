@@ -334,7 +334,7 @@ def evaluate(
             smoothed_probs = torch.softmax(smoothed_logits, dim=-1)
 
             # calculate log-likelihood
-            log_likelihood = smoothed_probs[0].item() * stride
+            log_likelihood = smoothed_probs.mean() * stride
 
         lls.append(log_likelihood)
 
