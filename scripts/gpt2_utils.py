@@ -29,6 +29,7 @@ from layer_switching_gpt2 import LayerSwitchingGPT2Config, GPT2LayerSwitchingLMH
 
 # Add Weights & Biases logging
 import wandb
+import torch.nn as nn
 import math
 
 if is_torch_tpu_available():
@@ -319,7 +320,6 @@ def evaluate(
     """
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
-        total_log_prob = 0
         total_characters = 0
         if len(file_paths) > 1:
             logger.warning(
@@ -348,21 +348,23 @@ def evaluate(
                     labels=target_ids,
                 )
                 logits = outputs[0]
-                log_probs = logits.softmax(dim=-1)
-                # add epsilon for smoothing
-                smoothed_probs = (log_probs + epsilon).div(
-                    log_probs.sum(dim=-1) + epsilon
-                )
-                # stride = number of tokens in the batch
-                # perplexity = exp(-log(prob)) = 1 / prob
-                # e-perplexity = exp(-1/n * sum(log(prob + epsilon))) = (prod(prob + epsilon))^(1/n)
-                log_smoothed_probs = smoothed_probs.log()
-                total_log_prob += log_smoothed_probs.sum(dim=-1).sum().item()
 
-        # compute e-perplexity
-        n = total_characters / stride
-        eppl = (math.exp(-1 / n * total_log_prob) + epsilon) ** (-1)
+                # Additive smoothing
+                log_probs = logits.add(epsilon).softmax(dim=-1)
 
+                # Flatten the output and target tensors
+                log_probs = log_probs.view(-1, log_probs.size(-1))
+                target_ids = target_ids[:, 1:].contiguous().view(-1)
+
+                # Calculate cross-entropy loss
+                criterion = nn.CrossEntropyLoss()
+                loss = criterion(log_probs, target_ids)
+                total_loss += loss.item()
+                total_tokens += len(input_ids)
+
+        # Compute e-perplexity
+        avg_loss = total_loss / total_tokens
+        eppl = math.exp(avg_loss * (1 + epsilon))
         sp = 0
         jsd = 0
 
