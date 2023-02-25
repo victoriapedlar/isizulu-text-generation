@@ -352,7 +352,7 @@ def evaluate(
                 # Multiply it with trg_len to get the summation instead of average.
                 # We will take average over all the tokens to get the true average
                 # in the last step of this example.
-                neg_log_likelihood = outputs.loss * trg_len
+                neg_log_likelihood = outputs[0] * trg_len
 
             nlls.append(neg_log_likelihood)
 
