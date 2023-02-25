@@ -346,7 +346,7 @@ def evaluate(
                 outputs = model(input_ids, labels=target_ids)
 
                 # add epsilon to the logits and normalize them
-                logits = outputs.logits / outputs.logits.sum(dim=-1, keepdim=True)
+                logits = outputs[0] / outputs[0].sum(dim=-1, keepdim=True)
                 probs = (logits + epsilon) / (1 + epsilon * model.config.vocab_size)
 
                 # calculate negative log-likelihood and add it to the list
