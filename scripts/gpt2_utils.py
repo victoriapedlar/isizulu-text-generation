@@ -330,7 +330,8 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        ntokens = len(tokenizers.get_vocab())
+        ntokens = len(tokenizers[list(tokenizers.keys())[0]].get_vocab())
+
         total_loss = 0
 
         # adapted from https://huggingface.co/transformers/perplexity.html
