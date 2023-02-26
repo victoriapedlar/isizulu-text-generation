@@ -352,7 +352,7 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-            logits = outputs.logits[:, :-trg_len, :].contiguous()
+            logits = outputs[0][:, :-trg_len, :].contiguous()
             labels = target_ids[:, trg_len:].contiguous().view(-1)
             logits = logits.view(-1, logits.size(-1))
 
