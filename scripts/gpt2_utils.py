@@ -357,6 +357,9 @@ def evaluate(
                 logits = outputs[1][..., :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
 
+                # apply softmax to get the probabilities
+                probs = torch.softmax(logits, dim=1)
+
                 # add epsilon to all terms and renormalize
                 probs = probs + epsilon
                 sums = probs.sum(dim=1, keepdim=True)
