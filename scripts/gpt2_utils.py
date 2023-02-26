@@ -356,9 +356,9 @@ def evaluate(
                 # get the logits for the last token in each sequence
                 logits = outputs[1][..., :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
-                
+
                 # apply softmax to get the probabilities
-                probs = torch.softmax(logits, dim=-1)
+                probs = torch.softmax(logits, dim=1)
 
                 log_probs.append(torch.log(probs + epsilon))
 
