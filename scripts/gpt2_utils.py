@@ -422,7 +422,7 @@ def evaluate(
         # adapted from https://huggingface.co/transformers/perplexity.html
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
-        vocab_size = len(tokenizer)
+        vocab_size = len(tokenizers)
 
         nlls = []
         prev_end_loc = 0
