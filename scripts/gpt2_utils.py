@@ -446,12 +446,12 @@ def evaluate(
                 for i in range(len(shift_labels.squeeze(0)))
             ]
             p = torch.stack(p)
-            perp += torch.log(p).mean().item()
+            perp += torch.log(p**-1).mean().item()
 
     print("perp:", perp)
-    print("model.config.vocab_size:", model.config.vocab_size)
-
-    perplexity = torch.exp(perp / (model.config.vocab_size + epsilon))
+    print("total_characters:", total_characters)
+    a = perp / (total_characters + epsilon)
+    perplexity = torch.exp(torch.tensor(a))
 
     jsd = 0
     sp = 0
