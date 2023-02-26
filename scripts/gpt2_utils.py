@@ -357,15 +357,18 @@ def evaluate(
 
             log_probs.append(-1 * neg_log_likelihood)
 
-            prev_end_loc = end_loc
-            if end_loc == seq_len:
-                break
-
         # ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
         # calculate epsilon-perplexity
-        sum_log_probs = torch.cat(log_probs).sum()
-        epsilon_ppl = torch.exp(sum_log_probs / total_characters)
-        e_ppl = epsilon_ppl / (1 + epsilon * model.config.vocab_size)
+        # Concatenate along the new dimension (dim=1)
+        log_probs = torch.stack(log_probs, dim=1)
+        # Sum along the sequence dimension (dim=1)
+        sum_log_probs = log_probs.sum(dim=1)
+        # sum_log_probs = torch.cat(log_probs).sum()
+        # epsilon_ppl = torch.exp(sum_log_probs / total_characters)
+        e_ppl = torch.exp(-(1 / total_characters) * sum_log_probs.mean()) / (
+            1 + epsilon * model.config.vocab_size
+        )
+        # e_ppl = epsilon_ppl / (1 + epsilon * model.config.vocab_size)
 
         sp = 0
         jsd = 0
