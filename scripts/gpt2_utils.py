@@ -334,18 +334,18 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
+        # initialize log_probs tensor
+        batch_size = encodings.input_ids.shape[0]
+        seq_len = encodings.input_ids.shape[1]
+        log_probs = torch.zeros((batch_size, seq_len - 1))
+
         # adapted from https://huggingface.co/transformers/perplexity.html
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
-        log_probs = []
-        prev_end_loc = 0
-
         for begin_loc in tqdm(range(0, seq_len, stride)):
             end_loc = min(begin_loc + max_length, seq_len)
-            trg_len = (
-                end_loc - prev_end_loc
-            )  # may be different from stride on last loop
+            trg_len = end_loc - begin_loc
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
             target_ids[:, :-trg_len] = -100
@@ -354,31 +354,23 @@ def evaluate(
                 outputs = model(input_ids, labels=target_ids)
 
                 # get the logits for the last token in each sequence
-                logits = outputs[1][..., :-trg_len, :].contiguous()
+                logits = outputs[1][..., :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
 
                 # apply softmax to get the probabilities
                 probs = torch.softmax(logits, dim=1)
+                if len(probs[0].nonzero()) != len(probs[0]):
+                    probs = probs[:, :] + epsilon
+                    sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                    probs = [probs[i] / sums[i] for i in range(len(sums))]
+                probs = torch.stack(probs)
 
-                # calculate log probabilities
-                log_probs.append(torch.log(probs + epsilon))
+                # calculate log probabilities and add to tensor
+                log_probs[:, begin_loc : end_loc - 1] = torch.log(probs + epsilon)
 
-            prev_end_loc = end_loc
-            if end_loc == seq_len:
-                break
-
-        # concatenate and sum the log probabilities
-        log_probs = torch.cat(log_probs, dim=1)
-        sum_log_probs = log_probs.sum(dim=1)
-
-        # calculate average log probability
-        avg_log_prob = sum_log_probs.mean()
-
-        # calculate epsilon-perplexity
-        eps_ppl = torch.exp(-avg_log_prob) / (
-            (1 + epsilon) ** ((seq_len - 1) // stride + 1)
-        )
-        ppl = eps_ppl.item()
+        # calculate perplexity
+        avg_log_prob = torch.mean(log_probs)
+        ppl = torch.exp(-1.0 / avg_log_prob) / ((1 + epsilon) ** (seq_len - 1))
 
         sp = 0
         jsd = 0
