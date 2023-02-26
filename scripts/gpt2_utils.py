@@ -434,7 +434,9 @@ def evaluate(
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
 
             with torch.no_grad():
-                logits = model(input_ids).logits[:, :-1, :].contiguous()
+                logits = (
+                    model(input_ids, return_dict=True).logits[:, :-1, :].contiguous()
+                )
                 labels = input_ids[:, 1:].contiguous().to(device)
 
                 # Flatten the logits and labels
