@@ -422,44 +422,42 @@ def evaluate(
         # adapted from https://huggingface.co/transformers/perplexity.html
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
+        vocab_size = len(tokenizer)
 
-        # Initialize a list to store the negative log-likelihood values for each batch
         nlls = []
         prev_end_loc = 0
-
         for begin_loc in tqdm(range(0, seq_len, stride)):
             end_loc = min(begin_loc + max_length, seq_len)
             trg_len = (
                 end_loc - prev_end_loc
             )  # may be different from stride on last loop
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
-            target_ids = input_ids.clone()
-            target_ids[:, :-trg_len] = -100
 
             with torch.no_grad():
-                outputs = model(input_ids, labels=target_ids)
+                logits = model(input_ids).logits[:, :-1, :].contiguous()
+                labels = input_ids[:, 1:].contiguous().to(device)
 
-                # Extract the logits and apply softmax to obtain the probabilities
-                logits = outputs[0]
-                probs = torch.softmax(logits, dim=-1)
+                # Flatten the logits and labels
+                logits = logits.view(-1, logits.size(-1))
+                labels = labels.view(-1)
 
-                # Apply epsilon-smoothing to the probabilities
-                probs = probs + epsilon
-                # probs = probs / (
-                #     probs.sum(dim=-1, keepdim=True) + epsilon * probs.size(-1)
-                # )
+                # Apply smoothing to the logits
+                smoothed_logits = logits + epsilon
+                smoothed_logits /= smoothed_logits.sum(dim=-1, keepdim=True)
 
-                # Compute the negative log-likelihood
-                nll = -torch.log(probs).sum(dim=-1).mean()
+                # Compute the negative log likelihood of the smoothed logits
+                neg_log_likelihood = torch.nn.functional.nll_loss(
+                    smoothed_logits.log(), labels, reduction="sum"
+                )
 
-            nlls.append(nll)
+            nlls.append(neg_log_likelihood)
 
             prev_end_loc = end_loc
             if end_loc == seq_len:
                 break
 
-    # Compute the epsilon-perplexity
-    eppl = torch.exp(torch.stack(nlls).sum() / end_loc)
+        total_nll = torch.stack(nlls).sum()
+        eppl = torch.exp(total_nll / (end_loc - 1)) / (1 + epsilon * vocab_size)
 
     jsd = 0
     sp = 0
