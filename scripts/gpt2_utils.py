@@ -338,7 +338,7 @@ def evaluate(
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
-        nlls = []
+        log_probs = []
         prev_end_loc = 0
 
         for begin_loc in tqdm(range(0, seq_len, stride)):
