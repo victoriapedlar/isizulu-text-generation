@@ -438,10 +438,9 @@ def evaluate(
 
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
-                outputs = outputs[:2]
 
                 # Extract the logits and apply softmax to obtain the probabilities
-                logits = outputs.logits[:, :-trg_len, :]
+                logits = outputs[0][:, :-trg_len, :]
                 probs = torch.softmax(logits, dim=-1)
 
                 # Apply epsilon-smoothing to the probabilities
