@@ -353,8 +353,10 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-                # extract the logits for the last token in each sequence
-                logits = outputs[0][:, -trg_len - 1, :]
+                # get the logits for the last token in each sequence
+                logits = outputs[1][..., :-1, :].contiguous()
+                logits = logits.view(-1, logits.size(-1))
+                
                 # apply softmax to get the probabilities
                 probs = torch.softmax(logits, dim=-1)
 
