@@ -303,25 +303,100 @@ from tqdm import tqdm
 import math
 
 
+# def evaluate(
+#     tokenizers,
+#     model,
+#     eval_data,
+#     input_block_size,
+#     stride,
+#     epsilon=1e-8,
+#     disable_tqdm=False,
+# ):
+#     """
+#     Evaluate the epsilon-perplexity performance of a model on a test dataset.
+#     :param tokenizers: list of tokenizers, one for each language
+#     :param model: the model to be evaluated
+#     :param eval_data: list of evaluation datasets to test the model's performance on
+#     :param input_block_size: size of the input block used for prediction
+#     :param stride: number of tokens to advance the input block per forward pass of the model
+#     :param disable_tqdm: disable evaluation progress bar
+#     :return: metrics for each evaluation datasets
+#     """
+#     assert stride <= input_block_size
+#     for language_id, file_paths in eval_data:
+#         total_characters = 0
+#         if len(file_paths) > 1:
+#             logger.warning(
+#                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
+#             )
+#         with open(file_paths[0], "r") as f:
+#             test_set = f.read()
+#         total_characters += len(test_set)
+#         encodings = tokenizers[language_id](test_set, return_tensors="pt")
+
+#         # initialize log_probs tensor
+#         batch_size = encodings.input_ids.shape[0]
+#         seq_len = encodings.input_ids.shape[1]
+#         log_probs = torch.zeros((batch_size, seq_len - 1))
+
+#         # adapted from https://huggingface.co/transformers/perplexity.html
+#         max_length = model.config.n_positions
+#         seq_len = encodings.input_ids.size(1)
+
+#         for begin_loc in tqdm(range(0, seq_len, stride)):
+#             end_loc = min(begin_loc + max_length, seq_len)
+#             trg_len = end_loc - begin_loc
+#             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+#             target_ids = input_ids.clone()
+#             target_ids[:, :-trg_len] = -100
+
+#             with torch.no_grad():
+#                 outputs = model(input_ids, labels=target_ids)
+
+#                 # get the logits for the last token in each sequence
+#                 logits = outputs[1][..., :-1, :].contiguous()
+#                 logits = logits.view(-1, logits.size(-1))
+
+#                 # apply softmax to get the probabilities
+#                 probs = torch.softmax(logits, dim=1)
+#                 if len(probs[0].nonzero()) != len(probs[0]):
+#                     probs = probs[:, :] + epsilon
+#                     sums = [probs[i].sum().item() for i in range(probs.size(0))]
+#                     probs = [probs[i] / sums[i] for i in range(len(sums))]
+#                     probs = torch.stack(probs)
+
+#                 # calculate log probabilities and add to tensor
+#                 log_probs[:, begin_loc : end_loc - 1] = torch.log(probs + epsilon)
+
+#         # calculate perplexity
+#         avg_log_prob = torch.mean(log_probs)
+#         ppl = torch.exp(-1.0 / avg_log_prob) / ((1 + epsilon) ** (seq_len - 1))
+
+#         sp = 0
+#         jsd = 0
+
+#     result = {
+#         "sp": sp,
+#         "jsd": jsd,
+#         "e-perplexity": ppl,
+#     }
+
+#     print("e-perplexity:", ppl)
+#     print("js:", jsd)
+#     print("sp;", sp)
+
+#     return result, jsd, ppl, sp
+
+
 def evaluate(
     tokenizers,
     model,
     eval_data,
     input_block_size,
     stride,
-    epsilon=1e-8,
     disable_tqdm=False,
+    epsilon=1e-8,
 ):
-    """
-    Evaluate the epsilon-perplexity performance of a model on a test dataset.
-    :param tokenizers: list of tokenizers, one for each language
-    :param model: the model to be evaluated
-    :param eval_data: list of evaluation datasets to test the model's performance on
-    :param input_block_size: size of the input block used for prediction
-    :param stride: number of tokens to advance the input block per forward pass of the model
-    :param disable_tqdm: disable evaluation progress bar
-    :return: metrics for each evaluation datasets
-    """
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         total_characters = 0
@@ -335,166 +410,62 @@ def evaluate(
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
         # adapted from https://huggingface.co/transformers/perplexity.html
-        max_length = model.config.n_positions
-        seq_len = encodings.input_ids.size(1)
-
-        nlls = []
-        prev_end_loc = 0
-
-        for begin_loc in tqdm(range(0, seq_len, stride)):
-            end_loc = min(begin_loc + max_length, seq_len)
-            trg_len = (
-                end_loc - prev_end_loc
-            )  # may be different from stride on last loop
+        for i in tqdm(
+            range(1, encodings.input_ids.size(1), stride),
+            desc="Evaluating BPC",
+            disable=disable_tqdm,
+        ):
+            begin_loc = max(i + stride - input_block_size, 0)
+            end_loc = i + stride
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
-            target_ids[:, :-trg_len] = -100
+            target_ids[:, :-stride] = -100
 
-            with torch.no_grad():
-                outputs = model(input_ids, labels=target_ids)
+        with torch.no_grad():
+            outputs = model(
+                input_ids,
+                labels=target_ids,
+            )
 
-                # loss is calculated using CrossEntropyLoss which averages over input tokens.
-                # Multiply it with trg_len to get the summation instead of average.
-                # We will take average over all the tokens to get the true average
-                # in the last step of this example.
-                neg_log_likelihood = outputs[0] * trg_len
+            shift_logits = outputs[1][..., :-1, :].contiguous()
+            shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+            shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
 
-                neg_log_likelihood += epsilon
+            probs = torch.softmax(shift_logits, dim=1)
 
-            nlls.append(neg_log_likelihood)
+            if len(probs[0].nonzero()) != len(probs[0]):
+                probs = probs[:, :] + epsilon
+                sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                probs = [probs[i] / sums[i] for i in range(len(sums))]
 
-            prev_end_loc = end_loc
-            if end_loc == seq_len:
-                break
+                probs = torch.stack(probs)
 
-        nlls = torch.cat(nlls, dim=1)
-        ppl = torch.exp(torch.mean(nlls))
+            p = [
+                probs[i, shift_labels.squeeze(0)[i].item()]
+                for i in range(len(shift_labels.squeeze(0)))
+            ]
+            p = torch.stack(p)
+            perp += torch.log(p).mean().item()
 
-        sp = 0
-        jsd = 0
+    print("perp:", perp)
+    print("model.config.vocab_size:", model.config.vocab_size)
+
+    perplexity = torch.exp(perp / (model.config.vocab_size + epsilon))
+
+    jsd = 0
+    sp = 0
 
     result = {
         "sp": sp,
-        "jsd": jsd,
-        "e-perplexity": ppl,
+        "JSD": jsd,
+        "perplexity": perplexity,
     }
 
-    print("e-perplexity:", ppl)
+    print("perplexity:", perplexity)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, ppl, sp
-
-
-# def evaluate(
-#     tokenizers,
-#     model,
-#     eval_data,
-#     input_block_size,
-#     stride,
-#     eval_batch_size,
-#     epsilon=0.000001,
-# ):
-#     perp = 0.0
-#     model.eval()
-
-#     jsd = 0
-#     sp = 0
-
-#     assert stride <= input_block_size
-#     for language_id, file_paths in eval_data:
-#         total_tokens = 0
-#         if len(file_paths) > 1:
-#             logger.warning(
-#                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
-#             )
-#         with open(file_paths[0], "r") as f:
-#             test_set = f.read()
-#         total_tokens += len(tokenizers[language_id].tokenize(test_set))
-#         encodings = tokenizers[language_id](test_set, return_tensors="pt")
-
-#     eval_sampler = SequentialSampler(test_set)
-#     eval_dataloader = DataLoader(
-#         test_set, sampler=eval_sampler, batch_size=eval_batch_size
-#     )
-
-#     for batch in tqdm(range(1, encodings.input_ids.size(1), stride), desc="Evaluating"):
-#         begin_loc = max(batch + stride - input_block_size, 0)
-#         end_loc = batch + stride
-#         input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
-#         target_ids = input_ids.clone()
-#         target_ids[:, :-stride] = -100
-
-#         with torch.no_grad():
-#             outputs = model(
-#                 input_ids,
-#                 labels=target_ids,
-#             )
-
-#             shift_logits = outputs[1][..., :-1, :].contiguous()
-#             shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-#             shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
-
-#             probs = torch.softmax(shift_logits, dim=1)
-#             lprobs = probs
-
-#             if len(probs[0].nonzero()) != len(probs[0]):
-#                 probs = probs[:, :] + epsilon
-#                 sums = [probs[i].sum().item() for i in range(probs.size(0))]
-#                 probs = [probs[i] / sums[i] for i in range(len(sums))]
-
-#                 probs = torch.stack(probs)
-
-#             p = [
-#                 probs[i, shift_labels.squeeze(0)[i].item()]
-#                 for i in range(len(shift_labels.squeeze(0)))
-#             ]
-#             p = torch.stack(p)
-#             perp += torch.log(p**-1).mean().item()
-
-#             jsd_batch = []
-#             labels = torch.zeros(len(shift_labels), shift_logits.size(-1))
-#             for i in range(len(shift_labels)):
-#                 labels[i, shift_labels[i]] = 1
-#                 jsd_ = compute_jsd(lprobs[i], labels[i])
-#                 jsd_batch.append(jsd_)
-
-#             jsd_batch = torch.tensor(jsd_batch).mean()
-#             jsd += jsd_batch
-
-#             sp_batch = []
-#             for i in range(len(shift_labels)):
-#                 sp_batch.append(
-#                     compute_sp(lprobs.squeeze(0)[i], shift_labels[i]).item()
-#                 )
-
-#             sp_batch = torch.tensor(sp_batch).mean()
-#             sp += sp_batch
-
-#             pred = torch.multinomial(lprobs, num_samples=1).squeeze(1).view(-1).tolist()
-
-#     print("perp:", perp)
-#     print("jsd:", jsd)
-#     print("sp:", sp)
-#     print("len(eval_dataloader):", len(eval_dataloader))
-
-#     a = perp / len(eval_dataloader)
-#     perplexity = torch.exp(torch.tensor(a))
-
-#     jsd = jsd / len(eval_dataloader)
-#     sp = sp / len(eval_dataloader)
-
-#     result = {
-#         "sp": sp,
-#         "JSD": jsd,
-#         "perplexity": perplexity,
-#     }
-
-#     print("perplexity:", perplexity)
-#     print("js:", jsd)
-#     print("sp;", sp)
-
-#     return result, jsd, perplexity, sp
+    return result, jsd, perplexity, sp
 
 
 # def evaluate(
