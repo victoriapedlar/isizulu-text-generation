@@ -357,23 +357,17 @@ def evaluate(
                 logits = outputs[1][..., :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
 
-                # apply softmax to get the probabilities
-                probs = torch.softmax(logits, dim=1)
+                # add epsilon to all terms and renormalize
+                probs = probs + epsilon
+                sums = probs.sum(dim=1, keepdim=True)
+                probs = probs / sums
 
-                log_probs.append(torch.log(probs + epsilon))
+                # calculate log probabilities and take the mean
+                log_probs.append(torch.log(probs).mean().item())
 
-            prev_end_loc = end_loc
-            if end_loc == seq_len:
-                break
-
-        # concatenate the log probabilities for all sequences
-        log_probs = torch.cat(log_probs, dim=1)
-
-        # calculate the negative log-likelihood
-        nll = -log_probs.sum()
-
-        # calculate the epsilon-perplexity
-        eps_ppl = torch.exp(nll / (seq_len + epsilon * model.config.vocab_size))
+        # calculate epsilon-perplexity
+        avg_log_prob = sum(log_probs) / len(log_probs)
+        eps_ppl = torch.exp(-1 / avg_log_prob) / (1 + epsilon) ** (trg_len + 1)
 
         sp = 0
         jsd = 0
