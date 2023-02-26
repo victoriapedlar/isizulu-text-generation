@@ -298,6 +298,11 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
+import torch
+from tqdm import tqdm
+import math
+
+
 def evaluate(
     tokenizers,
     model,
@@ -314,7 +319,7 @@ def evaluate(
     :param eval_data: list of evaluation datasets to test the model's performance on
     :param input_block_size: size of the input block used for prediction
     :param stride: number of tokens to advance the input block per forward pass of the model
-    :param epsilon: value to add to all probabilities for smoothing
+    :param epsilon: small value to smooth the perplexity
     :param disable_tqdm: disable evaluation progress bar
     :return: metrics for each evaluation datasets
     """
@@ -330,13 +335,14 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
+        # calculate epsilon-perplexity
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
-        log_probs = []
+        nlls = []
         prev_end_loc = 0
 
-        for begin_loc in tqdm(range(0, seq_len, stride)):
+        for begin_loc in tqdm(range(0, seq_len, stride), disable=disable_tqdm):
             end_loc = min(begin_loc + max_length, seq_len)
             trg_len = end_loc - begin_loc
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
@@ -346,21 +352,18 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-                # Get the logits for the last token in each sequence
-                last_token_logits = outputs[1][:, -1, :]
+            logits = outputs.logits[:, :-trg_len, :].contiguous()
+            labels = target_ids[:, trg_len:].contiguous().view(-1)
+            logits = logits.view(-1, logits.size(-1))
 
-            # Add epsilon smoothing and calculate log probabilities
-            log_probs.extend(torch.log(last_token_logits + epsilon))
+            # calculate the negative log-likelihood
+            nll = torch.nn.functional.cross_entropy(logits, labels, reduction="none")
+            nlls.append(nll.view(trg_len, -1))
 
-            prev_end_loc = end_loc
-            if end_loc == seq_len:
-                break
+        nlls = torch.cat(nlls, dim=0)
+        log_probs = -1.0 * nlls.view(-1, nlls.size(-1)).mean(dim=0, keepdim=False)
 
-        # Calculate the epsilon-perplexity score
-        exp_avg_log_prob = torch.exp(torch.stack(log_probs).mean())
-        eps_ppl = exp_avg_log_prob.pow(-1 / seq_len) / (1 + epsilon) ** (
-            1 / model.config.vocab_size
-        )
+        eps_ppl = math.exp(log_probs.sum() / (seq_len - 1 + epsilon))
 
         sp = 0
         jsd = 0
