@@ -338,7 +338,7 @@ def evaluate(
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
-        log_probs = []
+        nlls = []
         prev_end_loc = 0
 
         for begin_loc in tqdm(range(0, seq_len, stride)):
@@ -353,26 +353,19 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-                # get the logits for the last token in each sequence
-                logits = outputs[1][..., :-1, :].contiguous()
-                logits = logits.view(-1, logits.size(-1))
+                # loss is calculated using CrossEntropyLoss which averages over input tokens.
+                # Multiply it with trg_len to get the summation instead of average.
+                # We will take average over all the tokens to get the true average
+                # in the last step of this example.
+                neg_log_likelihood = outputs[0] * trg_len
 
-                # apply softmax to get the probabilities
-                probs = torch.softmax(logits, dim=1)
+            nlls.append(neg_log_likelihood)
 
-                # add epsilon to all terms and renormalize
-                probs = probs + epsilon
-                sums = probs.sum(dim=1, keepdim=True)
-                probs = probs / sums
+            prev_end_loc = end_loc
+            if end_loc == seq_len:
+                break
 
-                # calculate log probabilities and take the mean
-                log_probs.append(torch.log(probs).mean().item())
-
-        # calculate epsilon-perplexity
-        avg_log_prob = sum(log_probs) / len(log_probs)
-        eps_ppl = torch.exp(
-            torch.tensor((avg_log_prob)) / (1 + epsilon * model.config.vocab_size)
-        )
+        ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
 
         sp = 0
         jsd = 0
@@ -380,10 +373,10 @@ def evaluate(
     result = {
         "sp": sp,
         "jsd": jsd,
-        "e-perplexity": eps_ppl,
+        "e-perplexity": ppl,
     }
 
-    print("e-perplexity:", eps_ppl)
+    print("e-perplexity:", ppl)
     print("js:", jsd)
     print("sp;", sp)
 
