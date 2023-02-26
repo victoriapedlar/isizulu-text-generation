@@ -394,9 +394,19 @@ def evaluate(
     eval_data,
     input_block_size,
     stride,
-    disable_tqdm=False,
     epsilon=1e-8,
+    disable_tqdm=False,
 ):
+    """
+    Evaluate the epsilon-perplexity performance of a model on a test dataset.
+    :param tokenizers: list of tokenizers, one for each language
+    :param model: the model to be evaluated
+    :param eval_data: list of evaluation datasets to test the model's performance on
+    :param input_block_size: size of the input block used for prediction
+    :param stride: number of tokens to advance the input block per forward pass of the model
+    :param disable_tqdm: disable evaluation progress bar
+    :return: metrics for each evaluation datasets
+    """
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         total_characters = 0
@@ -409,49 +419,48 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        perp = 0.0
-
         # adapted from https://huggingface.co/transformers/perplexity.html
-        for i in tqdm(
-            range(1, encodings.input_ids.size(1), stride),
-            disable=disable_tqdm,
-        ):
-            begin_loc = max(i + stride - input_block_size, 0)
-            end_loc = i + stride
+        max_length = model.config.n_positions
+        seq_len = encodings.input_ids.size(1)
+
+        # Initialize a list to store the negative log-likelihood values for each batch
+        nlls = []
+        prev_end_loc = 0
+
+        for begin_loc in tqdm(range(0, seq_len, stride)):
+            end_loc = min(begin_loc + max_length, seq_len)
+            trg_len = (
+                end_loc - prev_end_loc
+            )  # may be different from stride on last loop
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
-            target_ids[:, :-stride] = -100
+            target_ids[:, :-trg_len] = -100
 
-        with torch.no_grad():
-            outputs = model(
-                input_ids,
-                labels=target_ids,
-            )
+            with torch.no_grad():
+                outputs = model(input_ids, labels=target_ids)
+                outputs = outputs[:2]
 
-            shift_logits = outputs[1][..., :-1, :].contiguous()
-            shift_logits = shift_logits.view(-1, shift_logits.size(-1))
-            shift_labels = target_ids[..., 1:].contiguous().squeeze(0)
+                # Extract the logits and apply softmax to obtain the probabilities
+                logits = outputs.logits[:, :-trg_len, :]
+                probs = torch.softmax(logits, dim=-1)
 
-            probs = torch.softmax(shift_logits, dim=1)
+                # Apply epsilon-smoothing to the probabilities
+                probs = probs + epsilon
+                probs = probs / (
+                    probs.sum(dim=-1, keepdim=True) + epsilon * probs.size(-1)
+                )
 
-            if len(probs[0].nonzero()) != len(probs[0]):
-                probs = probs[:, :] + epsilon
-                sums = [probs[i].sum().item() for i in range(probs.size(0))]
-                probs = [probs[i] / sums[i] for i in range(len(sums))]
+                # Compute the negative log-likelihood
+                nll = -torch.log(probs).sum(dim=-1).mean()
 
-                probs = torch.stack(probs)
+            nlls.append(nll)
 
-            p = [
-                probs[i, shift_labels.squeeze(0)[i].item()]
-                for i in range(len(shift_labels.squeeze(0)))
-            ]
-            p = torch.stack(p)
-            perp += torch.log(p**-1).mean().item()
+            prev_end_loc = end_loc
+            if end_loc == seq_len:
+                break
 
-    print("perp:", perp)
-    print("total_characters:", total_characters)
-    a = perp / (total_characters + epsilon)
-    perplexity = torch.exp(torch.tensor(a))
+    # Compute the epsilon-perplexity
+    eppl = torch.exp(torch.stack(nlls).sum() / end_loc)
 
     jsd = 0
     sp = 0
@@ -459,14 +468,14 @@ def evaluate(
     result = {
         "sp": sp,
         "JSD": jsd,
-        "perplexity": perplexity,
+        "perplexity": eppl,
     }
 
-    print("perplexity:", perplexity)
+    print("perplexity:", eppl)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, perplexity, sp
+    return result, jsd, eppl, sp
 
 
 # def evaluate(
