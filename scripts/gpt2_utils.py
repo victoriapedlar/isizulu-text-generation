@@ -319,7 +319,6 @@ def evaluate(
     :param eval_data: list of evaluation datasets to test the model's performance on
     :param input_block_size: size of the input block used for prediction
     :param stride: number of tokens to advance the input block per forward pass of the model
-    :param epsilon: small value to smooth the perplexity
     :param disable_tqdm: disable evaluation progress bar
     :return: metrics for each evaluation datasets
     """
@@ -335,16 +334,18 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        # calculate epsilon-perplexity
+        # adapted from https://huggingface.co/transformers/perplexity.html
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
         nlls = []
         prev_end_loc = 0
 
-        for begin_loc in tqdm(range(0, seq_len, stride), disable=disable_tqdm):
+        for begin_loc in tqdm(range(0, seq_len, stride)):
             end_loc = min(begin_loc + max_length, seq_len)
-            trg_len = end_loc - begin_loc
+            trg_len = (
+                end_loc - prev_end_loc
+            )  # may be different from stride on last loop
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
             target_ids[:, :-trg_len] = -100
@@ -352,18 +353,25 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-            logits = outputs[0][:, :-trg_len, :].contiguous()
-            labels = target_ids[:, trg_len:].contiguous().view(-1)
-            logits = logits.view(-1, logits.size(-1))
+                # extract the logits for the last token in each sequence
+                logits = outputs[0][:, -trg_len - 1, :]
+                # apply softmax to get the probabilities
+                probs = torch.softmax(logits, dim=-1)
 
-            # calculate the negative log-likelihood
-            nll = torch.nn.functional.cross_entropy(logits, labels, reduction="none")
-            nlls.append(nll.view(trg_len, -1))
+                log_probs.append(torch.log(probs + epsilon))
 
-        nlls = torch.cat(nlls, dim=0)
-        log_probs = -1.0 * nlls.view(-1, nlls.size(-1)).mean(dim=0, keepdim=False)
+            prev_end_loc = end_loc
+            if end_loc == seq_len:
+                break
 
-        eps_ppl = math.exp(log_probs.sum() / (seq_len - 1 + epsilon))
+        # concatenate the log probabilities for all sequences
+        log_probs = torch.cat(log_probs, dim=1)
+
+        # calculate the negative log-likelihood
+        nll = -log_probs.sum()
+
+        # calculate the epsilon-perplexity
+        eps_ppl = torch.exp(nll / (seq_len + epsilon * model.config.vocab_size))
 
         sp = 0
         jsd = 0
