@@ -370,7 +370,9 @@ def evaluate(
 
         # calculate epsilon-perplexity
         avg_log_prob = sum(log_probs) / len(log_probs)
-        eps_ppl = torch.exp(avg_log_prob / (1 + epsilon * model.config.vocab_size))
+        eps_ppl = torch.exp(
+            torch.tensor((avg_log_prob)) / (1 + epsilon * model.config.vocab_size)
+        )
 
         sp = 0
         jsd = 0
