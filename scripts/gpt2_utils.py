@@ -409,10 +409,11 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
+        perp = 0.0
+
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
             range(1, encodings.input_ids.size(1), stride),
-            desc="Evaluating BPC",
             disable=disable_tqdm,
         ):
             begin_loc = max(i + stride - input_block_size, 0)
