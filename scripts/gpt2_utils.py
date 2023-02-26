@@ -459,7 +459,7 @@ def evaluate(
                 break
 
         total_nll = torch.stack(nlls).sum()
-        eppl = torch.exp(total_nll / (end_loc - 1)) / (1 + epsilon * vocab_size)
+        eppl = torch.exp(total_nll / (end_loc - 1)) / (1 + epsilon * 1349)
 
     jsd = 0
     sp = 0
