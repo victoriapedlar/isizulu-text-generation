@@ -359,13 +359,16 @@ def evaluate(
                 # in the last step of this example.
                 neg_log_likelihood = outputs[0] * trg_len
 
+                neg_log_likelihood += epsilon
+
             nlls.append(neg_log_likelihood)
 
             prev_end_loc = end_loc
             if end_loc == seq_len:
                 break
 
-        ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
+        avg_log_prob = torch.stack(nlls).sum() / end_loc
+        ppl = torch.exp(-avg_log_prob) / (1 + epsilon) ** (trg_len + 1)
 
         sp = 0
         jsd = 0
