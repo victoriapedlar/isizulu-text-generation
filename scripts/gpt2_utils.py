@@ -363,7 +363,7 @@ def evaluate(
                     probs = probs[:, :] + epsilon
                     sums = [probs[i].sum().item() for i in range(probs.size(0))]
                     probs = [probs[i] / sums[i] for i in range(len(sums))]
-                probs = torch.stack(probs, dim=0)
+                    probs = torch.stack(probs)
 
                 # calculate log probabilities and add to tensor
                 log_probs[:, begin_loc : end_loc - 1] = torch.log(probs + epsilon)
