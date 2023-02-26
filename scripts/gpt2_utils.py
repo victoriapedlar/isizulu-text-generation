@@ -314,9 +314,9 @@ def evaluate(
     :param eval_data: list of evaluation datasets to test the model's performance on
     :param input_block_size: size of the input block used for prediction
     :param stride: number of tokens to advance the input block per forward pass of the model
-    :param epsilon: a small value to add to all terms to smooth the perplexity
+    :param epsilon: value to add to all probabilities for smoothing
     :param disable_tqdm: disable evaluation progress bar
-    :return: metrics for each evaluation dataset
+    :return: metrics for each evaluation datasets
     """
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
@@ -330,7 +330,6 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
-        # adapted from https://huggingface.co/transformers/perplexity.html
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
@@ -339,9 +338,7 @@ def evaluate(
 
         for begin_loc in tqdm(range(0, seq_len, stride)):
             end_loc = min(begin_loc + max_length, seq_len)
-            trg_len = (
-                end_loc - prev_end_loc
-            )  # may be different from stride on last loop
+            trg_len = end_loc - begin_loc
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
             target_ids[:, :-trg_len] = -100
@@ -349,26 +346,21 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-                # loss is calculated using CrossEntropyLoss which averages over input tokens.
-                # Multiply it with trg_len to get the summation instead of average.
-                # We will take average over all the tokens to get the true average
-                # in the last step of this example.
-                neg_log_likelihood = outputs[0] * trg_len
+                # Get the logits for the last token in each sequence
+                last_token_logits = outputs[1][:, -1, :]
 
-            log_probs.append(-1 * neg_log_likelihood)
+            # Add epsilon smoothing and calculate log probabilities
+            log_probs.extend(torch.log(last_token_logits + epsilon))
 
-        # ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
-        # calculate epsilon-perplexity
-        # Concatenate along the new dimension (dim=1)
-        log_probs = torch.stack(log_probs, dim=1)
-        # Sum along the sequence dimension (dim=1)
-        sum_log_probs = log_probs.sum(dim=1)
-        # sum_log_probs = torch.cat(log_probs).sum()
-        # epsilon_ppl = torch.exp(sum_log_probs / total_characters)
-        e_ppl = torch.exp(-(1 / total_characters) * sum_log_probs.mean()) / (
-            1 + epsilon * model.config.vocab_size
+            prev_end_loc = end_loc
+            if end_loc == seq_len:
+                break
+
+        # Calculate the epsilon-perplexity score
+        exp_avg_log_prob = torch.exp(torch.stack(log_probs).mean())
+        eps_ppl = exp_avg_log_prob.pow(-1 / seq_len) / (1 + epsilon) ** (
+            1 / model.config.vocab_size
         )
-        # e_ppl = epsilon_ppl / (1 + epsilon * model.config.vocab_size)
 
         sp = 0
         jsd = 0
@@ -376,14 +368,14 @@ def evaluate(
     result = {
         "sp": sp,
         "jsd": jsd,
-        "e-perplexity": e_ppl,
+        "e-perplexity": eps_ppl,
     }
 
-    print("e-perplexity:", e_ppl)
+    print("e-perplexity:", eps_ppl)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, e_ppl, sp
+    return result, jsd, eps_ppl, sp
 
 
 # def evaluate(
