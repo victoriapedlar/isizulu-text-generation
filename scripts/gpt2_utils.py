@@ -338,7 +338,7 @@ def evaluate(
         max_length = model.config.n_positions
         seq_len = encodings.input_ids.size(1)
 
-        nlls = []
+        log_probs = []
         prev_end_loc = 0
 
         for begin_loc in tqdm(range(0, seq_len, stride)):
@@ -353,22 +353,32 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids)
 
-                # loss is calculated using CrossEntropyLoss which averages over input tokens.
-                # Multiply it with trg_len to get the summation instead of average.
-                # We will take average over all the tokens to get the true average
-                # in the last step of this example.
-                neg_log_likelihood = outputs[0] * trg_len
+                # get the logits for the last token in each sequence
+                logits = outputs[1][..., :-trg_len, :].contiguous()
+                logits = logits.view(-1, logits.size(-1))
 
-                neg_log_likelihood += epsilon
+                # apply softmax to get the probabilities
+                probs = torch.softmax(logits, dim=1)
 
-            nlls.append(neg_log_likelihood)
+                # calculate log probabilities
+                log_probs.append(torch.log(probs + epsilon))
 
             prev_end_loc = end_loc
             if end_loc == seq_len:
                 break
 
-        avg_log_prob = torch.stack(nlls).sum() / end_loc
-        ppl = torch.exp(-avg_log_prob) / (1 + epsilon) ** (trg_len + 1)
+        # concatenate and sum the log probabilities
+        log_probs = torch.cat(log_probs, dim=1)
+        sum_log_probs = log_probs.sum(dim=1)
+
+        # calculate average log probability
+        avg_log_prob = sum_log_probs.mean()
+
+        # calculate epsilon-perplexity
+        eps_ppl = torch.exp(-avg_log_prob) / (
+            (1 + epsilon) ** ((seq_len - 1) // stride + 1)
+        )
+        ppl = eps_ppl.item()
 
         sp = 0
         jsd = 0
