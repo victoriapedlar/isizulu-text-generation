@@ -445,9 +445,9 @@ def evaluate(
 
                 # Apply epsilon-smoothing to the probabilities
                 probs = probs + epsilon
-                probs = probs / (
-                    probs.sum(dim=-1, keepdim=True) + epsilon * probs.size(-1)
-                )
+                # probs = probs / (
+                #     probs.sum(dim=-1, keepdim=True) + epsilon * probs.size(-1)
+                # )
 
                 # Compute the negative log-likelihood
                 nll = -torch.log(probs).sum(dim=-1).mean()
