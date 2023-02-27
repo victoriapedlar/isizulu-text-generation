@@ -437,7 +437,7 @@ def evaluate(
             target_ids[:, :-trg_len] = -100
 
             with torch.no_grad():
-                outputs = model(input_ids, labels=target_ids)
+                outputs = model(input_ids, labels=target_ids, return_dict=True)
                 logits = (
                     outputs.logits[:, :-trg_len, :].contiguous().view(-1, vocab_size)
                 )
