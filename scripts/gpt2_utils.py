@@ -457,6 +457,8 @@ def evaluate(
     eps_denom = 1.0 + epsilon * vocab_size
 
     e_ppl = torch.exp(torch.stack(nlls).sum() / end_loc)
+    print("perplexity:", e_ppl)
+    print("torch.stack(nll):", torch.stack(nlls).sum())
     e_ppl = torch.exp(-1.0 / T * torch.stack(nlls).sum() / end_loc) / eps_denom
 
     jsd = 0
