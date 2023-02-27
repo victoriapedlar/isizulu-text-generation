@@ -440,7 +440,7 @@ def evaluate(
             log_probs = torch.nn.functional.log_softmax(logits / T, dim=-1)
 
             # add small value eps for smoothing
-            smoothed_probs = torch.exp(log_probs) + eps
+            smoothed_probs = torch.exp(log_probs) + epsilon
             smoothed_probs = smoothed_probs / smoothed_probs.sum(dim=-1, keepdim=True)
 
             # calculate negative log-likelihood with smoothed probabilities
