@@ -434,7 +434,7 @@ def evaluate(
         target_ids[:, :-trg_len] = -100
 
         with torch.no_grad():
-            outputs = model(input_ids, labels=target_ids)
+            outputs = model(input_ids, labels=target_ids, return_dict=True)
 
             logits = outputs.logits[:, :-trg_len, :]
             log_probs = torch.nn.functional.log_softmax(logits / T, dim=-1)
