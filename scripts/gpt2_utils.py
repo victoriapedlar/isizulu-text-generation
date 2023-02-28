@@ -421,12 +421,16 @@ def evaluate(
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
 
         # adapted from https://huggingface.co/transformers/perplexity.html
+        # Calculate the vocabulary size
+        vocab_size = len(tokenizers.get_vocab())
+
         max_length = model.config.n_positions
+        stride = 512
         seq_len = encodings.input_ids.size(1)
-        vocab_size = model.config.vocab_size
 
         nlls = []
         prev_end_loc = 0
+
         for begin_loc in tqdm(range(0, seq_len, stride)):
             end_loc = min(begin_loc + max_length, seq_len)
             trg_len = (
@@ -439,28 +443,34 @@ def evaluate(
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids, return_dict=True)
 
-                # Add epsilon to outputs and normalize the probabilities
+                # Get the logits from the model output and scale them using the temperature
                 logits = outputs.logits
-                logits += epsilon
-                logits = logits.view(-1, vocab_size)
-                probs = torch.nn.functional.softmax(logits, dim=1)
 
-                # Calculate negative log-likelihood using log-sum-exp trick
-                log_probs = torch.logsumexp(logits, dim=1)
-                neg_log_likelihood = torch.sum(log_probs)
+                # Softmax function to get the probabilities
+                probabilities = torch.nn.functional.softmax(logits, dim=-1)
 
-            nlls.append(neg_log_likelihood)
+                # Add epsilon to all probabilities and renormalize
+                smoothed_probabilities = (probabilities + epsilon) / (
+                    1.0 + epsilon * vocab_size
+                )
+
+                # Calculate the negative log-likelihood of the target tokens
+                negative_log_likelihood = torch.nn.functional.nll_loss(
+                    smoothed_probabilities.view(-1, vocab_size),
+                    target_ids.view(-1),
+                    reduction="sum",
+                )
+                # Multiply the negative log-likelihood with trg_len to get the summation instead of average
+                nlls.append(negative_log_likelihood * trg_len)
 
             prev_end_loc = end_loc
             if end_loc == seq_len:
                 break
 
+        # Calculate the epsilon-pp metric
+        total_nll = torch.stack(nlls).sum()
         total_length = end_loc
-        total_loss = torch.stack(nlls).sum()
-        eppl = torch.exp(
-            (torch.tensor(total_loss) - torch.log(total_length + epsilon * vocab_size))
-            / total_length
-        )
+        e_ppl = torch.exp(-total_nll / total_length)
 
     jsd = 0
     sp = 0
