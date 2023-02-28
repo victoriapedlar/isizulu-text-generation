@@ -454,7 +454,7 @@ def evaluate(
                 )
                 batch_size, vocab_size = smoothed_probabilities.size()
                 smoothed_probabilities = smoothed_probabilities.reshape(
-                    batch_size, vocab_size
+                    batch_size + 1, vocab_size
                 )
 
                 # Calculate the negative log-likelihood of the target tokens
