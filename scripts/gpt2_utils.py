@@ -439,16 +439,19 @@ def evaluate(
                 outputs = model(input_ids, labels=input_ids, return_dict=True)
                 logits = outputs.logits[:, :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
-
+                print("logits:", logits)
                 smoothed_probabilities = (logits + epsilon) / (1 + epsilon * vocab_size)
+                print("smoothed_probabilities:", smoothed_probabilities)
                 negative_log_likelihood = torch.nn.functional.nll_loss(
                     smoothed_probabilities,
                     target_ids[:, 1:].contiguous().view(-1),
                     reduction="sum",
                 )
+                print("nll:", negative_log_likelihood)
 
             nlls.append(negative_log_likelihood)
-
+        print("nlls.sum():", torch.stack(nlls).sum())
+        print("seq_len - 1:", (seq_len - 1))
         eppl = torch.exp(torch.stack(nlls).sum() / (seq_len - 1))
 
     jsd = 0
