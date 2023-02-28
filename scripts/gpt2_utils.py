@@ -436,7 +436,7 @@ def evaluate(
             target_ids = input_ids.clone()
 
             with torch.no_grad():
-                outputs = model(input_ids, labels=input_ids)
+                outputs = model(input_ids, labels=input_ids, return_dict=True)
                 logits = outputs.logits[:, :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
 
