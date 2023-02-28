@@ -441,7 +441,9 @@ def evaluate(
                 outputs = model(input_ids, labels=target_ids, return_dict=True)
 
                 # Get the logits from the model output and scale them using the temperature
-                logits = outputs.logits
+                # logits = outputs.logits
+                logits = outputs[1][..., :-1, :].contiguous()
+                logits = logits.view(-1, logits.size(-1))
 
                 # Softmax function to get the probabilities
                 probabilities = torch.nn.functional.softmax(logits, dim=-1)
