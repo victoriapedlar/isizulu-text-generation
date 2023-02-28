@@ -419,13 +419,10 @@ def evaluate(
             test_set = f.read()
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
+        vocab_size = len(tokenizers[language_id].get_vocab())
 
         # adapted from https://huggingface.co/transformers/perplexity.html
-        # Calculate the vocabulary size
-        vocab_size = len(tokenizers.get_vocab())
-
         max_length = model.config.n_positions
-        stride = 512
         seq_len = encodings.input_ids.size(1)
 
         nlls = []
