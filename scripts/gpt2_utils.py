@@ -444,11 +444,11 @@ def evaluate(
                 probs = torch.nn.functional.softmax(logits, dim=-1) + epsilon
                 log_probs.append(torch.logsumexp(torch.log(probs), dim=-1))
 
-            prev_end_loc = end_loc
-            if end_loc == seq_len:
-                break
-
+        print("log_probs:", log_probs)
         log_prob = torch.cat(log_probs, dim=0)
+        print("log_prob:", log_prob)
+        print("-log_prob.sum():", -log_prob.sum())
+        print("log_prob.size(0):", log_prob.size(0))
         e_ppl = torch.exp(-log_prob.sum() / log_prob.size(0))
 
     jsd = 0
