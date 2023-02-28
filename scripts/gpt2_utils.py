@@ -425,7 +425,7 @@ def evaluate(
         seq_len = encodings.input_ids.size(1)
         vocab_size = model.config.vocab_size
 
-        log_probs = []
+        nlls = []
         prev_end_loc = 0
         for begin_loc in tqdm(range(0, seq_len, stride)):
             end_loc = min(begin_loc + max_length, seq_len)
@@ -438,18 +438,29 @@ def evaluate(
 
             with torch.no_grad():
                 outputs = model(input_ids, labels=target_ids, return_dict=True)
-                logits = (
-                    outputs.logits[:, :-trg_len, :].contiguous().view(-1, vocab_size)
-                )
-                probs = torch.nn.functional.softmax(logits, dim=-1) + epsilon
-                log_probs.append(torch.logsumexp(torch.log(probs), dim=-1))
 
-        print("log_probs:", log_probs)
-        log_prob = torch.cat(log_probs, dim=0)
-        print("log_prob:", log_prob)
-        print("-log_prob.sum():", -log_prob.sum())
-        print("log_prob.size(0):", log_prob.size(0))
-        e_ppl = torch.exp(-log_prob.sum() / log_prob.size(0))
+                # Add epsilon to outputs and normalize the probabilities
+                logits = outputs.logits
+                logits += epsilon
+                logits = logits.view(-1, vocab_size)
+                probs = torch.nn.functional.softmax(logits, dim=1)
+
+                # Calculate negative log-likelihood using log-sum-exp trick
+                log_probs = torch.logsumexp(logits, dim=1)
+                neg_log_likelihood = torch.sum(log_probs)
+
+            nlls.append(neg_log_likelihood)
+
+            prev_end_loc = end_loc
+            if end_loc == seq_len:
+                break
+
+        total_length = end_loc
+        total_loss = torch.stack(nlls).sum()
+        eppl = torch.exp(
+            (1 / total_length)
+            * (total_loss - torch.log(total_length + epsilon * vocab_size))
+        )
 
     jsd = 0
     sp = 0
@@ -457,10 +468,10 @@ def evaluate(
     result = {
         "sp": sp,
         "JSD": jsd,
-        "perplexity": e_ppl,
+        "perplexity": eppl,
     }
 
-    print("perplexity:", e_ppl)
+    print("perplexity:", eppl)
     print("js:", jsd)
     print("sp;", sp)
 
