@@ -426,54 +426,30 @@ def evaluate(
         seq_len = encodings.input_ids.size(1)
 
         nlls = []
-        prev_end_loc = 0
 
-        for begin_loc in tqdm(range(0, seq_len, stride)):
-            end_loc = min(begin_loc + max_length, seq_len)
-            trg_len = (
-                end_loc - prev_end_loc
-            )  # may be different from stride on last loop
+        for begin_loc in tqdm(range(0, seq_len - max_length, stride)):
+            end_loc = begin_loc + max_length
+            if end_loc >= seq_len:
+                end_loc = seq_len
+            trg_len = end_loc - begin_loc
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
-            target_ids[:, :-trg_len] = -100
 
             with torch.no_grad():
-                outputs = model(input_ids, labels=target_ids, return_dict=True)
-
-                # Get the logits from the model output and scale them using the temperature
-                # logits = outputs.logits
-                logits = outputs[1][..., :-1, :].contiguous()
+                outputs = model(input_ids, labels=input_ids)
+                logits = outputs.logits[:, :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
 
-                # Softmax function to get the probabilities
-                probabilities = torch.nn.functional.softmax(logits, dim=-1)
-
-                # Add epsilon to all probabilities and renormalize
-                smoothed_probabilities = (probabilities + epsilon) / (
-                    1.0 + epsilon * vocab_size
-                )
-                batch_size, vocab_size = smoothed_probabilities.size()
-                smoothed_probabilities = smoothed_probabilities.reshape(
-                    batch_size + 1, vocab_size
-                )
-
-                # Calculate the negative log-likelihood of the target tokens
+                smoothed_probabilities = (logits + epsilon) / (1 + epsilon * vocab_size)
                 negative_log_likelihood = torch.nn.functional.nll_loss(
-                    smoothed_probabilities.view(-1, vocab_size),
-                    target_ids.view(-1),
+                    smoothed_probabilities,
+                    target_ids[:, 1:].contiguous().view(-1),
                     reduction="sum",
                 )
-                # Multiply the negative log-likelihood with trg_len to get the summation instead of average
-                nlls.append(negative_log_likelihood * trg_len)
 
-            prev_end_loc = end_loc
-            if end_loc == seq_len:
-                break
+            nlls.append(negative_log_likelihood)
 
-        # Calculate the epsilon-pp metric
-        total_nll = torch.stack(nlls).sum()
-        total_length = end_loc
-        e_ppl = torch.exp(-total_nll / total_length)
+        eppl = torch.exp(torch.stack(nlls).sum() / (seq_len - 1))
 
     jsd = 0
     sp = 0
@@ -488,7 +464,7 @@ def evaluate(
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, e_ppl, sp
+    return result, jsd, eppl, sp
 
 
 # def evaluate(
