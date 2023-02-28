@@ -458,7 +458,8 @@ def evaluate(
         total_length = end_loc
         total_loss = torch.stack(nlls).sum()
         eppl = torch.exp(
-            (total_loss - torch.log(total_length + epsilon * vocab_size)) / total_length
+            (torch.tensor(total_loss) - torch.log(total_length + epsilon * vocab_size))
+            / total_length
         )
 
     jsd = 0
