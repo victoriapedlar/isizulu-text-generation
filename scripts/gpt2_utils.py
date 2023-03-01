@@ -408,6 +408,7 @@ def evaluate(
     :param disable_tqdm: disable evaluation progress bar
     :return: metrics for each evaluation datasets
     """
+    criterion = nn.CrossEntropyLoss()
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         total_characters = 0
@@ -420,39 +421,33 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
         vocab_size = len(tokenizers[language_id].get_vocab())
-
+        print("vocab size:", vocab_size)
+        print("total_characters:", total_characters)
         # adapted from https://huggingface.co/transformers/perplexity.html
-        max_length = model.config.n_positions
-        seq_len = encodings.input_ids.size(1)
-
         nlls = []
-
-        for begin_loc in tqdm(range(0, seq_len - max_length, stride)):
-            end_loc = begin_loc + max_length
-            if end_loc >= seq_len:
-                end_loc = seq_len
-            trg_len = end_loc - begin_loc
+        for i in tqdm(
+            range(1, encodings.input_ids.size(1), stride),
+            desc="Evaluating BPC",
+            disable=disable_tqdm,
+        ):
+            begin_loc = max(i + stride - input_block_size, 0)
+            end_loc = i + stride
             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
+            target_ids[:, :-stride] = -100
 
             with torch.no_grad():
                 outputs = model(input_ids, labels=input_ids, return_dict=True)
-                logits = outputs.logits[:, :-1, :].contiguous()
+                logits = outputs[1][..., :-1, :].contiguous()
                 logits = logits.view(-1, logits.size(-1))
-                print("logits:", logits)
-                smoothed_probabilities = (logits + epsilon) / (1 + epsilon * vocab_size)
-                print("smoothed_probabilities:", smoothed_probabilities)
-                negative_log_likelihood = torch.nn.functional.nll_loss(
-                    smoothed_probabilities,
-                    target_ids[:, 1:].contiguous().view(-1),
-                    reduction="sum",
-                )
-                print("nll:", negative_log_likelihood)
-
-            nlls.append(negative_log_likelihood)
-        print("nlls.sum():", torch.stack(nlls).sum())
-        print("seq_len - 1:", (seq_len - 1))
-        eppl = torch.exp(torch.stack(nlls).sum() / (seq_len - 1))
+                smoothed_logits = logits + epsilon
+                targets = target_ids.view(-1)
+                # calculate the cross-entropy loss
+                loss = criterion(smoothed_logits, targets)
+            nlls.append(loss)
+        print("torch.stack(nlls).sum()", torch.stack(nlls).sum())
+        print("((1 + epsilon) * vocab_size)", ((1 + epsilon) * vocab_size))
+        eppl = torch.exp(torch.stack(nlls).sum() / ((1 + epsilon) * vocab_size))
 
     jsd = 0
     sp = 0
