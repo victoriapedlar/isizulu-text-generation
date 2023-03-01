@@ -477,9 +477,7 @@ def evaluate(
     epsilon=1e-8,
 ):
     assert stride <= input_block_size
-    metrics = {}
     for language_id, file_paths in eval_data:
-        lls = []
         total_characters = 0
         if len(file_paths) > 1:
             logger.warning(
@@ -503,22 +501,31 @@ def evaluate(
             target_ids[:, :-stride] = -100
 
             with torch.no_grad():
-                outputs = model(input_ids, labels=target_ids, return_dict=True).logits
-                outputs += epsilon
-                # stride = number of tokens in the batch
-                # outputs[0] = nats/token (https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
-                # outputs[0] * stride = nats
-                log_likelihood = torch.sum(
-                    torch.log_softmax(outputs, dim=-1)[:, :-stride], dim=-1
-                )
+                outputs = model(input_ids, labels=target_ids)
 
-            lls.append(log_likelihood)
-        print("sum(lls)", sum(lls))
-        print("total_characters - stride", total_characters - stride)
-        average_log_likelihood = sum(lls) / (total_characters - stride)
-        print("average_log_likelihood", average_log_likelihood)
-        print("1 + epsilon * vocab_size", 1 + epsilon * vocab_size)
-        eppl = math.exp(-average_log_likelihood / (1 + epsilon * vocab_size))
+                shift_logits = outputs.logits[..., :-1, :].contiguous()
+                shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+                shift_labels = target_ids[..., 1:].contiguous().view(-1)
+
+                # calculate the probability distribution
+                probs = torch.nn.functional.softmax(shift_logits, dim=-1)
+                
+                # add the epsilon value to all the terms
+                probs = probs + epsilon
+
+                # renormalize the probability distribution
+                sums = probs.sum(dim=-1, keepdim=True)
+                probs = probs / (sums + epsilon * probs.size(-1))
+
+                # calculate the log probabilities
+                log_probs = torch.log(probs)
+                log_probs = log_probs.gather(1, shift_labels.view(-1, 1)).squeeze()
+
+        # calculate the 𝜖−𝑝𝑝𝑙 metric
+        eppl = torch.exp(-1 / log_probs.sum() / (1 + epsilon * probs.size(-1)))
+
+        print("log_probs.sum()", log_probs.sum())
+        print("1+epsilon*probs.size(-1)", 1 + epsilon * probs.size(-1))
 
     jsd = 0
     sp = 0
