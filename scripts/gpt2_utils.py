@@ -387,30 +387,106 @@ import math
 
 #     return result, jsd, ppl, sp
 
+# LASTEST ATTEMPT
+# def evaluate(
+#     tokenizers,
+#     model,
+#     eval_data,
+#     input_block_size,
+#     stride,
+#     epsilon=1e-8,
+#     disable_tqdm=False,
+#     T=1.0,
+# ):
+#     """
+#     Evaluate the epsilon-perplexity performance of a model on a test dataset.
+#     :param tokenizers: list of tokenizers, one for each language
+#     :param model: the model to be evaluated
+#     :param eval_data: list of evaluation datasets to test the model's performance on
+#     :param input_block_size: size of the input block used for prediction
+#     :param stride: number of tokens to advance the input block per forward pass of the model
+#     :param disable_tqdm: disable evaluation progress bar
+#     :return: metrics for each evaluation datasets
+#     """
+#     criterion = nn.CrossEntropyLoss()
+#     assert stride <= input_block_size
+#     for language_id, file_paths in eval_data:
+#         total_characters = 0
+#         if len(file_paths) > 1:
+#             logger.warning(
+#                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
+#             )
+#         with open(file_paths[0], "r") as f:
+#             test_set = f.read()
+#         total_characters += len(test_set)
+#         encodings = tokenizers[language_id](test_set, return_tensors="pt")
+#         vocab_size = len(tokenizers[language_id].get_vocab())
+#         print("vocab size:", vocab_size)
+#         print("total_characters:", total_characters)
+#         # adapted from https://huggingface.co/transformers/perplexity.html
+#         nlls = []
+#         for i in tqdm(
+#             range(1, encodings.input_ids.size(1), stride),
+#             desc="Evaluating BPC",
+#             disable=disable_tqdm,
+#         ):
+#             begin_loc = max(i + stride - input_block_size, 0)
+#             end_loc = i + stride
+#             input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+#             target_ids = input_ids.clone()
+#             target_ids[:, :-stride] = -100
 
-def evaluate(
+#             with torch.no_grad():
+#                 outputs = model(input_ids, labels=input_ids, return_dict=True)
+#                 logits = outputs.logits.view(-1, outputs.logits.shape[-1])
+#                 smoothed_logits = logits + epsilon
+#                 targets = target_ids.view(-1)
+#                 # calculate the cross-entropy loss
+#                 loss = criterion(smoothed_logits, targets)
+#             nlls.append(loss)
+#         print("torch.stack(nlls).sum()", torch.stack(nlls).sum())
+#         print("((1 + epsilon) * vocab_size)", ((1 + epsilon) * vocab_size))
+#         eppl = torch.exp(torch.stack(nlls).sum() / ((1 + epsilon) * vocab_size))
+
+#     jsd = 0
+#     sp = 0
+
+#     result = {
+#         "sp": sp,
+#         "JSD": jsd,
+#         "perplexity": eppl,
+#     }
+
+#     print("perplexity:", eppl)
+#     print("js:", jsd)
+#     print("sp;", sp)
+
+#     return result, jsd, eppl, sp
+
+
+def evaluate_bpcs(
     tokenizers,
     model,
     eval_data,
     input_block_size,
     stride,
-    epsilon=1e-8,
     disable_tqdm=False,
-    T=1.0,
+    epsilon=1e-8,
 ):
     """
-    Evaluate the epsilon-perplexity performance of a model on a test dataset.
+    Evaluate the BPC performance of a model on a test dataset.
     :param tokenizers: list of tokenizers, one for each language
     :param model: the model to be evaluated
     :param eval_data: list of evaluation datasets to test the model's performance on
     :param input_block_size: size of the input block used for prediction
     :param stride: number of tokens to advance the input block per forward pass of the model
     :param disable_tqdm: disable evaluation progress bar
-    :return: metrics for each evaluation datasets
+    :return: metrics dictionary containing BPCs for each evaluation datasets
     """
-    criterion = nn.CrossEntropyLoss()
     assert stride <= input_block_size
+    metrics = {}
     for language_id, file_paths in eval_data:
+        lls = []
         total_characters = 0
         if len(file_paths) > 1:
             logger.warning(
@@ -420,11 +496,8 @@ def evaluate(
             test_set = f.read()
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
-        vocab_size = len(tokenizers[language_id].get_vocab())
-        print("vocab size:", vocab_size)
-        print("total_characters:", total_characters)
+
         # adapted from https://huggingface.co/transformers/perplexity.html
-        nlls = []
         for i in tqdm(
             range(1, encodings.input_ids.size(1), stride),
             desc="Evaluating BPC",
@@ -437,16 +510,18 @@ def evaluate(
             target_ids[:, :-stride] = -100
 
             with torch.no_grad():
-                outputs = model(input_ids, labels=input_ids, return_dict=True)
-                logits = outputs.logits.view(-1, outputs.logits.shape[-1])
-                smoothed_logits = logits + epsilon
-                targets = target_ids.view(-1)
-                # calculate the cross-entropy loss
-                loss = criterion(smoothed_logits, targets)
-            nlls.append(loss)
-        print("torch.stack(nlls).sum()", torch.stack(nlls).sum())
-        print("((1 + epsilon) * vocab_size)", ((1 + epsilon) * vocab_size))
-        eppl = torch.exp(torch.stack(nlls).sum() / ((1 + epsilon) * vocab_size))
+                outputs = model(
+                    input_ids,
+                    labels=target_ids,
+                )
+                outputs = outputs[0].item()
+                outputs += epsilon
+                # stride = number of tokens in the batch
+                # outputs[0] = nats/token (https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
+                # outputs[0] * stride = nats
+                log_likelihood = outputs * stride
+
+            lls.append(log_likelihood)
 
     jsd = 0
     sp = 0
@@ -454,14 +529,14 @@ def evaluate(
     result = {
         "sp": sp,
         "JSD": jsd,
-        "perplexity": eppl,
+        "perplexity": sum(lls),
     }
 
-    print("perplexity:", eppl)
+    print("perplexity:", sum(lls))
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, eppl, sp
+    return result, jsd, sum(lls), sp
 
 
 # def evaluate(
