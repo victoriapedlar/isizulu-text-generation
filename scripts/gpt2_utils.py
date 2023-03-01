@@ -464,6 +464,9 @@ import math
 #     return result, jsd, eppl, sp
 
 
+import math
+
+
 def evaluate(
     tokenizers,
     model,
@@ -473,16 +476,6 @@ def evaluate(
     disable_tqdm=False,
     epsilon=1e-8,
 ):
-    """
-    Evaluate the BPC performance of a model on a test dataset.
-    :param tokenizers: list of tokenizers, one for each language
-    :param model: the model to be evaluated
-    :param eval_data: list of evaluation datasets to test the model's performance on
-    :param input_block_size: size of the input block used for prediction
-    :param stride: number of tokens to advance the input block per forward pass of the model
-    :param disable_tqdm: disable evaluation progress bar
-    :return: metrics dictionary containing BPCs for each evaluation datasets
-    """
     assert stride <= input_block_size
     metrics = {}
     for language_id, file_paths in eval_data:
@@ -501,7 +494,6 @@ def evaluate(
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
             range(1, encodings.input_ids.size(1), stride),
-            desc="Evaluating BPC",
             disable=disable_tqdm,
         ):
             begin_loc = max(i + stride - input_block_size, 0)
@@ -511,23 +503,23 @@ def evaluate(
             target_ids[:, :-stride] = -100
 
             with torch.no_grad():
-                outputs = model(
-                    input_ids,
-                    labels=target_ids,
-                )
-                outputs = outputs[0].item()
+                outputs = model(input_ids, labels=target_ids, return_dict=True).logits
                 outputs += epsilon
                 # stride = number of tokens in the batch
                 # outputs[0] = nats/token (https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)
                 # outputs[0] * stride = nats
-                log_likelihood = outputs * stride
+                log_likelihood = torch.sum(
+                    torch.log_softmax(outputs, dim=-1)[:, :-stride], dim=-1
+                )
 
             lls.append(log_likelihood)
-    print("sum(lls)", sum(lls))
-    print("((1 + epsilon) * vocab_size)", ((1 + epsilon) * vocab_size))
-    loss = sum(lls) / ((1 + epsilon) * vocab_size)
-    print("loss", loss)
-    eppl = math.exp(loss)
+        print("sum(lls)", sum(lls))
+        print("total_characters - stride", total_characters - stride)
+        average_log_likelihood = sum(lls) / (total_characters - stride)
+        print("average_log_likelihood", average_log_likelihood)
+        print("1 + epsilon * vocab_size", 1 + epsilon * vocab_size)
+        eppl = math.exp(-average_log_likelihood / (1 + epsilon * vocab_size))
+
     jsd = 0
     sp = 0
 
