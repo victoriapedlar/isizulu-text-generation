@@ -496,6 +496,7 @@ def evaluate(
             test_set = f.read()
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
+        vocab_size = len(tokenizers[language_id].get_vocab())
 
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
@@ -522,21 +523,25 @@ def evaluate(
                 log_likelihood = outputs * stride
 
             lls.append(log_likelihood)
-
+    print("sum(lls)", sum(lls))
+    print("((1 + epsilon) * vocab_size)", ((1 + epsilon) * vocab_size))
+    loss = sum(lls) / ((1 + epsilon) * vocab_size)
+    print("loss", loss)
+    eppl = math.exp(loss)
     jsd = 0
     sp = 0
 
     result = {
         "sp": sp,
         "JSD": jsd,
-        "perplexity": sum(lls),
+        "perplexity": eppl,
     }
 
-    print("perplexity:", sum(lls))
+    print("perplexity:", eppl)
     print("js:", jsd)
     print("sp;", sp)
 
-    return result, jsd, sum(lls), sp
+    return result, jsd, eppl, sp
 
 
 # def evaluate(
