@@ -438,7 +438,7 @@ def evaluate(
 
             with torch.no_grad():
                 outputs = model(input_ids, labels=input_ids, return_dict=True)
-                logits = outputs.logits.view(-1, logits.shape[-1])
+                logits = outputs.logits.view(-1, outputs.logits.shape[-1])
                 smoothed_logits = logits + epsilon
                 targets = target_ids.view(-1)
                 # calculate the cross-entropy loss
