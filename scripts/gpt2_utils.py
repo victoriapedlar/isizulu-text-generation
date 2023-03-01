@@ -464,7 +464,7 @@ import math
 #     return result, jsd, eppl, sp
 
 
-def evaluate_bpcs(
+def evaluate(
     tokenizers,
     model,
     eval_data,
