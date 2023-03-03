@@ -519,7 +519,12 @@ def evaluate(
 
                 # calculate the log probabilities
                 log_probs = torch.log(probs)
+                # create a boolean mask for the unmasked tokens
+                mask = shift_labels != -100
+
+                # gather the log probabilities only for the unmasked tokens
                 log_probs = log_probs.gather(1, shift_labels.view(-1, 1)).squeeze()
+                log_probs = log_probs[mask]
 
         # calculate the 𝜖−𝑝𝑝𝑙 metric
         eppl = torch.exp(-1 / log_probs.sum() / (1 + epsilon * probs.size(-1)))
