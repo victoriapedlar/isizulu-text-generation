@@ -501,6 +501,9 @@ def evaluate(
             target_ids[:, :-stride] = -100
 
             with torch.no_grad():
+                input_ids = input_ids.to(device)
+                target_ids = target_ids.to(device)
+
                 outputs = model(input_ids, labels=target_ids, return_dict=True)
 
                 shift_logits = outputs.logits[..., :-1, :].contiguous()
