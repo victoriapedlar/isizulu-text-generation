@@ -496,14 +496,11 @@ def evaluate(
         ):
             begin_loc = max(i + stride - input_block_size, 0)
             end_loc = i + stride
-            input_ids = encodings.input_ids[:, begin_loc:end_loc]
+            input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
             target_ids = input_ids.clone()
             target_ids[:, :-stride] = -100
 
             with torch.no_grad():
-                input_ids = input_ids.to(device)
-                target_ids = target_ids.to(device)
-
                 outputs = model(input_ids, labels=target_ids, return_dict=True)
 
                 shift_logits = outputs.logits[..., :-1, :].contiguous()
