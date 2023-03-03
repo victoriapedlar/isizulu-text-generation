@@ -496,7 +496,7 @@ def evaluate(
         ):
             begin_loc = max(i + stride - input_block_size, 0)
             end_loc = i + stride
-            input_ids = encodings.input_ids[:, begin_loc:end_loc].to(device)
+            input_ids = encodings.input_ids[:, begin_loc:end_loc]
             target_ids = input_ids.clone()
             target_ids[:, :-stride] = -100
 
