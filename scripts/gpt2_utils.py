@@ -501,7 +501,7 @@ def evaluate(
             target_ids[:, :-stride] = -100
 
             with torch.no_grad():
-                outputs = model(input_ids, labels=target_ids)
+                outputs = model(input_ids, labels=target_ids, return_dict=True)
 
                 shift_logits = outputs.logits[..., :-1, :].contiguous()
                 shift_logits = shift_logits.view(-1, shift_logits.size(-1))
@@ -509,7 +509,7 @@ def evaluate(
 
                 # calculate the probability distribution
                 probs = torch.nn.functional.softmax(shift_logits, dim=-1)
-                
+
                 # add the epsilon value to all the terms
                 probs = probs + epsilon
 
