@@ -525,7 +525,8 @@ def evaluate(
                 perp += torch.log(p**-1).sum().item()
 
         # calculate the 𝜖−𝑝𝑝𝑙 metric
-        eppl = torch.exp(-1 / perp / (1 + epsilon * probs.size(-1)))
+        a = -1 / perp / (1 + epsilon * probs.size(-1))
+        eppl = torch.exp(torch.exp(a))
 
         print("perp", perp)
         print("1+epsilon*probs.size(-1)", 1 + epsilon * probs.size(-1))
