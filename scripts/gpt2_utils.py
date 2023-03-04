@@ -487,7 +487,7 @@ def evaluate(
             test_set = f.read()
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
-
+        vocab_size = len(tokenizers[language_id].get_vocab())
         perp = 0.0
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
@@ -525,11 +525,11 @@ def evaluate(
                 perp += torch.log(p**-1).sum().item()
 
         # calculate the 𝜖−𝑝𝑝𝑙 metric
-        a = -1 / perp / (1 + epsilon * probs.size(-1))
-        eppl = torch.exp(torch.exp(a))
+        a = -1 / perp / (1 + epsilon * vocab_size)
+        eppl = torch.exp(torch.tensor(a))
 
         print("perp", perp)
-        print("1+epsilon*probs.size(-1)", 1 + epsilon * probs.size(-1))
+        print("1+epsilon*probs.size(-1)", 1 + epsilon * vocab_size)
 
     jsd = 0
     sp = 0
