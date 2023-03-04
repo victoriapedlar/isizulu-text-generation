@@ -487,8 +487,8 @@ def evaluate(
             test_set = f.read()
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
-        vocab_size = len(tokenizers[language_id].get_vocab())
 
+        perp = 0.0
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
             range(1, encodings.input_ids.size(1), stride),
@@ -508,28 +508,26 @@ def evaluate(
                 shift_labels = target_ids[..., 1:].contiguous().view(-1)
 
                 # calculate the probability distribution
-                probs = torch.nn.functional.softmax(shift_logits, dim=-1)
+                probs = torch.softmax(shift_logits, dim=1)
 
-                # add the epsilon value to all the terms
-                probs = probs + epsilon
+                if len(probs[0].nonzero()) != len(probs[0]):
+                    probs = probs[:, :] + epsilon
+                    sums = [probs[i].sum().item() for i in range(probs.size(0))]
+                    probs = [probs[i] / sums[i] for i in range(len(sums))]
 
-                # renormalize the probability distribution
-                sums = probs.sum(dim=-1, keepdim=True)
-                probs = probs / (sums + epsilon * probs.size(-1))
+                    probs = torch.stack(probs)
 
-                # calculate the log probabilities
-                log_probs = torch.log(probs)
-                # create a boolean mask for the unmasked tokens
-                mask = shift_labels != -100
-
-                # gather the log probabilities only for the unmasked tokens
-                log_probs = log_probs.gather(1, shift_labels.view(-1, 1)).squeeze()
-                log_probs = log_probs[mask]
+                p = [
+                    probs[i, shift_labels.squeeze(0)[i].item()]
+                    for i in range(len(shift_labels.squeeze(0)))
+                ]
+                p = torch.stack(p)
+                perp += torch.log(p**-1).sum().item()
 
         # calculate the 𝜖−𝑝𝑝𝑙 metric
-        eppl = torch.exp(-1 / log_probs.sum() / (1 + epsilon * probs.size(-1)))
+        eppl = torch.exp(-1 / perp / (1 + epsilon * probs.size(-1)))
 
-        print("log_probs.sum()", log_probs.sum())
+        print("perp", perp)
         print("1+epsilon*probs.size(-1)", 1 + epsilon * probs.size(-1))
 
     jsd = 0
