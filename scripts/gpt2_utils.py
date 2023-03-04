@@ -479,6 +479,7 @@ def evaluate(
     assert stride <= input_block_size
     for language_id, file_paths in eval_data:
         total_characters = 0
+        total_tokens = 0
         if len(file_paths) > 1:
             logger.warning(
                 f"You supplied multiple eval files for language {language_id}. Only the first one will be used."
@@ -488,6 +489,7 @@ def evaluate(
         total_characters += len(test_set)
         encodings = tokenizers[language_id](test_set, return_tensors="pt")
         vocab_size = len(tokenizers[language_id].get_vocab())
+        total_tokens += len(tokenizers[language_id].tokenize(test_set))
         perp = 0.0
         # adapted from https://huggingface.co/transformers/perplexity.html
         for i in tqdm(
@@ -525,11 +527,14 @@ def evaluate(
                 perp += torch.log(p**-1).sum().item()
 
         # calculate the 𝜖−𝑝𝑝𝑙 metric
-        a = -1 / perp / (1 + epsilon * vocab_size)
+        a = perp / ((1 + epsilon) * total_characters)
         eppl = torch.exp(torch.tensor(a))
 
         print("perp", perp)
-        print("1+epsilon*probs.size(-1)", 1 + epsilon * vocab_size)
+        print("vocab_size", vocab_size)
+        print("total_tokens", total_tokens)
+        print("total_characters", total_characters)
+        print("((1 + epsilon) * total_characters)", ((1 + epsilon) * total_characters))
 
     jsd = 0
     sp = 0
