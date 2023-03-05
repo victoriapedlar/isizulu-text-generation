@@ -14,6 +14,7 @@ module load python/anaconda-python-3.7
 module load software/TensorFlow-A100-GPU
 
 export LD_LIBRARY_PATH=/home/pdlvic001/.local/lib/python3.8/site-packages/nvidia/cublas/lib/:$LD_LIBRARY_PATH
+export RUST_BACKTRACE=1
 
 start=$(date +%s)
 echo "Starting script..."
