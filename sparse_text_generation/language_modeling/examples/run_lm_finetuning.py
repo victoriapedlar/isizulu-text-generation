@@ -87,9 +87,9 @@ from tokenizers import ByteLevelBPETokenizer
 
 # paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
 paths = [
-    "~/isizulu-text-generation/data/test/test.txt",
-    "~/isizulu-text-generation/data/test/train.txt",
-    "~/isizulu-text-generation/data/test/valid.txt",
+    "~/isizulu-text-generation/data/combined/isizulu/test.txt",
+    "~/isizulu-text-generation/data/combined/isizulu/train.txt",
+    "~/isizulu-text-generation/data/combined/isizulu/valid.txt",
 ]
 
 # Initialize a tokenizer

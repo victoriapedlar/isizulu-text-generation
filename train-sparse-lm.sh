@@ -14,15 +14,14 @@ module load python/anaconda-python-3.7
 module load software/TensorFlow-A100-GPU
 
 export LD_LIBRARY_PATH=/home/pdlvic001/.local/lib/python3.8/site-packages/nvidia/cublas/lib/:$LD_LIBRARY_PATH
-export RUST_BACKTRACE=1
 
 start=$(date +%s)
 echo "Starting script..."
 
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
-        --train_data_file ~/isizulu-text-generation/data/test/train.txt \
-        --eval_data_file ~/isizulu-text-generation/data/test/valid.txt \
-        --output_dir ~/isizulu-text-generation/models/sparse_lm/test \
+        --train_data_file ~/isizulu-text-generation/data/combined/isizulu/train.txt \
+        --eval_data_file ~/isizulu-text-generation/data/combined/isizulu/valid.txt \
+        --output_dir ~/isizulu-text-generation/models/sparse_lm/ \
         --model_type gpt2 \
         --model_name_or_path gpt2-medium \
         --mode from_scratch \
