@@ -87,9 +87,9 @@ from tokenizers import ByteLevelBPETokenizer
 
 # paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
 paths = [
-    "~/isizulu-text-generation/data/combined/isizulu/test.txt",
-    "~/isizulu-text-generation/data/combined/isizulu/train.txt",
-    "~/isizulu-text-generation/data/combined/isizulu/valid.txt",
+    "data/combined/isizulu/test.txt",
+    "data/combined/isizulu/train.txt",
+    "data/combined/isizulu/valid.txt",
 ]
 
 # Initialize a tokenizer
@@ -847,7 +847,6 @@ def evaluate(
     print("perplexity:", perplexity)
     print("js:", jsd)
     print("sp;", sp)
-    print("len(eval_dataloader):", len(eval_dataloader))
     print("repeat_16:", np.array(repeat_16).mean())
     print("wrong_repeat_16:", np.array(wrong_repeat_16).mean())
     print("repeat_32:", np.array(repeat_32).mean())
