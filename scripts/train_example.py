@@ -33,7 +33,7 @@ hparams = {
     "model_max_input_size": 1024,
     "pdrop": 0.1,
     "d_model": 32,
-    "n_layers": 12,
+    "n_layers": 6,
     "n_heads": 8,
     "train_block_size": 128,
     "train_stride": 16,
