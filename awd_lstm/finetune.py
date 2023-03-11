@@ -102,6 +102,9 @@ parser.add_argument(
     default=[-1],
     help="When (which epochs) to divide the learning rate by 10 - accepts multiple",
 )
+parser.add_argument(
+    "--optimizer", type=str, default="sgd", help="optimizer to use (sgd, adam)"
+)
 # ----------Written by Victoria Pedlar---------- #
 parser.add_argument(
     "--save_history",
