@@ -11,6 +11,7 @@ import sys
 from datetime import datetime
 from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, early_stopping
+import wandb  # Add Weights & Bias logging
 
 parser = argparse.ArgumentParser(
     description="PyTorch PennTreeBank RNN/LSTM Language Model"
@@ -215,15 +216,28 @@ model_name = (
     + str(args.when)
     + ".pt"
 )
+# ----------Written by Victoria Pedlar---------- #
+log_every = 10
+wandb.init(project="awd-lstm-finetuning", config={"lr": 30})
+wandb.config.update(args)
+config = wandb.config
+# ----------------------------------------------- #
 
 ###############################################################################
 # Load data
 ###############################################################################
 
-corpus = data.Corpus(args.data)
+fn = "corpus.{}.data".format(hashlib.md5(args.data.encode()).hexdigest())
+if os.path.exists(fn) and len(args.tokenizer_data) == 0:
+    print("Loading cached dataset...")
+    corpus = torch.load(fn)
+else:
+    print("Producing dataset...")
+    corpus = data.Corpus(args.data, args.vocab_size, args.use_bpe, args.tokenizer_data)
+    torch.save(corpus, fn)
 
 eval_batch_size = 10
-test_batch_size = 1
+test_batch_size = 10
 train_data = batchify(corpus.train, args.batch_size, args)
 val_data = batchify(corpus.valid, eval_batch_size, args)
 test_data = batchify(corpus.test, test_batch_size, args)
@@ -271,20 +285,55 @@ total_params = sum(
 ###############################################################################
 
 
-def evaluate(data_source):
-    # Turn on evaluation mode which disables dropout
+# ---------- ADJUSTED CODE --------------
+from scipy.stats import entropy
+
+
+def compute_jsd(p, q, base=np.e):
+    p, q = np.asarray(p.cpu()), np.asarray(q.cpu())
+    p, q = p / p.sum(), q / q.sum()
+    m = 1.0 / 2 * (p + q)
+    ent = entropy(p, m, base=base) / 2.0 + entropy(q, m, base=base) / 2.0
+    if ent == float("Inf"):
+        ent = torch.log(torch.FloatTensor([2]))
+    return ent
+
+
+def compute_sp(p, target):
+    p = np.asarray(p.cpu())
+    return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
+
+
+def evaluate(data_source, batch_size=10, epsilon=1e-8):
+    # Turn on evaluation mode which disables dropout.
     model.eval()
-    total_loss = 0.0
+    if args.model == "QRNN":
+        model.reset()
+    total_loss = 0
     ntokens = len(corpus.dictionary)
-    hidden = model.init_hidden(test_batch_size)
+    hidden = model.init_hidden(batch_size)
+    V = len(data_source)
     with torch.no_grad():
         for i in range(0, data_source.size(0) - 1, args.bptt):
-            data, targets = get_batch(data_source, i, args)
+            data, targets = get_batch(data_source, i, args, evaluation=True)
             output, hidden = model(data, hidden)
-            output_flat = output.view(-1, ntokens)
-            total_loss += len(data) * criterion(output_flat, targets).item()
+            # Apply additive smoothing
+            output += epsilon
+            # Flatten the output and targets tensors
+            output = output.view(-1, ntokens)
+            targets = targets.view(-1)
+            # Calculate cross-entropy loss
+            loss = criterion(output, targets)
+            total_loss += len(data) * loss.item()
             hidden = repackage_hidden(hidden)
-    return total_loss / (len(data_source) - 1)
+        loss = total_loss / ((1 + epsilon) * V)
+        eppl = math.exp(loss)
+        sp_score = 0
+        avg_jsd = 0
+    return loss, eppl, avg_jsd, sp_score, loss / math.log(2)
+
+
+# ------------- END ADJUSTED CODE --------------
 
 
 def train():
@@ -414,7 +463,7 @@ try:
                     tmp[prm] = prm.data.detach()
                     prm.data = optimizer.state[prm]["ax"].detach()
 
-            val_loss2 = evaluate(val_data)
+            val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
             print("-" * 89)
             print(
                 "| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | "
@@ -426,6 +475,18 @@ try:
                 )
             )
             print("-" * 89)
+            # 🐝 Log train metrics to wandb
+            if (epoch + 1) % log_every == 0:  # subsampling
+                wandb.log(
+                    {
+                        "loss": val_loss2,
+                        "epoch": epoch,
+                        "perplexity": avg_perplexity,
+                        "JSD": avg_jsd,
+                        "sp": avg_sp,
+                        "bpc": bpc,
+                    }
+                )
 
             if val_loss2 < stored_loss:
                 with open(args.save, "wb") as f:
@@ -445,7 +506,7 @@ try:
 
             # begin early stopping
             if epoch % args.eval_every == (args.eval_every - 1):
-                val_loss2 = evaluate(val_data)
+                val_loss2, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
                 stored_loss, stop_step, stop = early_stopping(
                     val_loss2, stored_loss, stop_step, args.patience
                 )
@@ -463,7 +524,7 @@ try:
                     len([prm for prm in model.parameters()])
                 )
             )
-            val_loss = evaluate(val_data)
+            val_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
             print(
                 "{} model params (SGD after eval)".format(
                     len([prm for prm in model.parameters()])
@@ -481,6 +542,18 @@ try:
                 )
             )
             print("-" * 89)
+            # 🐝 Log train metrics to wandb
+            if (epoch + 1) % log_every == 0:  # subsampling
+                wandb.log(
+                    {
+                        "loss": val_loss2,
+                        "epoch": epoch,
+                        "perplexity": avg_perplexity,
+                        "JSD": avg_jsd,
+                        "sp": avg_sp,
+                        "bpc": bpc,
+                    }
+                )
 
             if val_loss < stored_loss:
                 # model_save(os.path.join(CKPT_DIR, args.save), model, criterion, optimizer,
@@ -540,3 +613,5 @@ except KeyboardInterrupt:
 #     )
 # )
 # print("=" * 89)
+# 🐝 Close your wandb run
+wandb.finish()
