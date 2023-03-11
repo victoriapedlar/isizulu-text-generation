@@ -222,6 +222,18 @@ wandb.init(project="awd-lstm-finetuning", config={"lr": 30})
 wandb.config.update(args)
 config = wandb.config
 # ----------------------------------------------- #
+def model_load(file_name):
+    """
+    Loads the model and associated optimizer and criterion
+    - Fixed the issue where cuda check is not performed causing crashes
+    """
+    global model, criterion, optimizer
+    with open(file_name, "rb") as f:
+        if torch.cuda.is_available():
+            model, criterion, optimizer = torch.load(f)
+        else:
+            model, criterion, optimizer = torch.load(f, map_location="cpu")
+
 
 ###############################################################################
 # Load data
@@ -416,7 +428,7 @@ def train():
 
 # Load the best saved model.
 with open(args.save, "rb") as f:
-    model = torch.load(f)
+    model = model_load(f)
 
 # Do the actual training
 # Directing print output to a .txt file
