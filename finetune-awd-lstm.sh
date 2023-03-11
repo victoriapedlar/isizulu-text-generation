@@ -18,7 +18,7 @@ echo "Starting script..."
 
 python3 -u awd_lstm/finetune.py \
     --descriptive_name "finetune_awd_lstm" \
-    --data /data/isolezwe/isizulu \
+    --data data/isolezwe/isizulu \
     --save_history "logs/finetune_awd_lstm/$(date "+%Y-%m-%d_%H-%M-%S").txt" \
     --emsize 800 \
     --nhid 1150 \
