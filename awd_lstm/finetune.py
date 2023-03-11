@@ -425,7 +425,7 @@ sys.stdout = open(args.save_history, "wt")
 
 # Loop over epochs.
 lr = args.lr
-stored_loss = evaluate(val_data)
+stored_loss, avg_perplexity, avg_jsd, avg_sp, bpc = evaluate(val_data)
 best_val_loss = []
 # early stopping parameter
 stop_step = 0
