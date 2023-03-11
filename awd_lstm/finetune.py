@@ -427,8 +427,7 @@ def train():
 
 
 # Load the best saved model.
-with open(args.save, "rb") as f:
-    model = model_load(f)
+model = model_load(args.save)
 
 # Do the actual training
 # Directing print output to a .txt file
