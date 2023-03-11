@@ -72,7 +72,7 @@ parser.add_argument(
 )
 parser.add_argument("--seed", type=int, default=1111, help="random seed")
 parser.add_argument("--nonmono", type=int, default=5, help="random seed")
-parser.add_argument("--cuda", action="store_false", help="use CUDA")
+parser.add_argument("--cuda", action="store_true", help="use CUDA")
 parser.add_argument(
     "--log-interval", type=int, default=200, metavar="N", help="report interval"
 )
@@ -169,7 +169,8 @@ for arg in vars(args):
 # if not args.log_hparams_only: writer.add_text('args', sargs)
 # print(sargs)
 # ----------------------------------------------- #
-
+if torch.__version__ != "0.1.12_2":
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Set the random seed manually for reproducibility.
 torch.manual_seed(args.seed)
 if torch.cuda.is_available():
