@@ -94,6 +94,13 @@ parser.add_argument(
 parser.add_argument(
     "--wdecay", type=float, default=1.2e-6, help="weight decay applied to all weights"
 )
+parser.add_argument(
+    "--when",
+    nargs="+",
+    type=int,
+    default=[-1],
+    help="When (which epochs) to divide the learning rate by 10 - accepts multiple",
+)
 # ----------Written by Victoria Pedlar---------- #
 parser.add_argument(
     "--save_history",
