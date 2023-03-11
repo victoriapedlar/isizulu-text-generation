@@ -233,7 +233,7 @@ test_data = batchify(corpus.test, test_batch_size, args)
 ###############################################################################
 
 ntokens = len(corpus.dictionary)
-model = model.LSTMModel(
+model = LSTMModel(
     args.model,
     ntokens,
     args.emsize,
