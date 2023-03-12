@@ -13,17 +13,12 @@ from model import LSTMModel
 from utils import batchify, get_batch, repackage_hidden, early_stopping
 import wandb  # Add Weights & Bias logging
 
-parser = argparse.ArgumentParser(
-    description="PyTorch PennTreeBank RNN/LSTM Language Model"
-)
+parser = argparse.ArgumentParser(description="PyTorch AWD-LSTM Language Model")
 parser.add_argument(
     "--data", type=str, default="data/penn/", help="location of the data corpus"
 )
 parser.add_argument(
-    "--model",
-    type=str,
-    default="LSTM",
-    help="type of recurrent net (RNN_TANH, RNN_RELU, LSTM, GRU)",
+    "--model", type=str, default="LSTM", help="type of recurrent net (LSTM, QRNN, GRU)"
 )
 parser.add_argument("--emsize", type=int, default=400, help="size of word embeddings")
 parser.add_argument(
@@ -67,9 +62,6 @@ parser.add_argument(
     default=0.5,
     help="amount of weight dropout to apply to the RNN hidden to hidden matrix",
 )
-parser.add_argument(
-    "--tied", action="store_false", help="tie the word embedding and softmax weights"
-)
 parser.add_argument("--seed", type=int, default=1111, help="random seed")
 parser.add_argument("--nonmono", type=int, default=5, help="random seed")
 parser.add_argument("--cuda", action="store_true", help="use CUDA")
@@ -95,6 +87,10 @@ parser.add_argument(
 parser.add_argument(
     "--wdecay", type=float, default=1.2e-6, help="weight decay applied to all weights"
 )
+parser.add_argument("--resume", type=str, default="", help="path of model to resume")
+parser.add_argument(
+    "--optimizer", type=str, default="sgd", help="optimizer to use (sgd, adam)"
+)
 parser.add_argument(
     "--when",
     nargs="+",
@@ -103,7 +99,11 @@ parser.add_argument(
     help="When (which epochs) to divide the learning rate by 10 - accepts multiple",
 )
 parser.add_argument(
-    "--optimizer", type=str, default="sgd", help="optimizer to use (sgd, adam)"
+    "-asgd",
+    "--asgd",
+    required=False,
+    default="True",
+    help="server on which this experiment runs",
 )
 # ----------Written by Victoria Pedlar---------- #
 parser.add_argument(
