@@ -609,7 +609,7 @@ try:
                 print("Dividing learning rate by 10")
                 optimizer.param_groups[0]["lr"] /= 10.0
 
-        best_val_loss.append(val_loss2)
+        best_val_loss.append(val_loss)
 
 except KeyboardInterrupt:
     print("-" * 89)
