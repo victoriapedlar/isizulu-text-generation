@@ -1260,7 +1260,7 @@ def main():
             model.module if hasattr(model, "module") else model
         )  # Take care of distributed/parallel training
         model_to_save.save_pretrained(args.output_dir)
-        tokenizer.save_model(
+        tokenizer.save_pretrained(
             args.output_dir
         )  # change from save_pretrained to save_model
 
