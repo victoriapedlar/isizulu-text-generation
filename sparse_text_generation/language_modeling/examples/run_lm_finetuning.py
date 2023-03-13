@@ -93,10 +93,10 @@ paths = [
 ]
 
 # Initialize a tokenizer
-tokenizer = ByteLevelBPETokenizer()
+tokenizer1 = ByteLevelBPETokenizer()
 
 # Customize training
-tokenizer.train(
+tokenizer1.train(
     files=paths,
     vocab_size=8000,
     special_tokens=["<|endoftext|>"],
@@ -107,10 +107,10 @@ tokenizer.train(
 Path("./tokenizers/ByteLevelBPETokenizer/").mkdir(parents=True, exist_ok=True)
 
 # Save files to disk
-tokenizer.save_model(directory="./tokenizers/ByteLevelBPETokenizer/")
+tokenizer1.save_model(directory="./tokenizers/ByteLevelBPETokenizer/")
 
 # Load the tokenizer which is trained on the new texts
-tokenizer = ByteLevelBPETokenizer(
+tokenizer1 = ByteLevelBPETokenizer(
     "./tokenizers/ByteLevelBPETokenizer/vocab.json",
     "./tokenizers/ByteLevelBPETokenizer/merges.txt",
 )
@@ -1269,7 +1269,7 @@ def main():
         model = model_class.from_pretrained(
             args.output_dir, loss=loss_func, gen_func=gen_func
         )
-        tokenizer = tokenizer_class.from_pretrained(
+        tokenizer = GPT2TokenizerFast.from_pretrained(
             args.output_dir, do_lower_case=args.do_lower_case
         )
         model.to(args.device)
