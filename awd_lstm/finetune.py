@@ -561,7 +561,7 @@ try:
             if (epoch + 1) % log_every == 0:  # subsampling
                 wandb.log(
                     {
-                        "loss": val_loss2,
+                        "loss": val_loss,
                         "epoch": epoch,
                         "perplexity": avg_perplexity,
                         "JSD": avg_jsd,
