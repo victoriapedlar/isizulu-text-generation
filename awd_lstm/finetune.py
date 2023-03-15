@@ -263,19 +263,19 @@ test_data = batchify(corpus.test, test_batch_size, args)
 ###############################################################################
 
 ntokens = len(corpus.dictionary)
-# model = LSTMModel(
-#     num_tokens=ntokens,
-#     embed_size=args.emsize,
-#     output_size=ntokens,
-#     hidden_size=args.nhid,
-#     n_layers=args.nlayers,
-#     dropout=args.dropout,
-#     dropouth=args.dropouth,
-#     dropouti=args.dropouti,
-#     dropoute=args.dropoute,
-#     wdrop=args.wdrop,
-#     tie_weights=args.tied,
-# )
+model = LSTMModel(
+    num_tokens=ntokens,
+    embed_size=args.emsize,
+    output_size=ntokens,
+    hidden_size=args.nhid,
+    n_layers=args.nlayers,
+    dropout=args.dropout,
+    dropouth=args.dropouth,
+    dropouti=args.dropouti,
+    dropoute=args.dropoute,
+    wdrop=args.wdrop,
+    tie_weights=args.tied,
+)
 # Load the best saved model.
 model_load(args.save)
 
@@ -323,6 +323,9 @@ def compute_sp(p, target):
     return 1 - (0.5 * np.linalg.norm(p) ** 2 - p[target] + 0.5)
 
 
+import torch.nn.functional as F
+
+
 def evaluate(data_source, batch_size=10, epsilon=1e-8):
     # Turn on evaluation mode which disables dropout.
     model.eval()
@@ -331,24 +334,35 @@ def evaluate(data_source, batch_size=10, epsilon=1e-8):
     total_loss = 0
     ntokens = len(corpus.dictionary)
     hidden = model.init_hidden(batch_size)
-    V = len(data_source)
+    T = data_source.size(0) - 1
     with torch.no_grad():
         for i in range(0, data_source.size(0) - 1, args.bptt):
             data, targets = get_batch(data_source, i, args, evaluation=True)
             output, hidden = model(data, hidden)
-            # Apply additive smoothing
-            output += epsilon
             # Flatten the output and targets tensors
             output = output.view(-1, ntokens)
             targets = targets.view(-1)
-            # Calculate cross-entropy loss
-            loss = criterion(output, targets)
-            total_loss += len(data) * loss.item()
+
+            # Calculate smoothed probabilities
+            smoothed_probs = (
+                F.softmax(output, dim=-1) * (1 - epsilon) + epsilon / ntokens
+            )
+
+            # Calculate the log-probabilities of target tokens
+            log_probs = torch.log(smoothed_probs[range(targets.size(0)), targets])
+
+            # Accumulate the sum of log-probabilities
+            total_loss += -log_probs.sum().item()
             hidden = repackage_hidden(hidden)
-        loss = total_loss / ((1 + epsilon) * V)
-        eppl = math.exp(loss)
+
+        # Calculate epsilon-perplexity
+        eppl = math.exp(-total_loss / (T * (1 + epsilon * ntokens)))
+
+        # Other metrics, you can calculate them as needed
+        loss = total_loss / T
         sp_score = 0
         avg_jsd = 0
+
     return loss, eppl, avg_jsd, sp_score, loss / math.log(2)
 
 

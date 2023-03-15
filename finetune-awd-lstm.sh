@@ -23,9 +23,9 @@ python3 -u awd_lstm/finetune.py \
     --emsize 800 \
     --nhid 1150 \
     --nlayers 3 \
-    --lr 30.0 \
+    --lr 1e-4 \
     --clip 0.25 \
-    --epochs 500 \
+    --epochs 1000 \
     --batch_size 32 \
     --bptt 70 \
     --dropout 0.2 \
