@@ -445,6 +445,13 @@ def train():
                 pass
 
 
+if args.optimizer == "sgd":
+    optimizer = torch.optim.SGD(
+        params, lr=args.lr, weight_decay=args.wdecay
+    )  # params not trainable params... (?)
+if args.optimizer == "adam":
+    optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.wdecay)
+
 # Load the best saved model.
 model_load(args.save)
 
