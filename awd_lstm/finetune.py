@@ -263,19 +263,22 @@ test_data = batchify(corpus.test, test_batch_size, args)
 ###############################################################################
 
 ntokens = len(corpus.dictionary)
-model = LSTMModel(
-    num_tokens=ntokens,
-    embed_size=args.emsize,
-    output_size=ntokens,
-    hidden_size=args.nhid,
-    n_layers=args.nlayers,
-    dropout=args.dropout,
-    dropouth=args.dropouth,
-    dropouti=args.dropouti,
-    dropoute=args.dropoute,
-    wdrop=args.wdrop,
-    tie_weights=args.tied,
-)
+# model = LSTMModel(
+#     num_tokens=ntokens,
+#     embed_size=args.emsize,
+#     output_size=ntokens,
+#     hidden_size=args.nhid,
+#     n_layers=args.nlayers,
+#     dropout=args.dropout,
+#     dropouth=args.dropouth,
+#     dropouti=args.dropouti,
+#     dropoute=args.dropoute,
+#     wdrop=args.wdrop,
+#     tie_weights=args.tied,
+# )
+# Load the best saved model.
+model_load(args.save)
+
 criterion = nn.CrossEntropyLoss()
 if args.cuda:
     model.cuda()

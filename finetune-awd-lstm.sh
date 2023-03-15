@@ -28,17 +28,17 @@ python3 -u awd_lstm/finetune.py \
     --epochs 500 \
     --batch_size 32 \
     --bptt 70 \
-    --dropout 0.7 \
+    --dropout 0.2 \
     --dropouth 0.2 \
-    --dropouti 0.1 \
+    --dropouti 0.2 \
     --dropoute 0.1 \
     --wdrop 0.2 \
     --seed 1882 \
     --patience 3 \
     --nonmono 8 \
     --cuda \
+    --when 40 80 120 \
     --save "models/awd_lstm/_emsize_800_nhid_1150_nlayers_3_lr_30.0_wdc_1.2e-06_clip_0.25_epochs_500_bsz_32_bptt_70_dropout_0.2_dropouth_0.2_dropouti_0.2_dropoute_0.1_wdrop_0.2_seed_1882_patience_3_when_[40, 80, 120].pt" \
-    --when 40 80 120 160 \
 
 
 end=$(date +%s)
