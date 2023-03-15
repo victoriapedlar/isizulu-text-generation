@@ -276,8 +276,6 @@ model = LSTMModel(
     wdrop=args.wdrop,
     tie_weights=args.tied,
 )
-# Load the best saved model.
-model_load(args.save)
 
 criterion = nn.CrossEntropyLoss()
 if args.cuda:
