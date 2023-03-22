@@ -4,339 +4,429 @@ Prompt: Umengameli Cyril Ramaphosa utusa abantu
 Generated text:  ukuthisese ukuthi ukuthi " ukuthi uthe ukuthithola ukuthi N ukuthi lezi ukuthi.
  ukuthi,se " "setholatholase, ukuthin
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
 Generated text:  ukuthisese ukuthi ukuthi " ukuthi uthe ukuthithola ukuthi N ukuthi lezi ukuthi.
  ukuthi,se " "setholatholase, ukuthin
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
 Generated text:  ukuthisese ukuthi ukuthi " ukuthi uthe ukuthithola ukuthi N ukuthi lezi ukuthi.
  ukuthi,se " "setholatholase, ukuthin
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
 Generated text:  ukuthi ukuthithola ukuthisese ukuthi uthe ukuthi lezi ukuthi " ukuthi N ukuthi.
  ukuthi,se, ukuthinsetholatholasen ukuthi
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
 Generated text:  ukuthi ukuthithola ukuthisese ukuthi uthe ukuthi lezi ukuthi " ukuthi N ukuthi.
  ukuthi,se, ukuthinsetholatholasen ukuthi
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
 Generated text:  ukuthi ukuthithola ukuthisese ukuthi uthe ukuthi lezi ukuthi " ukuthi N ukuthi.
  ukuthi,se, ukuthinsetholatholasen ukuthi
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  kwezi okuwutholanthola lezithola N uthesasa aba,yosanswa lezi li N aba "thola NsiU,se
+Generated text: swanyoki "I isicelo N. lezisasaIsetholasa,
+ "tholathola Nn Nyo li aba " li
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  kwezi okuwutholanthola lezithola N uthesasa aba,yosanswa lezi li N aba "thola NsiU,se
+Generated text: swanyoki "I isicelo N. lezisasaIsetholasa,
+ "tholathola Nn Nyo li aba " li
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  kwezi okuwutholanthola lezithola N uthesasa aba,yosanswa lezi li N aba "thola NsiU,se
+Generated text: swanyoki "I isicelo N. lezisasaIsetholasa,
+ "tholathola Nn Nyo li aba " li
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  lezi abaseswasa okuswango. lezi i ye lezi ukuthikisikuci.ki bezama. mci okungo uthe ngaphambi
+Generated text:  litholaki beU " mswaci uthe Ntholawesa.. N " ukuthiso yokuzama liso ukuthibesi m si
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  lezi abaseswasa okuswango. lezi i ye lezi ukuthikisikuci.ki bezama. mci okungo uthe ngaphambi
+Generated text:  litholaki beU " mswaci uthe Ntholawesa.. N " ukuthiso yokuzama liso ukuthibesi m si
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  lezi abaseswasa okuswango. lezi i ye lezi ukuthikisikuci.ki bezama. mci okungo uthe ngaphambi
+Generated text:  litholaki beU " mswaci uthe Ntholawesa.. N " ukuthiso yokuzama liso ukuthibesi m si
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  isicelo
- ukuthi li si mkiUci mkumbahlangano kakhulubeD liwe nje,"n yokuse.,kiIn lezi
+Generated text:  ababe N
+be aba ye
+Izaaweki mkuyo yokuzwe ye. kom ukuthi si "thola mbe lezimba
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  isicelo
- ukuthi li si mkiUci mkumbahlangano kakhulubeD liwe nje,"n yokuse.,kiIn lezi
+Generated text:  ababe N
+be aba ye
+Izaaweki mkuyo yokuzwe ye. kom ukuthi si "thola mbe lezimba
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
 Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  isicelo
- ukuthi li si mkiUci mkumbahlangano kakhulubeD liwe nje,"n yokuse.,kiIn lezi
+Generated text:  ababe N
+be aba ye
+Izaaweki mkuyo yokuzwe ye. kom ukuthi si "thola mbe lezimba
 Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 4417.763785807291
-BLEU scores: [0.9611251461562798, 0.9170042068877637, 0.8425281815174757, 0.762091589193094, 0.6818573550142858]
+Perplexity: 4391.826025390625
+BLEU scores: [0.9682434480192409, 0.9273457833612874, 0.8499886667451612, 0.7567429820553239, 0.6696869661839211]
+ROUGE scores: [0.006666666666666667, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
 Prompt: Noma engazange aligagule ngegama iqembu
 Generated text:  ukuthisese ukuthi ukuthi uthe ukuthi " ukuthin ukuthithola ukuthi, ukuthi lezise,se N ukuthi.
 tholatholase uthesethola
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
 Prompt: Noma engazange aligagule ngegama iqembu
 Generated text:  ukuthisese ukuthi ukuthi uthe ukuthi " ukuthin ukuthithola ukuthi, ukuthi lezise,se N ukuthi.
 tholatholase uthesethola
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
 Prompt: Noma engazange aligagule ngegama iqembu
 Generated text:  ukuthisese ukuthi ukuthi uthe ukuthi " ukuthin ukuthithola ukuthi, ukuthi lezise,se N ukuthi.
 tholatholase uthesethola
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
 Prompt: Noma engazange aligagule ngegama iqembu
 Generated text:  ukuthisese ukuthi ukuthi N ukuthi " ukuthi uthe ukuthithola ukuthi, ukuthi lezise,sen ukuthi.
  ukuthinse uthesethola
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
 Prompt: Noma engazange aligagule ngegama iqembu
 Generated text:  ukuthisese ukuthi ukuthi N ukuthi " ukuthi uthe ukuthithola ukuthi, ukuthi lezise,sen ukuthi.
  ukuthinse uthesethola
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
 Prompt: Noma engazange aligagule ngegama iqembu
 Generated text:  ukuthisese ukuthi ukuthi N ukuthi " ukuthi uthe ukuthithola ukuthi, ukuthi lezise,sen ukuthi.
  ukuthinse uthesethola
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  oku, ngaphambi
- lezithola abawu, lezi i,saswaso leziI isicelo N oku ngaphambisaso isicelo lezi kwezi uthe oku ye
+Generated text: ngoso Nsi.setholayo " isiceloswase okusi uthe Nki aba ukuthi li ye. kwezi abathola ngaphambise
+se
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  oku, ngaphambi
- lezithola abawu, lezi i,saswaso leziI isicelo N oku ngaphambisaso isicelo lezi kwezi uthe oku ye
+Generated text: ngoso Nsi.setholayo " isiceloswase okusi uthe Nki aba ukuthi li ye. kwezi abathola ngaphambise
+se
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  oku, ngaphambi
- lezithola abawu, lezi i,saswaso leziI isicelo N oku ngaphambisaso isicelo lezi kwezi uthe oku ye
+Generated text: ngoso Nsi.setholayo " isiceloswase okusi uthe Nki aba ukuthi li ye. kwezi abathola ngaphambise
+se
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text: Dngombahlanganosisi Nweyohlanganon oku,we N kakhulu ye,ci ukuthiUku oku lezi okuDswaso "
+Generated text: sokizwe,Uwu lezitholazama.ki " isicelo ye kwezi " ukuthimbazwengowusosisambawuIseyo
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text: Dngombahlanganosisi Nweyohlanganon oku,we N kakhulu ye,ci ukuthiUku oku lezi okuDswaso "
+Generated text: sokizwe,Uwu lezitholazama.ki " isicelo ye kwezi " ukuthimbazwengowusosisambawuIseyo
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text: Dngombahlanganosisi Nweyohlanganon oku,we N kakhulu ye,ci ukuthiUku oku lezi okuDswaso "
+Generated text: sokizwe,Uwu lezitholazama.ki " isicelo ye kwezi " ukuthimbazwengowusosisambawuIseyo
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  li
-sisihlangano mngo Nhlanganobesi ye yoku
-swawu si ye si kakhulu isicelo ngaphambisowu ukuthi isiceloUso "
+Generated text:  njekuUzakiyohlangano yoku N se uthe, i N "n, yokua si, lingo kakhulu m kakhulu sisi
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  li
-sisihlangano mngo Nhlanganobesi ye yoku
-swawu si ye si kakhulu isicelo ngaphambisowu ukuthi isiceloUso "
+Generated text:  njekuUzakiyohlangano yoku N se uthe, i N "n, yokua si, lingo kakhulu m kakhulu sisi
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
 Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  li
-sisihlangano mngo Nhlanganobesi ye yoku
-swawu si ye si kakhulu isicelo ngaphambisowu ukuthi isiceloUso "
+Generated text:  njekuUzakiyohlangano yoku N se uthe, i N "n, yokua si, lingo kakhulu m kakhulu sisi
 Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 4418.509448242187
-BLEU scores: [0.9872165816001981, 0.9610315393069915, 0.907856357037317, 0.8378270509606804, 0.7625097441181182]
+Perplexity: 4391.731290690104
+BLEU scores: [0.9799406843648374, 0.9544104473675895, 0.9019441494573424, 0.8270960617552656, 0.747078182057391]
+ROUGE scores: [0.002898550724637681, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
 Generated text:  ukuthi ukuthisese ukuthithola ukuthi uthe ukuthi " ukuthin ukuthi N ukuthi, ukuthi lezise,sensetholase uthese.
 
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
 Generated text:  ukuthi ukuthisese ukuthithola ukuthi uthe ukuthi " ukuthin ukuthi N ukuthi, ukuthi lezise,sensetholase uthese.
 
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
 Generated text:  ukuthi ukuthisese ukuthithola ukuthi uthe ukuthi " ukuthin ukuthi N ukuthi, ukuthi lezise,sensetholase uthese.
 
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
 Generated text:  ukuthi ukuthisese ukuthithola ukuthi uthe ukuthi " ukuthin ukuthi N ukuthi, ukuthi lezise,se "setholatholasennse
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
 Generated text:  ukuthi ukuthisese ukuthithola ukuthi uthe ukuthi " ukuthin ukuthi N ukuthi, ukuthi lezise,se "setholatholasennse
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
 Generated text:  ukuthi ukuthisese ukuthithola ukuthi uthe ukuthi " ukuthin ukuthi N ukuthi, ukuthi lezise,se "setholatholasennse
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: Iki N. ukuthiwu ithola lisi ukuthi uthe ". ukuthi abanwu " uthesa,yoswa ngaphambi li ukuthiswa ye
+Generated text:  yeki, lisethola,kiwu. ukuthi Nsesi nje ye ukuthiwuIswawuse.sesa lezi ". kakhulu
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: Iki N. ukuthiwu ithola lisi ukuthi uthe ". ukuthi abanwu " uthesa,yoswa ngaphambi li ukuthiswa ye
+Generated text:  yeki, lisethola,kiwu. ukuthi Nsesi nje ye ukuthiwuIswawuse.sesa lezi ". kakhulu
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: Iki N. ukuthiwu ithola lisi ukuthi uthe ". ukuthi abanwu " uthesa,yoswa ngaphambi li ukuthiswa ye
+Generated text:  yeki, lisethola,kiwu. ukuthi Nsesi nje ye ukuthiwuIswawuse.sesa lezi ". kakhulu
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: hlanganose lezi kwezi,".swambansisanswatholawu uthe isicelothola kwezisi "zama " kakhulumbatholangohlanganoI
+Generated text: .tholangoso ngaphambi aba yokusesa lithola ngaphambi bethola yokuki N nje uthebe m, aba isiceloci. ukuthi kakhulu nje
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: hlanganose lezi kwezi,".swambansisanswatholawu uthe isicelothola kwezisi "zama " kakhulumbatholangohlanganoI
+Generated text: .tholangoso ngaphambi aba yokusesa lithola ngaphambi bethola yokuki N nje uthebe m, aba isiceloci. ukuthi kakhulu nje
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: hlanganose lezi kwezi,".swambansisanswatholawu uthe isicelothola kwezisi "zama " kakhulumbatholangohlanganoI
+Generated text: .tholangoso ngaphambi aba yokusesa lithola ngaphambi bethola yokuki N nje uthebe m, aba isiceloci. ukuthi kakhulu nje
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  "kiziwa " yesaRUyozama ukuthiza siswa okunaso si kakhulu yokuzwe eseki uthe ukuthi okusa N
+Generated text:  njewu uthe ngaphambi uthebezaso ye " ngaphambiwu "cizwe ukuthi i ngaphambi "siswa ukuthi ukuthiU abahlanganowuzamaza
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  "kiziwa " yesaRUyozama ukuthiza siswa okunaso si kakhulu yokuzwe eseki uthe ukuthi okusa N
+Generated text:  njewu uthe ngaphambi uthebezaso ye " ngaphambiwu "cizwe ukuthi i ngaphambi "siswa ukuthi ukuthiU abahlanganowuzamaza
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
 Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  "kiziwa " yesaRUyozama ukuthiza siswa okunaso si kakhulu yokuzwe eseki uthe ukuthi okusa N
+Generated text:  njewu uthe ngaphambi uthebezaso ye " ngaphambiwu "cizwe ukuthi i ngaphambi "siswa ukuthi ukuthiU abahlanganowuzamaza
 Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 4421.2752061631945
-BLEU scores: [0.9877714116822426, 0.96937521802975, 0.9297735479171373, 0.8697198054692488, 0.799288836281316]
+Perplexity: 4394.473649088542
+BLEU scores: [0.9870597485210744, 0.9683538975520573, 0.9273332005337963, 0.8644657430444528, 0.792729563323909]
+ROUGE scores: [0.0017777777777777779, 0.0]
+
