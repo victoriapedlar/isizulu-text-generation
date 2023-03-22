@@ -27,11 +27,3 @@ if not os.path.exists(output_dir):
 
 # Save the trained tokenizer
 tokenizer.save_model(output_dir)
-
-# Rename the saved files to match the GPT2Tokenizer naming
-os.rename(
-    os.path.join(output_dir, "vocab.json"), os.path.join(output_dir, "gpt2-vocab.json")
-)
-os.rename(
-    os.path.join(output_dir, "merges.txt"), os.path.join(output_dir, "gpt2-merges.txt")
-)
