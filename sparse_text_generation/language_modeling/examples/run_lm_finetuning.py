@@ -56,7 +56,6 @@ from ..pytorch_transformers import (
     GPT2Config,
     GPT2LMHeadModel,
     GPT2Tokenizer,
-    GPT2TokenizerFast,
     OpenAIGPTConfig,
     OpenAIGPTLMHeadModel,
     OpenAIGPTTokenizer,
@@ -77,44 +76,6 @@ import re
 RETOK = re.compile(r"\w+|[^\w\s]|\n", re.UNICODE)
 
 import wandb  # Add Weights & Bias logging
-
-# ------------------------------START CUSTOM CODE----------------------------------
-#! pip install tokenizers
-
-from pathlib import Path
-
-from tokenizers import ByteLevelBPETokenizer
-
-# paths = [str(x) for x in Path("./data/combined/").glob("**/*.txt")]
-paths = [
-    "data/combined/isizulu/test.txt",
-    "data/combined/isizulu/train.txt",
-    "data/combined/isizulu/valid.txt",
-]
-
-# Initialize a tokenizer
-tokenizer1 = ByteLevelBPETokenizer()
-
-# Customize training
-tokenizer1.train(
-    files=paths,
-    vocab_size=8000,
-    special_tokens=["<|endoftext|>"],
-    show_progress=False,
-)
-
-# Creating a new directory called ./tokenizers/ByteLevelBPETokenizer/
-Path("./tokenizers/ByteLevelBPETokenizer/").mkdir(parents=True, exist_ok=True)
-
-# Save files to disk
-tokenizer1.save_model(directory="./tokenizers/ByteLevelBPETokenizer/")
-
-# Load the tokenizer which is trained on the new texts
-tokenizer1 = ByteLevelBPETokenizer(
-    "./tokenizers/ByteLevelBPETokenizer/vocab.json",
-    "./tokenizers/ByteLevelBPETokenizer/merges.txt",
-)
-# ------------------------------END CUSTOM CODE----------------------------------
 
 
 def compute_jsd(p, q, base=np.e):
@@ -837,12 +798,7 @@ def evaluate(
     jsd = jsd / len(eval_dataloader)
     sp = sp / len(eval_dataloader)
 
-    result = {
-        "sp": sp,
-        "JSD": jsd,
-        "perplexity": perplexity,
-        "Loss": loss_train,
-    }
+    result = {"sp": sp, "JSD": jsd, "perplexity": perplexity, "Loss": loss_train}
 
     print("perplexity:", perplexity)
     print("js:", jsd)
@@ -1165,13 +1121,11 @@ def main():
         )
     else:
         config = config_class()
-    # ------------------START CUSTOM CODE------------------#
-    tokenizer = GPT2TokenizerFast.from_pretrained("./tokenizers/ByteLevelBPETokenizer/")
-    # ------------------END CUSTOM CODE--------------------#
-    # tokenizer = tokenizer_class.from_pretrained(
-    #     args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
-    #     do_lower_case=args.do_lower_case,
-    # )
+
+    tokenizer = tokenizer_class.from_pretrained(
+        args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
+        do_lower_case=args.do_lower_case,
+    )
     if args.block_size <= 0:
         args.block_size = (
             tokenizer.max_len
@@ -1269,7 +1223,7 @@ def main():
         model = model_class.from_pretrained(
             args.output_dir, loss=loss_func, gen_func=gen_func
         )
-        tokenizer = GPT2TokenizerFast.from_pretrained(
+        tokenizer = tokenizer_class.from_pretrained(
             args.output_dir, do_lower_case=args.do_lower_case
         )
         model.to(args.device)
