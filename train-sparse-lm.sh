@@ -18,8 +18,6 @@ export LD_LIBRARY_PATH=/home/pdlvic001/.local/lib/python3.8/site-packages/nvidia
 start=$(date +%s)
 echo "Starting script..."
 
-python3 -m sparse_text_generation.language_modeling.examples.run_tokenizer
-
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --train_data_file ~/isizulu-text-generation/data/combined/isizulu/train.txt \
         --eval_data_file ~/isizulu-text-generation/data/combined/isizulu/valid.txt \
