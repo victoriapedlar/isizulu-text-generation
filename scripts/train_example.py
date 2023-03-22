@@ -39,7 +39,7 @@ hparams = {
     "train_stride": 16,
     "val_block_size": 128,
     "val_stride": 128,
-    "learning_rate": 1e-4,
+    "learning_rate": 3.5e-6,
     "batch_size": 64,
     "weight_decay": 0.1,
     "scheduler": "linear_with_warmup",
