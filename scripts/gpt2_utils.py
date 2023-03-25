@@ -723,7 +723,10 @@ def get_gpt2_trainer(
 
     if resume_checkpoint_dir is not None:
         model = GPT2LayerSwitchingLMHeadModel.from_pretrained(resume_checkpoint_dir)
+        # Get the number of steps taken in the resumed model
+        steps_taken = model.training_args.max_steps
     else:
+        steps_taken = 0
         config = LayerSwitchingGPT2Config(
             vocab_size=hparams["vocab_size"],
             n_positions=hparams["model_max_input_size"],
@@ -817,7 +820,7 @@ def get_gpt2_trainer(
         output_dir=os.path.join(MODEL_DIR, experiment_id),
         logging_dir=os.path.join(TB_DIR, experiment_id),
         save_steps=tparams["save_steps"],
-        max_steps=tparams["max_steps"],
+        max_steps=tparams["max_steps"] + steps_taken,
         per_device_train_batch_size=1,
         learning_rate=hparams["learning_rate"],
         weight_decay=hparams["weight_decay"],
