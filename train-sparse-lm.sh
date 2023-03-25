@@ -28,6 +28,7 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --mode from_scratch \
         --block_size 512 \
         --do_train \
+        --num_train_epochs 10 \
         --evaluate_during_training \
         --loss entmax \
         --entmax_alpha 1.2 \
