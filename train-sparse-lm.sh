@@ -30,7 +30,6 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --do_train \
         --num_train_epochs 10 \
         --learning_rate 0.00001 \
-        --per_gpu_train_batch_size 4 \
         --weight_decay 0.001 \
         --evaluate_during_training \
         --loss entmax \
