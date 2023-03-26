@@ -1,1332 +1,419 @@
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  nabameleneqhaza elibonakalayo ekuqhubeni kwezimali.
+I-nema ihlinzeka ngokuzinikela ekuqhubeni i-SMEM
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  nengalo yomthetho.
+U-abrahams uthe ukuvalwa kokudayiswa kotshwala kudalwa ukudayiswa kotshwala.
+Uthe ukuvalwa
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  obuhle phakathi kwe-ANC.
+Udube uthe u-Andile u-Andile no-Andile Mlaba.
+Uthe
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Perplexity: 898.9115600585938
+BLEU score: 0.7418507927107858
+chrF++ score: 5.597014925373134
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  bakuleli.
-Uramaphosa uphinde wanxusa abantu ukuthi bavotele i-AfriForum, ukuba balandele imigomo yeCovid-19, ukuze ba
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
+Generated text:  nosomabhizinisi.
+I-ifp iyisibonelo esihle kakhulu ekusungulweni kwe-SDP. I-DMD
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  bakuleli.
-Uramaphosa uphinde wanxusa abantu ukuthi bavotele i-AfriForum, ukuba balandele imigomo yeCovid-19, ukuze ba
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
+Hyperparameters: {'beam_size': 2}
+Generated text:  nengalo yomthetho. " UMnuz Msawakhe Mayisela, okhulumela amaphoyisa KwaZulu-Natal, ukuqinisekisile ukuthi amaphoyisa aphenya icala lokubulala ngokungen
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  bakuleli.
-Uramaphosa uphinde wanxusa abantu ukuthi bavotele i-AfriForum, ukuba balandele imigomo yeCovid-19, ukuze ba
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  abangaphezu kuka-50 000 abantu asebehlolelwe iCovid-19," kusho uRamaphosa.
-Uramaphosa uphinde wanxusa abantu bakuleli ukuthi balandele imigomo yeCovid-
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  abangaphezu kuka-50 000 abantu asebehlolelwe iCovid-19," kusho uRamaphosa.
-Uramaphosa uphinde wanxusa abantu bakuleli ukuthi balandele imigomo yeCovid-
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  abangaphezu kuka-50 000 abantu asebehlolelwe iCovid-19," kusho uRamaphosa.
-Uramaphosa uphinde wanxusa abantu bakuleli ukuthi balandele imigomo yeCovid-
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  ukuthi ulwe esikhundleni njengoba usemncane amathuba okuthuthukisa ingqalasizinda," kusho uLuthuli.
-Uthe uma uRamaphosa engamsiza uRamaphosa kumele achaze
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  ukuthi ulwe esikhundleni njengoba usemncane amathuba okuthuthukisa ingqalasizinda," kusho uLuthuli.
-Uthe uma uRamaphosa engamsiza uRamaphosa kumele achaze
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  ukuthi ulwe esikhundleni njengoba usemncane amathuba okuthuthukisa ingqalasizinda," kusho uLuthuli.
-Uthe uma uRamaphosa engamsiza uRamaphosa kumele achaze
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  bangase zisehle ngongqongqoshe.
-Abantu abakwaziyo ukuba bagenge besemi ngomumo abantu abafanele ngabe babe sematheni.
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  bangase zisehle ngongqongqoshe.
-Abantu abakwaziyo ukuba bagenge besemi ngomumo abantu abafanele ngabe babe sematheni.
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  bangase zisehle ngongqongqoshe.
-Abantu abakwaziyo ukuba bagenge besemi ngomumo abantu abafanele ngabe babe sematheni.
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  kumele amemezele uhlelo lukahulumeni luka-4037
-Wathi imali eyakhalwa amabhuku ikhokhwa kwi-internet kuzobhekwa ngokuvalwa kuka
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  kumele amemezele uhlelo lukahulumeni luka-4037
-Wathi imali eyakhalwa amabhuku ikhokhwa kwi-internet kuzobhekwa ngokuvalwa kuka
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: Umengameli Cyril Ramaphosa utusa abantu
-Generated text:  kumele amemezele uhlelo lukahulumeni luka-4037
-Wathi imali eyakhalwa amabhuku ikhokhwa kwi-internet kuzobhekwa ngokuvalwa kuka
-Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
-Perplexity: 1300.5263905843099
-BLEU scores: [0.9544856387575751, 0.9191395559266697, 0.8358382992169493, 0.712361298543674, 0.5874852638501414]
-ROUGE scores: [0.01, 0.0]
+Hyperparameters: {'beam_size': 2}
+Generated text:  nabo.
+Udadewabo kaZuma, uMnuz Thabo Mbeki, uthe indodana yakhe ibingayitholi ukuphumula. UZuma ubengu
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  le-AUD.
-I-afriForum isanda kwethula inkulumo ye-Independent Electoral Commission E
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 589.6353149414062
+BLEU score: 1.0374991193584138
+chrF++ score: 4.870129870129871
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  nabo bonke ababambe iqhaza kuloluhlelo.
+Iqhaza elibaluleke kakhulu ekuqinisekiseni ukuthi umphakathi ubambe iqhaza elibonakalayo ekulethweni
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  nengalo yomthetho," kusho uMshengu.
+Uthe bazoqhubeka nokulwa nobugebengu obuhleliwe. Siyakugxeka ukubulawa kosopolitiki nokubulawa kwabesifazane
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  obuhle phakathi kwelungu le-ANC, uMnuz Velenkosini Hlabisa, nelungu lesigungu esiphezulu se-IFP.
+I
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  le-AUD.
-I-afriForum isanda kwethula inkulumo ye-Independent Electoral Commission E
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 462.6822814941406
+BLEU score: 0.9761451417360246
+chrF++ score: 4.213483146067416
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  nabo bonke ababambe iqhaza ekuphathweni kwezinxushunxushu.
+Omasipala kufanele bakhuthaze futhi babambe iqhaza elibonakalayo ekuqiniseki
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  nengalo yomthetho," kusho uRamaphosa.
+Uramaphosa uqhube waveza ukuthi iNingizimu Afrika isengcupheni yokubhebhetheka kweCovid-19 kuleli ngenxa yeCovid-
+
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  obuhle phakathi kwelungu le-ANC KwaZulu-Natal, uMnuz Mdumiseni Ntuli.
+I-ifp ibinombono
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  le-AUD.
-I-afriForum isanda kwethula inkulumo ye-Independent Electoral Commission E
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 450.6971130371094
+BLEU score: 1.0034361662853069
+chrF++ score: 4.3227665706051885
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text: , basungule imiklomelo abayithatha phezulu i-ASpean-Africa Exption ngaphambi kokuba ukhokhe u111
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  naleso senzo ngoba uma kungasho ukuthi sizobe sesingathathwa. Uma singafuni ukuthi sithi umuntu wesifazane uyohlolwa engqondweni yakhe e
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  nabo.
+Sithanda ukuchaza ngemicabango evela emisakazweni eyakhiwe ngudokotela kuleli lokishi laseNkandla. Ngiphatheke kabu
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  le-African National Congress of South African National Democratic Government Transformation PA).
+Perplexity: 1561.759765625
+BLEU score: 0.8681543797450799
+chrF++ score: 4.601226993865031
 
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  nabamele ezokuphepha endaweni eyodwa yokuphuza besuka ku-2 500 ngenyanga abashona. Icala lokubulawa kwamalungu esifazane nengakaziwa," kubeka
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  namacala ezigebe zokuzama okubulala kaZulu siwagcine sezixazulule phambili lezi,"" kusho uMntwana waKwabubedumisa.
+Uthe ngesikhathi
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  bezwe. Akukaningi lapho singahlala siwumntwana esikhona, ngoba nomama izizukulwane ayazi. Ayiyeke yini i
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  le-African National Congress of South African National Democratic Government Transformation PA).
+Perplexity: 2433.62158203125
+BLEU score: 1.0567555006356322
+chrF++ score: 4.3103448275862055
 
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  nomhlomulo kamengameli noma omunye umuntu onezuzwana futhi banikwa ulwazi lokuthi ngempelalwebhonjiniyela ukuthuthwa komuntugwayi bese lokho e
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  necala," kuchaza uKamemela.
+Uyigxeke imigqoqo emiza imindeni njengoba kukhona khona abesifazane nabesifazane abaduthe amazendawo
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  nalo la bantu baseMpofu eMzuze eNewcastle.
+Isolezwe lizwe lethu lithinte laso, kukhona abaseHillmann
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  le-African National Congress of South African National Democratic Government Transformation PA).
+Perplexity: 2635.8193359375
+BLEU score: 0.8793396779176862
+chrF++ score: 4.385964912280701
 
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  nabanikazi bomhlaba, abahleli bomhlaba nabanikazi, nabaphathi, abaqashwe ngokugcwele noma abamelene nabathengi, ababambisene
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  nokuhlukunyezwa kwabesifazane nezingane. " Uthe uma behlukunyezwa abantu besifazane badlwengulwa.
+Uthe uma abantu behlukumezeka kakhulu, babona bebona be
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  naye.
+Umfowethu uLuyanda, ongomunye wabantu abasondelene nabo kodwa babulawa. Kuyimanje asiyiboni inkinga yokubulawa
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  uma elimvela ehhovisi, elinamakhasi angu-100 futhi.
-I-eff izazidlela zokuthi iziteshi ze-IP
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 1573.9383544921875
+BLEU score: 1.0220603260988486
+chrF++ score: 4.109589041095891
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  ukuze kube khona ukuvikeleka kwabantu.
+Iqhaza lomphakathi kufanele lithathe isibophezelo zokuvikela umuntu, ukugwema ukuthi umuntu ongasifaka isikhalo
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  nengalo yomthetho uma singeke sikwazi ukwenza umsebenzi wabo," kusho uNksz Boyce.
+Uthe bazokwenza konke okusemandleni ukusiza umphakathi ekulweni nenkohlakalo.
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  phakathi konina. Baze babulala izihlobo zikagogo. Babe bengawadingi abantu ababuthola uLuck Mabulu
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  uma elimvela ehhovisi, elinamakhasi angu-100 futhi.
-I-eff izazidlela zokuthi iziteshi ze-IP
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 1297.4049072265625
+BLEU score: 0.9847672258351119
+chrF++ score: 4.010695187165775
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  nezobulungiswa kanye nezinselelo ebhekene nazo.
+Uthe i-AUSACP isithatha izinqumo ngokubeka izimpilo zomphakathi.
+Uma
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  nobandlululo eNingizimu Afrika.
+I-extrum iyimbangela yalokhu ezisungulelwa abantu abasezinhlelweni ezahlukene. Ekugcineni
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  obuphethwe ngabantu abayizifo ezibizayo. Ngakho ngifuna ukuphila abantu bakuleli kodwa kululandele ukuphuza amanzi kodwa asiyilandeli
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  uma elimvela ehhovisi, elinamakhasi angu-100 futhi.
-I-eff izazidlela zokuthi iziteshi ze-IP
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 1613.6712646484375
+BLEU score: 0.8632813635790964
+chrF++ score: 4.335260115606936
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  nohulumeni ukuze uphumelele futhi ukhulekele phambili ekwakheni umphakathi wethu.
+I-anc izobe isimema ukusebenzisana nohulumeni uma sibhekene nesi
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  ngqo," kusho uKelly.
+Uthe kumanje kudalwa ukudunwa kukaRarewse kuhambisana nokuxhumana nezintatheli ngoba aku
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  naye.
+Umadlala uthe abanawo amandla asenkantolo akhulumile noZuma njengoba besasebenza khona njengoba behlezi esuka kowayenguMengameli
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  lezemfundo ephakeme ukuze aphendule imibuzo eminingi. Kumanje kube nezinjobuso futhi ngeke uze umkhombandlela ozoshintshashintsha uma kukhona okha
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 1892.1063232421875
+BLEU score: 0.9786376823468534
+chrF++ score: 4.178272980501394
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  futhi uzokhuluma futhi akuvumelekile ukuthuthukisa ukulawulwa kwenkinga esilwenza umphakathi. Izinsiza Zwatholile ngobani nencane lena yomgodi
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  yini indlela esasikhona, sisabhekene nenhlonipho nenjabulo,"" kwenoMthethosisekelo. " Ethintwa uHansi Lyz Ngiyoni uthe in
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  ebesidlala nalo leli lilibambile kulo sosifundazwe emuva kokuthi abantu bebephume kobaba bebhule bezitshela emehlweni ngokungaphephile kubantu abanga
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  lezemfundo ephakeme ukuze aphendule imibuzo eminingi. Kumanje kube nezinjobuso futhi ngeke uze umkhombandlela ozoshintshashintsha uma kukhona okha
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 3154.596435546875
+BLEU score: 0.8875589832264612
+chrF++ score: 3.9370078740157486
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ngemihlomulo yeminyango eyethulwa kuhulumeni ngo-Okthoba wonyaka odlule ngenhlosoanele sokudlulisa ama-AR1 reli namakhulu awo). Le
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  nesi nobugebengu ukuze sizixazulu lapho kusuke sihlala kuzovoteleke uma konke esikubhethile," kusho uPwela
+Amaphoyisa uBrigadier Managernu
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  noMfowethu Dube osanda kubulawa umfowabo omncane kwathathwa nezintatheli ezinezinkinga. Ngithukile ngokuthi akukho okwakufunwa mayelana nesicelo sebheyili njengamanje ngeke s
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  lezemfundo ephakeme ukuze aphendule imibuzo eminingi. Kumanje kube nezinjobuso futhi ngeke uze umkhombandlela ozoshintshashintsha uma kukhona okha
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 3244.6337890625
+BLEU score: 0.8893406627344308
+chrF++ score: 3.6764705882352944
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  nohulumeni wendawo kamasipala eqazuzisa izindawo zikaDisemba ngoSepte kuya kwemijondolo esekuqala ngaphambi kokuba umphakathi uye ePhalamende.
+Ubudlelwano
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  nalokho," kusho uMngoma.
+Umadlala ufuna amaphoyisa ngokulahleka kwegciwane ngoba analo ngokwaziwa izimpendulo zaleli gciwane?
+Umampi
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  nalowo ofanayo, ngakho-ke ukuba limtshele ngomshado wesibili ngaphambi kokuqala kweminyaka enkosikazi yakhe ushade nomunye uma enelisiwe.
+
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  lezondaba ezabhalwa encwadini ayibhekise kubo, ecapisha aphinde afike abonane nohlu lwasesiThadlokombandlela ayenqa
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 2971.3984375
+BLEU score: 0.9842172319024961
+chrF++ score: 3.8363171355498724
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text: , kuhlonishwa wonke amalungu omndeni nowo, uBongani Dndolo ngokulekelela inhlobo eyazisa ngo mndeni," usho kanje.
+Uveze
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  nodlame, okuphela nokunye kuyangiphoqa ukuthi ulwe necala," kusho ummeli kaNetain Teer.
+Umnuz Wrne
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  obuseZibuseLamont lapho kuthiwa sekubonakala iphuma kolikhomba umuzi wayo wafike labazukulu abathathu okuvele kwagqa
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  lezondaba ezabhalwa encwadini ayibhekise kubo, ecapisha aphinde afike abonane nohlu lwasesiThadlokombandlela ayenqa
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
+Perplexity: 2444.55078125
+BLEU score: 1.083040628990689
+chrF++ score: 4.901960784313725
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: . Yonke isibindi lobu esibhekene nazo ngenxa yokuzibandakanya kwamandla emikhankasweni yokuqeda izinkinga zomphakathi kanye nokungalingani," ububisa uColonel de Jager
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  neCovid- " USihlalo weNaMabuyakhulu ngemuva kokungadedelwa kwalo mhlangano okuphinde kuyinyanga kaMengameli omusha weSpetro
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  bethu sonke singalijabuli kakhulu uma bethola amaphuzu amaningi angakathathwa njengo-6% wabo wezemini lasesismirgen
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
-Prompt: Noma engazange aligagule ngegama iqembu
-Generated text:  lezondaba ezabhalwa encwadini ayibhekise kubo, ecapisha aphinde afike abonane nohlu lwasesiThadlokombandlela ayenqa
-Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
-Perplexity: 1496.1950627644858
-BLEU scores: [0.9793522509544857, 0.949457072782259, 0.8769347795729162, 0.7618316467581407, 0.6332460685358229]
-ROUGE scores: [0.009420289855072463, 0.00196078431372549]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 2}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  uma bebona.
-Bathi lapho behlala khona, abantu abaningi bahlala emakubo. Bathi uma sebebona ukuthi kukhona okushaya amanzi
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  uma bebona.
-Bathi lapho behlala khona, abantu abaningi bahlala emakubo. Bathi uma sebebona ukuthi kukhona okushaya amanzi
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  uma bebona.
-Bathi lapho behlala khona, abantu abaningi bahlala emakubo. Bathi uma sebebona ukuthi kukhona okushaya amanzi
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  ukuzibulala.
-Ukelly: [Ngokumangala.] Hawu mntanami!
-nozI: Hhayi bo! Hho!
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  ukuzibulala.
-Ukelly: [Ngokumangala.] Hawu mntanami!
-nozI: Hhayi bo! Hho!
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  ukuzibulala.
-Ukelly: [Ngokumangala.] Hawu mntanami!
-nozI: Hhayi bo! Hho!
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  ngisho.
-Lokhu kungakwenza ukuthi abantu abaningi bangatholani bani.
-Abanye baze bambone eyithi yohlobo lwemoto, abanye abantu
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  ngisho.
-Lokhu kungakwenza ukuthi abantu abaningi bangatholani bani.
-Abanye baze bambone eyithi yohlobo lwemoto, abanye abantu
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  ngisho.
-Lokhu kungakwenza ukuthi abantu abaningi bangatholani bani.
-Abanye baze bambone eyithi yohlobo lwemoto, abanye abantu
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  impilo yakho nokuthi babe nenhlanhla uma ungasekho futhi ungazi lokho kodwa kufanele uthole umuntu ahambe naye. Abantwana bethu basuke benazothini
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  impilo yakho nokuthi babe nenhlanhla uma ungasekho futhi ungazi lokho kodwa kufanele uthole umuntu ahambe naye. Abantwana bethu basuke benazothini
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text:  impilo yakho nokuthi babe nenhlanhla uma ungasekho futhi ungazi lokho kodwa kufanele uthole umuntu ahambe naye. Abantwana bethu basuke benazothini
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: ke futhi ngike ngayithatha njengenjwayelo iqiniso lempimpi. Ngeke sithi ukukusho okuthinta izingane, kumele zisebenze kahle nasenkulunkulu
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: ke futhi ngike ngayithatha njengenjwayelo iqiniso lempimpi. Ngeke sithi ukukusho okuthinta izingane, kumele zisebenze kahle nasenkulunkulu
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: Ngijabule ukuthi abantu abazange balisabele
-Generated text: ke futhi ngike ngayithatha njengenjwayelo iqiniso lempimpi. Ngeke sithi ukukusho okuthinta izingane, kumele zisebenze kahle nasenkulunkulu
-Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
-Perplexity: 1589.5404503716363
-BLEU scores: [0.9847446104041783, 0.9617306353524989, 0.9060682732584306, 0.8109380397301315, 0.6935251536538419]
-ROUGE scores: [0.007894736842105263, 0.0012345679012345679]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 2}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe isinqumo sokumiswa kukaMnuz Ace Magashule.
-I-eff imemezele ukuthi uMagashule uzovela phambi kweKhomishini kaZo
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe isinqumo sokumiswa kukaMnuz Ace Magashule.
-I-eff imemezele ukuthi uMagashule uzovela phambi kweKhomishini kaZo
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe isinqumo sokumiswa kukaMnuz Ace Magashule.
-I-eff imemezele ukuthi uMagashule uzovela phambi kweKhomishini kaZo
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe isinqumo se-Independent Electoral Commission EC).
-Okhulumela iSACP, uMnuz Pule Mabe, uthe
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe isinqumo se-Independent Electoral Commission EC).
-Okhulumela iSACP, uMnuz Pule Mabe, uthe
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe isinqumo se-Independent Electoral Commission EC).
-Okhulumela iSACP, uMnuz Pule Mabe, uthe
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  yavele yangena ngombiko oqinisekisa ukuthi akukho okungahambi kahle okufunwa i-EFF ngesikhathi yagcina ingaboshwa," kusho uMalema.
-Uphinde
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  yavele yangena ngombiko oqinisekisa ukuthi akukho okungahambi kahle okufunwa i-EFF ngesikhathi yagcina ingaboshwa," kusho uMalema.
-Uphinde
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  yavele yangena ngombiko oqinisekisa ukuthi akukho okungahambi kahle okufunwa i-EFF ngesikhathi yagcina ingaboshwa," kusho uMalema.
-Uphinde
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe lesi sinqumo.
-Uramaphosa uzwakalise ukugxekile ngesikhathi ezoseka uNobhala-jikelele weNhlangano iMekicane futhi ekhethe ukuhambela
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe lesi sinqumo.
-Uramaphosa uzwakalise ukugxekile ngesikhathi ezoseka uNobhala-jikelele weNhlangano iMekicane futhi ekhethe ukuhambela
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  ithathe lesi sinqumo.
-Uramaphosa uzwakalise ukugxekile ngesikhathi ezoseka uNobhala-jikelele weNhlangano iMekicane futhi ekhethe ukuhambela
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  uMnuz Holbawton Syste Magashule umemezele ngoLwesithathu eNkantolo yeMantshi yaseThekwini ukulalelwa kwayo umyalelo obubalwa esolwa ngoR130
-
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  uMnuz Holbawton Syste Magashule umemezele ngoLwesithathu eNkantolo yeMantshi yaseThekwini ukulalelwa kwayo umyalelo obubalwa esolwa ngoR130
-
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
-Generated text:  uMnuz Holbawton Syste Magashule umemezele ngoLwesithathu eNkantolo yeMantshi yaseThekwini ukulalelwa kwayo umyalelo obubalwa esolwa ngoR130
-
-Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
-Perplexity: 1547.8771166483562
-BLEU scores: [0.9904783949778265, 0.9701288201301356, 0.9227031147180209, 0.8423702213062582, 0.7387454598087567]
-ROUGE scores: [0.007192982456140351, 0.0013392857142857143]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 2}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  ama-laptop.
-I-eskom iveze ukuthi i-Unemployment Insurance Fund IF)
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  ama-laptop.
-I-eskom iveze ukuthi i-Unemployment Insurance Fund IF)
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  ama-laptop.
-I-eskom iveze ukuthi i-Unemployment Insurance Fund IF)
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -50% wabantu abafake izicelo eziwu-338 million.
-Bangu-1 000 abantu ababhalisele ukuvota ngenxa yeCovid-
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -50% wabantu abafake izicelo eziwu-338 million.
-Bangu-1 000 abantu ababhalisele ukuvota ngenxa yeCovid-
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -50% wabantu abafake izicelo eziwu-338 million.
-Bangu-1 000 abantu ababhalisele ukuvota ngenxa yeCovid-
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -53 493350 okusho ukuthi imali abayitholayo ngezakhazabantu abahluphekayo uma sebewuthola.
-
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -53 493350 okusho ukuthi imali abayitholayo ngezakhazabantu abahluphekayo uma sebewuthola.
-
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -53 493350 okusho ukuthi imali abayitholayo ngezakhazabantu abahluphekayo uma sebewuthola.
-
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  izincwadi zabafake izicelo zabo, lokufaka isicelo ngokubhala ngalesi sikhathi enkantolo kadokotela ku-www. Abafakele izicelo zokufaka isicelo kwiPreme
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  izincwadi zabafake izicelo zabo, lokufaka isicelo ngokubhala ngalesi sikhathi enkantolo kadokotela ku-www. Abafakele izicelo zokufaka isicelo kwiPreme
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  izincwadi zabafake izicelo zabo, lokufaka isicelo ngokubhala ngalesi sikhathi enkantolo kadokotela ku-www. Abafakele izicelo zokufaka isicelo kwiPreme
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -
-Uthe sebephenduke ikhompyutha ethi: "eweimali yasekwaNksz Canadacom Nxayo ayinayo imini
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -
-Uthe sebephenduke ikhompyutha ethi: "eweimali yasekwaNksz Canadacom Nxayo ayinayo imini
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
-Generated text:  * -
-Uthe sebephenduke ikhompyutha ethi: "eweimali yasekwaNksz Canadacom Nxayo ayinayo imini
-Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
-Perplexity: 1530.6445001220702
-BLEU scores: [0.9924627293217333, 0.9742878436385791, 0.931357491071199, 0.8589863260063161, 0.7633213037185068]
-ROUGE scores: [0.006607669616519174, 0.0009523809523809524]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 2}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukukhokha imali yokukhokhela izikweletu zabo.
-I-ifp izokwehlisa imali engu-R350 million yokusiza abakhahlanyezwe
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukukhokha imali yokukhokhela izikweletu zabo.
-I-ifp izokwehlisa imali engu-R350 million yokusiza abakhahlanyezwe
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukukhokha imali yokukhokhela izikweletu zabo.
-I-ifp izokwehlisa imali engu-R350 million yokusiza abakhahlanyezwe
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukulwa neCovid-19 ngenxa yeCovid-
-Bangu-4 000 abantu abahaqwe yileli gciwane kulesi sifundazwe.
-Ewestern Cape bangu-
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukulwa neCovid-19 ngenxa yeCovid-
-Bangu-4 000 abantu abahaqwe yileli gciwane kulesi sifundazwe.
-Ewestern Cape bangu-
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukulwa neCovid-19 ngenxa yeCovid-
-Bangu-4 000 abantu abahaqwe yileli gciwane kulesi sifundazwe.
-Ewestern Cape bangu-
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukuba yingxenye yabezindaba, kodwa abazama ukuzilungisela imali yokugibela, abakaze bathole ama-TVAT, ukuze bakhethe abantu abazo
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukuba yingxenye yabezindaba, kodwa abazama ukuzilungisela imali yokugibela, abakaze bathole ama-TVAT, ukuze bakhethe abantu abazo
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukuba yingxenye yabezindaba, kodwa abazama ukuzilungisela imali yokugibela, abakaze bathole ama-TVAT, ukuze bakhethe abantu abazo
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukwenza inzuzo ngokunyuswa kwemali abayikhokhekile ngenxa yokugwema izikweletu kanye nokunye okwakona okungakulesisidingo ngokubhekelela izinhlelo esezithathelwanayo futhi
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukwenza inzuzo ngokunyuswa kwemali abayikhokhekile ngenxa yokugwema izikweletu kanye nokunye okwakona okungakulesisidingo ngokubhekelela izinhlelo esezithathelwanayo futhi
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukwenza inzuzo ngokunyuswa kwemali abayikhokhekile ngenxa yokugwema izikweletu kanye nokunye okwakona okungakulesisidingo ngokubhekelela izinhlelo esezithathelwanayo futhi
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukuzixazulula ngoba abanye bathenge izinto eziningi kuleli lizwe," kusho uZuma. UMnuz Zwakele Mngomezulu, ophethe iNkosi Mlu
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukuzixazulula ngoba abanye bathenge izinto eziningi kuleli lizwe," kusho uZuma. UMnuz Zwakele Mngomezulu, ophethe iNkosi Mlu
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
-Generated text:  ukuzixazulula ngoba abanye bathenge izinto eziningi kuleli lizwe," kusho uZuma. UMnuz Zwakele Mngomezulu, ophethe iNkosi Mlu
-Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
-Perplexity: 1531.3717876858182
-BLEU scores: [0.9937540077563702, 0.978020626663643, 0.9408919379762521, 0.8764557210161528, 0.7894255893801855]
-ROUGE scores: [0.0059492563429571306, 0.0007638888888888889]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 2}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokwabiwa kokwenziwa komsebenzi.
-I-anc yathatha isinqumo sokuthi kube nesiphakamiso se-ANC sokukhetha ubuholi obuphezulu be-ANCYL
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokwabiwa kokwenziwa komsebenzi.
-I-anc yathatha isinqumo sokuthi kube nesiphakamiso se-ANC sokukhetha ubuholi obuphezulu be-ANCYL
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokwabiwa kokwenziwa komsebenzi.
-I-anc yathatha isinqumo sokuthi kube nesiphakamiso se-ANC sokukhetha ubuholi obuphezulu be-ANCYL
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokwabiwa kwe-Europe Project Programme Enginerganisation PS).
-I-ifp
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokwabiwa kwe-Europe Project Programme Enginerganisation PS).
-I-ifp
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokwabiwa kwe-Europe Project Programme Enginerganisation PS).
-I-ifp
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  oluphethwe yisimo sokuzivuselela amaculo kuyinto engeke ibekwe kakhulu.
-Abaningi sebewatshelile isikhumba, izibuwu
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  oluphethwe yisimo sokuzivuselela amaculo kuyinto engeke ibekwe kakhulu.
-Abaningi sebewatshelile isikhumba, izibuwu
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  oluphethwe yisimo sokuzivuselela amaculo kuyinto engeke ibekwe kakhulu.
-Abaningi sebewatshelile isikhumba, izibuwu
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lwendlela entsha esisheshayo futhi sinephupho lokuba nenqubekela yokuziphatha ngokwezomnotho emphakathini.
-Ukwengamela imisebenzi yathatha ngenqubekela-phambili
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lwendlela entsha esisheshayo futhi sinephupho lokuba nenqubekela yokuziphatha ngokwezomnotho emphakathini.
-Ukwengamela imisebenzi yathatha ngenqubekela-phambili
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lwendlela entsha esisheshayo futhi sinephupho lokuba nenqubekela yokuziphatha ngokwezomnotho emphakathini.
-Ukwengamela imisebenzi yathatha ngenqubekela-phambili
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokuhlela iFayi DH emasonphutha ePlassist ngo 1%), emuva kohlelo lomphefumulo, olwazi ahlose ukubhekana nezinhlelo
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokuhlela iFayi DH emasonphutha ePlassist ngo 1%), emuva kohlelo lomphefumulo, olwazi ahlose ukubhekana nezinhlelo
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: Kulo nyaka sihlela ukuphothula uhlelo
-Generated text:  lokuhlela iFayi DH emasonphutha ePlassist ngo 1%), emuva kohlelo lomphefumulo, olwazi ahlose ukubhekana nezinhlelo
-Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
-Perplexity: 1544.5166633242652
-BLEU scores: [0.996106313310015, 0.9809745970550807, 0.9466574951268104, 0.8859260534673051, 0.8019323144922409]
-ROUGE scores: [0.005118237771298996, 0.000624512099921936]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 2}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zakulesi sikhungo.
-Okhulumela amaphoyisa KwaZulu-Natal, uCaptain Nqobile Gwala, uthe kuvulwe idokodo ngokushona komuntu esiteshini samaphoyisa eVerulam. "Amaphoyisa ase
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zakulesi sikhungo.
-Okhulumela amaphoyisa KwaZulu-Natal, uCaptain Nqobile Gwala, uthe kuvulwe idokodo ngokushona komuntu esiteshini samaphoyisa eVerulam. "Amaphoyisa ase
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zakulesi sikhungo.
-Okhulumela amaphoyisa KwaZulu-Natal, uCaptain Nqobile Gwala, uthe kuvulwe idokodo ngokushona komuntu esiteshini samaphoyisa eVerulam. "Amaphoyisa ase
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zase-University of KwaZulu-Natal nase-Eastern Cape.
-Izitshudeni zingu-56 izitshudeni ezingu-48 zitholwe zi
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zase-University of KwaZulu-Natal nase-Eastern Cape.
-Izitshudeni zingu-56 izitshudeni ezingu-48 zitholwe zi
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zase-University of KwaZulu-Natal nase-Eastern Cape.
-Izitshudeni zingu-56 izitshudeni ezingu-48 zitholwe zi
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  ukuthi zivulwe nini emuva kwalesi sigameko futhi akukho ukuvulwa kwalo okushaqwe ngamaphoyisa. Amaphoyisa azoqapha ubugebengu," kusho isitatimende.
-Kushone abantu
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  ukuthi zivulwe nini emuva kwalesi sigameko futhi akukho ukuvulwa kwalo okushaqwe ngamaphoyisa. Amaphoyisa azoqapha ubugebengu," kusho isitatimende.
-Kushone abantu
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  ukuthi zivulwe nini emuva kwalesi sigameko futhi akukho ukuvulwa kwalo okushaqwe ngamaphoyisa. Amaphoyisa azoqapha ubugebengu," kusho isitatimende.
-Kushone abantu
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  ezigcina i-U79 300 kuya kuma-125kltha FN.
-Okhulumela iSAA * -Kaool
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  ezigcina i-U79 300 kuya kuma-125kltha FN.
-Okhulumela iSAA * -Kaool
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  ezigcina i-U79 300 kuya kuma-125kltha FN.
-Okhulumela iSAA * -Kaool
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zingafunda ziphazamiseki ukubhalisa ngazo. Kungani yesibili kulezi sikhungo elesi sikhungo njengoba sekuphume umbiko wokuthi izitshudeni obekudingeka ziphume zinikwe
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zingafunda ziphazamiseki ukubhalisa ngazo. Kungani yesibili kulezi sikhungo elesi sikhungo njengoba sekuphume umbiko wokuthi izitshudeni obekudingeka ziphume zinikwe
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: Emasontweni edlule sibone ezinye izitshudeni
-Generated text:  zingafunda ziphazamiseki ukubhalisa ngazo. Kungani yesibili kulezi sikhungo elesi sikhungo njengoba sekuphume umbiko wokuthi izitshudeni obekudingeka ziphume zinikwe
-Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
-Perplexity: 1531.0302607218425
-BLEU scores: [0.9962523626311344, 0.9823591584053293, 0.9499848461761286, 0.892950588123562, 0.8132707993558674]
-ROUGE scores: [0.0047169811320754715, 0.0005922165820642978]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 2}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Ithala Security Accounting Committee EC).
-I-ifp yaphinde yathola i-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 5}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Ithala Security Accounting Committee EC).
-I-ifp yaphinde yathola i-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: beam_search
-Hyperparameters: {'beam_size': 10}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Ithala Security Accounting Committee EC).
-I-ifp yaphinde yathola i-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.5}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Engineering Richards kanye nase-India.
-I-eff isanda kwethula umkhankaso wokulwa nobugebengu obu
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.8}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Engineering Richards kanye nase-India.
-I-eff isanda kwethula umkhankaso wokulwa nobugebengu obu
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: nucleus_sampling
-Hyperparameters: {'top_p': 0.9}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Engineering Richards kanye nase-India.
-I-eff isanda kwethula umkhankaso wokulwa nobugebengu obu
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 5}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  lapho kukhethwe khona abantu abamnyama.
-Sisazokwenza ucwaningo lwethu lwethu futhi ukuthi abasemakhaya bahlangane namakhaya angomakhelwane.
-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 10}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  lapho kukhethwe khona abantu abamnyama.
-Sisazokwenza ucwaningo lwethu lwethu futhi ukuthi abasemakhaya bahlangane namakhaya angomakhelwane.
-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: top_k_sampling
-Hyperparameters: {'k': 20}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  lapho kukhethwe khona abantu abamnyama.
-Sisazokwenza ucwaningo lwethu lwethu futhi ukuthi abasemakhaya bahlangane namakhaya angomakhelwane.
-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 0.5}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Edkwini Leloma FP), Nezithunywa ezimbili saseCole City Acco Zedjusa sisebenzisana nomphakathi futhi sizi
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.0}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Edkwini Leloma FP), Nezithunywa ezimbili saseCole City Acco Zedjusa sisebenzisana nomphakathi futhi sizi
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: temperature_sampling
-Hyperparameters: {'temperature': 1.5}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  Edkwini Leloma FP), Nezithunywa ezimbili saseCole City Acco Zedjusa sisebenzisana nomphakathi futhi sizi
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 0.5}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  kanye naseNdwedwedwe lapho kungathikamelwa indima ebhekene nemisebenzi yomphakathi yeqembu.
-Osomabhizinisi abafuna ukukhuthaza ukusetshenziswa kwezibhamu.
-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.0}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  kanye naseNdwedwedwe lapho kungathikamelwa indima ebhekene nemisebenzi yomphakathi yeqembu.
-Osomabhizinisi abafuna ukukhuthaza ukusetshenziswa kwezibhamu.
-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
-
-Strategy: entmax_sampling
-Hyperparameters: {'alpha': 1.5}
-Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
-Generated text:  kanye naseNdwedwedwe lapho kungathikamelwa indima ebhekene nemisebenzi yomphakathi yeqembu.
-Osomabhizinisi abafuna ukukhuthaza ukusetshenziswa kwezibhamu.
-
-Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
-Perplexity: 1544.6222400806569
-BLEU scores: [0.9967806403091557, 0.983161819732708, 0.9516779234436993, 0.895698498889265, 0.8177673081905414]
-ROUGE scores: [0.004382392864068257, 0.000593842787935615]
+Perplexity: 2410.996826171875
+BLEU score: 0.7394335829513382
+chrF++ score: 4.010695187165775
 
