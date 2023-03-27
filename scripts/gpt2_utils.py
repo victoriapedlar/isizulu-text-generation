@@ -868,7 +868,7 @@ def run_experiment(
     :param resume_checkpoint_dir: the checkpoint directory of an experiment to resume
     :param log_file: the file to save model evaluation results for the experiment
     """
-    wandb.init(project="transformer-finetuning", config={"max_steps": 1500})
+    wandb.init(project="transformer-finetuning", config={"max_steps": 1250})
     wandb.config.update(hparams)
     wandb.config.update(tparams)
 

@@ -54,7 +54,7 @@ hparams = {
 }
 
 tparams = {
-    "max_steps": 1500,
+    "max_steps": 1250,
     "patience": 2,
     "log_steps": 1,
     "eval_steps": 2,
