@@ -57,8 +57,8 @@ tparams = {
     "max_steps": 1250,
     "patience": 2,
     "log_steps": 1,
-    "eval_steps": 2,
-    "save_steps": 1,
+    "eval_steps": 100,
+    "save_steps": 100,
 }
 
 run_experiment(

@@ -73,6 +73,9 @@ parser.add_argument(
     "--save", type=str, default=randomhash + ".pt", help="path to save the final model"
 )
 parser.add_argument(
+    "--load", type=str, default=randomhash + ".pt", help="path to load pretrained model"
+)
+parser.add_argument(
     "--alpha",
     type=float,
     default=2,
@@ -153,7 +156,7 @@ parser.add_argument(
 args = parser.parse_args()
 args.tied = True
 
-print("finetune load path: {}/model.pt. ".format(args.save))
+print("finetune load path: {}/model.pt. ".format(args.load))
 print("log save path: {}/finetune_log.txt".format(args.save))
 print("model save path: {}/finetune_model.pt".format(args.save))
 
@@ -431,7 +434,7 @@ def train():
 
 
 # Load the best saved model.
-model_load(args.save)
+model_load(args.load)
 
 # Do the actual training
 # Directing print output to a .txt file
