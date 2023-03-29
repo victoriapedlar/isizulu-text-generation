@@ -225,7 +225,7 @@ model_name = (
 )
 # ----------Written by Victoria Pedlar---------- #
 log_every = 10
-wandb.init(project="awd-lstm-finetuning", config={"lr": 0.0005})
+wandb.init(project="awd-lstm-finetuning", config={"lr": 50})
 wandb.config.update(args)
 config = wandb.config
 # ----------------------------------------------- #
