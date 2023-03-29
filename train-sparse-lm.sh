@@ -33,7 +33,7 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --weight_decay 0.001 \
         --evaluate_during_training \
         --loss entmax \
-        --entmax_alpha 1.1 \
+        --entmax_alpha 1.5 \
         --top_k 0 \
         --top_p 0
 
