@@ -26,13 +26,15 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --model_type gpt2 \
         --model_name_or_path gpt2-medium \
         --mode from_scratch \
-        --block_size 512 \
+        --block_size 128 \
         --do_train \
-        --num_train_epochs 10 \
-        --learning_rate 0.0000625 \
-        --weight_decay 0.001 \
+        --max_steps 10 \
+        --learning_rate 0.0001 \
+        --weight_decay 0.1 \
         --evaluate_during_training \
         --loss entmax \
+        --per_gpu_train_batch_size 32 \
+        --per_gpu_eval_batch_size 32 \
         --entmax_alpha 1.5 \
         --top_k 0 \
         --top_p 0
