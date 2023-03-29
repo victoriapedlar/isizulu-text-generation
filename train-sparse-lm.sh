@@ -33,8 +33,6 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --weight_decay 0.1 \
         --evaluate_during_training \
         --loss entmax \
-        --per_gpu_train_batch_size 32 \
-        --per_gpu_eval_batch_size 32 \
         --entmax_alpha 1.5 \
         --top_k 0 \
         --top_p 0
