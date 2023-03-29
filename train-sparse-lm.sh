@@ -28,7 +28,7 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --mode from_scratch \
         --block_size 128 \
         --do_train \
-        --max_steps 10 \
+        --num_train_epochs 10 \
         --learning_rate 0.0001 \
         --weight_decay 0.1 \
         --evaluate_during_training \
