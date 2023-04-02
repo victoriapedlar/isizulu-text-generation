@@ -25,7 +25,7 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --model_type gpt2 \
         --model_name_or_path models/sparse_lm/experiment-2/best_ppl/checkpoint \
         --mode finetune \
-        --block_size 128 \
+        --block_size 256 \
         --do_train \
         --num_train_epochs 5 \
         --learning_rate 0.001 \
