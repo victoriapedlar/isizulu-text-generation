@@ -266,20 +266,21 @@ test_data = batchify(corpus.test, test_batch_size, args)
 ###############################################################################
 
 ntokens = len(corpus.dictionary)
-model = LSTMModel(
-    num_tokens=ntokens,
-    embed_size=args.emsize,
-    output_size=ntokens,
-    hidden_size=args.nhid,
-    n_layers=args.nlayers,
-    dropout=args.dropout,
-    dropouth=args.dropouth,
-    dropouti=args.dropouti,
-    dropoute=args.dropoute,
-    wdrop=args.wdrop,
-    tie_weights=args.tied,
-)
-criterion = nn.CrossEntropyLoss()
+model, criterion, optimizer = torch.load(args.load)
+# model = LSTMModel(
+#     num_tokens=ntokens,
+#     embed_size=args.emsize,
+#     output_size=ntokens,
+#     hidden_size=args.nhid,
+#     n_layers=args.nlayers,
+#     dropout=args.dropout,
+#     dropouth=args.dropouth,
+#     dropouti=args.dropouti,
+#     dropoute=args.dropoute,
+#     wdrop=args.wdrop,
+#     tie_weights=args.tied,
+# )
+# criterion = nn.CrossEntropyLoss()
 if args.cuda:
     model.cuda()
     criterion = criterion.cuda()
@@ -434,7 +435,7 @@ def train():
 
 
 # Load the best saved model.
-model_load(args.load)
+# model_load(args.load)
 
 # Do the actual training
 # Directing print output to a .txt file

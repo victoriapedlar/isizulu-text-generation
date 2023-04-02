@@ -18,16 +18,21 @@ export LD_LIBRARY_PATH=/home/pdlvic001/.local/lib/python3.8/site-packages/nvidia
 start=$(date +%s)
 echo "Starting script..."
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
-        --train_data_file ~/isizulu-text-generation/data/isolezwe/isizulu/train.txt \
-        --eval_data_file ~/isizulu-text-generation/data/isolezwe/isizulu/valid.txt \
-        --output_dir ~/isizulu-text-generation/models/sparse_lm/finetune_7_Jan_22 \
+        --train_data_file data/isolezwe/isizulu/train.txt \
+        --eval_data_file data/isolezwe/isizulu/valid.txt \
+        --output_dir models/sparse_lm/finetuned \
+        --tokenizer_name tokenizers/ByteLevelBPETokenizer \
         --model_type gpt2 \
-        --model_name_or_path gpt2-medium \
-        --block_size 512 \
+        --model_name_or_path models/sparse_lm/experiment-2/best_ppl/checkpoint \
+        --mode finetune \
+        --block_size 128 \
         --do_train \
+        --num_train_epochs 10 \
+        --learning_rate 0.0001 \
+        --weight_decay 0.1 \
         --evaluate_during_training \
         --loss entmax \
-        --entmax_alpha 1.2 \
+        --entmax_alpha 1.5 \
         --top_k 0 \
         --top_p 0
 
