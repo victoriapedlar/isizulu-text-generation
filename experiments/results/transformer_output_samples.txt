@@ -1,0 +1,419 @@
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text: se ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text: sese ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi ukuthi
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Perplexity: 3711.790771484375
+BLEU score: 0.5163250448955787
+chrF++ score: 0.0
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ukuthi ukuthisese ukuthi uthe ukuthithola ukuthi " ukuthi N ukuthi,setholase "se uthesen ukuthi.
+ ukuthi lezi ukuthi
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ukuthi ukuthisese ukuthithola ukuthi " ukuthi uthe ukuthi N ukuthi.
+ ukuthi,se, ukuthin ukuthisa ukuthi lezi ukuthi lise
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text: sese ukuthi ukuthise uthe ukuthithola ukuthin ukuthi N ukuthi, ukuthi uthese,se " ukuthi.
+ ukuthi " "sethola
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Perplexity: 4035.598388671875
+BLEU score: 1.0668140688879333
+chrF++ score: 3.257328990228013
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ukuthi ukuthisese ukuthi uthe ukuthithola ukuthi " ukuthi lezi ukuthi.
+ ukuthi N ukuthi,se, ukuthinsetholatholase uthe
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ukuthi ukuthisese ukuthi uthe ukuthithola ukuthi " ukuthi N ukuthi.
+ ukuthi lezi ukuthi,se, ukuthinsetholatholase uthe
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text: sese ukuthi ukuthithola ukuthise " ukuthi uthe ukuthi N ukuthi, ukuthi "se,sen ukuthi.
+ ukuthinse uthese
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Perplexity: 4036.776123046875
+BLEU score: 1.1181343051499593
+chrF++ score: 3.257328990228013
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text: .
+ ukuthi ukuthisese ukuthithola ukuthi " ukuthi lezi ukuthi uthe ukuthi,se, ukuthi N ukuthin ukuthisa ukuthi lise uthe
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  ukuthi ukuthisese ukuthithola ukuthi " " ukuthi uthe ukuthi N ukuthi, ukuthi lezi lezi ukuthin ukuthi.
+setholatholase uthe
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text: sese ukuthi ukuthithola ukuthise " ukuthi uthe ukuthi N ukuthi, ukuthi " "sen ukuthi.
+ ukuthi lezi ukuthinse,
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Perplexity: 4045.327880859375
+BLEU score: 1.0668140688879333
+chrF++ score: 3.225806451612903
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text: tholasethola isicelonsothola
+ ngaphambi li
+ " abanwunyosasayo. P, ukuthi ngaphambi lisi li
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  N kweziwusisa ye lezisiki kweziwuyothola okusiwu ukuthi ikingon ukuthithola li Nseswayo
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  aba ukuthi abawu "si isicelosososo i isicelokiswa lezi " li utheswasowu okun leziwuthola uthe li
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Perplexity: 4657.947265625
+BLEU score: 0.836931318561162
+chrF++ score: 6.024096385542169
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text: zama esesosoki leziyo si lezici ngaphambi ukuthi
+.a ukuthiIyozawuse li mmbawuIzwewe
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text: Dki i be aba li m
+nhlangano m iciyocisetholatholambamba isicelo kweziweyongohlanganosi si
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text: 
+ oku
+ngosose be "U,I li kakhulu li yoku kwezi yokuhlanganozwezamamba ngaphambisozaIyo kakhulu,
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Perplexity: 4607.55859375
+BLEU score: 0.7037725455916457
+chrF++ score: 6.122448979591836
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  kakhuluku uR yoku Nnsa kakhulu sikia
+
+simba,we kwezi ngaphambibekiwu kakhulu isa Nzama.
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  uR okutholazwe ikisomba 2IzweI isiceloswan isicelo kwezi. okuyoseswambasi "
+ abahlangano
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  ".sahlangano okuweswakun N Uzwe i, siI itholayo kakhulu kwezisiRso esesi be
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Perplexity: 4779.57080078125
+BLEU score: 0.884947125719993
+chrF++ score: 6.521739130434782
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text: sen uthe uthe uthetholase uthe uthese uthethola ukuthi N uthe uthesese uthethola N Nthola Nthola uthese uthe
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text: tholasese " "nse ". ukuthisesesethola uthe uthe uthe " uthethola uthe uthe
+ uthe ukuthitholasethola
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text: . ukuthithola uthe N N N
+thola uthe ukuthise Nthola uthese ukuthi ukuthisethola uthe ukuthi ukuthisen ".n
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Perplexity: 4069.267333984375
+BLEU score: 0.8259667025302637
+chrF++ score: 3.597122302158273
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text: ,tholase lezise ukuthi lezisese.san Nsasase. ukuthi ukuthitholan ukuthi uthe. uthese.ngo
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text: , N N. ukuthi lezinn ukuthi ukuthi uthesen Nse ukuthi,,.
+ lezi uthethola uthe Nse ukuthin
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  Nse lezi uthen,nnnsese. uthen uthesennthola uthethola N
+ N "thola " uthe
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Perplexity: 4350.55810546875
+BLEU score: 1.085279372678573
+chrF++ score: 4.424778761061947
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  ngaphambiIn. lezi liInsansosakisa li yesa, uthe ye.kiyo ukuthi " lin ye
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text: sango N,.se uthe N uthe abayo. ukuthi okukin "thola N ngaphambi uthe
+ ukuthisi lin ngaphambin
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text: ,,thola li ukuthi ukuthi N N ngaphambisaI isicelo " ngaphambi uthesi Nki,n ye lezi ye kwezi
+kisi ukuthi
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Perplexity: 4483.58544921875
+BLEU score: 1.0579878743608702
+chrF++ score: 6.329113924050633
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  N lezixhu ngaphambi nje uRhlangano kufanele esenseswa ukuthiDUbeswayo lezi kweziza be yesoyo ukuthi ngaphambiU
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text: 
+ku, ngaphambi, yewu kakhulungosibehlanganoki "thola NUci "tholasezamaR kakhuluzama mna
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  si
+xhu kakhulu lisekiswasayo yokuthola oku uthe sisowuUsi i ukuthiki kwezisibesi liwe
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Perplexity: 4738.87646484375
+BLEU score: 0.696586893808314
+chrF++ score: 5.74712643678161
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text: ci
+so uR,"D kakhulutholathola m kakhulu i Uswa i siwe uthe i yezamabekuwe
+Da i
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text: Izamazamakinsaki isicelosixhu aba, ngaphambi uRciseyowe KwaZuluthola N, i ngaphambiyo ko ye ngaphambi
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text: . i
+mba yokuyo okusesise imbahlanganozaDyoxhu mwuhlanganoweD abayotholatholaswawe
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Perplexity: 4678.86767578125
+BLEU score: 0.836931318561162
+chrF++ score: 4.166666666666666
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  kwezi kakhulunzwesiUnwuwu uRngo njehlanganoki bezama oku, ngaphambithola ese Nki, abakibe yoku
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  m N, yokuU eseswa yoku okuyizama, oku ukuthibezatholaki sihlanganozwe yoku. okuyi esezamakikuswa
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  Umbawu
+ i uthe i. li,sawu izama, ukuthi yokuyo ukuthi njese N 2ki
+ P uthesi
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Perplexity: 4612.09130859375
+BLEU score: 1.0374991193584138
+chrF++ score: 6.224066390041495
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text: se yeswango yoku KwaZulungo eseR uRIhlangano lezizwe ukuthi abaswa isicelocizabeyoswa itholawuswa ukuthi
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text: mba KwaZulusohlangano kwezi yoku kakhulukusewu ye. 1 isicelo 2 okuswa m " be njeswa si,Ube mngo
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  be nje ukuthibeku yoku si "ngoza njeRngo esengo ngaphambi lezi okutholaI izwe isicelo
+zawu uthezama
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Perplexity: 4657.494140625
+BLEU score: 0.736747540520574
+chrF++ score: 5.555555555555555
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ukuthi "ngowuzwe lezise lezizama ese be si ukuthi. R kakhulu
+so ngaphambi si lezikuR KwaZuluyo abazama
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text: ngo yoku yehlanganothola uthe.. okuyi linD zama yezwe ngaphambi,"zamaswa siD ukuthi i lezimba oku.
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text: sa kakhulusi nje besisiIse mmbaDU yoku uthe N bebese
+ isiwe, uthethola Nngo
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Perplexity: 4660.10205078125
+BLEU score: 0.9806606156287939
+chrF++ score: 6.072874493927125
+
+Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: ci kwezi yoku beIhlanganobeswa ezwese uthe P yokuhlanganoswa i ngaphambithola lezi abaI
+zwe NIcisi
+Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
+
+Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: thola.thola NsiwuyoD beU kweziyoa yoku, be ukuthi abayo kakhuluzwesasinsitholazwe N
+Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
+
+Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: sa isiceloswaUbe yeso uRsa lezici kweziki beso isicelozweyombazwe isicelobehlanganobense sibe
+Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
+
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Perplexity: 4654.3857421875
+BLEU score: 0.7524552900699966
+chrF++ score: 5.88235294117647
+
