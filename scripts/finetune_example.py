@@ -30,21 +30,21 @@ hparams = {
     "train_data": [(0, tokenizer_train_data_zulu)],
     "val_data": val_data,
     "test_data": test_data,
-    "model_max_input_size": 1024,
+    "model_max_input_size": 512,
     "pdrop": 0.1,
-    "d_model": 32,
-    "n_layers": 8,
-    "n_heads": 8,
+    "d_model": 16,
+    "n_layers": 6,
+    "n_heads": 4,
     "train_block_size": 128,
     "train_stride": 16,
     "val_block_size": 128,
     "val_stride": 128,
     "learning_rate": 1e-4,
-    "batch_size": 32,
+    "batch_size": 16,
     "weight_decay": 0.1,
     "scheduler": "linear_with_warmup",
     "n_language_specific_attention_layers": 0,
-    "n_languages": 1,  # number of sets of language/family specific layers
+    "n_languages": 1,
     "language_specific_input_embeds": False,
     "language_specific_prediction_heads": False,
     "language_specific_transformation": False,
@@ -54,17 +54,17 @@ hparams = {
 }
 
 tparams = {
-    "max_steps": 750,
-    "patience": 4,
+    "max_steps": 1250,
+    "patience": 2,
     "log_steps": 1,
-    "eval_steps": 5,
-    "save_steps": 2,
+    "eval_steps": 100,
+    "save_steps": 100,
 }
 
 run_experiment(
     hparams,
     tparams,
     eval_stride=64,
-    experiment_id="combined_isizulu",
-    resume_checkpoint_dir=None,
+    experiment_id="isolezwe_isizulu",
+    resume_checkpoint_dir="model_saves/combined_isizulu/checkpoint-750",
 )

@@ -73,6 +73,9 @@ parser.add_argument(
     "--save", type=str, default=randomhash + ".pt", help="path to save the final model"
 )
 parser.add_argument(
+    "--load", type=str, default=randomhash + ".pt", help="path to load pretrained model"
+)
+parser.add_argument(
     "--alpha",
     type=float,
     default=2,
@@ -153,7 +156,7 @@ parser.add_argument(
 args = parser.parse_args()
 args.tied = True
 
-print("finetune load path: {}/model.pt. ".format(args.save))
+print("finetune load path: {}/model.pt. ".format(args.load))
 print("log save path: {}/finetune_log.txt".format(args.save))
 print("model save path: {}/finetune_model.pt".format(args.save))
 
@@ -222,7 +225,7 @@ model_name = (
 )
 # ----------Written by Victoria Pedlar---------- #
 log_every = 10
-wandb.init(project="awd-lstm-finetuning", config={"lr": 1e-4})
+wandb.init(project="awd-lstm-finetuning", config={"lr": 50})
 wandb.config.update(args)
 config = wandb.config
 # ----------------------------------------------- #
@@ -263,20 +266,21 @@ test_data = batchify(corpus.test, test_batch_size, args)
 ###############################################################################
 
 ntokens = len(corpus.dictionary)
-model = LSTMModel(
-    num_tokens=ntokens,
-    embed_size=args.emsize,
-    output_size=ntokens,
-    hidden_size=args.nhid,
-    n_layers=args.nlayers,
-    dropout=args.dropout,
-    dropouth=args.dropouth,
-    dropouti=args.dropouti,
-    dropoute=args.dropoute,
-    wdrop=args.wdrop,
-    tie_weights=args.tied,
-)
-criterion = nn.CrossEntropyLoss()
+model, criterion, optimizer = torch.load(args.load)
+# model = LSTMModel(
+#     num_tokens=ntokens,
+#     embed_size=args.emsize,
+#     output_size=ntokens,
+#     hidden_size=args.nhid,
+#     n_layers=args.nlayers,
+#     dropout=args.dropout,
+#     dropouth=args.dropouth,
+#     dropouti=args.dropouti,
+#     dropoute=args.dropoute,
+#     wdrop=args.wdrop,
+#     tie_weights=args.tied,
+# )
+# criterion = nn.CrossEntropyLoss()
 if args.cuda:
     model.cuda()
     criterion = criterion.cuda()
@@ -431,7 +435,7 @@ def train():
 
 
 # Load the best saved model.
-model_load(args.save)
+# model_load(args.load)
 
 # Do the actual training
 # Directing print output to a .txt file
