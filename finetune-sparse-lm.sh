@@ -20,7 +20,7 @@ echo "Starting script..."
 python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --train_data_file data/isolezwe/isizulu/train.txt \
         --eval_data_file data/isolezwe/isizulu/valid.txt \
-        --output_dir models/sparse_lm/finetuned3 \
+        --output_dir models/sparse_lm/finetuned2 \
         --tokenizer_name tokenizers/ByteLevelBPETokenizer \
         --model_type gpt2 \
         --model_name_or_path models/sparse_lm/experiment-2/best_ppl/checkpoint \
@@ -28,7 +28,7 @@ python3 -m sparse_text_generation.language_modeling.examples.run_lm_finetuning \
         --block_size 128 \
         --do_train \
         --num_train_epochs 5 \
-        --learning_rate 0.0005 \
+        --learning_rate 0.001 \
         --weight_decay 0.1 \
         --evaluate_during_training \
         --loss entmax \
