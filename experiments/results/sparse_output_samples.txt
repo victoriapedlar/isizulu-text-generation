@@ -1,419 +1,3152 @@
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  bakuleli ngokungemthetho.
+Uramaphosa uphinde wanxusa abantu bakuleli ukuthi basebenzisane ukulwa neCovid-
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  elisha, uthe ufuna ukumxosha.
+Uthe ufuna ukumxosha ngoba ufuna ukumxosha.
+U
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ngoba baningi abantu abamnyama.
+Uhulumeni ufuna ukubumbana nosomabhizinisi abamnyama.
+Uramaphosa uthe ba
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ithole izihlalo eziwu-
+Uthe i-EFF ifuna ukumxosha ngoba i-EFF ifuna uku
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  izindlela zokuzivikela kwiCovid-
+Uthe basazoqhubeka nokubasiza ukuthi basebenzisane nazo zonke izinhlaka ezi
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ukulungisa isimo.
+Uthe basazoqhubeka nokusebenza kanzima.
+Ucele ukuthi basebenzisane namaphoyisa ukuze kuliwe
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  lokufunda nokufundisa.
+Udkt Barney Mthembu, ongumfundi kaGrade 11, uthe basa
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  zingakwazi ukufunda.
+Udkt Barney Mthembu, ongumfundi kaGrade 11, uthe basa
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  bathi baningi abantu abamnyama abamnyama abamnyama.
+Uramaphosa uthe basazoqhubeka nokuba yingxenye yemigo
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  uthe basaphenya ngezinsolo zokubulala.
+Uthe amaphoyisa aphenya icala lokubulala.
+Ucele uthe amaphoyisa asePhoeni
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text: .
+Ucele uthe amaphoyisa aKwaMashu aphenya icala lokubulala.
+Ucele uthe amaphoyisa aseNewcastle a
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ukuthi baningi abantu abasebancane abasebancane.
+Udkt Mkhize uthe basazoqhubeka nokusebenza kanzima.
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ubikwe emaphoyiseni.
+Uramaphosa uphinde wanxusa abantu bakuleli ukuthi basebenzisane namaphoyisa ukulwa nobugebengu.
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ozobe enesifiso sokuba yinhloko yezepolitiki.
+Uramaphosa uthe ukungabibikho kwe
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ukubulawa kwakhe kuhlobene nesimo esifana nalesi.
+Ubekhuluma emcimbini wokugubha usuku lokuzalwa lu
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  ezizimele ukuze zikwazi ukusiza abantu abakhahlanyezwe yiCovid-
+Uthe basazoqhubeka nokubasiza ukuthi bago
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  uthe basazoqhubeka nokusebenza kanzima.
+Uthe basazoqhubeka nokusebenza kanzima.
+Uthe basazoqhubeka
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text: .
+Unobhala weSadtu KwaZulu-Natal, uNksz Nomarashiya Caluza, uthe basazoqhubeka noku
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  Ntshavheni, uthe basazoqhubeka nokusebenza kanzima.
+Uthe basazoqhubeka nokusebenza kanzima.
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  basebenzisane ne-ANC. " UMabe uthe basazoqhubeka nokusebenza kanzima ukulwa neCovid-
+
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  awasekho.
+Uramaphosa uthe basazoqhubeka nokuba yingxenye yemithetho kathaqa.
+Uthe ba
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  kwemfuyo.
+Uhulumeni usebenzise uR2 billion ukulungisa isimo.
+Uramaphosa uthe ukungabibikho
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  yabikwa, yatholakala ishiywe emgwaqweni.
+Kubikwa ukuthi umshayeli wetekisi ushonele endaweni yesigameko.
+Okhulumela amaphoyisa KwaZulu-
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text: ngesinye sezitolo.
+Uhulumeni ufuna ukubuyisana phakathi kwabo.
+Uhulumeni ufuna ukubumbana no
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  kuka-Agasti.
+Ubekhuluma emcimbini wokugubha usuku lokuzalwa lukaMthethwa.
+Ubekhuluma emcimbi
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text: , i-ANC ifuna ukumbulala.
+Uramaphosa uphinde wanxusa abantu bakuleli ukuthi basebenzisane namaphoyisa uku
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: argmax
+Hyperparameters: {'num_beams': 1}
+Generated text:  abantu abawu-23
+Ucele uthe basazoqhubeka nokubasiza abantu abawu-2 6000 abase
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
+
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: argmax
 Hyperparameters: {'num_beams': 1}
-Generated text:  nabameleneqhaza elibonakalayo ekuqhubeni kwezimali.
-I-nema ihlinzeka ngokuzinikela ekuqhubeni i-SMEM
+Generated text:  nathi.
+Uhulumeni usebenzisane namaphoyisa ukulwa nobugebengu.
+Uhulumeni usebenzisane namaphoyisa ukulwa nobu
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: argmax
 Hyperparameters: {'num_beams': 1}
-Generated text:  nengalo yomthetho.
-U-abrahams uthe ukuvalwa kokudayiswa kotshwala kudalwa ukudayiswa kotshwala.
-Uthe ukuvalwa
+Generated text:  nobugebengu obudlangile.
+Ucele uthe amaphoyisa aphenya icala lokubulala, awokuzama ukubulala, awokuzama uku
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: argmax
 Hyperparameters: {'num_beams': 1}
-Generated text:  obuhle phakathi kwe-ANC.
-Udube uthe u-Andile u-Andile no-Andile Mlaba.
-Uthe
+Generated text:  obuhle nesizwe.
+Uramaphosa uthe basazoqhubeka nokuba yingxenye yemigomo ebekiwe yokulwa ne
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: argmax
 Hyperparameters: {'num_beams': 1}
-Perplexity: 898.9115600585938
-BLEU score: 0.7418507927107858
-chrF++ score: 5.597014925373134
+Perplexity: 32432.001953125
+BLEU score: 0.8430009639532043
+chrF++ score: 5.582433941198363
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  bakuleli.
+Uramaphosa umemezele ukuthi i-Eskom isezingeni eliphezulu kakhulu. U
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  elisha, uthe basazoqhubeka nokusebenza.
+Uthe bazokwenza konke okusemandleni ukuxazulula izinkinga ezibhekene ne
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ngoba baningi abantu abasebancane. " UNksz Ndlovu uthe bashaqekile ngokudlula emhlabeni
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ikhiphe isitatimende esifungelwe ilungu le-ANC ePhalamende, uMnuz Floyd Shivambu.
+U
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  imibiko engelona iqiniso.
+Ucele abantu bakuleli ukuthi basebenzisane nanoma yisiphi isinya
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ukwenza umsebenzi wabo.
+Uthe baningi abantu asebeboshiwe kodwa basazoqhubeka nokusebenza kanzima. " U
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  lokufunda nokufundisa.
+Siyakuqonda ukuthi i-EFF isezingeni eliphezulu. Kumele si
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  zikhala ngokuthi zingakwazi ukufunda.
+Unobhala jikelele weSadtu, uMnuz Mugwena Maluleke
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  baningi abantu asebeboshiwe.
+Uramaphosa uphinde wanxusa abantu bakuleli ukuthi basebenzisane namaphoyisa uku
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  uthe amaphoyisa aKwaMashu avule icala lokubulala.
+Ucele uthe kuvulwe idokodo ngokufa komuntu.
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text: .
+Ucele uthe kuvulwe idokodo ngokufa komuntu eliphenywa esiteshini samaphoyisa eVerulam
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ukuthi baningi abantu asebeboshiwe," kusho uMthembu.
+Uthe basazoqhubeka nokusebenza kanzima ukulwa
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ubizwa nge-Independent Police Investigative Directorate 
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  oneCoronavirus unaleli gciwane.
+Uramaphosa uphinde wanxusa abantu bakuleli
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ukubulawa kwakhe kuhlobene nesihlava sokuhlukunyezwa kwabesifazane nezingane.
+Ucele uNgqongqoshe wezeMp
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  ezizimele.
+Uramaphosa uthe basazoqhubeka nokusebenza kanzima ukulwa neCovid-
+Uthe ba
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  uthe basazoqhubeka nokusebenza kanzima.
+Uthe basebenzisana nezinkampani ezizimele ukuze ziqinisekise ukuthi ziya
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text: .
+I-anc kwaZulu-Natal iphinde yaveza ukuthi i-EFF yathola izihlalo eziwu-2
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  Ntshavheni, uthe bashaqekile ngokufa kukaMntwana wakwaPhindangene.
+Ubekhuluma esi
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  basebenzisane ne-EFF ukuze bathole amavoti amaningi," kusho uHlengwa.
+Uthe i-
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text: , i-European Union of South Africa enosa).
+Uramaphosa uthe ba
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  kwemfucuza.
+Ucele uNgqongqoshe wezokuBusa ngokuBambisana neziNdaba zoMdabu KwaZulu
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  yashayisana nemoto yabe isibaleka.
+Kusolwa ukuthi umshayeli weloli ushonele endaweni yesehlakalo. Kuvulwe
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text: ngezinsuku ezintathu.
+Unina kamgilwa, uNksz Ntombifuthi Masinga, uthe basha
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  kuka-Ephreli.
+Kube sekuvulwa icala lokudlwengula eliphenywa amaphoyisa asePhoenix. Amaphoyisa a
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text: .
+Ucele uNgqongqoshe wamaPhoyisa, uMnuz Bheki Cele, ukuba aphenye ngalolu daba. Ubekhuluma na
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: beam_search
+Hyperparameters: {'beam_size': 2}
+Generated text:  abantu abawu-23
+Ucele uthe basazoqhubeka nokubasiza abantu bakuleli.
+Siyanxusa abantu ukuthi
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
-Generated text:  nosomabhizinisi.
-I-ifp iyisibonelo esihle kakhulu ekusungulweni kwe-SDP. I-DMD
+Generated text:  nabemboni yamatekisi.
+Uramaphosa uthe ukungabibikho kozinzo kudalwa wukuthi abantu bakuleli
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
-Generated text:  nengalo yomthetho. " UMnuz Msawakhe Mayisela, okhulumela amaphoyisa KwaZulu-Natal, ukuqinisekisile ukuthi amaphoyisa aphenya icala lokubulala ngokungen
+Generated text:  nobugebengu obudlangile," kusho uNaicker.
+Uthe amaphoyisa aKwaMashu avule icala lokubulala,
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
-Generated text:  nabo.
-Udadewabo kaZuma, uMnuz Thabo Mbeki, uthe indodana yakhe ibingayitholi ukuphumula. UZuma ubengu
+Generated text:  phakathi kwabo.
+Uramaphosa uphinde wanxusa abantu bakuleli ukuthi basebenzisane nazo zonke izinhlaka ezithintekayo.
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: beam_search
 Hyperparameters: {'beam_size': 2}
-Perplexity: 589.6353149414062
-BLEU score: 1.0374991193584138
-chrF++ score: 4.870129870129871
+Perplexity: 31458.794921875
+BLEU score: 0.6330008719925126
+chrF++ score: 5.9928086296444265
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  baseNingizimu Afrika.
+Uramaphosa ukhuluma kanjena nje i-United Kingdom Founda
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  lezepolitiki.
+Unobhala jikelele uMnuz Ace Magashule, uthe bashaqekile ngokwenziwe
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text: . Kumele sibavikele," kusho yena.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele usiqinise
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ikhiphe isitatimende esifungelwe embikweni weKhomishini kaZondo ephenya ngokulawulwa koMbuso
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  imibiko engelona iqiniso.
+Uramaphosa ukusho lokhu ngesikhathi ephendula imibuzo kwiKhomishini kaZ
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ukuxazulula izinkinga zemali.
+Uramaphosa ukusho lokhu ngesikhathi ephendula imibuzo ngezinsolo
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  lokubhalisela ukuvota othisha bakwaGrade 7 kuya kuJuni.
+Udkt B
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  zase-University of Technology UT).
+Unobhala-jikelele
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ACDP kanye neBlack First Leather Services.
+Urama
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  uthe ukuboshwa kwalaba bobabili kudalwe ukucekelwa phansi kwezakhiwo zomphakathi.
+Uce
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text: .
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, uthe kuvulwe icala lokubulala eliphenywa esiteshini sa
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ukuthi i-Eskom isezingeni eliphezulu.
+Uramaphosa ukusho lokhu ngesikhathi ephendula imibu
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  udla lubi kuleli.
+Unobhala jikelele uMnuz Ace Magashule ubekhuluma esithangamini nabezindaba eThekwini
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  oneCoronavirus unaleli gciwane.
+Uramaphosa ubekhuluma esithangamini nabezindaba
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ukubhebhetheka kwegciwane iCoronavirus," kusho uMkhize.
+Udkt Zweli
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  ezizimele.
+Uramaphosa ukusho lokhu ngesikhathi ephendula imibuzo kwiKhomishini kaZondo ephenya
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  uthe i-Eskom inesikweletu sikaR2 billion.
+I-coronavirus
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text: .
+Unobhala-jikelele weSadtu KwaZulu-Natal, uNksz Nomarashiya Caluza, uthe ba
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  Ntshavheni, uthe bashaqekile ngokwenzekile.
+Uthe kuvulwe idokodo lophenyo ngokufa
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  benze isiqiniseko sokuthi i-EFF izoba yiqembu eliphikisayo," kusho uHlengwa.
+Um
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  base-European University of Technology UT).
+U
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  kwemfucuza kadoti eThekwini.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, usiqinise
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  yagingqika igilosa ngophethroli.
+Ucolonel Thembeka Mbele wamaphoyisa KwaZulu
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text: ngenjwayelo.
+Akekho osaboshiwe," kusho uColonel Mbhele. Uphenyo lwamaphoyisa lu
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  kwesonto eledlule uMntwana waKwaPhindangene.
+Umntwanankulu kaZulu, Inkosi Mangosuthu
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  kuleli hostela," kusho uLt Col Thulani Zwane.
+Uthe amaphoyisa aKwaMashu avule i
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: beam_search
+Hyperparameters: {'beam_size': 5}
+Generated text:  abantu abawu-23
+Ucele abantu ukuthi baqaphele uma beshayela bephuzile.
+Abezempilo
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
-Generated text:  nabo bonke ababambe iqhaza kuloluhlelo.
-Iqhaza elibaluleke kakhulu ekuqinisekiseni ukuthi umphakathi ubambe iqhaza elibonakalayo ekulethweni
+Generated text:  nezinkampani ezizimele.
+Uramaphosa ukusho lokhu ngesikhathi ephendula imibuzo kwiKhomishini kaZondo
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
-Generated text:  nengalo yomthetho," kusho uMshengu.
-Uthe bazoqhubeka nokulwa nobugebengu obuhleliwe. Siyakugxeka ukubulawa kosopolitiki nokubulawa kwabesifazane
+Generated text:  nobugebengu kuleli hostela," kusho uSewpersad.
+Okhulumela amaphoyisa KwaZulu-Natal, uCaptain Nqobile
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
-Generated text:  obuhle phakathi kwelungu le-ANC, uMnuz Velenkosini Hlabisa, nelungu lesigungu esiphezulu se-IFP.
-I
+Generated text:  phakathi kwabo.
+Uramaphosa ukusho lokhu ngesikhathi ethula ngokusemthethweni i-Eskom izolo, lapho e
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: beam_search
 Hyperparameters: {'beam_size': 5}
-Perplexity: 462.6822814941406
-BLEU score: 0.9761451417360246
-chrF++ score: 4.213483146067416
+Perplexity: 29680.212890625
+BLEU score: 0.624608805794946
+chrF++ score: 6.402048655569782
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  baseNingizimu Afrika.
+Uramaphosa ukusho lokhu ngesikhathi ephendula imibuzo kwiKhomishini ephenya ngokulawulwa ko
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  le-EFF Student Electoral Commission EC).
+I-ef
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  utshwala," kusho yena.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, usiqinisekisile lesi sigameko
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  imemezele izinsolo zokulawulwa koMbuso yidlanzana kuleli.
+Uramaphosa ukusho lokhu
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  imfundo yamahhala ezikhungweni zesayensi nobuchwepheshe besimanje.
+Ungqongqoshe wezeMpilo kuleli
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  ukuxazulula lolu daba.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, usiqinisekisile
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  lokuqoqwa kukadoti ezindaweni eziseduze nemijondolo yakwa-Eskom. Ngesonto e
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  ebezibhikisha ngaphandle kwesango," kusho isitatimende.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  Youth League Trust.
+Lokhu kushiwo nguNdunankulu waKwaZulu-Natal uMnuz Sihle
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  ukugxekile ukwenyuka kwesibalo sabahaqwe yicoronavirus.
+Lokhu kuve
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text: .
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, usiqinisekisile lesi sigameko wathi kuvulwe ido
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  ukuthi imigomo yeCoronavirus isengcupheni.
+Ungqongqoshe wezeMpilo kuleli uDkt Zweli
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  udla lubi kuleli.
+I-eff ikhiphe isitatimende esifungelwe yi-Independent
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  oneCoronavirus unaleli gciwane.
+Umnyango wezeMpilo kuleli uDkt Zweli
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  lesi sinqumo sithathwe emhlanganweni wekomiti elibhekele ukusebenza kwansukuzonke kwi-ANC.
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  ezikhiqiza imigomo yeCoronavirus.
+Ungqongqoshe wezeMpilo kuleli, uDkt Zweli
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  uthe bayakwamukela ukwenyuka kwentengo kaphethroli nodizili ka-oyela ongahluzi
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text: .
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, usiqinisekisile lesi sigameko wathi kuvulwe ido
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  Ntshavheni, uthe bayakwamukela ukusabalala kwecoronavirus.
+Ungqongqoshe wezeMp
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  babhalisele ukuvota okhethweni loHulumeni baseKhaya," kusho uHlengwa.
+Le
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  ase-European University of Technology International Insti
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  kwemfucuza kadoti.
+Okhulumela amaphoyisa uBrigadier Jay Naicker usiqinise
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  yagingqika igilosa.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, usiqinise
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text: ngokuphula imigomo yeCoronavirus.
+Lokhu kuvezwe nguNgqongqoshe wezokuThuthukiswa ko
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  kwesonto eledlule uMntwana waKwaPhindangene inkosi Mangosuthu Buthelezi.
+Umntwanankulu kaZulu
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  bokuhlukunyezwa kwabesifazane nezingane," kusho uNaicker.
+Okhulumela amaphoyisa KwaZulu-Natal uCaptain Nqobile
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: beam_search
+Hyperparameters: {'beam_size': 10}
+Generated text:  izigilamkhuba.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele, usiqinisekisile lesi sigameko,
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
-Generated text:  nabo bonke ababambe iqhaza ekuphathweni kwezinxushunxushu.
-Omasipala kufanele bakhuthaze futhi babambe iqhaza elibonakalayo ekuqiniseki
+Generated text:  nezinkampani ezizimele," kusho uPillay.
+Okhulumela amaphoyisa KwaZulu-Natal, uColonel Thembeka Mbele
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
-Generated text:  nengalo yomthetho," kusho uRamaphosa.
-Uramaphosa uqhube waveza ukuthi iNingizimu Afrika isengcupheni yokubhebhetheka kweCovid-19 kuleli ngenxa yeCovid-
-
+Generated text:  nodlame olubhekiswe ebantwini nasezinganeni," kusho uNaicker.
+Lokhu kuve
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
-Generated text:  obuhle phakathi kwelungu le-ANC KwaZulu-Natal, uMnuz Mdumiseni Ntuli.
-I-ifp ibinombono
+Generated text:  phakathi kwabo.
+Uramaphosa ukusho lokhu ngesikhathi ephendula imibuzo ngezinsolo zenkohlakalo e
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: beam_search
 Hyperparameters: {'beam_size': 10}
-Perplexity: 450.6971130371094
-BLEU score: 1.0034361662853069
-chrF++ score: 4.3227665706051885
+Perplexity: 26665.880859375
+BLEU score: 0.5548794081121226
+chrF++ score: 6.070416835289355
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  ngokuthi lesi senzo sikaZulu sakhiwe ngokushesha eMshiyeni Metanphezulu futhi ngoMebline, ithula
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text: . Kungani intatheli imeme izinyembezi ebuza ngamadodakazi,"usho kanje. Kukemisile ukuzibone izikhiye iziboshwa
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  kodwa bangamqoma ngendlela abekezela ngayo. Ngabe sengiyobheka ngani phambi kwalokho yini? Ngabe ngangiseba
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  imnike igama lohlu lwemali yokugcina ngokuthula nokwahlulelela imali yokuthenga amathimbeni abantu. Lonifundi uyaxo
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  imisebenzi eqolo futhi kumatasa abantu ukuthi kutholakale imini futhi lokhu kubekwa kulwa nohulumeni wobantu elibakwele
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  ukulambisa izinkantolo ngoba sithola ukweba omakoti abangaphezulu ngakho uma sebeqala befuna ukubandluluenzela isizu
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  lokuvota," kuchaza uNksz Buthelezi.
+Unksz Dlamini usho kanje kade ela enkonzwini ngoMmsanqamulatshelwa
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  bezingena ezindaweni obekwahlala izitshudeni ziyamana nanokudina ababezitsheliwe ukuze kungeneli iminye
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  Izwe L yakhe-Zoondo UMazibub
+Amazwe awukhiqizayo angangena esigabeni sesine. Sezi
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  nowayethula okuhle kwiNarth Springro, eGoli uthe ngobenzenthina abagile kule ngane bebeyidlwengu
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text: sela yezilingane zangemuva komfundi obefunda eNyuvesi iKwc.
+Ngalolo lombukiso uL
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  umphakathi ngezabalalisisa othi wasungulwa njengoMfundi ZiyeMTNgOsamu Abantu abangamakholwa
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  wokuvalwa yomgwaqo kuphazamisa imigwaqweni kuleli thabala. Ngeke sigcwambuke ngokuqashwa kukaMai
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  ayisebenzi imali anikelelwe ngayo ngoba imali akayona ukuya emsebenzini wcijalo ngeke aseben ngoba umkhakha wezempilo angabuye
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  ukushiselwe amanzi nezitha emfulweni yabantu abakhele ukudla emzimandla kwamalondla, kwavalwa nezimenenJa
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  eziningi ukuqinisekisa ukuthi izingane ngeke avuvulelwe kwezintatholane futhi akasizo ongamlulekinga nalo msebenzi wakhe, uthe kuzokwenza
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  noKhomishana wekomiti azobhekana nalo kodwa bayaphenya ngokufa kukaMaqabe ngoMnuz Lloy Fesaramo
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text: , ekwaGquthiswa," lisho uCovanyiswa kumcwaya edobe ngakusambuli nasekhaya.
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  Jac, litshele uMbambi ukuthi lithi akasambulali futhi uzobulala iziphathi iziqoqambula zoma
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  bezwe ngosono kodwa basawulinekela amatekisi. Uma usho okusho nje abayiphuzile sizolwedlu
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  aseCentistic  woke abophiko olubhekelele izindaba zakwamatayitela iSisosa Compak.
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  kwezigebengu," kuqhuna na. Abezinkampani yonodutshulwa namaphoyisa bebengaziswa ngezigameko zalokho ngoba kuyiqiniso ukuthi zice
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  yabanjwa.
+Abagibeli kumele kuqambe ngevoondo.
+Elandi indaba yale ngozana labo life abantu
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text: nge ziphanyizi nemifaniswano yalokhu. Lo mawatholakala nengane okutholwe ngayo izimoto ukuthi akabo
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  kwaphela intungula esezinhlelweni zayo kusolwa ukuthi yiwo ahamba naye ozimisele ngendlela leyo ukuyixa
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  ngesikhathi sowalithola ziboshwa abamthinte eKrinibeloresh kuboshwa owesi oyedwa okuthiwa ukholwe. Ngele
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.5}
+Generated text:  iphoyisa lasePinetown oThumleli ngaphakathi,"gwacawe) wadedela ngokutholakala kwemoto ngab
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
-Generated text: , basungule imiklomelo abayithatha phezulu i-ASpean-Africa Exption ngaphambi kokuba ukhokhe u111
+Generated text:  neminzwa yalo sdoba ukuthuthumela lesimanje ngoba zibe gemizamo) uma njengaseCley
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
-Generated text:  naleso senzo ngoba uma kungasho ukuthi sizobe sesingathathwa. Uma singafuni ukuthi sithi umuntu wesifazane uyohlolwa engqondweni yakhe e
+Generated text:  nomkhankasigameko uma kuwuhlelo senzela izinsuku ezifanele ukubhekana nalesiendaho. K. kodwa hhabile akwenzayo
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
-Generated text:  nabo.
-Sithanda ukuchaza ngemicabango evela emisakazweni eyakhiwe ngudokotela kuleli lokishi laseNkandla. Ngiphatheke kabu
+Generated text:  futhi angiwuphuceli ngoba. Ungithu uvalelwe kubulawa amasoka ethu wathi akwenziwa ngowalawo anga
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.5}
-Perplexity: 1561.759765625
-BLEU score: 0.8681543797450799
-chrF++ score: 4.601226993865031
+Perplexity: 39254.55078125
+BLEU score: 0.27912403823838905
+chrF++ score: 5.324813631522897
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  bangakuleli ngesikhathi elakuleli balinya Fini lesithupha lo mdlali. Bebenabaningi abanye lokhu kuyaye kulandela ukwashona
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  ayethi lo. Sodala kumele sizibone ngoba ngake ngomsebenzi kanje: Ewunya oluqoce ngonyaMgili
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  umuMakhangeni, akumele ube baningi ebefunda, abanye bethu ziyashapha, akekho oni obethunjwa wu
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  yayivele isingasalangaenzi ngendlela esigwemabhizinisi ayesetshenziswa watakulelwa ngayo u-Agasti 5 kudla aokunikelinda
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  uxhaso lodolo ezindaweni abahlala ukuzivojova uma bevakashelwe emabhidlatheni omphakathi,"nxusa uMhlalipjogi okhulumela
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  ukuthola izikhangimiso, ongemene nezincwakampani zabo nabazicwasa ngalokhu nje bebizela umeCriction
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  lokubulala oludede kusukela seseka lobabo Sihlalo wabebu Mkropho kaNkk Mabase Dube,
+Unksz Dama
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  ezemfundo kaMnuz Makhonzi Nomuswa zikhala ngokuzibokhekala ngesikhathi oNqobile bemshichinzi baqhubeka nom
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  eThekwini bahowe esikhundleni sokuvotengusihlalo weqembu elisodwa phakathi ekucwasini yalokhu kwamandobala yase- AStatssen
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  uzoveza izinhloso azophinde bazibeke iminyango yohulumeni babe kuyo ngoba ume owemibiko empngweni yabantu bazomesabi
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text: sela ngo-4 no 12 okungenzeka. Sizovula namhlanje kuqale lolu Mbele, nazoba abazabantu abawu 0350,"
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  ukuthi bangatholakathembi uphenyo futhi babekezele nganoma ngabaphenyi ngaphakathi emcucutionni futhi kumele beya uphenyo ngaphambi
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  uqale ngasembhikilimaweni yabezindaba ngoba ususebenza naqotho. Owokubheka izinto ezinlemvinjwe nalezo esi
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  athole ewubhelo asebenza enqobantu benza izindawo ezibalule ezweni, kanti kumele kuqale abantu emfazane kukhind
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  abanye noma yini wakhe bavele eNkantolo yamanzi ezisele phansi lokhu kwaphazamisiswa ukuze abantu beyasolwe ngezigamekozuluCo. Uthe isi
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  ebezifuna lolu qebhane ngoba izivalo zifuna kuqale uKhisimusi zizozigcina ngoMenga Misega
+A
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  owethula ngeghlaka kwikhophi ezoMphakathi yaseV kuleli, uNkk Bphuti Masuku noMnuz Sibone kuphela abacelweni
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  kuphenye ngokushesha ngomfo
+Iveze awawuzwa ngakakuluqoqwa lona uphenyo ngalo. Mhlabelelo
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  Ndaweni Mokongala- komthinta-Ngqephu liqagula abaningi bonke abasolwa futhi bazithuthela kubo bonke abafuna ukuba nofakazi
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  behle izidibe njengazi-  4#lokhu okusho owayebhekelele izimeya zokulapntenera oLwazi na
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  eBngbuye Edwibberd yokhuluma ngobubha amaweja uma linganienza into angazange bambone ngoba izi
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  kweleSalmoyeni, kubikwenza ngazizwa sengathi bashaya kwezingane kwadumima abakakhulu ngenxa ko
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  yaba vele bebeyozidluselela iziBe. Lulu kuthiwa ubengekho. Sethembezi lomuntu ibiziqalelile lezi
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text: ngenyufo kodwa ziphasile sezifuna wonke owesifihla ngekhandela negqoke abantu walokhu okutholile izimpawyeni
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  kokwenza lesi kube iyona sizamo yokuthi uZolilolu hlelo elwenze okhingayikhathazi ngendlela abefanelekile ngendlela abake bazi
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  ePlemende, iSy X-ZAnBrazing Int engu-12 neCryDuvated
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.8}
+Generated text:  abasebenzi abazosebenza kuzo ngezingozu wesitolo senyanga kuNet South Hanland, waseVMS Muvambe owatha
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
-Generated text:  nabamele ezokuphepha endaweni eyodwa yokuphuza besuka ku-2 500 ngenyanga abashona. Icala lokubulawa kwamalungu esifazane nengakaziwa," kubeka
+Generated text:  nabantu abeseke wathembisa ukuthi usubuye. Klingcono ukubabona nokube yikho okungalandelwa wumlishandlela,
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
-Generated text:  namacala ezigebe zokuzama okubulala kaZulu siwagcine sezixazulule phambili lezi,"" kusho uMntwana waKwabubedumisa.
-Uthe ngesikhathi
+Generated text:  nayo futhi kumele sacaci abasaba. Ukhona sinxusa ukuba izidlekela zezigese zethu kafundifake lo-vi-
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
-Generated text:  bezwe. Akukaningi lapho singahlala siwumntwana esikhona, ngoba nomama izizukulwane ayazi. Ayiyeke yini i
+Generated text:  namaphoyisa omculo wobokhe sibuye sibongele amaphoyisa endawo elwayo," kusho lesi sehosana ngophetha uK
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.8}
-Perplexity: 2433.62158203125
-BLEU score: 1.0567555006356322
-chrF++ score: 4.3103448275862055
+Perplexity: 41870.8203125
+BLEU score: 0.161674213242954
+chrF++ score: 5.133470225872689
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  ngokubulala intombi ya eneminyaka ngoba abahle lishwengane ngalo udaba lokubulawa komsanilo ePholi Shaili, bekhala
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  uthe ayiyibukisi lesi yiqembu elithile lomqondisi njengoba sekunertasa ngisebenza icala alibhehli esizweni wonke njeb
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text: tha ngoba ziphele ngesikhathi bevula izindlu ukuthi izwe bese bazilindise ngenxa yomthetho kepha baziqenanye futhi babezwa ukuthi ben
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  iya uRamaphosa efuna izinkampani zangadadewaElinye lamajengelo abo zithathe izimoto ukuze zigwe phambi ngokuzibeke abangabathe ubusukunye
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  oshotha ngamanga ngengane.cela ingane yesilwane bafuna uR Kungane. Ngizobheka ngafica sekudlule umcambo wokuthi
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  ukuthola imali kubani? Ciseqongqoshe bemali kuleli zinkampani sizithengele nje. Liphinde lethulelwa amaNdini,
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  bayokwenza sengathi akudingelekise nommela okusho koNgqongqoshe wamaPhoyisa uMnuz uG General Decrebe bathatha izimoto ezeziyisigi
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  zikwazi ukuyibona zizozihambisa esivumelwangaba ethomu leso magecharani, iHunsender naseXE
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  NF kaZwli Mkhize ngoMgqibelo ebusuku ngosuku kwabeenant weLasurhas Hakhayak othe lokhu kwkhomba isibalouma
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  ukhungaal lombutho uyatholakala emazweni ongakhithuthungu,"zwele ngokutholakala kwawo ngenma kalula eSo
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text: sile ezinye izinkomo.Uradla ubesabambe abagila, enganawi nawe uBenze-Walidla, aye
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  ukubhekana naleli womholi uDkt FWmond.
+Uzikalala okwejwayelekile okusho ngu-Wcaca ukuthi * uNxumalo kumele
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  wokukhiqika ngaphandle kwalobu Umgonyelelingane kuwu-18zamozi, kula bowethu angilimahloniphi lutho
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  oshonile okwelelese umufi kabuhlungu wenziwe amaphoyisa ngale ngaphakathi ngoba ingane kumele amthinte longa.
+Ungqongqoshe wo
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  notshwala kube namuthuluzayo kumele athole konke ukwmthesombulu ubiya ngalokhu ukuviA le ngomthathile esithangamini
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  zezizwe ngokuthula kabuvezi ngobuchungane zakuleli ngesikhathi ezaNgqongqoshe ukuhuduthkela uhulumeni kuleli abantu besifundazwe iningi
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  banikelelwe obenysi nabanye abakuleli iKwaBester naKuboshwe uNkk Xulu ngen ngomthombo abeqakhwe yi ze
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  emhlatshendwaphu
+Uma esethula ngokuphamgqa kuso lesi silidluli sohlelo uzapulane nommeli
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  Musgcan Nko naye akazange kube livulwa emaphoyiseni,"thinte umndeni.
+Sizophenya umndeni nomshana wezingane zakhe ngalokhu eli
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text: bacwaswe noma ekudneni uma sibe sentando yobuka kuleli kusho uD Klelo Gkhetho kulelisisekechotho. Nkwa
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  aziqashe bema bembheka ngecoes, Ishintsho nombuzu. Uma kuyikuthi kubalulela ngeCobo
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  kwenkulu isazohlolwa okuhle futhi abaqoqne amaphoyisa bathinte namaphoyisa ngayedwa ngaphandle yesigameko? yoMntwalume wakwaC
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  yadlwengulwa kodwa umshayeli nomqashi abahlamba ligi ngkhathi 12 akalashwa egasela. Sona bese sesithola si
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text: ene nalokhu ezaza nezitho. Livele belilahleli. Ngya uyafisa ukubabizisa laba satha se
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  wathola incwadi, uWawuvama kaWanele Sameseka ukunichapha amaSagila kodwa ngayo nto okuyenza uM
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  ezibizi beziqisela okuyikho kaningi ubulawe akwenza bazwe kun engcupheni bekhuluma kabi babantu ngeCovibi
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: nucleus_sampling
+Hyperparameters: {'top_p': 0.9}
+Generated text:  abantu ababonge kuleli neyokuba abantu bazithole bazicengu zakhe zamashayela ngezakamuva zokubulawa kwabebalahlengi, bathe 
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
-Generated text:  nomhlomulo kamengameli noma omunye umuntu onezuzwana futhi banikwa ulwazi lokuthi ngempelalwebhonjiniyela ukuthuthwa komuntugwayi bese lokho e
+Generated text:  nabadla amanga ngokNgokuqoqela kwamalonkomo, kukhiyeke uma semuhlasela nesibikiwe ngalobu
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
-Generated text:  necala," kuchaza uKamemela.
-Uyigxeke imigqoqo emiza imindeni njengoba kukhona khona abesifazane nabesifazane abaduthe amazendawo
+Generated text:  nabantu benzo zonke lokhu akukhathale le ebisikhona nje bebanikeza ukuthula endaweni yawo kaxu ne namaphoyisa emzileni okuthu
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
-Generated text:  nalo la bantu baseMpofu eMzuze eNewcastle.
-Isolezwe lizwe lethu lithinte laso, kukhona abaseHillmann
+Generated text: , zihlala buqadwa ngezinsuku ebelinembo MpI nayo nakwiLingane ukuze abantu basheshe ngemp
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: nucleus_sampling
 Hyperparameters: {'top_p': 0.9}
-Perplexity: 2635.8193359375
-BLEU score: 0.8793396779176862
-chrF++ score: 4.385964912280701
+Perplexity: 41849.94140625
+BLEU score: 0.1629219395015911
+chrF++ score: 4.971826317533973
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  ngokuba nobumbano phakathi komama, ikakhulu abamsunduzi nobeyizigebengu kuleli," kubeka
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  lebhokisa le-IFP elibusayo iJacob Zuma Foundation uthe i-EFF yabe i
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text: .
+Siyaziqhenya ngesenzo sakhe ngoba kunabaholi abangamaqembu abamnyama kodwa kuningi abathize okuyi
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  isamukela isinqumo sikaRamaphosa sokungabekwa kwakhe ukuvale izimboni zohulumeni basemakhaya, athe akusoze ku
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  usizo.
+Uthe bayaqhubeka babasiza ngoba basebenzi abasesibayeni, abasebenza nathi basebenzisane nano
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  ukuthola isisombululo ekusizweni kwabbanga. Sinxusa abasebenzi ukuthi behle izingxoar nabaholi bemboni yamatekisi ukuthi bazi
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  lokugomela iCovid-19 eWestern Cape. Ucwaningo lwethu luveze ukuthi sisesiga ekutheni
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  ezifunda eDurban Hischell, ezifunda kuzo. Ubekhuluma esizweni ngezinkakhalo
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  aphinde babhale i-Apostoling the Perfession and the Blac
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  uthe amaphoyisa aphenya izinsolo ezibekwa eceleni ukutholakala kobhamu e-Escare Ramapho.
+U
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  ukuqaphela ukuthi ayaphenya.
+Okhulumela amaphoyisa KwaZulu Nyatal uCaptain Nqobile Gwala ukuqinisekisile okwenzithwe ngabanye abasolwa uthe umsolwa
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  ukuthi basaqhubeka nokuba yingxenye yethimba labameli abalisebenzayo eliphenya ngodlame lomphakathi eliphenya amacala ocansi
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  uphazanyiswa yizinhlelo zokuqoqa udoti.
+Kusuka ngo-9 kuya ku-5 ekuseni, ku
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  unazo yini. Umuntu obekhona egqoka le mibuzo aphendule. " UNkk Ndlovu
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  umgwaqo kungeke uvala. Akumele kube nokuphazama okukhulu ekuboni yamabhizinisi awasekho em
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  ukuze ziqinisekise ukuthi ziyasebenza.
+Unobhala-jikelele uMnuz Bheki Lembede, ocele ukunga
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  uthe bayakuqinisekisa ukuthi izikhungo ezifundazweni ezehlukene ziyasebenza futhi ezizovunyelwane ngokubambisana nezinyunya
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text: . UNkk Makhanya waKwaMbonambi, osebenza emnyangweni wezamandla ukusiza umphakathi wakuleli, uthe u
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  Ntshavheni nokuyinto ekhona njengelungu le-ANCYL, ikade bekhuluma nazo. Kubuhlungu ukuthi
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  bavote, bangakwazi ukulivoteka ngoba i-Engenline yancama ukube isengcu ephansi,"
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  bakuleli.
+Kube nokudubulana ngamazwi okudutshulwana, okuholele kweminye imizi yayo yalimala ngesikhathi e
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  kwezwe.
+Uhulumeni waKwaZulu-Natali ungumdlali wezithani zakwaGospels
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  ipaki izimoto zikamakhelwane, kwashona abathathu kwashona abanye abahlanu," kusho uMthebeni ngolaka. Ku
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text: ngezinkomo, kuthe uma kutholakala impahla yohlobo. Imali yokugibela ibandakanyeke ekutheni baningi,"
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text: . Amaphoyisa asaqhubeka nokwenza lokho ngoba aqashwe ngokugcwele," kusho uSea Coudob.
+Umthethwa ube
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  eCane Longon. Amaphoyisa athe akukhona okokuqala ebonakala. "Kube nesihluku lapho
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: top_k_sampling
+Hyperparameters: {'k': 5}
+Generated text:  amatekisi. "Sinxusa abahlali ukuthi baqinisekise ukuthi baphephile ngoba bayakwazi ukufaka izinodlo zabo.
+Uhulumeni
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
-Generated text:  nabanikazi bomhlaba, abahleli bomhlaba nabanikazi, nabaphathi, abaqashwe ngokugcwele noma abamelene nabathengi, ababambisene
+Generated text:  nemboni yezokuthutha ngoba baningi asebehlala emakhaya. "Sizoqhubeka nokwesekwa ngokudla okusemqozayo
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
-Generated text:  nokuhlukunyezwa kwabesifazane nezingane. " Uthe uma behlukunyezwa abantu besifazane badlwengulwa.
-Uthe uma abantu behlukumezeka kakhulu, babona bebona be
+Generated text:  naso, kumele kube nophenyo olunzulu ngalo mholi we-IFP, uMnuz Mkhuleko Hlengwa. Kuyadu
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
-Generated text:  naye.
-Umfowethu uLuyanda, ongomunye wabantu abasondelene nabo kodwa babulawa. Kuyimanje asiyiboni inkinga yokubulawa
+Generated text:  phakathi kwabo nomufi," kusho uButhelezi.
+Uthe bayasamukela isinqumo sale nhlangano sibe sithambisana ne
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: top_k_sampling
 Hyperparameters: {'k': 5}
-Perplexity: 1573.9383544921875
-BLEU score: 1.0220603260988486
-chrF++ score: 4.109589041095891
+Perplexity: 35726.71484375
+BLEU score: 0.18517077783717895
+chrF++ score: 5.645464809936019
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  ngokuthi kunabesifazane.
+Intsha isebenzisana noMusa Dlanzane ukubheka ubudlelwane bamaphoyisa
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text: , kodwa ijaji limtshela ukuthi likuboniswane nomunye wabantu abamcebile. Kumele senze konke
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  u-7 000 wabo basangane ngoba baningi abantu abangasafundisa. " UNgqongqoshe wezeMpsifazane uDkt Adr
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  isayinx cishe imibiko yelungu labo ebuholini qembu kuleli njengoba ikhomishini eqokiwe isimeme
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  impahla. Lo thishocebook uthe bathi basaba ukuthi bayawugcina. NangoMngeni bayalinda kodwa
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  ukuzilungingela kahle ukusatshisisana ngeCorbhane iCosas. Sizoqinisekisa ukuthi abantu bazokwazi ukubhekana nendlala yeco
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  lokuthi abafundi bangakwazi kanjani ukuba nenkampani ukuze bafundisele. Uhulumeni akafuni ukuqagula ngoba sisuke siyabona kuna
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text: . Sinxusa ukuthi sibe nesimo sokuthi izitshudeni zaso sizifake izicelo, ezikhungweni zazo. " Uthe bathole umholo
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  basebenzi bakahulumeni, bemkhala kanzima.
+Urantujenter obethula emjabweni obuseD
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  ubekhuluma ngesikhathi kubulawa umsolwa. "Amaphoyisa amaphoqile, aseqalwe ekubo kwawali. phezu kwesizathu esenzeke
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  ukuqapha ngembangela evynplein. Uthe akhona endaweni yesigameko. Ekupheleni kwenyanga edlule amaphoyisa abo
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  imithetho ebekezelwa ugwajagwane futhi aqinisekisiwe, odoti bazothola incwadi maduo. Loqinise
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  usuqalile, wathi abayithandisi eyokungaqolwa ngamalungu enhlangano.
+Ibale le ntsha yazi
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  emunye umgilwa abe nezibaziso zakhe kodwa akaziboni izinhlungu. Angikali ukuthi ubesephi
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  umlilo osuswe wukuthi angali. Akufanele abantu bangakulindele ukuba yiqulu osha. Sicela ukuthi uma u
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  zakwaSasdu. Le khomishini eqondbene naleso sivuvu. Ngezinyangeni ezinhlanu sizalwa
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  iSouth African Ampon Sur Association obuye abe yi-Enford, uveze imibuzo maningi
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  ngeligi kamabhalane ozitholele imishantu, iHictory Hervisoan V),
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  Ntshavhko Openi, usolwe ngokwamukela uSemend nowakwakhe, oMnuz Ma
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  babikelwe ngoba lusabhekene nayo wonke. Kukhona ukungahambi kwezibalo ngoba bekhala ngokuthi izinga elisaphezulu loku
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text: . Sisaqoqa yonke indawo yePMR nePP, baphinde bangasaziswa bayisebenzise le mali kodwa
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  kwawo ngoba kuvandywa ingxenye yemibandela ebekwe zona ukuze kuphenywe ukuthi yini eholela ekubothweni
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text: phinda, washaywa washonela endlini. Asazi isizathu sokushiswa kwemali ngoba akhona amaphoyisa asaqhubeka uphenyo lwa
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text: ngesifo, nakho sisuswe nazo ezinyama ezifana nezimpawu.
+Kuningi okumele ukungapha
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  waphuma emfuleni eya edoba, lapho eboshile ayesesitolo. Wafika ekhaya wafika, e
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  kuleli.
+Lokhu kwenzeka emuva kokubulawa komlilo obuhambisana namaphoyisa obenamadoda, awokubulawa kwalaba bangani
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: top_k_sampling
+Hyperparameters: {'k': 10}
+Generated text:  izimoto ezintathwe yizincwadi zomphakathi ozibize ngezinsiza zokuqotha abantu abangaziwa.
+Ilungu le
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
-Generated text:  ukuze kube khona ukuvikeleka kwabantu.
-Iqhaza lomphakathi kufanele lithathe isibophezelo zokuvikela umuntu, ukugwema ukuthi umuntu ongasifaka isikhalo
+Generated text:  namakhosi abahlali bomcimbi, okuyinkulumo yakhe yokumkhuleka kwendodakazi kaNkulu kaZulu ongeke
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
-Generated text:  nengalo yomthetho uma singeke sikwazi ukwenza umsebenzi wabo," kusho uNksz Boyce.
-Uthe bazokwenza konke okusemandleni ukusiza umphakathi ekulweni nenkohlakalo.
+Generated text:  nenkinga yokuqoqwa ngamacala abucayi nakuwo ngoba abukho ubufakazi obebulewe bungaqondakali
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
-Generated text:  phakathi konina. Baze babulala izihlobo zikagogo. Babe bengawadingi abantu ababuthola uLuck Mabulu
+Generated text:  bethu," kusho uDhumbukela. Inkantolo yoMthethosisekelo kumele ibe nesibindo ngo-2012 kodwa ingasetsh7, isinga
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: top_k_sampling
 Hyperparameters: {'k': 10}
-Perplexity: 1297.4049072265625
-BLEU score: 0.9847672258351119
-chrF++ score: 4.010695187165775
+Perplexity: 37081.4140625
+BLEU score: 0.18584572641352032
+chrF++ score: 5.594927265945542
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  ngakulolu 33 377 36 eJoeMzimkhulu. Isigaba sesihlanu senzeke ngabo-10
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  lamuntu okukhulu naye ngalelo lebaqaqamulela kanjena uliphendula ngayo kodwa ngeke ngizihlukan
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  uthayela wabantu bangasebenzi bavale umgwaqo ngoba bephuca imininingwane yabo. Namakhono okusho ukuthi amahho
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  imthathele umhlaba ngaphandle kwezinhlangano. Foundamo, kuvela ukuthi uMolefe wake wadladla nanhlanga
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  ukuhamba kanjheid kazimbili eziseGamand ngoJza 1 ngoba sekungothi zonezakhamin S
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  ukusebenza ngendlela kodwa lokho kuzofakantekenywe uma bebuka amanqiggetha empaki wabo. ENumbe
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  lwazo kuMengameli Titokhono ukuthi lisime kabuhlungu isibalo nangothaqa," kuqhutisa noMvuyisi wombu
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  zizobhala kahle umdlalo kaMaditla ukuze ziniqhubeketasa njengoba kushiwa kahle eNacare Keahlwempu
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  IPF ake yamethula isakulumomali yabammeli abathe ayizange iyongena kwiKingcikhulumela. Be
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  ume ngesikhathi echaza ukuthi ikhompzendulo ayinamali ngenxa yenxephepho angalinamhlanje emcimbi
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  endlini futhi azoqaqa ubufakazi azokwenziswa uR86 million ngokubambisa uSemen Mnguwubu wabantu uma kuvundoli
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  lokho baphinde bawunikeze umnqandu wesidwaso salo mnyango wakhe futhi sinesibiikwe ezikhundleni," ngoLwesithupha
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  wawudla lubi kakhulu kwizibhizi zamadolo. Ngesikhathi iJajiswa ngodoilch Thusini bebenono
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  akabandlu lwaseSascongo uyatholakala eNingizimu Afrika uyathinteki, akumele abuye ngaphandle ngoba bagcina sebethatha izila
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  abasebenzi nokuholele ezokuphepha, akukwazi ngezezimali kodwa kumele abe nomeluleki wezimali.
+Izindlerian azisebenzi kahle yi
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  ezingabhedi esicwaseni ukuqalwa kukadoboqi ongaphan ngendlela engafanele. Uthe i-Pusco ngeke
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  uNkk Lungile Sesimelanile noRamaphosa 61
+Ukushona ngesihlubo kwendodana yoMntwanyaka ngokwe
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  futhi kuqanjwe ngodoti onobhutshulwane nokweqila kwemali yesiR 47 eholelwa oNho
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text: ko. Wathe kufanele ukuthi iphini likaZngqoshe oqaville ekufukantolo kwabaseNdunankulu waseWecester
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  bafuna kuqekhwe ngani njengoba besho ikomu nelikaBLF elizayo ukuze ukhule umhlaba uyadlondlo
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  bathi abaseBusobobson Stamuartinow besebenza kwaGqoza Bagulunde o
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  kwesimalo sabantu eVezukk Thabethe kubikwenzaki lokhu kuzoqhubeka," echaza ngama-vigameko
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  isizilengisile. Kubizwe abahlanu kuvela umhlangano wokuthungwa kwesigaba nokwenza uphenyo bankwazi ubumba
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text: ngenzekaphi njengoba bezisehlathini ngenxa yokuthi abantu bebekhala bengenaso isimangakeshelo esenzeki ngesikhathi ehlaselwa
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  washaya ehleli ngayo esitalazweni kaNyanga ngemva kombhebonga wokushise umkakwabo. Nges
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  iSredenham Handing.
+Uthe lesiya sikhuleka sisinda ngokuhlukunyezwa ngobuphoyisa njengoba seku
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: top_k_sampling
+Hyperparameters: {'k': 20}
+Generated text:  abantu futhi siye siqinisekiseke ngelonda kwesigameko. N sayisonto batshelwe nomama oshayela ezokuva
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
-Generated text:  nezobulungiswa kanye nezinselelo ebhekene nazo.
-Uthe i-AUSACP isithatha izinqumo ngokubeka izimpilo zomphakathi.
-Uma
+Generated text:  namabhange omgwango. Nginike lokhu kuzomele silwe nanokho kumele asiqinise. Seziwu-16 million izimpahla
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
-Generated text:  nobandlululo eNingizimu Afrika.
-I-extrum iyimbangela yalokhu ezisungulelwa abantu abasezinhlelweni ezahlukene. Ekugcineni
+Generated text:  nezinhlelo zethu zisimame ngazo, kumele sibambisane egqeyo ngoba siyafisa ukubona kudutshulwa abasolwa nojele, siya
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
-Generated text:  obuphethwe ngabantu abayizifo ezibizayo. Ngakho ngifuna ukuphila abantu bakuleli kodwa kululandele ukuphuza amanzi kodwa asiyilandeli
+Generated text:  nomphakathi futhi ngeke benza lokho. Noma engabuvebento enqaqamba amaSapwo nawabezindaba ngeke aku
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: top_k_sampling
 Hyperparameters: {'k': 20}
-Perplexity: 1613.6712646484375
-BLEU score: 0.8632813635790964
-chrF++ score: 4.335260115606936
+Perplexity: 39650.359375
+BLEU score: 0.15567293938092108
+chrF++ score: 5.482456140350878
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  baKwaZulu-hlezi butalaxaza ukuthi isikhwama mayichitheke imali yomviwe ayibeke ngesikhathi kunezikhukhula kuqu
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  lesiphakanyiswa ukugwela kahle into esisike ukuyi ngoba sesiphelile; kumele ukuveza obala ukuthi ngabe uMbuKwazi wabambu
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  amakinati benka le zindlu. Ches, abantu nabo, bakhona nje ngoba amaXhosa ngawe anga
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  semaboshiwe esikhundleni.
+Unmuva zasusa esimeni esidamini iCovid wayesuka eGoli esebuye embu
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text: yuke eqoqwa kwikhabhinethi ngoba waboli. Sidumele ngabe yi zethumba iqiniso le nto okwiy
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  ukudili.
+NgaseXomastikhe nabo kuba luvawuqhumanga. Indaba ebaluleki nethinta osomabhizinisi amabhange
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  lokuqokwa kwethimba labathengi abangu kulesi sifunda.
+Ngesonto eledlule ungqongqoshe wezokuThuthugijinywa ngenxa yokuphunula
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  kulesisombuluko ezaseNorth West nge lo leli kolishiswa. Umuzi usuthathe inu ngathembisa noma sezi
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  Masinga Mengs, L Magwaza nakwezinye esidlangalaleni eduze njengphezu kwengane yayo ebusuku oS
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  nawo uthe okwamanje umnyango kusaqhubeka yizindawo eziqaphothula ngokudlulel. Zivuthwa ngezimoto ezisukiziwe kulo.
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  njengoba bebelithe uthuka athathe umbono wabakhaya okuvamise manje livela izolo ukuvalwe noma kwenzeke ngaphandle
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text: -muva njengomphathi weBrad Art Mohasholi. Inkampani yamaphoyisa ababesiza ngayo ukutaku basebenza be
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  usebenza ngokushesha ngesikhathi wezibhelu nokuholela dg) esifundazweni sande ngenxa ngenxa yomsebenzi ngesikhathi owethula uhlelo iNH7 ngaseku
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  usefuna sisebenphendu se Aid lakhe elinjelwe esiphongweni wasiholela Msani) asifuni ukusebenza sonke kule kovu
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  ukubulawa kwadutshulwa ngeke kuphele kungabonakali nangen nalokho kuthinti abantu ngakusasa kungafi nabo kangcosisa um
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  ezizinzikelele kuleli uma seziqedi Nhlanhla sezidla nezihlanzima uV Clovo Seme.
+Isinqumo eNkantolo
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  uthe bayishayela ihlombe lesi sigameko esenzeke kuleli nomkhuleko ukuthi uzozama kuba n Luthuli ngoba umndeni wodadewabo nabangani kasi
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  ukuthi isaphenti.
+Nathi sikhuluma nabo bacela kusheshe kunoR ngoba siphuzweni egazini bethu iningi
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  Nkk Mbali Khumbudzo Ntshambawkulu, esikhulumela osomabhizinisi lasepulazini nesangezwe elisakhe khona
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  bokuzayo zolo) ngeke ngaze ngalolu njengoba kunobunzima lona yinto ekhona njengalungisa impilo yamakhansela
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  angakwazi avunguze abe ngumgilelwa Mnuz Bake Ngcobo naye yisigweku leLiphaUmalini e
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  kwelahle ngazo njehoxiswa ngenxa yenobholo eyimfihlo ebheqabele kuleli kodwa uLerato ubolwe kakhulu
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  yafika amaphoyisa kusho ngesinye isigameko lapho owesilisa etshele isi ngengxabaenzele isibhamu wabaleka yanyaze," Uthe basola
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text: simino ngokuboshwa kwakhe ngezithombe nezamaPoliti zoMbumba kunokwezigaba sesiXhosa,"don
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  sekumele uMthethwa wabuye waphumalela wathi usayaqasha abazobulala ngokuthi ayemaphoyisa, aqhamuke nohlelo lokubulwa
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  phambi komgwaqo INingizimu Afrika.
+Kuyaphikisana ngezibalo ngobuholi. Ukubulalana ngoXasa kusho ngomthombo oba
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 0.5}
+Generated text:  izwe ngalo kuze ukuze bangabi senUbudedengu bavikeqiqinge ngalowo,"uthbhala-jikelele uMntwa
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
-Generated text:  nohulumeni ukuze uphumelele futhi ukhulekele phambili ekwakheni umphakathi wethu.
-I-anc izobe isimema ukusebenzisana nohulumeni uma sibhekene nesi
+Generated text:  ngokuthi uma unkosikazi uphuma ungakwenzi, uthakela futhi uma kwenzeka nangasemsebenzini kuzobe kumele kubonakale ukuthi
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
-Generated text:  ngqo," kusho uKelly.
-Uthe kumanje kudalwa ukudunwa kukaRarewse kuhambisana nokuxhumana nezintatheli ngoba aku
+Generated text:  nobensobe," Lwazi ngamamaphoyisa eSedumopayipini amaphoyisa alo nyaka obuthi awusetshenxa futhi
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
-Generated text:  naye.
-Umadlala uthe abanawo amandla asenkantolo akhulumile noZuma njengoba besasebenza khona njengoba behlezi esuka kowayenguMengameli
+Generated text:  engi nangokusabalafazane lesi sigameko eshamba,"qokeba uNgcobo yi-AB
+Maqonda kuyithe esetsh
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 0.5}
-Perplexity: 1892.1063232421875
-BLEU score: 0.9786376823468534
-chrF++ score: 4.178272980501394
+Perplexity: 39444.2109375
+BLEU score: 0.16259337814541275
+chrF++ score: 5.09683995922528
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  bethi kufanele kube nemibhiqhundawo emzamethuli yamalahle kanti yintsha bacwace ngodlali wezijola ngezenzo nokuvu
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  leNa
+Useqexa nje enguSomlomo webhodi4 ukuphiki kwemeya kwesikhathi sokuthi umhlanga obesele kumbikele uNkk
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  ubuze abantuenzelela ekusicwathekeni izinto," sida. Sike sigheqtsha nakwezikhathi nemibiko
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  ayithemu ngaleli izolo umethunzi elike la nhlangano nelungu zinkalo lithe liyakhula ku-12 3 ntambama lesifazane
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  nezikwephutheEmangalisa ngokushisa isizwe ukuze babe kwiNdlu enkulu yombutshezi lwaDududuphansi kuSABC
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  njengoba sinamzuliswano ongenazoza nabo emhlabeni nesthinta le wathe kufanele lehli isibalo ngalinye,"
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  khulu njengoba siyasiqaphe abafundi nje kodwa bangaphazakhono kwenganga lokho abavela ngaphandle bayophuma bekhala ngoba izap
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  izolo, zilokhu kunemasenzelwa ukuthi siziqalwe uhlelo loMQ "oHrinnowaseSithole obe
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  okwephuzisi izivali zezivavu ezibhalisiswa njengohlelo lweTbraon Inpresen, eya
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  uthe innti enikezwe izinkampani ngokushesha okubalwakhahlarapeni iCoviw Grocobobch ithi zibhali lesi sanele
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  bese efuna bakuhlanga-Gnzibsa-73. azovela emkhankasa kusasa phakathi kwabalandeli nozomthetho bazoboshwa
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text: -hlukene ngezindaba zamanzi nezimboni emcathunjjaneni wmlo Zolophelelwa nemikhotha inkontileka ebhekene ba
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text: , benikopqa yinhlangano eshone engahambisa obemsebenzi kuthe86% wontatheli uma ungabonaneliwe yizidlake
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  ose-shushisi bophiko agubuyuke emgwaqweni ngamapayipi angasebenzi kunxaya obishini phakathi kukaMabandla nezinye ezihlala
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  uma kuyimo ongalapho ethi ababuzwe lutho obukhona ozayo ukuphi labo abasolwa? 12% ngezobuntu futhi abantu
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  kahulumeni nokusebenza kwamahhovisi omphakathi abazokwazi ukoma abheka emsebenzini nezimali zabo okumanje kuzofakwa imini ngoJ
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  wayengeke abavamise izidingo ezithinta ezoso kuPhalame namaSistela nokuncela wadiliza ongena ku
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  ngoSepthemba njengoba seliqaleka iCovid ngizobuye ngomsebenzi omubi," uveze lowabo wesisho odakhela iJ Umane Thow
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text: ndi uthintiwe ukuba asuthathe izinyathe wezingane ngami kuphela ngaphambi kwesikhalazo. Liphinde nalashe amabili liyilandelile
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  nabo bangakhulubuka ezifundeni zomgwaqo nokubhalwa izingelo h zaqala njalo njalo lokhu ngoba izizathu zabo siqhumanga
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  nabadla ithuyatha epwayeyisigingcange kwalo mzimba njengoba kuno amazwe ayigome abantu abamba eyamu
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  kwezinto kuleli ezihambisana yizichoulaster zenzeka kuleli ngeledlule okuqale ngosuku lwedube ngokubambisa elakhiwa ngabantu akhele izindaba
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  ithi kungenzeka ngizonabe sengithatha into enginzime) nekamntwawaso uma efuna ukuthatha isinqumo ngaphandle ngokuthi uma neqiniso
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text: soza kodwa kumele lehli kakho ngamafungane ngaphaholifotho nabakwa-KZN ukuthi bazothola konke abangalutholi usizo e
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  ngayoya emzuzo emndenini oseShathwa kuthe Muzisi Cynkhasimende waphuma anqiphunya linganiselwa kuMansi
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  iNothandobalo naseKhero Cele Funda njengoba lesi kuyisenzo esikhathini onzima orootli uma
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.0}
+Generated text:  laba bantu ababuso kwabenhlanga kahle ye mpahla yaleliya lwavame nabo bavikele amagama aleholi abamnyama
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
-Generated text:  futhi uzokhuluma futhi akuvumelekile ukuthuthukisa ukulawulwa kwenkinga esilwenza umphakathi. Izinsiza Zwatholile ngobani nencane lena yomgodi
+Generated text:  ukuhlumelelisa izwe nemizwa kanjyimela njengoba kumele engashaqwe kakhulu uZ zokuxhumana emfaneni. UkunweAba
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
-Generated text:  yini indlela esasikhona, sisabhekene nenhlonipho nenjabulo,"" kwenoMthethosisekelo. " Ethintwa uHansi Lyz Ngiyoni uthe in
+Generated text:  ngenndo yokusebenza ngeso elibeni lomhlathu olandele esiteshini samawotrilitz neFF, kodwa lesi
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
-Generated text:  ebesidlala nalo leli lilibambile kulo sosifundazwe emuva kokuthi abantu bebephume kobaba bebhule bezitshela emehlweni ngokungaphephile kubantu abanga
+Generated text:  bo komyeni ngenxa yezikhukhula ukushoda, ukwebu izinyembezi indosho yokuzizwe kwesidumbu nelagSamkhamu ba
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.0}
-Perplexity: 3154.596435546875
-BLEU score: 0.8875589832264612
-chrF++ score: 3.9370078740157486
+Perplexity: 41973.609375
+BLEU score: 0.14035662873912613
+chrF++ score: 5.005005005005005
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ngeso labo lokwantshotshupeh ontitha lezigculo ngoba izwe liyahambisana nabo ngshumpu odangelo umkhankaso.
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  nge Thabani lakhe sokuvi lase wezokuThumazane ngenxa kuMabuza futhi wathi naye naye inkugila ukugula naye ngakho ngeke abe ugi
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  okwanele njengoba besisuki abantu ngenxangweywa wophecane siphixenge njengekhosiza ngoba abanye bayakujongi
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  imkhiphe ngejundo wathi amajakhwe wabo uRamaphosa ukufembienchungewomkhululi wathi "ngokchaza nawe. Ngiya
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ukuthi abawuvakuqhuma kona ngamatho oyid Magwaza obubhishova wabo ngezaZoom.mthelela wotshwa
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  kozokuya emalo eniwayenesitha simali. Bobona benj yakwaLo unotah ngompela kwashona
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ngokubambisa eyamabhizinisiB Mm ukuze abasebenzi bethu lihlaza inkomo bese kuba ngabasezokucabanga kukhona nakwamazwe banganga
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  zikwazi nokuzisho wukuthi beziya.
+Uco KwaZulu8 Khothi asihambisane nomndeni okuqaenzi. Bekulo olwe
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  okuthe ngabo abangamanga oHlos wayekhala ezimamiphoton noma emhlamba ebhelini iBIjabhish
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  obebukeka njengolinzwe uncomeboshwe abeSeesywa odukile iWerne SPI kuleli ngezinye ukuze ubulungiswa
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  enx:ngxenye yeMantshi eMbullsi Eva ngezobubenqobe ngabanye ngamapAbantu eMhlo eMhlati Hfundo
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ukuzitshelisise kuleli njengoba kusavale icala amakelele futhi akube neminyathi ngalesi simo basazi baphinde bezoboshwa kwa
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  usuphazamisile eziningi phakathi enkantolo. Eno into isidla kakhulu eq yini nge- Antamo kaMkhom. Alu
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  aku-9 eyeviseni kufanele yini abe ngabaphathi besiMnyango ukuthi asiwuthandi nabo ngesikhathi sezingaba sezingeni kulesiNgiswa na
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ukusebenza ngakhona kolishun emthola impilo naye noqovu esingcopa ngeshwa nani. Njehlehlicwasha isi
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  zokugcina kuleli ukufaka uhulumeni eyedlule ukuqo kuNqeElinye owasu lokuthi imali ngokusebenza kwendlu yakhe ukuze wazuwe uma
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  owehlilwa kweziholozakwabo kulo bangalokhu beya kuleyo ngoziyo eholele ngeke izilulekekise ukuthi kunkeni iCobokuyidinga
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ngoba waqhubeka wabeka amanzi nabezokuphepha emthandaga babanjwe umphathi kazwelonke obethole ithuba phephandaba abaphenngi leli okwesi
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  Cele uthe lokhu kunesikhathi azovela kulo nyaka ezilungiqhubekayo zivala ezingencingo ebezilokhu njengenjwayenge okuqhubeka isikhathi
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  besilwela lesi yingoba sizogxilwa ezepolitiki sikuthole ukuze phambi kwezigameko ezingahlo yomthethosiseke ngodla lweNanele ethu
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  njengoba yayizocaciphaka ngempi yaseFraxu nakwaFNB iManziwa Intete ayinike iDA ngokuphelelwa
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text: phansi imali kwakhiwa ngeQlaela HUT kuchaza uNxumalo okuwubuholi okuvela umphakathi waseD�vihlanu kulesi kusukela
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  igadla emapulalwini, sabuya siqhunyisa. Wathi asingamaphoyisa ngelokhozi, sabuza umshayeli ngokuthi akuyo
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  kuya ngokuthi noma kusadugqozayo. Nthinti izinto zethu sesikulumbimningi ngaphandle kokuphocwasha kwezimpahla zepha
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ijazi lilokhu limbeleke njalo kwalimala abanye abelungu nabazohola ipilgwaqo okuthiwa lithe : Ye
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  ezdeo ngaphandle bezama angazange bezizwe. Ngaboshwa ngizwa kuqhuma egdubula endlini ngangakweryncane ngayo ngibuyela kule
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: temperature_sampling
+Hyperparameters: {'temperature': 1.5}
+Generated text:  amanye abashayeli ebebenikwe izincwadi, akubhecha nekhemisi lisebenzifi ngecala leli ki Bavithimula nawo lahlehlikela
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
-Generated text:  ngemihlomulo yeminyango eyethulwa kuhulumeni ngo-Okthoba wonyaka odlule ngenhlosoanele sokudlulisa ama-AR1 reli namakhulu awo). Le
+Generated text: . Ligwehlala oT uZodwa ukusho impmba kwezinto zokubulawa ngoba olikusho lutho ebuholinso ukuze igama
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
-Generated text:  nesi nobugebengu ukuze sizixazulu lapho kusuke sihlala kuzovoteleke uma konke esikubhethile," kusho uPwela
-Amaphoyisa uBrigadier Managernu
+Generated text:  babizagi. Lisalile manje uLuma ibikela abafundi.Umuvhumusha uqale ngesikhathi evinulu u
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
-Generated text:  noMfowethu Dube osanda kubulawa umfowabo omncane kwathathwa nezintatheli ezinezinkinga. Ngithukile ngokuthi akukho okwakufunwa mayelana nesicelo sebheyili njengamanje ngeke s
+Generated text:  bukabasha. Imfundithathe manje wukuthi nganndela emdlwengula babone sengathi ufuna ngimxoshaya othi akafuni ngoku
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: temperature_sampling
 Hyperparameters: {'temperature': 1.5}
-Perplexity: 3244.6337890625
-BLEU score: 0.8893406627344308
-chrF++ score: 3.6764705882352944
+Perplexity: 43061.9453125
+BLEU score: 0.14595155765776602
+chrF++ score: 4.930966469428008
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ngezifudade zabo nomza izihlobo kulesikhathi enginikiwe lonje usesatshave manje ezinkundleniswa kwegiligi ngesikhathi kunongqo
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  lethu iXD uTeply Khumalo babafundi abangenamandla, ukube kwakamuva ngemuke abafundi abangathe
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  eChae State ukube sinethembathiwa sikhona lesi simo kule hk) neSavere Aper St ali
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  imemeqhubeka ngomnotho wale mali yanikhula kunemi ngomu Kzikwe bazibone benanjini kumele ngengehli futhi
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  imvume bese kuyadi AIban Cdaba C nascroQ Clisucies onition ngabani
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ukuyinikeza usizo uma  Flelani Kuvufanele futhi kunephutha ngendlela okubuye kwezansi ephe kakhulu ngame ngakho aka
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  olufuywa ngesil nokuthola ukuthi obani nabafongkuqalelampela bafuna leqiseke leli layisendoda benhlangano aba
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ziphuma nje zibhacakile bemi lokhu kuyobe kuphazamisa ukugkho yeqithi weSitiliph/Le ntokazi
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ukuze sigqugqu phambi ukuze sizozwa okumgqugquzela umphakathi nathintekayo uma ethi akekho okutholakala ngamacala ngakho ngizokhuluma nasebephumele abazizwe
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  uthe ukuhlaselwa kwabulawa kukaMebila kulivasile ngoba bekusalindele namaphoyisa ezokwenza ubulungiswa uma kukhona ngabantu ongakhuluma endaweni yaseMa
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text: sile esixushulo.tholakala ngothi umufi nomngane kumele ambheka izicathulengi ngoDisemba baye komuntu, azozikhulu
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ngezivaji ezingabhenyiwe eWKO kukaRuth Ublun wabantu benjezi kongoqebhethengungqongqoshe
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ungangeni kwephaza abantu bezokwazi ukudiliva," ku uCladdlands matqhathaniswa basuke esibabuhlungu ngenxa njalo
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ngamunye noma ngabe ubeyibuka kanjani izindaba esikhululiwe? nangezingu2 2-92- 5 1007 sizivanzi.
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ibahlanu noma nje kodwa noma kuyilokhu kunobazane okhulumisa isip sonke ukuze abaqashi,"thwe uyazichithakusa ku
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ezinenzalo ngezandla wathi kumele benja ibizwe wumbiqeswano kule noMboenzeke futhi wagqugquzela ukhomishana kazwelonke
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ithe bayadinga lobona labo ngobenza lena njengoba kwenzekile ngeke kodwa zisohlwini mayelana namathenda kule ndawo yokulala
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ukuthi ingane yayishawe ngesemsaph kaJamusaPhennda obulikhulelwe nokwezwa nguMajola nga
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text: mbisa kolindesetshenziswa njekweni lebandla ngoba leli Baphimo ngomunye webentwana okubhale incwadi yokushaya kwengane
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  baqaphele le ngamafiki emagacasa) kufanele bagwema ukwenabantu abasuke bekubhecwango kuyo
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  noFendaba ngokudutshulwa kwezitshudeni ebe Vlencole Lwala Lmbinkosi Ntuli, nobeyoduduza isikhungo
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  lwempahla," kusho uDngaseby BBV nakho.
+Imiyalezane ngeke ipheloluke abantu njengoba bezofaka
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text: phile abagibeli abezukela kule ndawo ngeke ikhove nge lutho ukuze bangakibenzi kuleli zogwaqweni noma bengakabikelwange
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text: ngekho mntwa ezathethatha
+Awalitholadinga uxhaso lokuthi zonke lezi ezathekwa esizana bezingakathushuswa uma bezi
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  eJshayavuma 7 Sewayoniningi ukuyozibolesela uma eba semlomg Ngiya emzini waseT
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  ngesikhathi i-ekwetoria uyizuChats ngosolwa ngokuthi bazama kaningi ukwanda ngesivini kaRuth w L
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 0.5}
+Generated text:  abanye abazothint owe kuphela kuleli," kuqhuthetho uMvilali Ije bazithola ngokukhulu zinquM Thuomini oseS Bu
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
-Generated text:  nohulumeni wendawo kamasipala eqazuzisa izindawo zikaDisemba ngoSepte kuya kwemijondolo esekuqala ngaphambi kokuba umphakathi uye ePhalamende.
-Ubudlelwano
+Generated text:  ngomthandazuko ngebhatshwe abashayela. Siyadinga kakhulu uthi Mthembeni ukuhlesela ngalesi senzula,"kubizaho
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
-Generated text:  nalokho," kusho uMngoma.
-Umadlala ufuna amaphoyisa ngokulahleka kwegciwane ngoba analo ngokwaziwa izimpendulo zaleli gciwane?
-Umampi
+Generated text:  bengcoseka ngokubulawa kwabantu kulesine ezidlule ngeqoMalungu esiShayamthetho sonke sezidlu uZikalala obekungabe kuyabuya esisebenziswa sokuba
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
-Generated text:  nalowo ofanayo, ngakho-ke ukuba limtshele ngomshado wesibili ngaphambi kokuqala kweminyaka enkosikazi yakhe ushade nomunye uma enelisiwe.
-
+Generated text:  bebhonga ngaphandle kwezivu zikayo ezfulethi. Mkhulu kakhulu akwvumelwe nangezitedilizi nge-
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 0.5}
-Perplexity: 2971.3984375
-BLEU score: 0.9842172319024961
-chrF++ score: 3.8363171355498724
+Perplexity: 42451.375
+BLEU score: 0.14104812003901016
+chrF++ score: 5.048805116122518
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ngamaholo anga�ng nokuthi ukungena emisebenzi yabo kulima
+Segsonto wasehho Bay le yokushaya phansi.
+Pha
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ngoXXulu lokuthi yithi esabela nalelo ayeladluzwa nalo ngendlela lokwahluleka khona ukubona uBumo nelinye "
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  imihumanga ngodlame  Sqondana obulawe ngezibaza zisabala wabe. Washa uthi naye wazama wam
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ymental) ibivele phambi kwenywe. ngesikhathi eyochaza unina bezibona bezithona nezizunu eduze nomuL
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  imfundo nobumnandi njengoba bevakashe samazwe abasu klokhu akuli ngo 8 kuphela kwandukisi futhi kugcwele asebengen
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  yini ukwakha igama lika-R 460, iFsonezenzeli lutho elisha ebeliseSaphinde labo abangu nje babe
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  lwakhe olufanay Dlamini kuze kubona kokuthi kube sekuvulweni amacala futhi uma kungenzeka behlahla umuti futhi ethanda uMpen
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  kwacaca lokhu ngoLwesibili ezintsha bazilungitshudeni bezithungela izimpahla abazibona ngendaba yeningimlingo njengoba iNEdi
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  AFANkulu
+Abanye abaningi ngabatholeka ithuba, okuyiseNEI ngeke bashekhethe ngosizi oluphekiwe baqaqoke
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  kulindeleke nabanye3 ngelomkhuleko nokuveza ngokusula okbeni lavaLP oholelekhokhele kakhulu abantu emthonjeni
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  kaDudun-Xothos othukwe ngokujikele inziwo lomthola usizo ukudicwe wukusilimao
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text: . Uma sibebhaca bahlebelwe beshayela kodwa bayaya emambungeni onotholakala lwethipla, abanye ngeke
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  P akwazi ukuba ekwa ngifu kusukenzela ukuthi umthwa ekuseni enyuvesi izofakwa emabhimba abantu baseMNSFAS bava
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  oyedwa kube owethwebu buqamayiter neko abasebenzi kwa-Kessa ukuze otholwl bezosebenza ngokuhlumele
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  indawo, abantu kumele ngobuthabu bayawazi ukufuna iminike ucansi nje ekuthini ngehlisa ukuphekiwe kwangazi noma kumele kw
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  emgwaqweni ukuthi azinamsebenzi wokuqhebuza nokugqokwa komphenyi osesiteshini engaphandle kubo maphenya omkhandlu kwayo nagwe
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ukuqinisekisile izinlesi Mthekwefywa ngomsebenzi owabikhozi kulo nyunyane okuyalelwa ngohulumeni wesimboni. Sasicele lolu
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ukuze umndeni wazi ngesigameko ubesaqo ngani njengoba kunelungu icala bese enqyithemba nakatolo futhi umgikwenzi. I
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text: zenzakwabo ukuba abuye waba ukwengalo imali yamaholo kulesi ngesikhathi kulesilwesikhathi ngonyaka ubonge baphile baya la kuwe lale
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  bathelelanile. Ngaqokela kahle kuzokuwubuka le yabqoma egxuvu nemisikwa," Amaloki
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  asebefake nemibuza yezitshudeni laseNingizimu benu ukuze kunxashe noma bangawuqondi lesibhasikinini esiso Ile
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ngamadoda. Kuningi asakun simo, umphakathi ohlezi la uyadini ngoba akafuni ntuthuko. Linhlahlekelele yo
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  ayihambisa ngamalungumbongo Magwaza beyifa ubukhithajumba kwayihundu ngoba ayise iyephuzwa. A
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text: ngengane," Onye wabadlwengula kutholuleni owayesolwa ngamaphoyisa yisocansi ebisiswjwe sohlobongwade
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  yazophuma kuleli woba endlini yeqe ngoMashi 8 sekuqala ngoJulayi. Igillini uyingane nje legill," Uthe
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  eN#Usafice umzubana kugzusihluku ase ngosgogo wakhe agcina enzi lutho ngezitha uzakwabo
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.0}
+Generated text:  labazibani ngokubabalukhulae nezicetshana. Abagce zinjiwe ngoba bezifuna ababukhile
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
-Generated text: , kuhlonishwa wonke amalungu omndeni nowo, uBongani Dndolo ngokulekelela inhlobo eyazisa ngo mndeni," usho kanje.
-Uveze
+Generated text:  ngokudla amazinti eziya enthola ngokubambisa itekisi kodwa amantombazane aboshe asevele belaxishiene nabasizifana ebe
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
-Generated text:  nodlame, okuphela nokunye kuyangiphoqa ukuthi ulwe necala," kusho ummeli kaNetain Teer.
-Umnuz Wrne
+Generated text:  nabo nazeka erenkeni yesingcolli baze bambambibene amazulu. Kungaboshwe kwabalinganiselwa lekhambisandawo
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
-Generated text:  obuseZibuseLamont lapho kuthiwa sekubonakala iphuma kolikhomba umuzi wayo wafike labazukulu abathathu okuvele kwagqa
+Generated text:  okungethahle kodwa lizobona lokhu esithangamininunye ngamazwe amavutho nezi-zwekazi azingatha izwe ngenntwa
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.0}
-Perplexity: 2444.55078125
-BLEU score: 1.083040628990689
-chrF++ score: 4.901960784313725
+Perplexity: 41751.0390625
+BLEU score: 0.15847115733601125
+chrF++ score: 5.126452494873549
+
+Prompt: Umengameli Cyril Ramaphosa utusa abantu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  ngamazwe neweer olukuwala kuleli ngokomyalelo womthutshana wabo ngamaWundlulula wawo wokugcina
+Reference text: bakuleli abayishaye indiva imibhikisho ebihlelwe ezweni lonke yi-EFF, bakhetha ukuhlala emakhaya.
+
+Prompt: Noma engazange aligagule ngegama iqembu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  isinqumo sizoyimela kodwa angaze abanikazi bezinsimo kahulumeni kumele labo baviwe esika ngakho akazoqhubeka yini nokusa
+Reference text: kodwa uthe noma kukhona abebefuna ukuphoqa abantu bakuleli ukuthi babhikishe, bebasabisa kodwa ukujabulele ukuthi izakhamuzi azizange zibe yingxenye yemibhikisho.
+
+Prompt: Ngijabule ukuthi abantu abazange balisabele
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: tha," *usho bawufaka kodlani emcimbi Sb X68 eMnambithi kuvela imigulungathi ababhijikela
+Reference text: kuleli khwelo kodwa bazihlalele emakhaya basebenzisa ilungelo labo, kusho uRamaphosa izolo, ngesikhathi kugujwa uSuku lwamaLungelo Abantu eDe Aar, eNorthern Cape.
+
+Prompt: URamaphosa ubekhuluma ngemva kokuba i-EFF
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  iye eziShameze ngosopolitiki weluleke, uRamaphosa wathi kumele engabhekiwe ngesikhathi ikhonza kwiboshinicamkhulu kuyena
+Reference text: imashe ezindaweni ezehlukene ngoMsombuluko, ifuna ehle esikhundleni ngoba ikhala ngezinto eziningi okubalwa nokucishwa kukagesi kuleli.
+
+Prompt: Uthembise abantu ukuthi bazoqhubeka bathole
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  ezibexa eze eqhuthimba elicaci umsebenzi wezikweledi kuleli noMnotho. Uthe izindlela nanezamukela uku
+Reference text: usizo olubafanele. Wathi abantu banelungelo lokuthola izindlu, amanzi, ezempilo, imfundo esezingeni, ukuvikelwa, amanzi nezinye izidingo.
+
+Prompt: Uvumile ukuthi omasipala abaningi bayahluleka
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  ukuyiphatha leyo abangabani, abazali, abazali bakwazi azali nabo nabazungezisana zabo nabantanga ngenxa yokuvalwa ngoDisemba 
+Reference text: ukuhlinzeka izidingo zamanzi, izindlu nezinye emiphakathini ngenxa yokuthi kwabanye abekho abanamava okwenza lo msebenzi.
+
+Prompt: Kulo nyaka sihlela ukuphothula uhlelo
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  lokufundi kuzoba uNgqongqoshe wongqoshe uNkk Uma le eqasha labo zakwabo kulesi simo sasizisolwa kakhulu ngalesi madupho," kulesi
+Reference text: oluthinta ukuxhaswa kwezitshudeni ezizalwa ngabantu abahola imali engaphezu kweyisikalo esibekwe yiNSFAS.
+
+Prompt: Emasontweni edlule sibone ezinye izitshudeni
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  zinkinga kodwa sibone isigci�hamba. Kuqale ngoMgikaMtheshana 85 engasUthe uyaqokwa okungena
+Reference text: zibhikisha zikhala ngezinto ezithinta izindawo zokuhlala ezikhungweni zemfundo kanjalo nemali yokuphila.
+
+Prompt: Amanye amaqembu okuyiPAC ne-Action SA,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  Mshini naba Pidlalo bakwaFatip.
+Kubuhlungu sonke leziKuyaziwa lo abantu behlushwa iNFP ngohlelo
+Reference text: agubhe lolu suku eSharpeville, lapho kwashona khona abantu abangu-69 ababulawa amaphoyisa ombuso wobandlululo ngo-1960, ngesikhathi bebhikishela ukuphathwa kwamapasi.
+
+Prompt: Ungqongqoshe wezamaPhoyisa, uMnuz Bheki Cele,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  usukuphi iphon elisha ukuthi uhulumeni eqedwa ukutakungusa nokudayiswa bakago kuleli nokubhecwa CL ngu
+Reference text: uthi bazobhekana nengalo yomthetho abazokwephula imithetho uma sekuqhubeka ukhukhulelangoqo wombhikisho ohlelwa yi-EFF.
+
+Prompt: UCele uthe amaphoyisa azophuma ngezinkani
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  ukuze likhiphe izidubula libenzi abawulandeli unyaka nonyaka abashayela nangawo eg ebagwaqweni ngoba kunophenyo lokwazi bangabona
+Reference text: ukuqinisekisa ukuthi alukho udlame ngoMsombuluko. Ukusho lokhu esithangamini nabezindaba ebesibizwe ongqongqoshe abasezinhlakeni zokuphepha.
+
+Prompt: Ongqongqoshe ababhekene nezokuphepha ezweni baqinisekise
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  njengomasipala uMbuntatheli obevele befake ezinsuku ezin2shana ngemuva kokubhase - uwubhala kwabaxhuma abazobheki
+Reference text: abantu bakuleli ukuthi bazokube bevikelekile kunoma iyiphi inhlobo yodlame nokuphazamiseka okungase kuhambisane nombhikisho.
+
+Prompt: Baqhube baqinisekise ukuthi umbhikisho we-EFF
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  baphazamisise eThekwini," kunmkundleni Bmanqomo Ngqobe ngonyazo emiblimeni yokucwasa.
+Reference text: ngeke ufane nezibhelu zangoJulayi 2021, lapho kwacekelwa khona phansi impahla, kwashona nenqwaba yabantu.
+
+Prompt: Senze izinhlelo zokuthi wonke umuntu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  uma ethanda yena asiye kubo eMbeUsintisolwa uthe bafuna ukubagemfaku ezinkundleni ayeqeUyagigaba-4
+Reference text: ofuna ukuya emsebenzini ngoMsombuluko, abafuna ukuvakasha nabafuna ukuvula amabhizinisi abo, bakwazi ukukwenza lokho ngaphansi kwesimo esiphephile. Sifisa ukuqinisekisa abantu basemazweni angaphandle ukuthi akusilona iqiniso ukuthi amachweba nemingcele yakuleli kuzokube kuvaliwe.
+
+Prompt: Noma ngubani ozozama ukusabisa, ukuvimba
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  ukuthi isidumbu. Livele kunqizela amaphoyisa futhi kuzolunga njengoba sizokhuluma nezinkuna zenkotho yayihlolwa kuleli nokwenza
+Reference text: abantu ukuthi baye emsebenzini noma ozozama ukuvala imigwaqo, uzobhekana nengalo yomthetho, kugcizelela uCele.
+
+Prompt: UCele uqhube wathi bazobambisana nezinkampani
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  boba sesidlumba ukuze bomuse ilwe uNxa Botha uboshi futhi sizoyemusitimbo izinxa Fsi
+Reference text: zonogada nezinhlangano zemiphakathi ezilwa nobugebengu ukubhekana nemibhikisho yangoMsombuluko.
+
+Prompt: Ungqongqoshe wezokuVikela, uNkk Thandi Modise,
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  nowakuzunanqa amaselula omKranso enxangwululiwe eThekwini. uthe isifiso sePhalamende soku
+Reference text: uthe amasosha akulungele ukwelekelela uma kunesidingo. Uthe bazothathelwa izinyathelo abagqugquzela udlame ezinkundleni zokuxhumana.
+
+Prompt: Elinye iphutha eselivumela ukuthi lenzeke
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  baningi abasawazi futhi bazowasebenza kulindwa nawo uma umuntu behlunga kucikopyeke, ungaziphethe
+Reference text: yilile lokungathatheli izinyathelo abantu abagqugquzela udlame ezinkundleni zokuxhumana. Sesifundile kulelo phutha. Yingakho abantu bezothathelwa izinyathelo kulokhu, kuphawula uNkk Modise.
+
+Prompt: Ungqongqoshe ehhovisi likamengameli, uNksz Khumbudzo
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  enkontileziphenthi futhi usazi ngezindaba zakhe futhi kuyabuya,", obekantimi kuyabonga izanya. UC
+Reference text: Ntshavheni, uthe ngeke bavume ukuthi kuphinde okwenzeka ngoJulayi 2021. Uthe uma i-EFF ifuna ukukhipha uRamaphosa esikhundleni, ayilinde ukhetho.
+
+Prompt: Ukhetho lungonyaka ozayo. Abantu kufanele
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: baphoko ngcacibes ngamazngani futhi akekho kudiciqa phansi kube nabantu abaningi lokhu abebengumelu oyedwa, ukuze
+Reference text: bawine ukhetho uma befuna ukukhipha uhulumeni osemandleni njengamanje. Kuleli zwe amandla oMbuso awathathwa ngendluzula. Ngeke sikuvumele ukuthi kube khona abantu abazofuna ukuthatha amandla oMbuso ngendluzula, kuxwayisa uNksz Ntshavheni.
+
+Prompt: Iningizimu Afrika neMozambique, amazwe angomakhelwane
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  nomphebe kaKhuzwayo osewashona, uMana phepheni kaSiwe umkhushwaamagaisetfi njalo emuva
+Reference text: ayahwebelana futhi aseqoqweni elilodwa lamazwe angu-16, iSouthern African Development Community (SADC).
+
+Prompt: Isidingidwe kakhulu inkinga yobugebengu bokwebiwa
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: phansi kwiziboshwa kalolunye izolo kanti izenzo lapho kusalindeke kuphele imisebenzi ngokuhamba ngomkgosi. Kunye nge
+Reference text: kwezimoto kuleli zeqiswe umngcele ziyiswe eMozambique, ngasohlangothini lwakoManguzi nakoMhlabuyalingana, esifundeni uMkhanyakude.
+
+Prompt: Kubikwa ukuthi uma imoto ike
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  wathola ukuqazeka ekuseni ahambe kuyoze kusho ukuthi yima kuphi futhi isidi Kngilaxambisa empofu ya
+Reference text: yawela umngcelewezwe yangena kwelinye kuba nzima ukuyithola ngoba kuyaphazamiseka ukusebenza kobuchwepheshe bokulandela imoto.
+
+Prompt: Okunye wukuthi izimoto azithathwa nje
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text: nya-ke ngokudayiswa izingubane zamapayipi ziyidle emgwaqweni, kanti zisaba sonke ngeholo lamamitha ungasi
+Reference text: ezindaweni ezisondelene nomngcele kuphela kodwa nakwezinye izindawo seziyathathwa okusho ukuthi iyadlondlobala inkinga.
+
+Prompt: Kuthe kusabatshazwa indaba kaMthethwa, ngasekuqaleni
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  waqonqa. Ukuhluhla amanzi ngayo, nakho bekumfundisene ngez% nenjabukulo kodwa kwakungabanenhlu
+Reference text: kwale nyanga kwabulawa uMnuz Sandile Tembe, wasebukhosini bakwaTembe, okuthiwa ubeyilungu eliqavile leManguzi Policing Forum, elwa nokuthathwa kwezimoto.
+
+Prompt: Ngaphandle kokubulawa kwezishoshovu ezilwa nobugebengu
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  nokudlwengukenje abantu kuleli bhalima bayacebisela.
+Ungqongqoshe wezokuThuthulula umSansa kukele kuleli osebenza
+Reference text: kodwa kunezigameko zokushiswa kwezimoto ezisuka eMozambique, zize kuleli ngenxa yokudinwa kwabantu bakuleli.
+
+Prompt: Ukushiswa kwezimoto zabasuke bevakashile kuzolimaza
+Strategy: entmax_sampling
+Hyperparameters: {'alpha': 1.5}
+Generated text:  abethi bangathabake ngomshayeli labo ngalelo alibhuqa kodwa lokhu akudlalelangeni kuze kug201 izikhathi kuleli,"
+Reference text: umkhakha wezokuvakasha oyingxenye yomnotho ngoba kusho ukuthi izivakashi zaseMozambique, zizoyeka ukuza kuleli.
 
 Prompt: Uhulumeni uhlalaenxusa umphakathi kufanele ubambisane
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
-Generated text: . Yonke isibindi lobu esibhekene nazo ngenxa yokuzibandakanya kwamandla emikhankasweni yokuqeda izinkinga zomphakathi kanye nokungalingani," ububisa uColonel de Jager
+Generated text:  ukuqinisekisada kwamasiza esiba khona ngePhale wathi amaphifa bahlala enyuse imali ngenxa kamuva komkhuba abahlekunga
 Reference text: namaphoyisa ukulwa nobugebengu kodwa uma sekubulawa abazama ukulekelela abomthetho, lokhu kuzofaka itwetwe emphakathini. UNdunankulu waKwaZulu-Natal uNkk Nomusa Dube-Ncube, ngesikhathi ehambele inkonzo yomngcwabo kaMthethwa, ukhulume kabanzi ngenkinga yobugebengu emngceleni.
 
 Prompt: Sikubeke kwacaca ukuthi ubugebengu sizobhekana
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
-Generated text:  neCovid- " USihlalo weNaMabuyakhulu ngemuva kokungadedelwa kwalo mhlangano okuphinde kuyinyanga kaMengameli omusha weSpetro
+Generated text:  nomsembo Nqedi ozoba mahlanhla uthaqeni ngamagama azosindana noma enganeni yomzuenbhoxo
 Reference text: nabomahlanze, kufanele kucace ukuthi yithi esiphumelelayo noma yizigebengu, kusho uNkk Dube-Ncube.
 
 Prompt: Uma elakuleli lingomakhelwane futhi linobudlelwano
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
-Generated text:  bethu sonke singalijabuli kakhulu uma bethola amaphuzu amaningi angakathathwa njengo-6% wabo wezemini lasesismirgen
+Generated text:  engisaka ngabefundi yizisuku ezingaki," ngotifikece ubuza wonge ubufakazi kowamumalwa uMvike
 Reference text: neMozambique, yini evimbile ukuthi amazwe ahlangane abambisane aqede ubugebengu bokweqiswa kwezimoto emngceleni.
 
 Strategy: entmax_sampling
 Hyperparameters: {'alpha': 1.5}
-Perplexity: 2410.996826171875
-BLEU score: 0.7394335829513382
-chrF++ score: 4.010695187165775
+Perplexity: 41497.06640625
+BLEU score: 0.1686702226249105
+chrF++ score: 5.161734342739161
 
