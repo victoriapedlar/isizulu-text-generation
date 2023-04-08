@@ -1,200 +1,251 @@
 {
     "argmax": {
         "(('dim', -1),)": {
-            "perplexity": [
-                14143.33562273298
-            ],
             "bleu_scores": [
                 0.10885343224745485
             ],
             "chrf_scores": [
                 19.264203084608255
+            ],
+            "distinct_1_scores": [
+                0.811934735580056
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         }
     },
     "beam_search": {
         "(('beam_size', 5),)": {
-            "perplexity": [
-                4930.237880161831
-            ],
             "bleu_scores": [
                 0.1149527683122965
             ],
             "chrf_scores": [
                 15.12884240817169
+            ],
+            "distinct_1_scores": [
+                0.7517142857142857
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('beam_size', 10),)": {
-            "perplexity": [
-                4930.237880161831
-            ],
             "bleu_scores": [
                 0.1149527683122965
             ],
             "chrf_scores": [
                 15.12884240817169
+            ],
+            "distinct_1_scores": [
+                0.7517142857142857
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('beam_size', 15),)": {
-            "perplexity": [
-                4930.237880161831
-            ],
             "bleu_scores": [
                 0.1149527683122965
             ],
             "chrf_scores": [
                 15.12884240817169
+            ],
+            "distinct_1_scores": [
+                0.7517142857142857
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         }
     },
     "nucleus_sampling": {
         "(('top_p', 0.45),)": {
-            "perplexity": [
-                83231.65535714285
-            ],
             "bleu_scores": [
-                0.03676323131316903
+                0.0
             ],
             "chrf_scores": [
-                0.004477638672469686
+                0.0
+            ],
+            "distinct_1_scores": [
+                0.04334975369458129
+            ],
+            "repetition_percentages": [
+                95.10204081632652
             ]
         },
         "(('top_p', 0.85),)": {
-            "perplexity": [
-                36497.295200892855
-            ],
             "bleu_scores": [
-                0.06551165124985149
+                0.0636757844848159
             ],
             "chrf_scores": [
-                1.1706508067371062
+                0.9251545349526361
+            ],
+            "distinct_1_scores": [
+                0.37438423645320196
+            ],
+            "repetition_percentages": [
+                46.42857142857143
             ]
         },
         "(('top_p', 0.95),)": {
-            "perplexity": [
-                37564.84017857143
-            ],
             "bleu_scores": [
-                0.06842408339265915
+                0.06544340318661078
             ],
             "chrf_scores": [
-                2.0226574421026493
+                2.0221951197218755
+            ],
+            "distinct_1_scores": [
+                0.4782899366643208
+            ],
+            "repetition_percentages": [
+                33.50357507660878
             ]
         }
     },
     "top_k_sampling": {
         "(('k', 10),)": {
-            "perplexity": [
-                7051.544974190848
-            ],
             "bleu_scores": [
-                0.10226876069583007
+                0.17803665512924235
             ],
             "chrf_scores": [
-                17.79839909435392
+                20.12111034647015
+            ],
+            "distinct_1_scores": [
+                0.9368702270180105
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('k', 20),)": {
-            "perplexity": [
-                7846.431041608538
-            ],
             "bleu_scores": [
-                0.10376147502138656
+                0.10435162836228701
             ],
             "chrf_scores": [
-                18.284352765990413
+                19.047507255818015
+            ],
+            "distinct_1_scores": [
+                0.9148291500508249
+            ],
+            "repetition_percentages": [
+                0.31982942430703626
             ]
         },
         "(('k', 40),)": {
-            "perplexity": [
-                8541.001632254463
-            ],
             "bleu_scores": [
-                0.1032345463989427
+                0.1066464419535258
             ],
             "chrf_scores": [
-                20.061060671793623
+                19.305109119927316
+            ],
+            "distinct_1_scores": [
+                0.941521359501655
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         }
     },
     "temperature_sampling": {
         "(('temperature', 0.5),)": {
-            "perplexity": [
-                5626.543983677456
-            ],
             "bleu_scores": [
-                0.10946297925020501
+                0.10877034782968759
             ],
             "chrf_scores": [
-                18.152173926725197
+                18.97887148579866
+            ],
+            "distinct_1_scores": [
+                0.9050933193790335
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('temperature', 0.7),)": {
-            "perplexity": [
-                8495.857397460937
-            ],
             "bleu_scores": [
-                0.10533226458911331
+                0.10568266900144029
             ],
             "chrf_scores": [
-                19.566583764214894
+                19.214478662643252
+            ],
+            "distinct_1_scores": [
+                0.9271002123218872
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('temperature', 0.9),)": {
-            "perplexity": [
-                9928.095099748884
-            ],
             "bleu_scores": [
-                0.09872664800809168
+                0.16441318283926876
             ],
             "chrf_scores": [
-                19.690231793472098
+                19.5077256426812
+            ],
+            "distinct_1_scores": [
+                0.9400349057984526
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         }
     },
     "entmax_sampling": {
         "(('alpha', 1.2),)": {
-            "perplexity": [
-                5415.119848632812
-            ],
             "bleu_scores": [
-                0.18374238763858272
+                0.1829291911517679
             ],
             "chrf_scores": [
-                18.560186100163083
+                17.59901543444896
+            ],
+            "distinct_1_scores": [
+                0.8666379961946464
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('alpha', 1.3),)": {
-            "perplexity": [
-                4931.345985630581
-            ],
             "bleu_scores": [
-                0.1749719717854255
+                0.18158625975266943
             ],
             "chrf_scores": [
-                18.513420009652513
+                19.121550228159816
+            ],
+            "distinct_1_scores": [
+                0.8476946334089189
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('alpha', 1.4),)": {
-            "perplexity": [
-                4846.561717006139
-            ],
             "bleu_scores": [
-                0.22242988648893638
+                0.10642983212235521
             ],
             "chrf_scores": [
-                17.93537181181844
+                18.99595405003888
+            ],
+            "distinct_1_scores": [
+                0.8534304320018608
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         },
         "(('alpha', 1.5),)": {
-            "perplexity": [
-                5644.585316685268
-            ],
             "bleu_scores": [
-                0.10483185963300415
+                0.10619483808555258
             ],
             "chrf_scores": [
-                17.92281427204311
+                18.398168723832267
+            ],
+            "distinct_1_scores": [
+                0.8446503505616805
+            ],
+            "repetition_percentages": [
+                0.0
             ]
         }
     }
